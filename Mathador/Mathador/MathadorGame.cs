@@ -157,13 +157,17 @@ namespace Mathador
 
         public void reset()
         {
+            this.OperateurDivCount = 0;
+            this.OperateurFoisCount = 0;
+            this.OperateurMoinsCount = 0;
+            this.OperateurPlusCount = 0;
+
             _timer.Stop();
             _timerRunning = false;
 
             // Reset the elapsed time TimeSpan objects
             _totalElapsedTime = TimeSpan.Zero;
             _currentElapsedTime = TimeSpan.Zero;
-
           resultat = 0;
         plus = false;
         div = false;
@@ -349,7 +353,7 @@ namespace Mathador
         {
             if (LastButton.Text == NombreCible.Text)
             {
-                MessageBox.Show("Bien Joué" + this.OperateurPlusCount + " " + this.OperateurMoinsCount + " " + this.OperateurFoisCount + " " + this.OperateurDivCount + " " + TextTimer.Text);
+                MessageBox.Show("Bien Joué \n Vous avez utilisé : \n" + this.OperateurPlusCount + " fois le + \n" + this.OperateurMoinsCount + " fois le - \n" + this.OperateurFoisCount + " fois le * \n" + this.OperateurDivCount + " fois le / \n" + TextTimer.Text + "/n Votre Score est de : " + TextAffichageScore.Text);
                 TextAffichageScore.Text = ScoreRound.ToString();
 
             }
@@ -379,9 +383,10 @@ namespace Mathador
             // elapsed time and total elapsed time
             //TextTemps.Text = _currentElapsedTime.ToString();
             TextTimer.Text = timeSinceStartTime.ToString();
-            if (timeSinceStartTime.Minutes == 03)
+            if (timeSinceStartTime.Minutes == 01)
             {
                 MessageBox.Show("Temps écoulé");
+                timeSinceStartTime = DateTime.Now - _startTime;
                 reset();
             }
         }
