@@ -43,7 +43,7 @@ namespace tests_sqlite
                 SQLiteConnection.CreateFile("db.sqlite");
             }
             connexion.Open();
-            string sql = "create table if not exists users (username text, password text, minScore int, maxScore int, averageScore float, gameCount int, averagePointsPerGame float, averagePointsPerRound float, averageTimePerRound float, averageUseRateOfAdd float, averageUseRateOfSub float, averageUseOfMult float, averageUseOfDiv float)";
+            string sql = "create table if not exists users (username text, password text, minScore int, maxScore int, totalScorePoints int, totalGameTime float, gameCount int, roundCount int, addCount int, subCount int, multCount int, divCount int)";
             SQLiteCommand commande = new SQLiteCommand(sql, connexion);
             commande.ExecuteNonQuery();
             return;
