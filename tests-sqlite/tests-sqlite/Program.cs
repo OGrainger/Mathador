@@ -16,7 +16,8 @@ namespace tests_sqlite
 
             SQLiteDatabase db = new SQLiteDatabase();
             db.LaunchDatabase();
-            if (db.CheckIfUserAlreadyExists("oihjohoh"))
+            //db.CreateANewUser("oscar", "hehe");
+            if (db.CheckIfPasswordMatch("eustache", "hoho"))
             {
                 Console.WriteLine("TRUE");
                 Console.ReadKey();
@@ -73,8 +74,28 @@ namespace tests_sqlite
             SQLiteDataReader reader = commande.ExecuteReader();
             while (reader.Read())
             {
+                Console.WriteLine("Utilisateur existant");
                 return true;
             }
+            Console.WriteLine("L'utilisateur n'existe pas");
+            return false;
+        }
+
+        //Vérifie si l'utilisateur existe déjà - Retourne true si c'est le cas
+        public bool CheckIfPasswordMatch(string username, string password)
+        {
+            string sql = "select password from users where username = '" + username + "'";
+            SQLiteCommand commande = new SQLiteCommand(sql, connexion);
+            SQLiteDataReader reader = commande.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader[ "password"].ToString() == password)
+                {
+                    Console.WriteLine("Le mot de passe correspond");
+                    return true;
+                }
+            }
+            Console.WriteLine("Le mot de passe ne correspond pas");
             return false;
         }
     }
