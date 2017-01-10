@@ -36,7 +36,9 @@ namespace Mathador
         public bool PremierNombreSelectione = false;
         public int i;
 
-         // Because we have not specified a namespace, this
+        public static Random random = new Random();
+
+        // Because we have not specified a namespace, this
         // will be a System.Windows.Forms.Timer instance
         private Timer _timer;
 
@@ -111,7 +113,7 @@ namespace Mathador
 
             Generator();
 
-            string text = System.IO.File.ReadAllText(@"C:\Users\Roro\Documents\Visual Studio 2013\Projects\Mathador\ressources\path.db");
+            string text = System.IO.File.ReadAllText("Gene.db");
             
             data json = JsonConvert.DeserializeObject<data>(text);
            //Console.WriteLine("Cible: {0}, Nombre1: {1}", datatest.Cible, datatest.Nombre1);
@@ -276,15 +278,12 @@ namespace Mathador
         public static void Generator()
         {
             int nb1, nb2, nb3, nb4, nb5, cible;
-
-            Random random = new Random();
-
             
-            nb1 = random.Next(1*20);
-            nb2 = random.Next(1*20);
-            nb3 = random.Next(1*12);
-            nb4 = random.Next(1*12);
-            nb5 = random.Next(1*12);
+            nb1 = random.Next(1, 20);
+            nb2 = random.Next(1, 20);
+            nb3 = random.Next(1, 12);
+            nb4 = random.Next(1, 12);
+            nb5 = random.Next(1, 12);
 
             cible = nb1 + nb2 - nb3 * nb4 / nb5;
 
@@ -305,7 +304,7 @@ namespace Mathador
 
                 string json = JsonConvert.SerializeObject(datatest);
 
-                System.IO.File.WriteAllText(@"C:\Users\Roro\Documents\Visual Studio 2013\Projects\Mathador\ressources\path.db", json);
+                System.IO.File.WriteAllText("Gene.db", json);
             }
             else
             {
