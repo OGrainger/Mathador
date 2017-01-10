@@ -283,7 +283,6 @@ namespace Mathador
 
             Random random = new Random();
 
-            
             nb1 = random.Next(1,20);
             nb2 = random.Next(1,20);
             nb3 = random.Next(1,12);
@@ -295,7 +294,6 @@ namespace Mathador
             if (cible > 0)
             {
                 data datatest = new data();
-
                 datatest.Cible = cible;
                 datatest.Nombre1 = nb1;
                 datatest.Nombre2 = nb2;
