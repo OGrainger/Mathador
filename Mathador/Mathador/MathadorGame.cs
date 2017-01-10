@@ -279,6 +279,7 @@ namespace Mathador
 
             Random random = new Random();
 
+            
             nb1 = random.Next(1*20);
             nb2 = random.Next(1*20);
             nb3 = random.Next(1*12);
@@ -287,21 +288,29 @@ namespace Mathador
 
             cible = nb1 + nb2 - nb3 * nb4 / nb5;
 
+            if (cible > 0)
+            {
+                data datatest = new data();
 
-            data datatest = new data();
-
-            datatest.Cible = cible;
-            datatest.Nombre1 = nb1;
-            datatest.Nombre2 = nb2;
-            datatest.Nombre3 = nb3;
-            datatest.Nombre4 = nb4;
-            datatest.Nombre5 = nb5;
+                datatest.Cible = cible;
+                datatest.Nombre1 = nb1;
+                datatest.Nombre2 = nb2;
+                datatest.Nombre3 = nb3;
+                datatest.Nombre4 = nb4;
+                datatest.Nombre5 = nb5;
 
 
-            string json = JsonConvert.SerializeObject(datatest);
 
-            System.IO.File.WriteAllText(@"C:\Users\Roro\Documents\Visual Studio 2013\Projects\Mathador\ressources\path.db", json);
 
+
+                string json = JsonConvert.SerializeObject(datatest);
+
+                System.IO.File.WriteAllText(@"C:\Users\Roro\Documents\Visual Studio 2013\Projects\Mathador\ressources\path.db", json);
+            }
+            else
+            {
+                Generator();
+            }
         }
 
 
