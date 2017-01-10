@@ -22,6 +22,7 @@ namespace Mathador
         public int OperateurDivCount = 0;
         public int ScoreManche;
         public DateTime TempsManche1;
+        public bool tempsEcoule = false;
 
         public int resultat;
         public bool plus = false;
@@ -80,6 +81,7 @@ namespace Mathador
 
         private void ButtonTestGenerer_Click(object sender, EventArgs e)
         {
+            this.tempsEcoule = true;
             if (!_timerRunning)
             {
                 // Set the start time to Now
@@ -192,6 +194,8 @@ namespace Mathador
         BouttonNombre3.BackColor = Color.White;
         BouttonNombre4.BackColor = Color.White;
         ButtonNombre5.BackColor = Color.White;
+
+        this.tempsEcoule = false;
         }
 
         public void Calcule(Button button1)
@@ -280,11 +284,11 @@ namespace Mathador
             Random random = new Random();
 
             
-            nb1 = random.Next(1*20);
-            nb2 = random.Next(1*20);
-            nb3 = random.Next(1*12);
-            nb4 = random.Next(1*12);
-            nb5 = random.Next(1*12);
+            nb1 = random.Next(1,20);
+            nb2 = random.Next(1,20);
+            nb3 = random.Next(1,12);
+            nb4 = random.Next(1,12);
+            nb5 = random.Next(1,12);
 
             cible = nb1 + nb2 - nb3 * nb4 / nb5;
 
@@ -394,15 +398,23 @@ namespace Mathador
             TextTimer.Text = timeSinceStartTime.ToString();
             if (timeSinceStartTime.Minutes == 01)
             {
-                MessageBox.Show("Temps écoulé");
-                timeSinceStartTime = DateTime.Now - _startTime;
-                reset();
+                Message();
             }
+                //timeSinceStartTime = DateTime.Now - _startTime;
         }
 
         private void TextTemps_Click(object sender, EventArgs e)
         {
 
+        }
+        public void Message()
+        {
+            if (tempsEcoule == true)
+            {
+                MessageBox.Show("Temps écoulé");
+                reset();
+                tempsEcoule = false;
+            }
         }
 
       }
