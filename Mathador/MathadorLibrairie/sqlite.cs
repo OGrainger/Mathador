@@ -6,39 +6,8 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.IO;
 
-namespace tests_sqlite
+namespace Mathador
 {
-    class Program
-    {
-        
-        static void Main(string[] args)
-        {
-            //TESTS
-            SQLiteDatabase db = new SQLiteDatabase();
-            db.LaunchDatabase();
-
-            //db.CreateANewUser("oscar", "hehe");
-
-            Dictionary<string, int> gameData = new Dictionary<string, int>();
-            gameData.Add("gameScore", 60);
-            gameData.Add("gameTime", 180);
-            gameData.Add("roundCount", 3);
-            gameData.Add("addCount", 0);
-            gameData.Add("subCount", 50);
-            gameData.Add("multCount", 0);
-            gameData.Add("divCount", 2);
-            db.UpdateData("oscar", gameData);
-
-
-            foreach (KeyValuePair<string, int> data in db.GetData("oscar"))
-            {
-                Console.WriteLine("Key = {0}, Value = {1}", data.Key, data.Value);
-            }
-            db.CloseDatabase();
-            Console.ReadKey();
-        }   
-    }
-
     //LaunchDatabase() - void
     //CloseDatabase() - void
     //CreateANewUser(string username, string password) - void
@@ -46,14 +15,14 @@ namespace tests_sqlite
     //CheckIfPasswordMatches(string username, string password) - bool
     //GetData(string username) - dictionary(minScore, maxScore, totalScorePoints, totalGameTimeInSeconds, gameCount, roundCount, addCount, subCount, multCount, divCount)
     //UpdateData(string username, dictionary(gameScore, gameTime, roundCount, addCount, subCount, multCount, divCount))
-    
+
     class SQLiteDatabase
     {
-        
+
         private SQLiteConnection connexion = new SQLiteConnection("Data Source=db.sqlite;Version=3;");
-        
+
         //Crée le fichier s'il n'existe pas et génère la table si elle n'existe pas
-        public void LaunchDatabase ()
+        public void LaunchDatabase()
         {
             if (!File.Exists("db.sqlite"))
             {
@@ -68,7 +37,7 @@ namespace tests_sqlite
         }
 
         //Ferme la connexion à la table
-        public void CloseDatabase ()
+        public void CloseDatabase()
         {
             connexion.Close();
             Console.WriteLine("db fermée avec succès");
@@ -76,7 +45,7 @@ namespace tests_sqlite
         }
 
         //Insert un nouvel utilisateur
-        public void CreateANewUser (string username, string password)
+        public void CreateANewUser(string username, string password)
         {
             string sql = "insert into users values ('" + username + "', '" + password + "', 0, 0 ,0 ,0 ,0 ,0, 0, 0, 0, 0)";
             SQLiteCommand commandeInsert = new SQLiteCommand(sql, connexion);
@@ -85,7 +54,7 @@ namespace tests_sqlite
         }
 
         //Vérifie si l'utilisateur existe déjà - Retourne true si c'est le cas
-        public bool CheckIfUserAlreadyExists (string username)
+        public bool CheckIfUserAlreadyExists(string username)
         {
             string sql = "SELECT username FROM users WHERE username = '" + username + "'";
             SQLiteCommand commande = new SQLiteCommand(sql, connexion);
@@ -107,7 +76,7 @@ namespace tests_sqlite
             SQLiteDataReader reader = commande.ExecuteReader();
             while (reader.Read())
             {
-                if (reader[ "password"].ToString() == password)
+                if (reader["password"].ToString() == password)
                 {
                     Console.WriteLine("Le mot de passe correspond");
                     return true;
@@ -128,7 +97,7 @@ namespace tests_sqlite
             while (reader.Read())
             {
                 //subCount int, multCount int, divCount int)";
-                userData.Add("minScore",reader.GetInt32(2));
+                userData.Add("minScore", reader.GetInt32(2));
                 userData.Add("maxScore", reader.GetInt32(3));
                 userData.Add("totalScorePoints", reader.GetInt32(4));
                 userData.Add("totalGameTimeInSeconds", reader.GetInt32(5));
@@ -152,7 +121,7 @@ namespace tests_sqlite
             {
                 if (reader.GetInt32(2) == 0)
                 {
-                    sql = "UPDATE users SET minScore = " + gameData["gameScore"] + ", maxScore = " + gameData["gameScore"] + ",  totalScorePoints = " + gameData["gameScore"] + ", totalGameTimeInSeconds = " + gameData["gameTime"] + ", gameCount = 1, roundCount = " + gameData["roundCount"] + ", addCount = " + gameData["addCount"] + ", subCount = " + gameData["subCount"] + ", multCount = " + gameData["multCount"] + ", divCount = " + gameData["divCount"] + " WHERE username = '" + username +"'";
+                    sql = "UPDATE users SET minScore = " + gameData["gameScore"] + ", maxScore = " + gameData["gameScore"] + ",  totalScorePoints = " + gameData["gameScore"] + ", totalGameTimeInSeconds = " + gameData["gameTime"] + ", gameCount = 1, roundCount = " + gameData["roundCount"] + ", addCount = " + gameData["addCount"] + ", subCount = " + gameData["subCount"] + ", multCount = " + gameData["multCount"] + ", divCount = " + gameData["divCount"] + " WHERE username = '" + username + "'";
                 }
                 else
                 {
