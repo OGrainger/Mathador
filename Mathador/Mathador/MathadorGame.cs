@@ -30,13 +30,15 @@ namespace Mathador
         public bool moins = false;
         public int round = 0;
         public int ScoreRound;
-        int cible;
+        public static int cible;
         Button button2;
         Button LastButton;
         public bool PremierNombreSelectione = false;
         public int i;
 
         public static Random random = new Random();
+
+        public static int[] tableau = new int[5];
 
         // Because we have not specified a namespace, this
         // will be a System.Windows.Forms.Timer instance
@@ -121,7 +123,6 @@ namespace Mathador
 
             cible = json.Cible;
             NombreCible.Text = cible.ToString();
-            int[] tableau = new int[5];
 
             tableau[0] = json.Nombre1;
             tableau[1] = json.Nombre2;
@@ -275,7 +276,7 @@ namespace Mathador
             }
         }
 
-        public static void Generator()
+        public void Generator()
         {
             int nb1, nb2, nb3, nb4, nb5, cible;
             

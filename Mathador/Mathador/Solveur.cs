@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mathador;
+using Newtonsoft.Json;
 
 namespace Solveur
 {
@@ -12,7 +14,7 @@ namespace Solveur
         bool valid;
         string equation;
 
-        private void simpleSolveur(nb1, nb2)
+        public void simpleSolveur()
         {
             for (i=1; i<=5; i++)
             {
@@ -20,17 +22,17 @@ namespace Solveur
                 {
                     if (i != j)
                     {
-                        if (preresult = cible)
+                        preresult = MathadorGame.tableau[i] + MathadorGame.tableau[j];
+                        if (preresult == MathadorGame.cible)
                         {
+                            equation = (MathadorGame.tableau[i].ToString() + " + " + MathadorGame.tableau[j].ToString() + " = " + MathadorGame.cible.ToString() + "\n");
 
+                            string json = JsonConvert.SerializeObject(equation);
+                            System.IO.File.AppendAllText("Solutions.db", json);
                         }
                     }
                 }
             }
-        }
-        
-        
-        
-         
+        } 
     }
 }
