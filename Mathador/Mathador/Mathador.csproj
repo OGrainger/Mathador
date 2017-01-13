@@ -75,6 +75,7 @@
     <Compile Include="ScoreFinDePartie.Designer.cs">
       <DependentUpon>ScoreFinDePartie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Solveur.cs" />
     <EmbeddedResource Include="MathadorGame.resx">
       <DependentUpon>MathadorGame.cs</DependentUpon>
     </EmbeddedResource>
