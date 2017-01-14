@@ -11,20 +11,21 @@ namespace Solveur
     class Solveur
     {
         int i, j, preresult;
-        bool valid;
+        bool valid = false;
         string equation;
 
-        public void simpleSolveur()
+        public void SolveurPlus()
         {
-            for (i=1; i<=5; i++)
+            for (i = 0; i <= 4; i++)
             {
-                for (j = 1; j <= 5; j++)
+                for (j = 0; j <= 4; j++)
                 {
                     if (i != j)
                     {
                         preresult = MathadorGame.tableau[i] + MathadorGame.tableau[j];
                         if (preresult == MathadorGame.cible)
                         {
+                            valid = true;
                             equation = (MathadorGame.tableau[i].ToString() + " + " + MathadorGame.tableau[j].ToString() + " = " + MathadorGame.cible.ToString() + "\n");
 
                             string json = JsonConvert.SerializeObject(equation);
@@ -33,6 +34,81 @@ namespace Solveur
                     }
                 }
             }
-        } 
+        }
+
+        public void SolveurMoins()
+        {
+            for (i = 0; i <= 4; i++)
+            {
+                for (j = 0; j <= 4; j++)
+                {
+                    if (i != j)
+                    {
+                        preresult = MathadorGame.tableau[i] - MathadorGame.tableau[j];
+                        if (preresult < 0)
+                        {
+                            valid = false;
+                        }
+                        else if (preresult == MathadorGame.cible)
+                        {
+                            valid = true;
+                            equation = (MathadorGame.tableau[i].ToString() + " - " + MathadorGame.tableau[j].ToString() + " = " + MathadorGame.cible.ToString() + "\n");
+
+                            string json = JsonConvert.SerializeObject(equation);
+                            System.IO.File.AppendAllText("Solutions.db", json);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void SolveurMult()
+        {
+            for (i=0; i<=4; i++)
+            {
+                for (j=0; j<=4; j++)
+                {
+                    if (i != j)
+                    {
+                        preresult = MathadorGame.tableau[i] * MathadorGame.tableau[j];
+                        if (preresult == MathadorGame.cible)
+                        {
+                            valid = true;
+                            equation = (MathadorGame.tableau[i].ToString() + " x " + MathadorGame.tableau[j].ToString() + " = " + MathadorGame.cible.ToString() + "\n");
+
+                            string json = JsonConvert.SerializeObject(equation);
+                            System.IO.File.AppendAllText("Solutions.db", json);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void SolveurDiv()
+        {
+            int rest;
+            for (i=0; i<=4; i++)
+            {
+                for (j=0; j<=4; j++)
+                {
+                    if (i != j)
+                    {
+                        rest = MathadorGame.tableau[i] % MathadorGame.tableau[j];
+                        if (rest != 0)
+                        {
+                            valid = false;
+                        }
+                        else
+                        {
+                            valid = true;
+                            equation = (MathadorGame.tableau[i].ToString() + " / " + MathadorGame.tableau[j].ToString() + " = " + MathadorGame.cible.ToString() + "\n");
+
+                            string json = JsonConvert.SerializeObject(equation);
+                            System.IO.File.AppendAllText("Solutions.db", json);
+                        }                       
+                    }
+                }
+            }
+        }
     }
 }
