@@ -246,6 +246,8 @@ namespace Solveur
                 }
             }
         }
+    }
+}
 
         /*public void SolvTowOp()
         {

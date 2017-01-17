@@ -44,6 +44,7 @@ namespace Mathador
         public bool PremierNombreSelectione = false;
         public int i;
         public Boolean mess = true;
+        public Boolean SuivantNow = true;
 
         public static Random random = new Random();
 
@@ -72,11 +73,15 @@ namespace Mathador
         public MathadorGame(String Pseudo)
         {
             InitializeComponent();
+            TextPseudo.Text = Pseudo;
             MessageBox.Show("Etes vous pret "+ Pseudo + " ?",
-    "Message",
-    MessageBoxButtons.OK,
-    MessageBoxIcon.Exclamation,
-    MessageBoxDefaultButton.Button1);
+            "Message",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Exclamation,
+            MessageBoxDefaultButton.Button1);
+
+            LastButton = BouttonNombre1;
+            LastButton.BackColor = Color.Yellow;
             // Set up a timer and fire the Tick event once per second (1000 ms)
             _timer = new Timer();
             _timer.Interval = 1000;
@@ -195,7 +200,7 @@ namespace Mathador
         public void Message(){
             if (mess)
                 {
-                    MessageBox.Show("Temps écoulé");
+                    //MessageBox.Show("Temps écoulé");
                     mess = false;
                 }
         }
@@ -235,6 +240,7 @@ namespace Mathador
 
         public void Calcule(Button button1)
         {
+            SuivantNow = false;
             BouttonNombre1.BackColor = Color.White;
             BouttonNombre2.BackColor = Color.White;
             BouttonNombre3.BackColor = Color.White;
@@ -252,6 +258,13 @@ namespace Mathador
                     LastButton = button1;
                     this.OperateurPlusCount += 1;
                     plus = false;
+
+                    BouttonNombre1.BackColor = Color.White;
+                    BouttonNombre2.BackColor = Color.White;
+                    BouttonNombre3.BackColor = Color.White;
+                    BouttonNombre4.BackColor = Color.White;
+                    ButtonNombre5.BackColor = Color.White;
+                    LastButton.BackColor = Color.Yellow;
                 }
                 if (moins == true)
                 {
@@ -262,6 +275,12 @@ namespace Mathador
                     LastButton = button1;
                     this.OperateurMoinsCount++;
                     moins = false;
+                    BouttonNombre1.BackColor = Color.White;
+                    BouttonNombre2.BackColor = Color.White;
+                    BouttonNombre3.BackColor = Color.White;
+                    BouttonNombre4.BackColor = Color.White;
+                    ButtonNombre5.BackColor = Color.White;
+                    LastButton.BackColor = Color.Yellow;
                 }
                 if (div == true )
                 {
@@ -274,6 +293,12 @@ namespace Mathador
                         LastButton = button1;
                         this.OperateurDivCount++;
                         div = false;
+                        BouttonNombre1.BackColor = Color.White;
+                        BouttonNombre2.BackColor = Color.White;
+                        BouttonNombre3.BackColor = Color.White;
+                        BouttonNombre4.BackColor = Color.White;
+                        ButtonNombre5.BackColor = Color.White;
+                        LastButton.BackColor = Color.Yellow;
                     }
                     else
                     {
@@ -291,6 +316,12 @@ namespace Mathador
                     LastButton = button1;
                     this.OperateurFoisCount++;
                     fois = false;
+                    BouttonNombre1.BackColor = Color.White;
+                    BouttonNombre2.BackColor = Color.White;
+                    BouttonNombre3.BackColor = Color.White;
+                    BouttonNombre4.BackColor = Color.White;
+                    ButtonNombre5.BackColor = Color.White;
+                    LastButton.BackColor = Color.Yellow;
                 }
                 PremierNombreSelectione = false;
                 round++;
@@ -347,6 +378,7 @@ namespace Mathador
             {
                 Generator();
             }
+            SuivantNow = true;
         }
 
 
@@ -398,31 +430,42 @@ namespace Mathador
         {
             if (!Terminer)
             {
-                if (LastButton.Text == NombreCible.Text)
+                if (SuivantNow)
                 {
-                    
+                    Generer();
+                }else{
 
-                    TextAffichageScore.Text = ScoreRound.ToString();
-
-                    SaveOperateurDivCount = OperateurDivCount;
-                    SaveOperateurFoisCount = OperateurFoisCount;
-                    SaveOperateurMoinsCount = OperateurMoinsCount;
-                    SaveOperateurPlusCount = OperateurPlusCount;
-                    SaveScoreManche = ScoreManche;
-                    //nb de round
-                    if (OperateurDivCount == 1 && OperateurFoisCount ==1 && OperateurMoinsCount == 1 && OperateurPlusCount ==1)
+                    if (LastButton.Text == NombreCible.Text)
                     {
-                        MessageBox.Show("Super ! Mathador ! \n Vous avez utilisé : \n" + "/n Votre Score est de : " + TextAffichageScore.Text);
+
+
+                        TextAffichageScore.Text = ScoreRound.ToString();
+
+                        SaveOperateurDivCount = OperateurDivCount;
+                        SaveOperateurFoisCount = OperateurFoisCount;
+                        SaveOperateurMoinsCount = OperateurMoinsCount;
+                        SaveOperateurPlusCount = OperateurPlusCount;
+                        SaveScoreManche = ScoreManche;
+                        //nb de round
+                        if (OperateurDivCount == 1 && OperateurFoisCount == 1 && OperateurMoinsCount == 1 && OperateurPlusCount == 1)
+                        {
+                            MessageBox.Show("Super ! Mathador ! \n Vous avez utilisé : \n" + "/n Votre Score est de : " + TextAffichageScore.Text);
+
+                            Generer();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Bien Joué \n Vous avez utilisé : \n" + this.OperateurPlusCount + " fois le + \n" + this.OperateurMoinsCount + " fois le - \n" + this.OperateurFoisCount + " fois le * \n" + this.OperateurDivCount + " fois le / \n" + TextTimer.Text + "/n Votre Score est de : " + TextAffichageScore.Text);
+
+                            Generer();
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Bien Joué \n Vous avez utilisé : \n" + this.OperateurPlusCount + " fois le + \n" + this.OperateurMoinsCount + " fois le - \n" + this.OperateurFoisCount + " fois le * \n" + this.OperateurDivCount + " fois le / \n" + TextTimer.Text + "/n Votre Score est de : " + TextAffichageScore.Text);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Perdu" + this.OperateurPlusCount + " " + this.OperateurMoinsCount + " " + this.OperateurFoisCount + " " + this.OperateurDivCount + " " + TextTimer.Text);
+                        MessageBox.Show("Perdu" + this.OperateurPlusCount + " " + this.OperateurMoinsCount + " " + this.OperateurFoisCount + " " + this.OperateurDivCount + " " + TextTimer.Text);
 
+                        Generer();
+                    }
                 }
             }
         }
@@ -454,7 +497,7 @@ namespace Mathador
                 Message();
                 timeSinceStartTime = DateTime.Now - _startTime;
                 timer1.Stop();
-                reset();
+                //reset();
             }
       
         }
