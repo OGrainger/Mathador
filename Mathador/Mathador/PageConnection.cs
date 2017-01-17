@@ -27,9 +27,11 @@ namespace Mathador
             db.LaunchDatabase();
 
             if (db.CheckIfPasswordMatch(this.Pseudo, this.MDP)){
-                MathadorGame form = new MathadorGame();
-                form.ShowDialog();
                 this.Hide();
+                MenuMathador form = new MenuMathador(Pseudo);
+                
+                form.ShowDialog();
+                
             }else{
                 ErreurPseudo.Text = "ERREUR";
             }
