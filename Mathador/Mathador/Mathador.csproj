@@ -102,6 +102,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ScoreFinDePartie.resx">
       <DependentUpon>ScoreFinDePartie.cs</DependentUpon>
@@ -125,6 +126,9 @@
       <Project>{fc97348b-3c29-4bbf-9693-4e8a4ff0181e}</Project>
       <Name>MathadorLibrairie</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hipsterlogogenerator_1484667478781.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
