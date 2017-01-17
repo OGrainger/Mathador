@@ -223,9 +223,7 @@ namespace Solveur
                                     }
                                 case 3:
                                     {
-                                        int rest;
-                                        rest = MathadorGame.tableau[i] % MathadorGame.tableau[j];
-                                        if (rest != 0)
+                                        if (MathadorGame.tableau[i] % MathadorGame.tableau[j] != 0)
                                         {
                                             valid = false;
                                         }
@@ -249,15 +247,15 @@ namespace Solveur
     }
 }
 
-        /*public void SolvTowOp()
+        public void SolvTowOp()
         {
-            for (i = 0; i ==4; i++)
+            for (i = 0; i == 3; i++)
             {
-                preresult = MathadorGame.tableau[i+1];
+                preresult = MathadorGame.tableau[i + 1];
                 equation = "";
-                for (k=0; k==1; k++)
+                for (k = 0; k == 1; k++)
                 {
-                    for (l=0; l==3; l++)
+                    for (l = 0; l == 3; l++)
                     {
                         switch (DeuxSignes[k, l])
                         {
@@ -267,11 +265,11 @@ namespace Solveur
                                     if (equation == "")
                                     {
                                         equation = MathadorGame.tableau[i].ToString() + " + " + preresult;
-                                    }else
-                                    {
-                                        equation = equation + " + " + MathadorGame.tableau[i].ToString() + " + " + preresult;
                                     }
-                                    equation = MathadorGame.tableau[i].ToString() + " + " + preresult;
+                                    else
+                                    {
+                                        equation = MathadorGame.tableau[i].ToString() + " + " + equation;
+                                    }
                                     break;
                                 }
                             case 1:
@@ -285,26 +283,61 @@ namespace Solveur
                                         }
                                         else
                                         {
-                                            equation = equation + " + " + MathadorGame.tableau[i].ToString() + " + " + preresult;
+                                            equation = MathadorGame.tableau[i].ToString() + " - " + equation;
                                         }
-                                        equation = MathadorGame.tableau[i].ToString() + " + " + preresult;
                                     }
                                     break;
                                 }
+                            case 2:
+                                {
+                                    preresult = MathadorGame.tableau[i] * preresult;
+                                    if (equation == "")
+                                    {
+                                        equation = "(" + MathadorGame.tableau[i].ToString() + " * " + preresult + ")";
+                                    }
+                                    else
+                                    {
+                                        equation = "(" + MathadorGame.tableau[i].ToString() + " * " + equation + ")";
+                                    }
+                                    break;
+
+                                }
+                            case 3:
+                                {
+                                    if (MathadorGame.tableau[i] % preresult == 0)
+                                    {
+                                        preresult = MathadorGame.tableau[i] / preresult;
+                                        if (equation == "")
+                                        {
+                                            equation = "(" + MathadorGame.tableau[i].ToString() + " / " + preresult + ")";
+                                        }
+                                        else
+                                        {
+                                            equation = "(" + MathadorGame.tableau[i].ToString() + " / " + equation + ")";
+                                        }
+                                    }
+                                    break;
+
+                                }
                         }
                     }
+                    if (preresult == MathadorGame.cible)
+                    {
+                        equation = equation + " = " + MathadorGame.cible + "\n";
+                        string json = JsonConvert.SerializeObject(equation);
+                        System.IO.File.AppendAllText("Solutions.db", json);
+                        valid = true;
+                    }
+                    else
+                    {
+                        valid = false;
+                    }
                 }
-                if (preresult == MathadorGame.cible)
-                    equation = equation + " = " + MathadorGame.cible;
-                    valid = true;
             }
-
-
-
-
-
+        }
     }
 }
+
 
 
 
