@@ -48,6 +48,7 @@
             this.ButtonDiv = new System.Windows.Forms.Button();
             this.ButtonTestGenerer = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.TextPseudo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BouttonNombre1
@@ -231,11 +232,21 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this._timer1_Tick);
             // 
+            // TextPseudo
+            // 
+            this.TextPseudo.AutoSize = true;
+            this.TextPseudo.Location = new System.Drawing.Point(12, 13);
+            this.TextPseudo.Name = "TextPseudo";
+            this.TextPseudo.Size = new System.Drawing.Size(75, 13);
+            this.TextPseudo.TabIndex = 18;
+            this.TextPseudo.Text = "PseudoJoueur";
+            // 
             // MathadorGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 479);
+            this.Controls.Add(this.TextPseudo);
             this.Controls.Add(this.ButtonTestGenerer);
             this.Controls.Add(this.ButtonDiv);
             this.Controls.Add(this.ButtonFois);
@@ -283,6 +294,7 @@
         private System.Windows.Forms.Button ButtonDiv;
         private System.Windows.Forms.Button ButtonTestGenerer;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label TextPseudo;
     }
 }
 

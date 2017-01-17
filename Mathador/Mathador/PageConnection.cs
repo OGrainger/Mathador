@@ -33,7 +33,7 @@ namespace Mathador
             else if (db.CheckIfPasswordMatch(this.Pseudo, this.MDP))
             {
                 this.Hide();
-                MenuMathador form = new MenuMathador();
+                MenuMathador form = new MenuMathador(Pseudo);
                 form.ShowDialog();
             }
             else

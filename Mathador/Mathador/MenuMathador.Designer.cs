@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.BouttonNouvellePartie = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.BouttonQuitter = new System.Windows.Forms.Button();
+            this.BouttonScore = new System.Windows.Forms.Button();
+            this.BienvenuePseudo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BouttonNouvellePartie
@@ -41,43 +42,58 @@
             this.BouttonNouvellePartie.TabIndex = 0;
             this.BouttonNouvellePartie.Text = "Nouvelle Partie";
             this.BouttonNouvellePartie.UseVisualStyleBackColor = true;
+            this.BouttonNouvellePartie.Click += new System.EventHandler(this.BouttonNouvellePartie_Click);
             // 
-            // button2
+            // BouttonQuitter
             // 
-            this.button2.Location = new System.Drawing.Point(98, 152);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Quitter";
-            this.button2.UseVisualStyleBackColor = true;
+            this.BouttonQuitter.Location = new System.Drawing.Point(98, 152);
+            this.BouttonQuitter.Name = "BouttonQuitter";
+            this.BouttonQuitter.Size = new System.Drawing.Size(75, 23);
+            this.BouttonQuitter.TabIndex = 1;
+            this.BouttonQuitter.Text = "Quitter";
+            this.BouttonQuitter.UseVisualStyleBackColor = true;
+            this.BouttonQuitter.Click += new System.EventHandler(this.BouttonQuitter_Click);
             // 
-            // button3
+            // BouttonScore
             // 
-            this.button3.Location = new System.Drawing.Point(98, 99);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Score";
-            this.button3.UseVisualStyleBackColor = true;
+            this.BouttonScore.Location = new System.Drawing.Point(98, 99);
+            this.BouttonScore.Name = "BouttonScore";
+            this.BouttonScore.Size = new System.Drawing.Size(75, 23);
+            this.BouttonScore.TabIndex = 2;
+            this.BouttonScore.Text = "Score";
+            this.BouttonScore.UseVisualStyleBackColor = true;
+            this.BouttonScore.Click += new System.EventHandler(this.BouttonScore_Click);
+            // 
+            // BienvenuePseudo
+            // 
+            this.BienvenuePseudo.AutoSize = true;
+            this.BienvenuePseudo.Location = new System.Drawing.Point(83, 9);
+            this.BienvenuePseudo.Name = "BienvenuePseudo";
+            this.BienvenuePseudo.Size = new System.Drawing.Size(103, 13);
+            this.BienvenuePseudo.TabIndex = 3;
+            this.BienvenuePseudo.Text = "Bienvenue Pseudo !";
             // 
             // MenuMathador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.BienvenuePseudo);
+            this.Controls.Add(this.BouttonScore);
+            this.Controls.Add(this.BouttonQuitter);
             this.Controls.Add(this.BouttonNouvellePartie);
             this.Name = "MenuMathador";
             this.Text = "PageConnection";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button BouttonNouvellePartie;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button BouttonQuitter;
+        private System.Windows.Forms.Button BouttonScore;
+        private System.Windows.Forms.Label BienvenuePseudo;
     }
 }

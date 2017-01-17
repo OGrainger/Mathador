@@ -43,6 +43,7 @@ namespace Mathador
         Button LastButton;
         public bool PremierNombreSelectione = false;
         public int i;
+        public Boolean mess = true;
 
         public static Random random = new Random();
 
@@ -68,29 +69,30 @@ namespace Mathador
           
         
 
-        public MathadorGame()
+        public MathadorGame(String Pseudo)
         {
             InitializeComponent();
-
+            MessageBox.Show("Etes vous pret "+ Pseudo + " ?",
+    "Message",
+    MessageBoxButtons.OK,
+    MessageBoxIcon.Exclamation,
+    MessageBoxDefaultButton.Button1);
             // Set up a timer and fire the Tick event once per second (1000 ms)
             _timer = new Timer();
             _timer.Interval = 1000;
             _timer.Tick += new EventHandler(_timer1_Tick);
+
+            Generer();
+            TimerInit();
+
         }
         
         private void MathadorGame_Load(object sender, EventArgs e)
         {
 
-            TextCible.Text = "";
-            ButtonNombre5.Text = "";
-            BouttonNombre1.Text = "";
-            BouttonNombre2.Text = "";
-            BouttonNombre3.Text = "";
-            BouttonNombre4.Text = "";
         }
 
-
-        private void ButtonTestGenerer_Click(object sender, EventArgs e)
+        public void TimerInit()
         {
             if (!_timerRunning)
             {
@@ -105,7 +107,7 @@ namespace Mathador
             }
             else // If the timer is already running
             {
-                
+
                 _timer.Stop();
                 _timerRunning = false;
 
@@ -120,6 +122,11 @@ namespace Mathador
                 _timer.Start();
                 _timerRunning = true;
             }
+        }
+
+        public void Generer()
+        {
+           
 
             Generator();
 
@@ -143,6 +150,10 @@ namespace Mathador
             BouttonNombre3.Text = tableau[2].ToString();
             BouttonNombre4.Text = tableau[3].ToString();
             ButtonNombre5.Text = tableau[4].ToString();
+        }
+        private void ButtonTestGenerer_Click(object sender, EventArgs e)
+        {
+           
 
         }
 
@@ -181,6 +192,13 @@ namespace Mathador
             _currentElapsedTime = TimeSpan.Zero;
         }
 
+        public void Message(){
+            if (mess)
+                {
+                    MessageBox.Show("Temps écoulé");
+                    mess = false;
+                }
+        }
         public void reset()
         {
             this.OperateurDivCount = 0;
@@ -382,7 +400,7 @@ namespace Mathador
             {
                 if (LastButton.Text == NombreCible.Text)
                 {
-                    MessageBox.Show("Bien Joué \n Vous avez utilisé : \n" + this.OperateurPlusCount + " fois le + \n" + this.OperateurMoinsCount + " fois le - \n" + this.OperateurFoisCount + " fois le * \n" + this.OperateurDivCount + " fois le / \n" + TextTimer.Text + "/n Votre Score est de : " + TextAffichageScore.Text);
+                    
 
                     TextAffichageScore.Text = ScoreRound.ToString();
 
@@ -392,7 +410,14 @@ namespace Mathador
                     SaveOperateurPlusCount = OperateurPlusCount;
                     SaveScoreManche = ScoreManche;
                     //nb de round
-
+                    if (OperateurDivCount == 1 && OperateurFoisCount ==1 && OperateurMoinsCount == 1 && OperateurPlusCount ==1)
+                    {
+                        MessageBox.Show("Super ! Mathador ! \n Vous avez utilisé : \n" + "/n Votre Score est de : " + TextAffichageScore.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Bien Joué \n Vous avez utilisé : \n" + this.OperateurPlusCount + " fois le + \n" + this.OperateurMoinsCount + " fois le - \n" + this.OperateurFoisCount + " fois le * \n" + this.OperateurDivCount + " fois le / \n" + TextTimer.Text + "/n Votre Score est de : " + TextAffichageScore.Text);
+                    }
                 }
                 else
                 {
@@ -424,10 +449,14 @@ namespace Mathador
             TextTimer.Text = timeSinceStartTime.ToString();
             if (timeSinceStartTime.Minutes == 01)
             {
-                MessageBox.Show("Temps écoulé");
+                
+                mess = true;
+                Message();
                 timeSinceStartTime = DateTime.Now - _startTime;
+                timer1.Stop();
                 reset();
             }
+      
         }
 
         private void TextTemps_Click(object sender, EventArgs e)
