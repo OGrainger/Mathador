@@ -28,21 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.buttonRetour = new System.Windows.Forms.Button();
-            this.stat1 = new System.Windows.Forms.Label();
+            this.pieChartOp = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            ((System.ComponentModel.ISupportInitialize)(this.pieChartOp)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Statistiques";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // buttonRetour
             // 
@@ -54,34 +46,40 @@
             this.buttonRetour.UseVisualStyleBackColor = true;
             this.buttonRetour.Click += new System.EventHandler(this.buttonRetour_Click);
             // 
-            // stat1
+            // pieChartOp
             // 
-            this.stat1.AutoSize = true;
-            this.stat1.Location = new System.Drawing.Point(13, 38);
-            this.stat1.Name = "stat1";
-            this.stat1.Size = new System.Drawing.Size(35, 13);
-            this.stat1.TabIndex = 2;
-            this.stat1.Text = "label2";
+            this.pieChartOp.BackColor = System.Drawing.Color.Transparent;
+            chartArea1.Name = "ChartArea1";
+            this.pieChartOp.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.pieChartOp.Legends.Add(legend1);
+            this.pieChartOp.Location = new System.Drawing.Point(296, 98);
+            this.pieChartOp.Name = "pieChartOp";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.pieChartOp.Series.Add(series1);
+            this.pieChartOp.Size = new System.Drawing.Size(300, 300);
+            this.pieChartOp.TabIndex = 3;
+            this.pieChartOp.Text = "chart1";
             // 
             // stats
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.stat1);
+            this.ClientSize = new System.Drawing.Size(640, 410);
+            this.Controls.Add(this.pieChartOp);
             this.Controls.Add(this.buttonRetour);
-            this.Controls.Add(this.label1);
             this.Name = "stats";
             this.Text = "stats";
+            ((System.ComponentModel.ISupportInitialize)(this.pieChartOp)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonRetour;
-        private System.Windows.Forms.Label stat1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart pieChartOp;
     }
 }

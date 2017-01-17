@@ -74,5 +74,10 @@ namespace Mathador
             MenuMathador form = new MenuMathador(Pseudo);
             form.ShowDialog();
         }
+
+        private void stat1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

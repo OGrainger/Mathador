@@ -36,9 +36,9 @@
             // 
             // BouttonNouvellePartie
             // 
-            this.BouttonNouvellePartie.Location = new System.Drawing.Point(98, 45);
+            this.BouttonNouvellePartie.Location = new System.Drawing.Point(75, 51);
             this.BouttonNouvellePartie.Name = "BouttonNouvellePartie";
-            this.BouttonNouvellePartie.Size = new System.Drawing.Size(75, 23);
+            this.BouttonNouvellePartie.Size = new System.Drawing.Size(150, 30);
             this.BouttonNouvellePartie.TabIndex = 0;
             this.BouttonNouvellePartie.Text = "Nouvelle Partie";
             this.BouttonNouvellePartie.UseVisualStyleBackColor = true;
@@ -46,9 +46,9 @@
             // 
             // BouttonQuitter
             // 
-            this.BouttonQuitter.Location = new System.Drawing.Point(98, 152);
+            this.BouttonQuitter.Location = new System.Drawing.Point(75, 123);
             this.BouttonQuitter.Name = "BouttonQuitter";
-            this.BouttonQuitter.Size = new System.Drawing.Size(75, 23);
+            this.BouttonQuitter.Size = new System.Drawing.Size(150, 30);
             this.BouttonQuitter.TabIndex = 1;
             this.BouttonQuitter.Text = "Quitter";
             this.BouttonQuitter.UseVisualStyleBackColor = true;
@@ -56,9 +56,9 @@
             // 
             // buttonStats
             // 
-            this.buttonStats.Location = new System.Drawing.Point(98, 99);
+            this.buttonStats.Location = new System.Drawing.Point(75, 87);
             this.buttonStats.Name = "buttonStats";
-            this.buttonStats.Size = new System.Drawing.Size(75, 23);
+            this.buttonStats.Size = new System.Drawing.Size(150, 30);
             this.buttonStats.TabIndex = 2;
             this.buttonStats.Text = "Statistiques";
             this.buttonStats.UseVisualStyleBackColor = true;
@@ -67,7 +67,7 @@
             // BienvenuePseudo
             // 
             this.BienvenuePseudo.AutoSize = true;
-            this.BienvenuePseudo.Location = new System.Drawing.Point(83, 9);
+            this.BienvenuePseudo.Location = new System.Drawing.Point(12, 9);
             this.BienvenuePseudo.Name = "BienvenuePseudo";
             this.BienvenuePseudo.Size = new System.Drawing.Size(103, 13);
             this.BienvenuePseudo.TabIndex = 3;
@@ -77,7 +77,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(281, 172);
             this.Controls.Add(this.BienvenuePseudo);
             this.Controls.Add(this.buttonStats);
             this.Controls.Add(this.BouttonQuitter);
