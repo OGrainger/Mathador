@@ -77,11 +77,13 @@
             // 
             this.textBoxMDP.Location = new System.Drawing.Point(309, 80);
             this.textBoxMDP.Name = "textBoxMDP";
+            this.textBoxMDP.PasswordChar = '*';
             this.textBoxMDP.Size = new System.Drawing.Size(255, 20);
             this.textBoxMDP.TabIndex = 6;
             // 
             // buttonValiderConnection
             // 
+            this.buttonValiderConnection.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonValiderConnection.Location = new System.Drawing.Point(310, 142);
             this.buttonValiderConnection.Name = "buttonValiderConnection";
             this.buttonValiderConnection.Size = new System.Drawing.Size(255, 23);
@@ -92,6 +94,8 @@
             // 
             // button1
             // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(310, 171);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(255, 23);
@@ -115,6 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(577, 207);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button1);
@@ -124,6 +129,7 @@
             this.Controls.Add(this.ErreurPseudo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxPseudo);
+            this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Name = "PageConnection";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Connexion";

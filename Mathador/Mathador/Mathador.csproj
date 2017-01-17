@@ -82,6 +82,12 @@
       <DependentUpon>ScoreFinDePartie.cs</DependentUpon>
     </Compile>
     <Compile Include="Solveur.cs" />
+    <Compile Include="stats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="stats.Designer.cs">
+      <DependentUpon>stats.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MathadorGame.resx">
       <DependentUpon>MathadorGame.cs</DependentUpon>
     </EmbeddedResource>
@@ -106,6 +112,9 @@
     </Compile>
     <EmbeddedResource Include="ScoreFinDePartie.resx">
       <DependentUpon>ScoreFinDePartie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="stats.resx">
+      <DependentUpon>stats.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

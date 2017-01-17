@@ -30,7 +30,7 @@
         {
             this.BouttonNouvellePartie = new System.Windows.Forms.Button();
             this.BouttonQuitter = new System.Windows.Forms.Button();
-            this.BouttonScore = new System.Windows.Forms.Button();
+            this.buttonStats = new System.Windows.Forms.Button();
             this.BienvenuePseudo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -54,15 +54,15 @@
             this.BouttonQuitter.UseVisualStyleBackColor = true;
             this.BouttonQuitter.Click += new System.EventHandler(this.BouttonQuitter_Click);
             // 
-            // BouttonScore
+            // buttonStats
             // 
-            this.BouttonScore.Location = new System.Drawing.Point(98, 99);
-            this.BouttonScore.Name = "BouttonScore";
-            this.BouttonScore.Size = new System.Drawing.Size(75, 23);
-            this.BouttonScore.TabIndex = 2;
-            this.BouttonScore.Text = "Score";
-            this.BouttonScore.UseVisualStyleBackColor = true;
-            this.BouttonScore.Click += new System.EventHandler(this.BouttonScore_Click);
+            this.buttonStats.Location = new System.Drawing.Point(98, 99);
+            this.buttonStats.Name = "buttonStats";
+            this.buttonStats.Size = new System.Drawing.Size(75, 23);
+            this.buttonStats.TabIndex = 2;
+            this.buttonStats.Text = "Statistiques";
+            this.buttonStats.UseVisualStyleBackColor = true;
+            this.buttonStats.Click += new System.EventHandler(this.buttonStats_Click);
             // 
             // BienvenuePseudo
             // 
@@ -79,7 +79,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.BienvenuePseudo);
-            this.Controls.Add(this.BouttonScore);
+            this.Controls.Add(this.buttonStats);
             this.Controls.Add(this.BouttonQuitter);
             this.Controls.Add(this.BouttonNouvellePartie);
             this.Name = "MenuMathador";
@@ -93,7 +93,7 @@
 
         private System.Windows.Forms.Button BouttonNouvellePartie;
         private System.Windows.Forms.Button BouttonQuitter;
-        private System.Windows.Forms.Button BouttonScore;
+        private System.Windows.Forms.Button buttonStats;
         private System.Windows.Forms.Label BienvenuePseudo;
     }
 }
