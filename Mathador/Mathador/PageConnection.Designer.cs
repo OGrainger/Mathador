@@ -89,12 +89,13 @@
             // 
             // buttonValiderConnection
             // 
-            this.buttonValiderConnection.Location = new System.Drawing.Point(125, 184);
+            this.buttonValiderConnection.Location = new System.Drawing.Point(126, 184);
             this.buttonValiderConnection.Name = "buttonValiderConnection";
             this.buttonValiderConnection.Size = new System.Drawing.Size(75, 23);
             this.buttonValiderConnection.TabIndex = 7;
             this.buttonValiderConnection.Text = "Valider";
             this.buttonValiderConnection.UseVisualStyleBackColor = true;
+            this.buttonValiderConnection.Click += new System.EventHandler(this.buttonValiderConnection_Click);
             // 
             // PageConnection
             // 

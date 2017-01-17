@@ -18,7 +18,7 @@ namespace Mathador
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MathadorGame());
+            Application.Run(new PageConnection());
         }
           
     }

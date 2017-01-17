@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.BouttonNouvellePartie = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // BouttonNouvellePartie
             // 
-            this.button1.Location = new System.Drawing.Point(98, 45);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Nouvelle Partie";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BouttonNouvellePartie.Location = new System.Drawing.Point(98, 45);
+            this.BouttonNouvellePartie.Name = "BouttonNouvellePartie";
+            this.BouttonNouvellePartie.Size = new System.Drawing.Size(75, 23);
+            this.BouttonNouvellePartie.TabIndex = 0;
+            this.BouttonNouvellePartie.Text = "Nouvelle Partie";
+            this.BouttonNouvellePartie.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -67,7 +67,7 @@
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BouttonNouvellePartie);
             this.Name = "MenuMathador";
             this.Text = "PageConnection";
             this.ResumeLayout(false);
@@ -76,7 +76,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BouttonNouvellePartie;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
     }

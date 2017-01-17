@@ -12,9 +12,28 @@ namespace Mathador
 {
     public partial class PageConnection : Form
     {
+        public string MDP;
+        public string Pseudo;
         public PageConnection()
         {
             InitializeComponent();
+        }
+
+        private void buttonValiderConnection_Click(object sender, EventArgs e)
+        {
+            this.Pseudo = textBoxPseudo.Text;
+                this.MDP = textBoxMDP.Text;
+            SQLiteDatabase db = new SQLiteDatabase();
+            db.LaunchDatabase();
+
+            if (db.CheckIfPasswordMatch(this.Pseudo, this.MDP)){
+                MathadorGame form = new MathadorGame();
+                form.ShowDialog();
+                this.Hide();
+            }else{
+                ErreurPseudo.Text = "ERREUR";
+            }
+                
         }
     }
 }

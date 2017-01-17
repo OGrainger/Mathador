@@ -16,7 +16,7 @@ namespace Mathador
     //GetData(string username) - dictionary(minScore, maxScore, totalScorePoints, totalGameTimeInSeconds, gameCount, roundCount, addCount, subCount, multCount, divCount)
     //UpdateData(string username, dictionary(gameScore, gameTime, roundCount, addCount, subCount, multCount, divCount))
 
-    class SQLiteDatabase
+    public class SQLiteDatabase
     {
 
         private SQLiteConnection connexion = new SQLiteConnection("Data Source=db.sqlite;Version=3;");

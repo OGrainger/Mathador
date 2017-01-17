@@ -16,12 +16,20 @@ namespace Mathador
    
     public partial class MathadorGame : Form
     {
+        
         public int OperateurPlusCount = 0;
+        public int SaveOperateurPlusCount = 0;
         public int OperateurMoinsCount = 0;
+        public int SaveOperateurMoinsCount = 0;
         public int OperateurFoisCount = 0;
+        public int SaveOperateurFoisCount = 0;
         public int OperateurDivCount = 0;
+        public int SaveOperateurDivCount = 0;
         public int ScoreManche;
+        public int SaveScoreManche;
+        public int SaveTimeManche;
         public DateTime TempsManche1;
+        public bool Terminer;
 
         public int resultat;
         public bool plus = false;
@@ -158,6 +166,21 @@ namespace Mathador
             Calcule(BouttonNombre2);
         }
 
+        public void resetScore()
+        {
+            round = 0;
+            ScoreRound = 0;
+        }
+        public void resetTimer()
+        {
+            _timer.Stop();
+            _timerRunning = false;
+
+            // Reset the elapsed time TimeSpan objects
+            _totalElapsedTime = TimeSpan.Zero;
+            _currentElapsedTime = TimeSpan.Zero;
+        }
+
         public void reset()
         {
             this.OperateurDivCount = 0;
@@ -165,12 +188,7 @@ namespace Mathador
             this.OperateurMoinsCount = 0;
             this.OperateurPlusCount = 0;
 
-            _timer.Stop();
-            _timerRunning = false;
-
-            // Reset the elapsed time TimeSpan objects
-            _totalElapsedTime = TimeSpan.Zero;
-            _currentElapsedTime = TimeSpan.Zero;
+            
           resultat = 0;
         plus = false;
         div = false;
@@ -360,15 +378,27 @@ namespace Mathador
 
         private void ButtonSuivant_Click(object sender, EventArgs e)
         {
-            if (LastButton.Text == NombreCible.Text)
+            if (!Terminer)
             {
-                MessageBox.Show("Bien Joué \n Vous avez utilisé : \n" + this.OperateurPlusCount + " fois le + \n" + this.OperateurMoinsCount + " fois le - \n" + this.OperateurFoisCount + " fois le * \n" + this.OperateurDivCount + " fois le / \n" + TextTimer.Text + "/n Votre Score est de : " + TextAffichageScore.Text);
-                TextAffichageScore.Text = ScoreRound.ToString();
+                if (LastButton.Text == NombreCible.Text)
+                {
+                    MessageBox.Show("Bien Joué \n Vous avez utilisé : \n" + this.OperateurPlusCount + " fois le + \n" + this.OperateurMoinsCount + " fois le - \n" + this.OperateurFoisCount + " fois le * \n" + this.OperateurDivCount + " fois le / \n" + TextTimer.Text + "/n Votre Score est de : " + TextAffichageScore.Text);
 
-            }
-            else
-            {
-                MessageBox.Show("Perdu" + this.OperateurPlusCount + " " + this.OperateurMoinsCount + " " + this.OperateurFoisCount + " " + this.OperateurDivCount + " " + TextTimer.Text);
+                    TextAffichageScore.Text = ScoreRound.ToString();
+
+                    SaveOperateurDivCount = OperateurDivCount;
+                    SaveOperateurFoisCount = OperateurFoisCount;
+                    SaveOperateurMoinsCount = OperateurMoinsCount;
+                    SaveOperateurPlusCount = OperateurPlusCount;
+                    SaveScoreManche = ScoreManche;
+                    //nb de round
+
+                }
+                else
+                {
+                    MessageBox.Show("Perdu" + this.OperateurPlusCount + " " + this.OperateurMoinsCount + " " + this.OperateurFoisCount + " " + this.OperateurDivCount + " " + TextTimer.Text);
+
+                }
             }
         }
 
