@@ -485,6 +485,15 @@ namespace Solveur
                 }
             }
         }
+
+        public void SolvComplet()
+        {
+            TabSigne();
+            SolvOneOp();
+            SolvTowOp();
+            SolvTrheeOp();
+            SolvfourOp();
+        }
     }
 }
 
