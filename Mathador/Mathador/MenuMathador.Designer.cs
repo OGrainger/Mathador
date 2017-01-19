@@ -83,6 +83,7 @@
             this.Controls.Add(this.BouttonQuitter);
             this.Controls.Add(this.BouttonNouvellePartie);
             this.Name = "MenuMathador";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PageConnection";
             this.ResumeLayout(false);
             this.PerformLayout();
