@@ -31,6 +31,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.buttonRetour = new System.Windows.Forms.Button();
             this.pieChartOp = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.pieChartOp)).BeginInit();
@@ -53,7 +54,7 @@
             this.pieChartOp.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.pieChartOp.Legends.Add(legend1);
-            this.pieChartOp.Location = new System.Drawing.Point(296, 98);
+            this.pieChartOp.Location = new System.Drawing.Point(199, 30);
             this.pieChartOp.Name = "pieChartOp";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
@@ -63,6 +64,9 @@
             this.pieChartOp.Size = new System.Drawing.Size(300, 300);
             this.pieChartOp.TabIndex = 3;
             this.pieChartOp.Text = "chart1";
+            title1.Name = "Titre1";
+            title1.Text = "Taux d\'utilisation des opérateurs";
+            this.pieChartOp.Titles.Add(title1);
             // 
             // stats
             // 

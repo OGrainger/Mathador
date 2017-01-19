@@ -54,10 +54,19 @@ namespace Mathador
                 averageTimePerRound = totalGameTimeInSeconds / roundCount;
 
                 useOfAllOp = data["addCount"] + data["subCount"] + data["multCount"] + data["divCount"];
-                averageUseOfAdd = data["addCount"] / useOfAllOp;
-                averageUseOfSub = data["subCount"] / useOfAllOp;
-                averageUseOfMult = data["multCount"] / useOfAllOp;
-                averageUseOfDiv = data["divCount"] / useOfAllOp;
+                averageUseOfAdd = (float)data["addCount"] / (float)useOfAllOp;
+                averageUseOfSub = (float)data["subCount"] / (float)useOfAllOp;
+                averageUseOfMult = (float)data["multCount"] / (float)useOfAllOp;
+                averageUseOfDiv = (float)data["divCount"] / (float)useOfAllOp;
+
+                pieChartOp.Series["Series1"].Points.AddXY("+", averageUseOfAdd);
+                pieChartOp.Series["Series1"].Points.AddXY("-", averageUseOfSub);
+                pieChartOp.Series["Series1"].Points.AddXY("x", averageUseOfMult);
+                pieChartOp.Series["Series1"].Points.AddXY("/", averageUseOfDiv);
+
+             
+
+
             }
             else
             {
