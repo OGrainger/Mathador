@@ -59,10 +59,10 @@ namespace Mathador
                 averageUseOfMult = (float)data["multCount"] / (float)useOfAllOp;
                 averageUseOfDiv = (float)data["divCount"] / (float)useOfAllOp;
 
-                pieChartOp.Series["Series1"].Points.AddXY("+", averageUseOfAdd);
-                pieChartOp.Series["Series1"].Points.AddXY("-", averageUseOfSub);
-                pieChartOp.Series["Series1"].Points.AddXY("x", averageUseOfMult);
-                pieChartOp.Series["Series1"].Points.AddXY("/", averageUseOfDiv);
+                pieChartOp.Series["Series1"].Points.AddXY("+ ("+ (int)(averageUseOfAdd*100) +"%)", averageUseOfAdd);
+                pieChartOp.Series["Series1"].Points.AddXY("- (" + (int)(averageUseOfSub * 100) + "%)", averageUseOfSub);
+                pieChartOp.Series["Series1"].Points.AddXY(" x ("+ (int)(averageUseOfMult*100) +" %)", averageUseOfMult);
+                pieChartOp.Series["Series1"].Points.AddXY("÷ (" + (int)(averageUseOfDiv * 100) + " %)", averageUseOfDiv);
 
              
 

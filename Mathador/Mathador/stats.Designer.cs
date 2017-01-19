@@ -54,7 +54,7 @@
             this.pieChartOp.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.pieChartOp.Legends.Add(legend1);
-            this.pieChartOp.Location = new System.Drawing.Point(199, 30);
+            this.pieChartOp.Location = new System.Drawing.Point(328, 12);
             this.pieChartOp.Name = "pieChartOp";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
@@ -72,7 +72,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 410);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(640, 322);
             this.Controls.Add(this.pieChartOp);
             this.Controls.Add(this.buttonRetour);
             this.Name = "stats";
