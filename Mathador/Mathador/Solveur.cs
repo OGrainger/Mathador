@@ -173,7 +173,7 @@ namespace Mathador
                         preresult = 0;
                         if (i != j && i != k && j != k)                                                         //Verif si les 3 nombres sont différents
                         {
-                            for (l = 0; l < 1; l++)
+                            for (l = 0; l < 16; l++)                                                            //Boucle pour les 16 possibilités d'équations différentes
                             {
                                 equation = "";
                                 switch (DeuxSignes[0, l])                                                       //Vérif du signe de la première opération de l'équation
