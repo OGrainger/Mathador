@@ -12,9 +12,9 @@ namespace Test_solv
         {
             Solveur Solvtest = new Solveur();
             Solvtest.TabSigne();
-            //Solvtest.SolvOneOp();
-            //Solvtest.SolvTowOp();
-            //Solvtest.SolvTrheeOp();
+            Solvtest.SolvOneOp();
+            Solvtest.SolvTowOp();
+            Solvtest.SolvTrheeOp();
             Solvtest.SolvfourOp();
             Console.ReadLine();
         }
@@ -192,10 +192,9 @@ namespace Test_solv
             }
         }
 
-
         public void SolvTowOp()
         {
-            cible = 8;
+            cible = 16;
             for (i = 0; i < 5; i++)
             {
                 for (j = 0; j < 5; j++)
@@ -216,7 +215,7 @@ namespace Test_solv
                                             preresult = tableau[i] + tableau[j];
                                             equation = tableau[i].ToString() + "+" + tableau[j].ToString() + "=" + preresult + " => " + preresult;
                                             //Console.WriteLine("preresult" + preresult);
-                                            //Console.WriteLine("equation:" + equation);
+                                            //Console.WriteLine(equation);
                                             break;
                                         }
                                     case 1:
@@ -226,7 +225,7 @@ namespace Test_solv
                                                 preresult = tableau[i] - tableau[j];
                                                 equation = tableau[i].ToString() + "-" + tableau[j].ToString() + "=" + preresult + " => " + preresult;
                                                 //Console.WriteLine("preresult" + preresult);
-                                                //Console.WriteLine("equation:" + equation);
+                                                //Console.WriteLine(equation);
                                             }
                                             break;
                                         }
@@ -234,7 +233,7 @@ namespace Test_solv
                                         {
                                             preresult = tableau[i] * tableau[j];
                                             equation = tableau[i].ToString() + "x" + tableau[j].ToString() + "=" + preresult + " => " + preresult;
-                                            //Console.WriteLine("equation:" + equation);
+                                            //Console.WriteLine(equation);
                                             break;
                                         }
                                     case 3:
@@ -244,7 +243,7 @@ namespace Test_solv
                                                 preresult = tableau[i] / tableau[j];
                                                 equation = tableau[i].ToString() + "/" + tableau[j].ToString() + "=" + preresult + " => " + preresult;
                                                 //Console.WriteLine("preresult" + preresult);
-                                                //Console.WriteLine("equation:" + equation);
+                                                //Console.WriteLine(equation);;
                                             }
                                             break;
                                         }
@@ -259,7 +258,7 @@ namespace Test_solv
                                             {
                                                 equation = equation + "+" + tableau[k].ToString() + "=" + cible.ToString() + "\n";
                                                 //Console.WriteLine("preresult" + preresult);
-                                                //Console.WriteLine("equation:" + equation);
+                                                Console.WriteLine(equation);
                                                 //string json = JsonConvert.SerializeObject(equation);
                                                 //System.IO.File.AppendAllText("Solutions.db", json);
                                             }
@@ -271,7 +270,7 @@ namespace Test_solv
                                             {
                                                 equation = equation + "-" + tableau[k].ToString() + "=" + cible.ToString() + "\n";
                                                 //Console.WriteLine("preresult" + preresult);
-                                                //Console.WriteLine("equation:" + equation);
+                                                Console.WriteLine(equation);
                                                 //string json = JsonConvert.SerializeObject(equation);
                                                 //System.IO.File.AppendAllText("Solutions.db", json);
                                             }
@@ -283,7 +282,7 @@ namespace Test_solv
                                             {
                                                 equation = equation + "x" + tableau[k].ToString() + "=" + cible.ToString() + "\n";
                                                 //Console.WriteLine("preresult" + preresult);
-                                                //Console.WriteLine("equation:" + equation);
+                                                Console.WriteLine(equation);
                                                 //string json = JsonConvert.SerializeObject(equation);
                                                 //System.IO.File.AppendAllText("Solutions.db", json);
                                             }
@@ -295,7 +294,7 @@ namespace Test_solv
                                             {
                                                 equation = equation + "/" + tableau[k].ToString() + "=" + cible.ToString() + "\n";
                                                 //Console.WriteLine("preresult" + preresult);
-                                                //Console.WriteLine("equation:" + equation);
+                                                Console.WriteLine(equation);
                                                 //string json = JsonConvert.SerializeObject(equation);
                                                 //System.IO.File.AppendAllText("Solutions.db", json);                                         
                                             }
@@ -314,7 +313,7 @@ namespace Test_solv
 
         public void SolvTrheeOp()
         {
-            cible = 8;
+            cible = 16;
             for (i = 0; i < 5; i++)
             {
                 for (j = 0; j < 5; j++)
@@ -436,7 +435,7 @@ namespace Test_solv
                                                 {
                                                     equation = equation + "+" + tableau[l].ToString() + "=" + cible.ToString() + "\n";
                                                     //Console.WriteLine("preresult" + preresult);
-                                                    Console.WriteLine("equation:" + equation);
+                                                    Console.WriteLine(equation);
                                                     //string json = JsonConvert.SerializeObject(equation);
                                                     //System.IO.File.AppendAllText("Solutions.db", json);
                                                 }
@@ -448,7 +447,7 @@ namespace Test_solv
                                                 {
                                                     equation = equation + "-" + tableau[l].ToString() + "=" + cible.ToString() + "\n";
                                                     //Console.WriteLine("preresult" + preresult);
-                                                    Console.WriteLine("equation:" + equation);
+                                                    Console.WriteLine(equation);
                                                     //string json = JsonConvert.SerializeObject(equation);
                                                     //System.IO.File.AppendAllText("Solutions.db", json);
                                                 }
@@ -460,7 +459,7 @@ namespace Test_solv
                                                 {
                                                     equation = equation + "x" + tableau[l].ToString() + "=" + cible.ToString() + "\n";
                                                     //Console.WriteLine("preresult" + preresult);
-                                                    Console.WriteLine("equation:" + equation);
+                                                    Console.WriteLine(equation);
                                                     //string json = JsonConvert.SerializeObject(equation);
                                                     //System.IO.File.AppendAllText("Solutions.db", json);
                                                 }
@@ -472,7 +471,7 @@ namespace Test_solv
                                                 {
                                                     equation = equation + "/" + tableau[l].ToString() + "=" + cible.ToString() + "\n";
                                                     //Console.WriteLine("preresult" + preresult);
-                                                    Console.WriteLine("equation:" + equation);
+                                                    Console.WriteLine(equation);
                                                     //string json = JsonConvert.SerializeObject(equation);
                                                     //System.IO.File.AppendAllText("Solutions.db", json);                                         
                                                 }
@@ -489,12 +488,12 @@ namespace Test_solv
                 }
             }
             
-            Console.ReadLine();
+            //Console.ReadLine();
         }
 
         public void SolvfourOp()
         {
-            cible = 25;
+            cible = 16;
             for (i = 0; i < 5; i++)
             {
                 for (j = 0; j < 5; j++)
@@ -721,15 +720,15 @@ namespace Test_solv
                 }
             }
 
-            Console.ReadLine();
+            //Console.ReadLine();
         }
 
         public void SolvComplet()
         {
             TabSigne();
-            //SolvOneOp();
-            //SolvTowOp();
-            //SolvTrheeOp();
+            SolvOneOp();
+            SolvTowOp();
+            SolvTrheeOp();
             SolvfourOp();
 
         }
