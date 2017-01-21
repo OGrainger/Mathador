@@ -29,9 +29,7 @@ namespace Mathador
             int op3 = 0;
             int op4 = 0;
 
-
-
-            //Remplissage du tableau à un seul signe
+            //Remplissage du tableau à un seul signe (le 0 correspond à un "+", le 1 à un "-", le 2 à un "x" et le 3 à un "/")
             for (i = 0; i < 4; i++)
             {
                 UnSigne[i] = op1;
@@ -109,56 +107,52 @@ namespace Mathador
 
         public void SolvOneOp()
         {
-            for (i = 0; i < 5; i++)
+            for (i = 0; i < 5; i++)                                                                             //boucle pour le premier nombre
             {
-                for (j = 0; j < 5; j++)
+                for (j = 0; j < 5; j++)                                                                         //boucle pour le second nombre
                 {
-                    if (i != j)
+                    if (i != j)                                                                                 //verif si les 2 nombres sont différents
                     {
-                        for (k = 0; k < 4; k++)
+                        for (k = 0; k < 4; k++)                                                                 //Boucle pour les 4 signes
                         {
-                            if (UnSigne[k] == 0)
+                            if (UnSigne[k] == 0)                                                                //Si (UnSigne[k] == 0), alors : addition
                             {
-                                preresult = MathadorGame.tableau[i] + MathadorGame.tableau[j];
-                                if (preresult == MathadorGame.cible)
+                                if (MathadorGame.tableau[i] + MathadorGame.tableau[j] == MathadorGame.cible)    //Si l'addition = cible, alors écriture de l'équation dans le fichier JSON "Solutions"
                                 {
                                     equation = MathadorGame.tableau[i].ToString() + "+" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
                                     string json = JsonConvert.SerializeObject(equation);
                                     System.IO.File.AppendAllText("Solutions.db", json);
                                 }
                             }
-                            else if (UnSigne[k] == 1)
+                            else if (UnSigne[k] == 1)                                                           //Si (UnSigne[k] == 1), alors : soustraction
                             {
-                                preresult = MathadorGame.tableau[i] - MathadorGame.tableau[j];
-                                if ((preresult > 0) && (preresult == MathadorGame.cible))
-                                {
+                                if ((MathadorGame.tableau[i] - MathadorGame.tableau[j] > 0) && (MathadorGame.tableau[i] - MathadorGame.tableau[j] == MathadorGame.cible))   //Si la soustraction = cible et que le résultat de la soustraction
+                                {                                                                                                                                           //est suppérieur à 0, alors écriture de l'équation dans le fichier JSON "Solutions"
                                     equation = MathadorGame.tableau[i].ToString() + "-" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
                                     string json = JsonConvert.SerializeObject(equation);
                                     System.IO.File.AppendAllText("Solutions.db", json);
                                 }
                             }
-                            else if (UnSigne[k] == 2)
+                            else if (UnSigne[k] == 2)                                                           //Si (UnSigne[k] == 2), alors : multiplication
                             {
-                                preresult = MathadorGame.tableau[i] * MathadorGame.tableau[j];
-                                if (preresult == MathadorGame.cible)
+                                if (MathadorGame.tableau[i] * MathadorGame.tableau[j] == MathadorGame.cible)    //Si la multiplication = cible, alors écriture de l'équation dans le fichier JSON "Solutions"
                                 {
                                     equation = MathadorGame.tableau[i].ToString() + "*" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
                                     string json = JsonConvert.SerializeObject(equation);
                                     System.IO.File.AppendAllText("Solutions.db", json);
                                 }
                             }
-                            else if (UnSigne[k] == 3)
+                            else if (UnSigne[k] == 3)                                                           //Si (UnSigne[k] == 3), alors : division
                             {
-                                if (MathadorGame.tableau[i] % MathadorGame.tableau[j] == 0)
-                                {
-                                    preresult = MathadorGame.tableau[i] / MathadorGame.tableau[j];
-
-
-                                    if (preresult == MathadorGame.cible)
+                                if (MathadorGame.tableau[i] % MathadorGame.tableau[j] == 0)                     //Si le reste de la division est égal à 0 et que le résultat 
+                                {                                                                               //est égal à la cible, alors écriture de l'équation dans le fichier JSON "Solutions"
                                     {
-                                        equation = MathadorGame.tableau[i].ToString() + "/" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
-                                        string json = JsonConvert.SerializeObject(equation);
-                                        System.IO.File.AppendAllText("Solutions.db", json);
+                                        if (MathadorGame.tableau[i] / MathadorGame.tableau[j] == MathadorGame.cible)
+                                        {
+                                            equation = MathadorGame.tableau[i].ToString() + "/" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
+                                            string json = JsonConvert.SerializeObject(equation);
+                                            System.IO.File.AppendAllText("Solutions.db", json);
+                                        }
                                     }
                                 }
                             }
@@ -170,27 +164,27 @@ namespace Mathador
 
         public void SolvTowOp()
         {
-            for (i = 0; i < 5; i++)
+            for (i = 0; i < 5; i++)                                                                             //Boucles pour les 3 nombres
             {
                 for (j = 0; j < 5; j++)
                 {
                     for (k = 0; k < 5; k++)
                     {
                         preresult = 0;
-                        if (i != j && i != k && j != k)
+                        if (i != j && i != k && j != k)                                                         //Verif si les 3 nombres sont différents
                         {
                             for (l = 0; l < 1; l++)
                             {
                                 equation = "";
-                                switch (DeuxSignes[0, l])
+                                switch (DeuxSignes[0, l])                                                       //Vérif du signe de la première opération de l'équation
                                 {
-                                    case 0:
+                                    case 0:                                                                     //addition
                                         {
-                                            preresult = MathadorGame.tableau[i] + MathadorGame.tableau[j];
+                                            preresult = MathadorGame.tableau[i] + MathadorGame.tableau[j];      //première opération dans préresult et dans équation
                                             equation = MathadorGame.tableau[i].ToString() + "+" + MathadorGame.tableau[j].ToString() + "=" + preresult + " => " + preresult;
                                             break;
                                         }
-                                    case 1:
+                                    case 1:                                                                     //soustraction
                                         {
                                             if (MathadorGame.tableau[i] - MathadorGame.tableau[j] >= 0)
                                             {
@@ -199,13 +193,13 @@ namespace Mathador
                                             }
                                             break;
                                         }
-                                    case 2:
+                                    case 2:                                                                     //multiplication
                                         {
                                             preresult = MathadorGame.tableau[i] * MathadorGame.tableau[j];
                                             equation = MathadorGame.tableau[i].ToString() + "x" + MathadorGame.tableau[j].ToString() + "=" + preresult + " => " + preresult;
                                             break;
                                         }
-                                    case 3:
+                                    case 3:                                                                     //division
                                         {
                                             if (MathadorGame.tableau[i] % MathadorGame.tableau[j] == 0)
                                             {
@@ -216,11 +210,11 @@ namespace Mathador
                                         }
                                 }
 
-                                switch (DeuxSignes[1, l])
-                                {
-                                    case 0:
+                                switch (DeuxSignes[1, l])                                                       //Vérif du signe de la seconde opération de l'équation
+                                {                                                                               //Si le résultat de la première opération et de la seconde est égal à la cible,
+                                    case 0:                                                                     //alors écriture de l'équation dans le fichier JSON "Solutions"
                                         {
-                                            if (preresult + MathadorGame.tableau[k] == MathadorGame.cible)
+                                            if (preresult + MathadorGame.tableau[k] == MathadorGame.cible)      
                                             {
                                                 equation = equation + "+" + MathadorGame.tableau[k].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
                                                 string json = JsonConvert.SerializeObject(equation);
@@ -269,7 +263,7 @@ namespace Mathador
 
         public void SolvTrheeOp()
         {
-            for (i = 0; i < 5; i++)
+            for (i = 0; i < 5; i++)                                                                             //Boucles pour les 4 nombres
             {
                 for (j = 0; j < 5; j++)
                 {
@@ -277,17 +271,16 @@ namespace Mathador
                     {
                         for (l = 0; l < 5; l++)
                         {
-                            if (i != j && i != k && j != k && l != i && l != j && l != k)
+                            if (i != j && i != k && j != k && l != i && l != j && l != k)                       //Vérif pour que les 4 nombres soient différents
                             {
-                                for (op = 0; op < 64; op++)
+                                for (op = 0; op < 64; op++)                                                     //Vérif pour les 64 possibilité d'équations différentes
                                 {
-                                    valid = 0;
+                                    valid = 0;                                                                  //Variable pour vérifier que l'équation utilise 3 opérateurs
                                     equation = "";
                                     preresult = 0;
-                                    switch (TroisSignes[0, op])
-                                    {
-
-                                        case 0:
+                                    switch (TroisSignes[0, op])                                                 //Test du signe de la première partie de l'équation
+                                    {                                                                           //Première opération dans "preresult"                                                                           
+                                        case 0:                                                                 //Première partie de l'équation dans "equation"
                                             {
                                                 preresult = MathadorGame.tableau[i] + MathadorGame.tableau[j];
                                                 equation = MathadorGame.tableau[i].ToString() + "+" + MathadorGame.tableau[j].ToString() + "=" + preresult + " => " + preresult;
@@ -322,14 +315,13 @@ namespace Mathador
                                                 break;
                                             }
                                     }
-
-                                    switch (TroisSignes[1, op])
+                                    switch (TroisSignes[1, op])                                                 //Deuzième opération de l'équation
                                     {
                                         case 0:
                                             {
                                                 preresult = preresult + MathadorGame.tableau[k];
                                                 equation = equation + "+" + MathadorGame.tableau[k] + "=" + preresult + " => " + preresult;
-                                                valid++;
+                                                valid++;                                                        
                                                 break;
                                             }
                                         case 1:
@@ -364,7 +356,7 @@ namespace Mathador
                                             }
                                     }
 
-                                    switch (TroisSignes[2, op])
+                                    switch (TroisSignes[2, op])                                                 //Troisième partie de l'équation et écriture dans le fichier "Solutions"
                                     {
                                         case 0:
                                             {
@@ -418,7 +410,7 @@ namespace Mathador
 
         public void SolvfourOp()
         {
-            for (i = 0; i < 5; i++)
+            for (i = 0; i < 5; i++)                                                                             //Boucles pour les 5 nombres        
             {
                 for (j = 0; j < 5; j++)
                 {
@@ -430,7 +422,7 @@ namespace Mathador
                             {
                                 if (i != j && i != k && j != k && l != i && l != j && l != k && m != i && m != j && m != k && m != l)
                                 {
-                                    for (op = 0; op < 256; op++)
+                                    for (op = 0; op < 256; op++)                                                //Boucle pour les 256 équations possibles
                                     {
                                         valid = 0;
                                         equation = "";
