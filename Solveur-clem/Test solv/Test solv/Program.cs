@@ -12,17 +12,24 @@ namespace Test_solv
         {
             Solveur Solvtest = new Solveur();
             Solvtest.TabSigne();
+            //Solvtest.SolvOneOp();
+            //Solvtest.SolvTowOp();
+            //Solvtest.SolvTrheeOp();
+            Solvtest.SolvfourOp();
             Console.ReadLine();
         }
     }
     public class Solveur
     {
-        int i, j, k, l, preresult;
+        int i, j, k, l, m, preresult;
+        int op, valid;
         string equation = "";
         public int[] UnSigne = new int[4];
         int[,] DeuxSignes = new int[2, 16];
         int[,] TroisSignes = new int[3, 64];
         int[,] QuatreSignes = new int[4, 256];
+        int[] tableau = new int[5] { 2, 1, 3, 4, 5 };
+        int cible;
 
 
 
@@ -33,6 +40,7 @@ namespace Test_solv
             int op2 = 0;
             int op3 = 0;
             int op4 = 0;
+            
 
 
             //Remplissage du tableau à un seul signe
@@ -40,8 +48,7 @@ namespace Test_solv
             {
                 UnSigne[i] = op1;
                 op1++;
-                Console.WriteLine("UnSigne[" + UnSigne[i] + "]");
-            } Console.ReadLine();
+            }
             op1 = 0;
 
 
@@ -57,9 +64,9 @@ namespace Test_solv
                     op1 = 0;
                     op2++;
                 }
-                Console.WriteLine("DeuxSignes[" + DeuxSignes[0, j] + "," + DeuxSignes[1, j] + "]");
+                //Console.WriteLine("DeuxSignes[" + DeuxSignes[0, j] + "," + DeuxSignes[1, j] + "]");
             }
-            Console.ReadLine();
+            //Console.ReadLine();
             op1 = 0;
             op2 = 0;
 
@@ -82,9 +89,9 @@ namespace Test_solv
                     op2 = 0;
                     op3++;
                 }
-                Console.WriteLine("TroisSignes[" + TroisSignes[0, j] + "," + TroisSignes[1, j] + "," + TroisSignes[2, j] + "]");
+                //Console.WriteLine("TroisSignes[" + TroisSignes[0, j] + "," + TroisSignes[1, j] + "," + TroisSignes[2, j] + "]");
             }
-            Console.ReadLine();
+            //Console.ReadLine();
             op1 = 0;
             op2 = 0;
             op3 = 0;
@@ -112,72 +119,72 @@ namespace Test_solv
                     op3 = 0;
                     op4++;
                 }
-                Console.WriteLine("QuatreSignes[" + QuatreSignes[0, j] + "," + QuatreSignes[1, j] + "," + QuatreSignes[2, j] + "," + QuatreSignes[3, j] + "]");
+                //Console.WriteLine("QuatreSignes[" + QuatreSignes[0, j] + "," + QuatreSignes[1, j] + "," + QuatreSignes[2, j] + "," + QuatreSignes[3, j] + "]");
             }
-            Console.ReadLine();
+            //Console.ReadLine();
         }
 
-        
-        /*public void SolvOneOp()
+
+        public void SolvOneOp()
         {
-            for (i = 0; i == 4; i++)
+            cible = 8;
+            for (i = 0; i < 5; i++)
             {
-                for (j = 0; j == 4; j++)
+                for (j = 0; j < 5; j++)
                 {
                     if (i != j)
                     {
-                        for (k = 0; k == 3; k++)
+                        for (k = 0; k < 4; k++)
                         {
-                            switch (UnSigne[k])
+                            if (UnSigne[k] == 0)
                             {
-                                case 0:
+                                //Console.WriteLine("i:" + i + " j:" + j + " k:" + k);
+                                preresult = tableau[i] + tableau[j];
+                                if (preresult == cible)
+                                {
+                                    equation = tableau[i].ToString() + "+" + tableau[j].ToString() + "=" + cible.ToString() + "\n";
+                                    Console.WriteLine(equation);
+                                    //string json = JsonConvert.SerializeObject(equation);
+                                    //System.IO.File.AppendAllText("Solutions.db", json);
+                                }
+                            }
+                            else if (UnSigne[k] == 1)
+                            {
+                                preresult = tableau[i] - tableau[j];
+                                if ((preresult > 0) && (preresult == cible))
+                                {
+                                    equation = tableau[i].ToString() + "-" + tableau[j].ToString() + "=" + cible.ToString() + "\n";
+                                    Console.WriteLine(equation);
+                                    //string json = JsonConvert.SerializeObject(equation);
+                                    //System.IO.File.AppendAllText("Solutions.db", json);
+                                }
+                            }
+                            else if (UnSigne[k] == 2)
+                            {
+                                preresult = tableau[i] * tableau[j];
+                                if (preresult == cible)
+                                {
+                                    equation = tableau[i].ToString() + "*" + tableau[j].ToString() + "=" + cible.ToString() + "\n";
+                                    Console.WriteLine(equation);
+                                    //string json = JsonConvert.SerializeObject(equation);
+                                    //System.IO.File.AppendAllText("Solutions.db", json);
+                                }
+                            }
+                            else if (UnSigne[k] == 3)
+                            {
+                                if (tableau[i] % tableau[j] == 0)
+                                {
+                                    preresult = tableau[i] / tableau[j];
+
+
+                                    if (preresult == cible)
                                     {
-                                        preresult = MathadorGame.tableau[i] + MathadorGame.tableau[j];
-                                        if (preresult == MathadorGame.cible)
-                                        {
-                                            equation = MathadorGame.tableau[i].ToString() + " + " + MathadorGame.tableau[j].ToString() + " = " + MathadorGame.cible.ToString() + "\n";
-
-                                            string json = JsonConvert.SerializeObject(equation);
-                                            System.IO.File.AppendAllText("Solutions.db", json);
-                                        }
-                                        break;
+                                        equation = tableau[i].ToString() + "/" + tableau[j].ToString() + "=" + cible.ToString() + "\n";
+                                        Console.WriteLine(equation);
+                                        //string json = JsonConvert.SerializeObject(equation);
+                                        //System.IO.File.AppendAllText("Solutions.db", json);
                                     }
-                                case 1:
-                                    {
-                                        preresult = MathadorGame.tableau[i] - MathadorGame.tableau[j];
-                                        if ((preresult > 0) && (preresult == MathadorGame.cible))
-                                        {
-                                            equation = MathadorGame.tableau[i].ToString() + " - " + MathadorGame.tableau[j].ToString() + " = " + MathadorGame.cible.ToString() + "\n";
-
-                                            string json = JsonConvert.SerializeObject(equation);
-                                            System.IO.File.AppendAllText("Solutions.db", json);
-                                        }
-                                        break;
-                                    }
-                                case 2:
-                                    {
-                                        preresult = MathadorGame.tableau[i] * MathadorGame.tableau[j];
-                                        if (preresult == MathadorGame.cible)
-                                        {
-                                            equation = MathadorGame.tableau[i].ToString() + " * " + MathadorGame.tableau[j].ToString() + " = " + MathadorGame.cible.ToString() + "\n";
-
-                                            string json = JsonConvert.SerializeObject(equation);
-                                            System.IO.File.AppendAllText("Solutions.db", json);
-                                        }
-                                        break;
-                                    }
-                                case 3:
-                                    {
-                                        if (MathadorGame.tableau[i] % MathadorGame.tableau[j] == 0)
-                                        {
-                                            equation = MathadorGame.tableau[i].ToString() + " / " + MathadorGame.tableau[j].ToString() + " = " + MathadorGame.cible.ToString() + "\n";
-
-                                            string json = JsonConvert.SerializeObject(equation);
-                                            System.IO.File.AppendAllText("Solutions.db", json);
-                                        }
-                                        break;
-                                    }
-
+                                }
                             }
                         }
                     }
@@ -185,266 +192,545 @@ namespace Test_solv
             }
         }
 
+
         public void SolvTowOp()
         {
-            for (i = 0; i == 3; i++)
+            cible = 8;
+            for (i = 0; i < 5; i++)
             {
-                preresult = MathadorGame.tableau[i + 1];
-                equation = "";
-                for (k = 0; k == 15; k++)
+                for (j = 0; j < 5; j++)
                 {
-                    for (l = 0; l == 1; l++)
+                    for (k = 0; k < 5; k++)
                     {
-                        switch (DeuxSignes[k, l])
+                        //Console.WriteLine("i:" + i + " j:" + j + " k:" + k);
+                        preresult = 0;
+                        if (i != j && i != k && j != k)
                         {
-                            case 0:
+                            for (l = 0; l < 1; l++)
+                            {
+                                equation = "";
+                                switch (DeuxSignes[0, l])
                                 {
-                                    preresult = MathadorGame.tableau[i] + preresult;
-                                    if (equation == "")
-                                    {
-                                        equation = MathadorGame.tableau[i].ToString() + " + " + preresult;
-                                    }
-                                    else
-                                    {
-                                        equation = MathadorGame.tableau[i].ToString() + " + " + equation;
-                                    }
-                                    break;
+                                    case 0:
+                                        {
+                                            preresult = tableau[i] + tableau[j];
+                                            equation = tableau[i].ToString() + "+" + tableau[j].ToString() + "=" + preresult + " => " + preresult;
+                                            //Console.WriteLine("preresult" + preresult);
+                                            //Console.WriteLine("equation:" + equation);
+                                            break;
+                                        }
+                                    case 1:
+                                        {
+                                            if (tableau[i] - tableau[j] >= 0)
+                                            {
+                                                preresult = tableau[i] - tableau[j];
+                                                equation = tableau[i].ToString() + "-" + tableau[j].ToString() + "=" + preresult + " => " + preresult;
+                                                //Console.WriteLine("preresult" + preresult);
+                                                //Console.WriteLine("equation:" + equation);
+                                            }
+                                            break;
+                                        }
+                                    case 2:
+                                        {
+                                            preresult = tableau[i] * tableau[j];
+                                            equation = tableau[i].ToString() + "x" + tableau[j].ToString() + "=" + preresult + " => " + preresult;
+                                            //Console.WriteLine("equation:" + equation);
+                                            break;
+                                        }
+                                    case 3:
+                                        {
+                                            if (tableau[i] % tableau[j] == 0)
+                                            {
+                                                preresult = tableau[i] / tableau[j];
+                                                equation = tableau[i].ToString() + "/" + tableau[j].ToString() + "=" + preresult + " => " + preresult;
+                                                //Console.WriteLine("preresult" + preresult);
+                                                //Console.WriteLine("equation:" + equation);
+                                            }
+                                            break;
+                                        }
                                 }
-                            case 1:
+                                //Console.ReadLine();
+                                
+                                switch (DeuxSignes[1, l])
                                 {
-                                    if (MathadorGame.tableau[i] - preresult > 0)
-                                    {
-                                        preresult = MathadorGame.tableau[i] - preresult;
-                                        if (equation == "")
+                                    case 0:
                                         {
-                                            equation = MathadorGame.tableau[i].ToString() + " - " + preresult;
+                                            if (preresult+tableau[k] == cible)
+                                            {
+                                                equation = equation + "+" + tableau[k].ToString() + "=" + cible.ToString() + "\n";
+                                                //Console.WriteLine("preresult" + preresult);
+                                                //Console.WriteLine("equation:" + equation);
+                                                //string json = JsonConvert.SerializeObject(equation);
+                                                //System.IO.File.AppendAllText("Solutions.db", json);
+                                            }
+                                            break;
                                         }
-                                        else
+                                    case 1:
                                         {
-                                            equation = MathadorGame.tableau[i].ToString() + " - " + equation;
+                                            if (preresult - tableau[k] >= 0 && preresult - tableau[k] == cible)
+                                            {
+                                                equation = equation + "-" + tableau[k].ToString() + "=" + cible.ToString() + "\n";
+                                                //Console.WriteLine("preresult" + preresult);
+                                                //Console.WriteLine("equation:" + equation);
+                                                //string json = JsonConvert.SerializeObject(equation);
+                                                //System.IO.File.AppendAllText("Solutions.db", json);
+                                            }
+                                            break;
                                         }
-                                    }
-                                    break;
+                                    case 2:
+                                        {
+                                            if (preresult * tableau[k] > 0 && preresult * tableau[k] ==cible)
+                                            {
+                                                equation = equation + "x" + tableau[k].ToString() + "=" + cible.ToString() + "\n";
+                                                //Console.WriteLine("preresult" + preresult);
+                                                //Console.WriteLine("equation:" + equation);
+                                                //string json = JsonConvert.SerializeObject(equation);
+                                                //System.IO.File.AppendAllText("Solutions.db", json);
+                                            }
+                                            break;
+                                        }
+                                    case 3:
+                                        {
+                                            if (preresult % tableau[k] == 0 && preresult / tableau[k] == cible)
+                                            {
+                                                equation = equation + "/" + tableau[k].ToString() + "=" + cible.ToString() + "\n";
+                                                //Console.WriteLine("preresult" + preresult);
+                                                //Console.WriteLine("equation:" + equation);
+                                                //string json = JsonConvert.SerializeObject(equation);
+                                                //System.IO.File.AppendAllText("Solutions.db", json);                                         
+                                            }
+                                            break;
+                                        }
                                 }
-                            case 2:
-                                {
-                                    preresult = MathadorGame.tableau[i] * preresult;
-                                    if (equation == "")
-                                    {
-                                        equation = " ( " + MathadorGame.tableau[i].ToString() + " * " + preresult + " ) ";
-                                    }
-                                    else
-                                    {
-                                        equation = " ( " + equation + " * " + MathadorGame.tableau[i].ToString() + " ) ";
-                                    }
-                                    break;
-
-                                }
-                            case 3:
-                                {
-                                    if (MathadorGame.tableau[i] % preresult == 0)
-                                    {
-                                        preresult = MathadorGame.tableau[i] / preresult;
-                                        if (equation == "")
-                                        {
-                                            equation = " ( " + MathadorGame.tableau[i].ToString() + " / " + preresult + " ) ";
-                                        }
-                                        else
-                                        {
-                                            equation = " ( " + equation + " / " + MathadorGame.tableau[i].ToString() + " ) ";
-                                        }
-                                    }
-                                    break;
-
-                                }
-                        }
-                        if (preresult == MathadorGame.cible)
-                        {
-                            equation = equation + " = " + MathadorGame.cible + "\n";
-                            string json = JsonConvert.SerializeObject(equation);
-                            System.IO.File.AppendAllText("Solutions.db", json);
+                                preresult = 0;
+                                //Console.ReadLine();
+                            }
                         }
                     }
                 }
             }
+            //Console.ReadLine();
         }
 
         public void SolvTrheeOp()
         {
-            for (i = 0; i == 3; i++)
+            cible = 8;
+            for (i = 0; i < 5; i++)
             {
-                preresult = MathadorGame.tableau[i + 1];
-                equation = "";
-                for (k = 0; k == 63; k++)
+                for (j = 0; j < 5; j++)
                 {
-                    for (l = 0; l == 2; l++)
+                    for (k = 0; k < 5; k++)
                     {
-                        switch (TroisSignes[k, l])
+                        for (l = 0; l < 5; l++)
                         {
-                            case 0:
+                            //Console.WriteLine("i:" + i + " j:" + j + " k:" + k + "l:" + l);
+                            if (i != j && i != k && j != k && l!=i && l!=j && l!=k)
+                            {
+                                for (op = 0; op < 64; op++)
                                 {
-                                    preresult = MathadorGame.tableau[i] + preresult;
-                                    if (equation == "")
+                                    valid = 0;
+                                    equation = "";
+                                    preresult = 0;
+                                    switch (TroisSignes[0, op])
                                     {
-                                        equation = MathadorGame.tableau[i].ToString() + " + " + preresult;
+                                            
+                                        case 0:
+                                            {
+                                                preresult = tableau[i] + tableau[j];
+                                                equation = tableau[i].ToString() + "+" + tableau[j].ToString() + "=" + preresult + " => " + preresult;
+                                                valid++;
+                                                //Console.WriteLine("preresult" + preresult);
+                                                //Console.WriteLine("equation:" + equation);
+                                                break;
+                                            }
+                                        case 1:
+                                            {
+                                                if (tableau[i] - tableau[j] >= 0)
+                                                {
+                                                    preresult = tableau[i] - tableau[j];
+                                                    equation = tableau[i].ToString() + "-" + tableau[j].ToString() + "=" + preresult + " => " + preresult;
+                                                    valid++;
+                                                    //Console.WriteLine("preresult" + preresult);
+                                                    //Console.WriteLine("equation:" + equation);
+                                                }
+                                                break;
+                                            }
+                                        case 2:
+                                            {
+                                                preresult = tableau[i] * tableau[j];
+                                                equation = tableau[i].ToString() + "x" + tableau[j].ToString() + "=" + preresult + " => " + preresult;
+                                                valid++;
+                                                //Console.WriteLine("preresult" + preresult);
+                                                //Console.WriteLine("equation:" + equation);
+                                                break;
+                                            }
+                                        case 3:
+                                            {
+                                                if (tableau[i] % tableau[j] == 0)
+                                                {
+                                                    preresult = tableau[i] / tableau[j];
+                                                    equation = tableau[i].ToString() + "/" + tableau[j].ToString() + "=" + preresult + " => " + preresult;
+                                                    valid++;
+                                                    //Console.WriteLine("preresult" + preresult);
+                                                    //Console.WriteLine("equation:" + equation);
+                                                }
+                                                break;
+                                            }    
                                     }
-                                    else
+                                    //Console.ReadLine();
+                                   
+                                    switch(TroisSignes[1, op])
                                     {
-                                        equation = equation + " + " + MathadorGame.tableau[i].ToString();
+                                        case 0:
+                                            {
+                                                preresult = preresult + tableau[k];
+                                                equation = equation + "+" + tableau[k] +  "=" + preresult + " => " + preresult;
+                                                valid++;
+                                                //Console.WriteLine("preresult" + preresult);
+                                                //Console.WriteLine("equation:" + equation);
+                                                break;
+                                            }
+                                        case 1:
+                                            {
+                                                if (preresult - tableau[k] > 0)
+                                                {
+                                                    preresult = preresult - tableau[k];
+                                                    equation = equation + "-" + tableau[k] + "=" + preresult + " => " + preresult;
+                                                    valid++;
+                                                    //Console.WriteLine("preresult" + preresult);
+                                                    //Console.WriteLine("equation:" + equation);
+                                                }
+                                                break;
+                                            }
+                                        case 2:
+                                            {
+                                                if (preresult * tableau[k] >= 0)
+                                                {
+                                                    preresult = preresult * tableau[k];
+                                                    equation = equation + "x" + tableau[k] + "=" + preresult + " => " + preresult;
+                                                    valid++;
+                                                    //Console.WriteLine("preresult" + preresult);
+                                                    //Console.WriteLine("equation:" + equation);
+                                                }
+                                                break; 
+                                            }
+                                        case 3:
+                                            {
+                                                if (preresult % tableau[k] == 0)
+                                                {
+                                                    preresult = preresult / tableau[k];
+                                                    equation = equation + "/" + tableau[k] + "=" + preresult + " => " + preresult;
+                                                    valid++;
+                                                    //Console.WriteLine("preresult" + preresult);
+                                                    //Console.WriteLine("equation:" + equation);
+                                                }
+                                                break;
+                                            }   
                                     }
-                                    break;
+                                   
+                                    switch (TroisSignes[2, op])
+                                    {
+                                        case 0:
+                                            {
+                                                if (preresult + tableau[l] == cible && valid==2)
+                                                {
+                                                    equation = equation + "+" + tableau[l].ToString() + "=" + cible.ToString() + "\n";
+                                                    //Console.WriteLine("preresult" + preresult);
+                                                    Console.WriteLine("equation:" + equation);
+                                                    //string json = JsonConvert.SerializeObject(equation);
+                                                    //System.IO.File.AppendAllText("Solutions.db", json);
+                                                }
+                                                break;
+                                            }
+                                        case 1:
+                                            {
+                                                if (preresult - tableau[l] >= 0 && preresult - tableau[l] == cible && valid == 2)
+                                                {
+                                                    equation = equation + "-" + tableau[l].ToString() + "=" + cible.ToString() + "\n";
+                                                    //Console.WriteLine("preresult" + preresult);
+                                                    Console.WriteLine("equation:" + equation);
+                                                    //string json = JsonConvert.SerializeObject(equation);
+                                                    //System.IO.File.AppendAllText("Solutions.db", json);
+                                                }
+                                                break;
+                                            }
+                                        case 2:
+                                            {
+                                                if (preresult * tableau[l] > 0 && preresult * tableau[l] == cible && valid == 2)
+                                                {
+                                                    equation = equation + "x" + tableau[l].ToString() + "=" + cible.ToString() + "\n";
+                                                    //Console.WriteLine("preresult" + preresult);
+                                                    Console.WriteLine("equation:" + equation);
+                                                    //string json = JsonConvert.SerializeObject(equation);
+                                                    //System.IO.File.AppendAllText("Solutions.db", json);
+                                                }
+                                                break;
+                                            }
+                                        case 3:
+                                            {
+                                                if (preresult % tableau[l] == 0 && preresult / tableau[l] == cible && valid == 2)
+                                                {
+                                                    equation = equation + "/" + tableau[l].ToString() + "=" + cible.ToString() + "\n";
+                                                    //Console.WriteLine("preresult" + preresult);
+                                                    Console.WriteLine("equation:" + equation);
+                                                    //string json = JsonConvert.SerializeObject(equation);
+                                                    //System.IO.File.AppendAllText("Solutions.db", json);                                         
+                                                }
+                                                break;
+                                            }
+                                    }
+                                    preresult = 0;
+                                    
+                                    //Console.ReadLine();
                                 }
-                            case 1:
-                                {
-                                    if (MathadorGame.tableau[i] - preresult > 0)
-                                    {
-                                        preresult = MathadorGame.tableau[i] - preresult;
-                                        if (equation == "")
-                                        {
-                                            equation = MathadorGame.tableau[i].ToString() + " - " + preresult;
-                                        }
-                                        else
-                                        {
-                                            equation = equation + " - " + MathadorGame.tableau[i].ToString();
-                                        }
-                                    }
-                                    break;
-                                }
-                            case 2:
-                                {
-                                    preresult = MathadorGame.tableau[i] * preresult;
-                                    if (equation == "")
-                                    {
-                                        equation = " ( " + MathadorGame.tableau[i].ToString() + " * " + preresult + " ) ";
-                                    }
-                                    else
-                                    {
-                                        equation = " ( " + equation + " * " + MathadorGame.tableau[i].ToString() + " ) ";
-                                    }
-                                    break;
-
-                                }
-                            case 3:
-                                {
-                                    if (MathadorGame.tableau[i] % preresult == 0)
-                                    {
-                                        preresult = MathadorGame.tableau[i] / preresult;
-                                        if (equation == "")
-                                        {
-                                            equation = "(" + MathadorGame.tableau[i].ToString() + " / " + preresult + ")";
-                                        }
-                                        else
-                                        {
-                                            equation = "(" + equation + " / " + MathadorGame.tableau[i].ToString() + ")";
-                                        }
-                                    }
-                                    break;
-
-                                }
-                        }
-                        if (preresult == MathadorGame.cible)
-                        {
-                            equation = equation + " = " + MathadorGame.cible + "\n";
-                            string json = JsonConvert.SerializeObject(equation);
-                            System.IO.File.AppendAllText("Solutions.db", json);
+                            }
                         }
                     }
                 }
             }
+            
+            Console.ReadLine();
         }
 
         public void SolvfourOp()
         {
-            for (i = 0; i == 3; i++)
+            cible = 25;
+            for (i = 0; i < 5; i++)
             {
-                preresult = MathadorGame.tableau[i + 1];
-                equation = "";
-                for (k = 0; k == 255; k++)
+                for (j = 0; j < 5; j++)
                 {
-                    for (l = 0; l == 3; l++)
+                    for (k = 0; k < 5; k++)
                     {
-                        switch (TroisSignes[k, l])
+                        for (l = 0; l < 5; l++)
                         {
-                            case 0:
+                            for (m = 0; m < 5; m++)
+                            {
+                                //Console.WriteLine("i:" + i + " j:" + j + " k:" + k + "l:" + l);
+                                if (i != j && i != k && j != k && l != i && l != j && l != k && m!=i && m!=j && m!=k && m!=l)
                                 {
-                                    preresult = MathadorGame.tableau[i] + preresult;
-                                    if (equation == "")
+                                    for (op = 0; op < 256; op++)
                                     {
-                                        equation = MathadorGame.tableau[i].ToString() + " + " + preresult;
-                                    }
-                                    else
-                                    {
-                                        equation = equation + " + " + MathadorGame.tableau[i].ToString();
-                                    }
-                                    break;
-                                }
-                            case 1:
-                                {
-                                    if (MathadorGame.tableau[i] - preresult > 0)
-                                    {
-                                        preresult = MathadorGame.tableau[i] - preresult;
-                                        if (equation == "")
+                                        valid = 0;
+                                        equation = "";
+                                        preresult = 0;
+                                        switch (QuatreSignes[0, op])
                                         {
-                                            equation = MathadorGame.tableau[i].ToString() + " - " + preresult;
-                                        }
-                                        else
-                                        {
-                                            equation = equation + " - " + MathadorGame.tableau[i].ToString();
-                                        }
-                                    }
-                                    break;
-                                }
-                            case 2:
-                                {
-                                    preresult = MathadorGame.tableau[i] * preresult;
-                                    if (equation == "")
-                                    {
-                                        equation = " ( " + MathadorGame.tableau[i].ToString() + " * " + preresult + " ) ";
-                                    }
-                                    else
-                                    {
-                                        equation = " ( " + equation + " * " + MathadorGame.tableau[i].ToString() + " ) ";
-                                    }
-                                    break;
 
-                                }
-                            case 3:
-                                {
-                                    if (MathadorGame.tableau[i] % preresult == 0)
-                                    {
-                                        preresult = MathadorGame.tableau[i] / preresult;
-                                        if (equation == "")
-                                        {
-                                            equation = "(" + MathadorGame.tableau[i].ToString() + " / " + preresult + ")";
+                                            case 0:
+                                                {
+                                                    preresult = tableau[i] + tableau[j];
+                                                    equation = tableau[i].ToString() + "+" + tableau[j].ToString() + "=" + preresult + " => " + preresult;
+                                                    valid++;
+                                                    //Console.WriteLine("preresult" + preresult);
+                                                    //Console.WriteLine("equation:" + equation);
+                                                    break;
+                                                }
+                                            case 1:
+                                                {
+                                                    if (tableau[i] - tableau[j] >= 0)
+                                                    {
+                                                        preresult = tableau[i] - tableau[j];
+                                                        equation = tableau[i].ToString() + "-" + tableau[j].ToString() + "=" + preresult + " => " + preresult;
+                                                        valid++;
+                                                        //Console.WriteLine("preresult" + preresult);
+                                                        //Console.WriteLine("equation:" + equation);
+                                                    }
+                                                    break;
+                                                }
+                                            case 2:
+                                                {
+                                                    preresult = tableau[i] * tableau[j];
+                                                    equation = tableau[i].ToString() + "x" + tableau[j].ToString() + "=" + preresult + " => " + preresult;
+                                                    valid++;
+                                                    //Console.WriteLine("preresult" + preresult);
+                                                    //Console.WriteLine("equation:" + equation);
+                                                    break;
+                                                }
+                                            case 3:
+                                                {
+                                                    if (tableau[i] % tableau[j] == 0)
+                                                    {
+                                                        preresult = tableau[i] / tableau[j];
+                                                        equation = tableau[i].ToString() + "/" + tableau[j].ToString() + "=" + preresult + " => " + preresult;
+                                                        valid++;
+                                                        //Console.WriteLine("preresult" + preresult);
+                                                        //Console.WriteLine("equation:" + equation);
+                                                    }
+                                                    break;
+                                                }
                                         }
-                                        else
-                                        {
-                                            equation = "(" + equation + " / " + MathadorGame.tableau[i].ToString() + ")";
-                                        }
-                                    }
-                                    break;
+                                        //Console.ReadLine();
 
+                                        switch (QuatreSignes[1, op])
+                                        {
+                                            case 0:
+                                                {
+                                                    preresult = preresult + tableau[k];
+                                                    equation = equation + "+" + tableau[k] + "=" + preresult + " => " + preresult;
+                                                    valid++;
+                                                    //Console.WriteLine("preresult" + preresult);
+                                                    //Console.WriteLine("equation:" + equation);
+                                                    break;
+                                                }
+                                            case 1:
+                                                {
+                                                    if (preresult - tableau[k] > 0)
+                                                    {
+                                                        preresult = preresult - tableau[k];
+                                                        equation = equation + "-" + tableau[k] + "=" + preresult + " => " + preresult;
+                                                        valid++;
+                                                        //Console.WriteLine("preresult" + preresult);
+                                                        //Console.WriteLine("equation:" + equation);
+                                                    }
+                                                    break;
+                                                }
+                                            case 2:
+                                                {
+                                                    if (preresult * tableau[k] >= 0)
+                                                    {
+                                                        preresult = preresult * tableau[k];
+                                                        equation = equation + "x" + tableau[k] + "=" + preresult + " => " + preresult;
+                                                        valid++;
+                                                        //Console.WriteLine("preresult" + preresult);
+                                                        //Console.WriteLine("equation:" + equation);
+                                                    }
+                                                    break;
+                                                }
+                                            case 3:
+                                                {
+                                                    if (preresult % tableau[k] == 0)
+                                                    {
+                                                        preresult = preresult / tableau[k];
+                                                        equation = equation + "/" + tableau[k] + "=" + preresult + " => " + preresult;
+                                                        valid++;
+                                                        //Console.WriteLine("preresult" + preresult);
+                                                        //Console.WriteLine("equation:" + equation);
+                                                    }
+                                                    break;
+                                                }
+                                        }
+
+                                        switch (QuatreSignes[2, op])
+                                        {
+                                            case 0:
+                                                {
+                                                    preresult = preresult + tableau[k];
+                                                    equation = equation + "+" + tableau[k] + "=" + preresult + " => " + preresult;
+                                                    valid++;
+                                                    //Console.WriteLine("preresult" + preresult);
+                                                    //Console.WriteLine("equation:" + equation);
+                                                    break;
+                                                }
+                                            case 1:
+                                                {
+                                                    if (preresult - tableau[k] > 0)
+                                                    {
+                                                        preresult = preresult - tableau[k];
+                                                        equation = equation + "-" + tableau[k] + "=" + preresult + " => " + preresult;
+                                                        valid++;
+                                                        //Console.WriteLine("preresult" + preresult);
+                                                        //Console.WriteLine("equation:" + equation);
+                                                    }
+                                                    break;
+                                                }
+                                            case 2:
+                                                {
+                                                    if (preresult * tableau[k] >= 0)
+                                                    {
+                                                        preresult = preresult * tableau[k];
+                                                        equation = equation + "x" + tableau[k] + "=" + preresult + " => " + preresult;
+                                                        valid++;
+                                                        //Console.WriteLine("preresult" + preresult);
+                                                        //Console.WriteLine("equation:" + equation);
+                                                    }
+                                                    break;
+                                                }
+                                            case 3:
+                                                {
+                                                    if (preresult % tableau[k] == 0)
+                                                    {
+                                                        preresult = preresult / tableau[k];
+                                                        equation = equation + "/" + tableau[k] + "=" + preresult + " => " + preresult;
+                                                        valid++;
+                                                        //Console.WriteLine("preresult" + preresult);
+                                                        //Console.WriteLine("equation:" + equation);
+                                                    }
+                                                    break;
+                                                }
+                                        }
+
+                                        switch (QuatreSignes[3, op])
+                                        {
+                                            case 0:
+                                                {
+                                                    if (preresult + tableau[l] == cible && valid == 3)
+                                                    {
+                                                        equation = equation + "+" + tableau[l].ToString() + "=" + cible.ToString() + "\n";
+                                                        //Console.WriteLine("preresult" + preresult);
+                                                        Console.WriteLine(equation);                                                     
+                                                        //string json = JsonConvert.SerializeObject(equation);
+                                                        //System.IO.File.AppendAllText("Solutions.db", json);
+                                                    }
+                                                    break;
+                                                }
+                                            case 1:
+                                                {
+                                                    if (preresult - tableau[l] >= 0 && preresult - tableau[l] == cible && valid == 3)
+                                                    {
+                                                        equation = equation + "-" + tableau[l].ToString() + "=" + cible.ToString() + "\n";
+                                                        //Console.WriteLine("preresult" + preresult);
+                                                        Console.WriteLine(equation);                                                       
+                                                        //string json = JsonConvert.SerializeObject(equation);
+                                                        //System.IO.File.AppendAllText("Solutions.db", json);
+                                                    }
+                                                    break;
+                                                }
+                                            case 2:
+                                                {
+                                                    if (preresult * tableau[l] > 0 && preresult * tableau[l] == cible && valid == 3)
+                                                    {
+                                                        equation = equation + "x" + tableau[l].ToString() + "=" + cible.ToString() + "\n";
+                                                        //Console.WriteLine("preresult" + preresult);
+                                                        Console.WriteLine(equation);                                                       
+                                                        //string json = JsonConvert.SerializeObject(equation);
+                                                        //System.IO.File.AppendAllText("Solutions.db", json);
+                                                    }
+                                                    break;
+                                                }
+                                            case 3:
+                                                {
+                                                    if (preresult % tableau[l] == 0 && preresult / tableau[l] == cible && valid == 3)
+                                                    {
+                                                        equation = equation + "/" + tableau[l].ToString() + "=" + cible.ToString() + "\n";
+                                                        //Console.WriteLine("preresult" + preresult);
+                                                        Console.WriteLine(equation);
+                                                        //string json = JsonConvert.SerializeObject(equation);
+                                                        //System.IO.File.AppendAllText("Solutions.db", json);                                         
+                                                    }
+                                                    break;
+                                                }
+                                        }
+                                        preresult = 0;
+
+                                        //Console.ReadLine();
+                                    }
                                 }
+                            }
                         }
-                        if (preresult == MathadorGame.cible)
-                        {
-                            equation = equation + " = " + MathadorGame.cible + "\n";
-                            string json = JsonConvert.SerializeObject(equation);
-                            System.IO.File.AppendAllText("Solutions.db", json);
-                        }
-
                     }
                 }
             }
-        }*/
+
+            Console.ReadLine();
+        }
 
         public void SolvComplet()
         {
             TabSigne();
-            /*SolvOneOp();
-            SolvTowOp();
-            SolvTrheeOp();
-            SolvfourOp();*/
+            //SolvOneOp();
+            //SolvTowOp();
+            //SolvTrheeOp();
+            SolvfourOp();
 
         }
     }
