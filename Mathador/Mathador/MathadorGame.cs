@@ -16,7 +16,7 @@ namespace Mathador
    
     public partial class MathadorGame : Form
     {
-        
+        public Solveur Solv= new Solveur();
         public int OperateurPlusCount = 0;
         public int SaveOperateurPlusCount = 0;
         public int OperateurMoinsCount = 0;
@@ -30,6 +30,7 @@ namespace Mathador
         public int SaveTimeManche;
         public DateTime TempsManche1;
         public bool Terminer;
+        public static int[,] list = new int[16, 2];
 
         public int resultat;
         public bool plus = false;
@@ -464,5 +465,19 @@ namespace Mathador
 
         }
 
-      }
+        private void buttonSoluces_Click(object sender, EventArgs e)
+        {
+            Solveur Solvtest = new Solveur();
+            Solvtest.TabSigne();
+            Solvtest.SolvOneOp();
+            Solvtest.SolvTowOp();
+            Solvtest.SolvTrheeOp();
+            Solvtest.SolvfourOp();
+        }
+
+        private void listBoxSoluces_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

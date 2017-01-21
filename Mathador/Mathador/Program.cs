@@ -18,8 +18,7 @@ namespace Mathador
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PageConnection());
-        }
-          
+            Application.Run(new MathadorGame("Clem"));
+        }    
     }
 }
