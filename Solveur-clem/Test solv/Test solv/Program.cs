@@ -12,10 +12,10 @@ namespace Test_solv
         {
             Solveur Solvtest = new Solveur();
             Solvtest.TabSigne();
-            Solvtest.SolvOneOp();
+            //Solvtest.SolvOneOp();
             Solvtest.SolvTowOp();
-            Solvtest.SolvTrheeOp();
-            Solvtest.SolvfourOp();
+            //Solvtest.SolvTrheeOp();
+            //Solvtest.SolvfourOp();
             Console.ReadLine();
         }
     }
@@ -205,7 +205,7 @@ namespace Test_solv
                         preresult = 0;
                         if (i != j && i != k && j != k)
                         {
-                            for (l = 0; l < 1; l++)
+                            for (l = 0; l < 16; l++)
                             {
                                 equation = "";
                                 switch (DeuxSignes[0, l])
@@ -726,10 +726,10 @@ namespace Test_solv
         public void SolvComplet()
         {
             TabSigne();
-            SolvOneOp();
+            //SolvOneOp();
             SolvTowOp();
-            SolvTrheeOp();
-            SolvfourOp();
+            //SolvTrheeOp();
+            //SolvfourOp();
 
         }
     }
