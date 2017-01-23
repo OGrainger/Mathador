@@ -474,7 +474,10 @@ namespace Mathador
             Solv.SolvTrheeOp();
             Solv.SolvfourOp();
 
-            
+            foreach (string Item in Solveur.solutions)
+            {
+                listBoxSoluces.Items.Add(Item);
+            }
         }
 
         private void listBoxSoluces_SelectedIndexChanged(object sender, EventArgs e)
