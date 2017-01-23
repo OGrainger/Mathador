@@ -43,7 +43,8 @@ namespace Mathador
         Button LastButton;
         public bool PremierNombreSelectione = false;
         public int i;
-        public Boolean mess = true;
+        public int k = 0;
+        public Boolean mess = false;
         public Boolean SuivantNow = true;
 
         public static Random random = new Random();
@@ -82,6 +83,8 @@ namespace Mathador
 
             LastButton = BouttonNombre1;
             LastButton.BackColor = Color.Yellow;
+
+            buttonTerminer.Hide();
             // Set up a timer and fire the Tick event once per second (1000 ms)
             _timer = new Timer();
             _timer.Interval = 1000;
@@ -164,7 +167,12 @@ namespace Mathador
 
         private void BouttonNombre1_Click(object sender, EventArgs e)
         {
-            Calcule(BouttonNombre1);
+            if (BouttonNombre1.Text != "")
+            {
+                Calcule(BouttonNombre1);
+                LastButton = BouttonNombre1;
+                LastButton.BackColor = Color.Yellow;
+            }
         }
 
         private void ButtonPlus_Click(object sender, EventArgs e)
@@ -179,13 +187,20 @@ namespace Mathador
         private void BouttonNombre2_Click(object sender, EventArgs e)
         {
 
-            Calcule(BouttonNombre2);
+            if (BouttonNombre2.Text != "")
+            {
+                Calcule(BouttonNombre2);
+                LastButton = BouttonNombre2;
+                LastButton.BackColor = Color.Yellow;
+            }
         }
 
         public void resetScore()
         {
             round = 0;
             ScoreRound = 0;
+
+            TextScore.Text = "Score";
         }
         public void resetTimer()
         {
@@ -200,7 +215,7 @@ namespace Mathador
         public void Message(){
             if (mess)
                 {
-                    //MessageBox.Show("Temps écoulé");
+                    MessageBox.Show("Temps écoulé");
                     mess = false;
                 }
         }
@@ -217,11 +232,9 @@ namespace Mathador
         div = false;
         fois = false;
         moins = false;
-        round = 0;
-        ScoreRound = 0;
         cible = 0;
         button2 = null;
-        LastButton = null;
+        LastButton = BouttonNombre1;
         PremierNombreSelectione = false;
 
         BouttonNombre1.Text = "";
@@ -230,12 +243,12 @@ namespace Mathador
         BouttonNombre4.Text = "";
         ButtonNombre5.Text = "";
         NombreCible.Text = "0";
-        TextScore.Text = "Score";
         BouttonNombre1.BackColor = Color.White;
         BouttonNombre2.BackColor = Color.White;
         BouttonNombre3.BackColor = Color.White;
         BouttonNombre4.BackColor = Color.White;
         ButtonNombre5.BackColor = Color.White;
+        LastButton.BackColor = Color.Yellow;
         }
 
         public void Calcule(Button button1)
@@ -386,17 +399,33 @@ namespace Mathador
 
         private void BouttonNombre3_Click(object sender, EventArgs e)
         {
-            Calcule(BouttonNombre3);
+            if (BouttonNombre3.Text != "")
+            {
+                Calcule(BouttonNombre3);
+                LastButton = BouttonNombre3;
+                LastButton.BackColor = Color.Yellow;
+            }
         }
 
         private void BouttonNombre4_Click(object sender, EventArgs e)
         {
-            Calcule(BouttonNombre4);
+            if (BouttonNombre4.Text != "")
+            {
+                Calcule(BouttonNombre4);
+                LastButton = BouttonNombre4;
+                LastButton.BackColor = Color.Yellow;
+            }
         }
 
         private void ButtonNombre5_Click(object sender, EventArgs e)
         {
-            Calcule(ButtonNombre5);
+            if (ButtonNombre5.Text != "")
+            {
+                Calcule(ButtonNombre5);
+                LastButton = ButtonNombre5;
+                LastButton.BackColor = Color.Yellow;
+            }
+            
         }
 
         private void ButtonMoins_Click(object sender, EventArgs e)
@@ -450,20 +479,20 @@ namespace Mathador
                         if (OperateurDivCount == 1 && OperateurFoisCount == 1 && OperateurMoinsCount == 1 && OperateurPlusCount == 1)
                         {
                             MessageBox.Show("Super ! Mathador ! \n Vous avez utilisé : \n" + "/n Votre Score est de : " + TextAffichageScore.Text);
-
+                            reset();
                             Generer();
                         }
                         else
                         {
                             MessageBox.Show("Bien Joué \n Vous avez utilisé : \n" + this.OperateurPlusCount + " fois le + \n" + this.OperateurMoinsCount + " fois le - \n" + this.OperateurFoisCount + " fois le * \n" + this.OperateurDivCount + " fois le / \n" + TextTimer.Text + "/n Votre Score est de : " + TextAffichageScore.Text);
-
+                            reset();
                             Generer();
                         }
                     }
                     else
                     {
                         MessageBox.Show("Perdu" + this.OperateurPlusCount + " " + this.OperateurMoinsCount + " " + this.OperateurFoisCount + " " + this.OperateurDivCount + " " + TextTimer.Text);
-
+                        reset();
                         Generer();
                     }
                 }
@@ -492,11 +521,19 @@ namespace Mathador
             TextTimer.Text = timeSinceStartTime.ToString();
             if (timeSinceStartTime.Minutes == 01)
             {
-                
+                buttonTerminer.Show();
+                ButtonSuivant.Hide();
                 mess = true;
-                Message();
-                timeSinceStartTime = DateTime.Now - _startTime;
-                timer1.Stop();
+                if(mess){
+                    k++;
+                }
+                if (i == k)
+                {
+
+                    Message();
+                }
+                //timeSinceStartTime = DateTime.Now - _startTime;
+                
                 //reset();
             }
       
@@ -505,6 +542,14 @@ namespace Mathador
         private void TextTemps_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonTerminer_Click(object sender, EventArgs e)
+        {
+            
+            this.Hide();
+            ScoreFinDePartie form = new ScoreFinDePartie(SaveOperateurDivCount, SaveOperateurFoisCount, SaveOperateurMoinsCount, SaveOperateurPlusCount, SaveScoreManche, round);
+            form.ShowDialog();
         }
 
       }

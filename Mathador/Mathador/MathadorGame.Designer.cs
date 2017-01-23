@@ -49,6 +49,7 @@
             this.ButtonTestGenerer = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.TextPseudo = new System.Windows.Forms.Label();
+            this.buttonTerminer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BouttonNombre1
@@ -241,11 +242,22 @@
             this.TextPseudo.TabIndex = 18;
             this.TextPseudo.Text = "PseudoJoueur";
             // 
+            // buttonTerminer
+            // 
+            this.buttonTerminer.Location = new System.Drawing.Point(185, 328);
+            this.buttonTerminer.Name = "buttonTerminer";
+            this.buttonTerminer.Size = new System.Drawing.Size(75, 23);
+            this.buttonTerminer.TabIndex = 19;
+            this.buttonTerminer.Text = "Terminer";
+            this.buttonTerminer.UseVisualStyleBackColor = true;
+            this.buttonTerminer.Click += new System.EventHandler(this.buttonTerminer_Click);
+            // 
             // MathadorGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 479);
+            this.Controls.Add(this.buttonTerminer);
             this.Controls.Add(this.TextPseudo);
             this.Controls.Add(this.ButtonTestGenerer);
             this.Controls.Add(this.ButtonDiv);
@@ -295,6 +307,7 @@
         private System.Windows.Forms.Button ButtonTestGenerer;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label TextPseudo;
+        private System.Windows.Forms.Button buttonTerminer;
     }
 }
 

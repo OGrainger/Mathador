@@ -41,5 +41,7 @@ namespace Mathador
             form.ShowDialog();
             this.Close();
         }
+
+      
     }
 }
