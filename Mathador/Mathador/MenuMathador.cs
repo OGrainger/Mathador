@@ -12,12 +12,15 @@ namespace Mathador
 {
     public partial class MenuMathador : Form
     {
+        public Dictionary<string, int> data;
+        private SQLiteDatabase db = new SQLiteDatabase();
         public string Pseudo;
-        public MenuMathador(string Pseudo)
+        public MenuMathador(string Pseudo, int gameCount)
         {
             InitializeComponent();
             BienvenuePseudo.Text = "Bienvenue " + Pseudo + " !";
             this.Pseudo = Pseudo;
+            buttonStats.Enabled = gameCount > 0;
         }
 
 
@@ -42,6 +45,12 @@ namespace Mathador
             form.ShowDialog();
         }
 
-      
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            PageConnection form = new PageConnection();
+            form.ShowDialog();
+        }
+
     }
 }

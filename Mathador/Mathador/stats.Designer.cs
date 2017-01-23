@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.buttonRetour = new System.Windows.Forms.Button();
             this.pieChartOp = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.pieChartOp)).BeginInit();
@@ -50,23 +50,24 @@
             // pieChartOp
             // 
             this.pieChartOp.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            this.pieChartOp.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.pieChartOp.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.pieChartOp.ChartAreas.Add(chartArea2);
+            legend2.Enabled = false;
+            legend2.Name = "Legend1";
+            this.pieChartOp.Legends.Add(legend2);
             this.pieChartOp.Location = new System.Drawing.Point(328, 12);
             this.pieChartOp.Name = "pieChartOp";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.pieChartOp.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.pieChartOp.Series.Add(series2);
             this.pieChartOp.Size = new System.Drawing.Size(300, 300);
             this.pieChartOp.TabIndex = 3;
             this.pieChartOp.Text = "chart1";
-            title1.Name = "Titre1";
-            title1.Text = "Taux d\'utilisation des opérateurs";
-            this.pieChartOp.Titles.Add(title1);
+            title2.Name = "Titre1";
+            title2.Text = "Taux d\'utilisation des opérateurs";
+            this.pieChartOp.Titles.Add(title2);
             // 
             // stats
             // 

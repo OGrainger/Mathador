@@ -32,6 +32,7 @@
             this.BouttonQuitter = new System.Windows.Forms.Button();
             this.buttonStats = new System.Windows.Forms.Button();
             this.BienvenuePseudo = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BouttonNouvellePartie
@@ -73,11 +74,22 @@
             this.BienvenuePseudo.TabIndex = 3;
             this.BienvenuePseudo.Text = "Bienvenue Pseudo !";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(75, 160);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 30);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Déconnexion";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MenuMathador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(281, 172);
+            this.ClientSize = new System.Drawing.Size(282, 221);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.BienvenuePseudo);
             this.Controls.Add(this.buttonStats);
             this.Controls.Add(this.BouttonQuitter);
@@ -94,7 +106,8 @@
 
         private System.Windows.Forms.Button BouttonNouvellePartie;
         private System.Windows.Forms.Button BouttonQuitter;
-        private System.Windows.Forms.Button buttonStats;
         private System.Windows.Forms.Label BienvenuePseudo;
+        private System.Windows.Forms.Button buttonStats;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -40,47 +40,32 @@ namespace Mathador
 
             db.LaunchDatabase();
             data = db.GetData(this.Pseudo);
-
-            if (data["gameCount"] > 0)
-            {
-                totalScorePoints = data["totalScorePoints"];
-                gameCount = data["gameCount"];
-                roundCount = data["roundCount"];
-                totalGameTimeInSeconds = data["totalGameTimeInSeconds"];
+            totalScorePoints = data["totalScorePoints"];
+            gameCount = data["gameCount"];
+            roundCount = data["roundCount"];
+            totalGameTimeInSeconds = data["totalGameTimeInSeconds"];
                 
-                averageScore = totalScorePoints / gameCount;
-                averagePointsPerRound = totalScorePoints / roundCount;
-                averageTimePerGame = totalGameTimeInSeconds / gameCount;
-                averageTimePerRound = totalGameTimeInSeconds / roundCount;
+            averageScore = totalScorePoints / gameCount;
+            averagePointsPerRound = totalScorePoints / roundCount;
+            averageTimePerGame = totalGameTimeInSeconds / gameCount;
+            averageTimePerRound = totalGameTimeInSeconds / roundCount;
 
-                useOfAllOp = data["addCount"] + data["subCount"] + data["multCount"] + data["divCount"];
-                averageUseOfAdd = (float)data["addCount"] / (float)useOfAllOp;
-                averageUseOfSub = (float)data["subCount"] / (float)useOfAllOp;
-                averageUseOfMult = (float)data["multCount"] / (float)useOfAllOp;
-                averageUseOfDiv = (float)data["divCount"] / (float)useOfAllOp;
+            useOfAllOp = data["addCount"] + data["subCount"] + data["multCount"] + data["divCount"];
+            averageUseOfAdd = Convert.ToSingle(data["addCount"]) / useOfAllOp;
+            averageUseOfSub = Convert.ToSingle(data["subCount"]) / useOfAllOp;
+            averageUseOfMult = Convert.ToSingle(data["multCount"]) / useOfAllOp;
+            averageUseOfDiv = Convert.ToSingle(data["divCount"]) / useOfAllOp;
 
-                pieChartOp.Series["Series1"].Points.AddXY("+ ("+ (int)(averageUseOfAdd*100) +"%)", averageUseOfAdd);
-                pieChartOp.Series["Series1"].Points.AddXY("- (" + (int)(averageUseOfSub * 100) + "%)", averageUseOfSub);
-                pieChartOp.Series["Series1"].Points.AddXY(" x ("+ (int)(averageUseOfMult*100) +" %)", averageUseOfMult);
-                pieChartOp.Series["Series1"].Points.AddXY("÷ (" + (int)(averageUseOfDiv * 100) + " %)", averageUseOfDiv);
-
-             
-
-
-            }
-            else
-            {
-                this.Hide();
-                MenuMathador form = new MenuMathador(Pseudo);
-                form.ShowDialog();
-            }
-            
+            pieChartOp.Series["Series1"].Points.AddXY("+ ("+ Convert.ToInt32(averageUseOfAdd) * 100 +"%)", averageUseOfAdd);
+            pieChartOp.Series["Series1"].Points.AddXY("- (" + Convert.ToInt32(averageUseOfSub) * 100 + "%)", averageUseOfSub);
+            pieChartOp.Series["Series1"].Points.AddXY(" x ("+ Convert.ToInt32(averageUseOfMult) * 100 +" %)", averageUseOfMult);
+            pieChartOp.Series["Series1"].Points.AddXY("÷ (" + Convert.ToInt32(averageUseOfDiv) * 100 + " %)", averageUseOfDiv);          
         }
 
         private void buttonRetour_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuMathador form = new MenuMathador(Pseudo);
+            MenuMathador form = new MenuMathador(Pseudo, gameCount);
             form.ShowDialog();
         }
 
