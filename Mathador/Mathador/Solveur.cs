@@ -147,7 +147,7 @@ namespace Mathador
                             }
                             else if (UnSigne[k] == 3)                                                           //Si (UnSigne[k] == 3), alors : division
                             {
-                                if (MathadorGame.tableau[i] % MathadorGame.tableau[j] == 0)                     //Si le reste de la division est égal à 0 et que le résultat 
+                                if (MathadorGame.tableau[i] % MathadorGame.tableau[j] == 0)                     //Si le reste de la division est égal à 0 et que le résultat
                                 {                                                                               //est égal à la cible, alors écriture de l'équation dans le fichier JSON "Solutions"
                                     {
                                         if (MathadorGame.tableau[i] / MathadorGame.tableau[j] == MathadorGame.cible)
@@ -219,7 +219,7 @@ namespace Mathador
                                 {                                                                               //Si le résultat de la première opération et de la seconde est égal à la cible,
                                     case 0:                                                                     //alors écriture de l'équation dans le fichier JSON "Solutions"
                                         {
-                                            if (preresult + MathadorGame.tableau[k] == MathadorGame.cible)      
+                                            if (preresult + MathadorGame.tableau[k] == MathadorGame.cible)
                                             {
                                                 equation = equation + "+" + MathadorGame.tableau[k].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
                                                 solutions.Add(equation);
@@ -257,7 +257,7 @@ namespace Mathador
                                                 equation = equation + "/" + MathadorGame.tableau[k].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
                                                 solutions.Add(equation);
                                                 //string json = JsonConvert.SerializeObject(equation);
-                                                //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);                                         
+                                                //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);                                        
                                             }
                                             break;
                                         }
@@ -288,7 +288,7 @@ namespace Mathador
                                     equation = "";
                                     preresult = 0;
                                     switch (TroisSignes[0, op])                                                 //Test du signe de la première partie de l'équation
-                                    {                                                                           //Première opération dans "preresult"                                                                           
+                                    {                                                                           //Première opération dans "preresult"                                                                          
                                         case 0:                                                                 //Première partie de l'équation dans "equation"
                                             {
                                                 preresult = MathadorGame.tableau[i] + MathadorGame.tableau[j];
@@ -330,7 +330,7 @@ namespace Mathador
                                             {
                                                 preresult = preresult + MathadorGame.tableau[k];
                                                 equation = equation + "+" + MathadorGame.tableau[k] + "=" + preresult + " => " + preresult;
-                                                valid++;                                                        
+                                                valid++;
                                                 break;
                                             }
                                         case 1:
@@ -407,7 +407,7 @@ namespace Mathador
                                                     equation = equation + "/" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
                                                     solutions.Add(equation);
                                                     //string json = JsonConvert.SerializeObject(equation);
-                                                    //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);                                         
+                                                    //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);                                        
                                                 }
                                                 break;
                                             }
@@ -603,7 +603,7 @@ namespace Mathador
                                                         equation = equation + "/" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
                                                         solutions.Add(equation);
                                                         //string json = JsonConvert.SerializeObject(equation);
-                                                        //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);                                         
+                                                        //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);                                        
                                                     }
                                                     break;
                                                 }
@@ -625,7 +625,7 @@ namespace Mathador
             SolvTowOp();
             SolvTrheeOp();
             SolvfourOp();
-            
+
         }
     }
 }
