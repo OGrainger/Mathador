@@ -467,17 +467,19 @@ namespace Mathador
 
         private void buttonSoluces_Click(object sender, EventArgs e)
         {
-            Solveur Solvtest = new Solveur();
-            Solvtest.TabSigne();
-            Solvtest.SolvOneOp();
-            Solvtest.SolvTowOp();
-            Solvtest.SolvTrheeOp();
-            Solvtest.SolvfourOp();
+            Solveur Solv = new Solveur();
+            Solv.TabSigne();
+            Solv.SolvOneOp();
+            Solv.SolvTowOp();
+            Solv.SolvTrheeOp();
+            Solv.SolvfourOp();
+
+            
         }
 
         private void listBoxSoluces_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Mathador;
 using Newtonsoft.Json;
 
 namespace Mathador
@@ -18,6 +17,7 @@ namespace Mathador
         int[,] DeuxSignes = new int[2, 16];
         int[,] TroisSignes = new int[3, 64];
         int[,] QuatreSignes = new int[4, 256];
+        public static List<string> solutions = new List<string>();
 
 
 
@@ -120,8 +120,9 @@ namespace Mathador
                                 if (MathadorGame.tableau[i] + MathadorGame.tableau[j] == MathadorGame.cible)    //Si l'addition = cible, alors écriture de l'équation dans le fichier JSON "Solutions"
                                 {
                                     equation = MathadorGame.tableau[i].ToString() + "+" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
-                                    string json = JsonConvert.SerializeObject(equation);
-                                    System.IO.File.AppendAllText("Solutions.db", json);
+                                    solutions.Add(equation);
+                                    //string json = JsonConvert.SerializeObject(equation);
+                                    //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);
                                 }
                             }
                             else if (UnSigne[k] == 1)                                                           //Si (UnSigne[k] == 1), alors : soustraction
@@ -129,8 +130,9 @@ namespace Mathador
                                 if ((MathadorGame.tableau[i] - MathadorGame.tableau[j] > 0) && (MathadorGame.tableau[i] - MathadorGame.tableau[j] == MathadorGame.cible))   //Si la soustraction = cible et que le résultat de la soustraction
                                 {                                                                                                                                           //est suppérieur à 0, alors écriture de l'équation dans le fichier JSON "Solutions"
                                     equation = MathadorGame.tableau[i].ToString() + "-" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
-                                    string json = JsonConvert.SerializeObject(equation);
-                                    System.IO.File.AppendAllText("Solutions.db", json);
+                                    solutions.Add(equation);
+                                    //string json = JsonConvert.SerializeObject(equation);
+                                    //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);
                                 }
                             }
                             else if (UnSigne[k] == 2)                                                           //Si (UnSigne[k] == 2), alors : multiplication
@@ -138,8 +140,9 @@ namespace Mathador
                                 if (MathadorGame.tableau[i] * MathadorGame.tableau[j] == MathadorGame.cible)    //Si la multiplication = cible, alors écriture de l'équation dans le fichier JSON "Solutions"
                                 {
                                     equation = MathadorGame.tableau[i].ToString() + "*" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
-                                    string json = JsonConvert.SerializeObject(equation);
-                                    System.IO.File.AppendAllText("Solutions.db", json);
+                                    solutions.Add(equation);
+                                    //string json = JsonConvert.SerializeObject(equation);
+                                    //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);
                                 }
                             }
                             else if (UnSigne[k] == 3)                                                           //Si (UnSigne[k] == 3), alors : division
@@ -149,9 +152,11 @@ namespace Mathador
                                     {
                                         if (MathadorGame.tableau[i] / MathadorGame.tableau[j] == MathadorGame.cible)
                                         {
+
                                             equation = MathadorGame.tableau[i].ToString() + "/" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
-                                            string json = JsonConvert.SerializeObject(equation);
-                                            System.IO.File.AppendAllText("Solutions.db", json);
+                                            solutions.Add(equation);
+                                            //string json = JsonConvert.SerializeObject(equation);
+                                            //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);
                                         }
                                     }
                                 }
@@ -217,8 +222,9 @@ namespace Mathador
                                             if (preresult + MathadorGame.tableau[k] == MathadorGame.cible)      
                                             {
                                                 equation = equation + "+" + MathadorGame.tableau[k].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
-                                                string json = JsonConvert.SerializeObject(equation);
-                                                System.IO.File.AppendAllText("Solutions.db", json);
+                                                solutions.Add(equation);
+                                                //string json = JsonConvert.SerializeObject(equation);
+                                                //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);
                                             }
                                             break;
                                         }
@@ -227,8 +233,9 @@ namespace Mathador
                                             if (preresult - MathadorGame.tableau[k] >= 0 && preresult - MathadorGame.tableau[k] == MathadorGame.cible)
                                             {
                                                 equation = equation + "-" + MathadorGame.tableau[k].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
-                                                string json = JsonConvert.SerializeObject(equation);
-                                                System.IO.File.AppendAllText("Solutions.db", json);
+                                                solutions.Add(equation);
+                                                //string json = JsonConvert.SerializeObject(equation);
+                                                //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);
                                             }
                                             break;
                                         }
@@ -237,8 +244,9 @@ namespace Mathador
                                             if (preresult * MathadorGame.tableau[k] > 0 && preresult * MathadorGame.tableau[k] == MathadorGame.cible)
                                             {
                                                 equation = equation + "x" + MathadorGame.tableau[k].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
-                                                string json = JsonConvert.SerializeObject(equation);
-                                                System.IO.File.AppendAllText("Solutions.db", json);
+                                                solutions.Add(equation);
+                                                //string json = JsonConvert.SerializeObject(equation);
+                                                //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);
                                             }
                                             break;
                                         }
@@ -247,8 +255,9 @@ namespace Mathador
                                             if (preresult % MathadorGame.tableau[k] == 0 && preresult / MathadorGame.tableau[k] == MathadorGame.cible)
                                             {
                                                 equation = equation + "/" + MathadorGame.tableau[k].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
-                                                string json = JsonConvert.SerializeObject(equation);
-                                                System.IO.File.AppendAllText("Solutions.db", json);                                         
+                                                solutions.Add(equation);
+                                                //string json = JsonConvert.SerializeObject(equation);
+                                                //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);                                         
                                             }
                                             break;
                                         }
@@ -363,8 +372,9 @@ namespace Mathador
                                                 if (preresult + MathadorGame.tableau[l] == MathadorGame.cible && valid == 2)
                                                 {
                                                     equation = equation + "+" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
-                                                    string json = JsonConvert.SerializeObject(equation);
-                                                    System.IO.File.AppendAllText("Solutions.db", json);
+                                                    solutions.Add(equation);
+                                                    //string json = JsonConvert.SerializeObject(equation);
+                                                    //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);
                                                 }
                                                 break;
                                             }
@@ -373,8 +383,9 @@ namespace Mathador
                                                 if (preresult - MathadorGame.tableau[l] >= 0 && preresult - MathadorGame.tableau[l] == MathadorGame.cible && valid == 2)
                                                 {
                                                     equation = equation + "-" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
-                                                    string json = JsonConvert.SerializeObject(equation);
-                                                    System.IO.File.AppendAllText("Solutions.db", json);
+                                                    solutions.Add(equation);
+                                                    //string json = JsonConvert.SerializeObject(equation);
+                                                    //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);
                                                 }
                                                 break;
                                             }
@@ -383,8 +394,9 @@ namespace Mathador
                                                 if (preresult * MathadorGame.tableau[l] > 0 && preresult * MathadorGame.tableau[l] == MathadorGame.cible && valid == 2)
                                                 {
                                                     equation = equation + "x" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
-                                                    string json = JsonConvert.SerializeObject(equation);
-                                                    System.IO.File.AppendAllText("Solutions.db", json);
+                                                    solutions.Add(equation);
+                                                    //string json = JsonConvert.SerializeObject(equation);
+                                                    //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);
                                                 }
                                                 break;
                                             }
@@ -393,8 +405,9 @@ namespace Mathador
                                                 if (preresult % MathadorGame.tableau[l] == 0 && preresult / MathadorGame.tableau[l] == MathadorGame.cible && valid == 2)
                                                 {
                                                     equation = equation + "/" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
-                                                    string json = JsonConvert.SerializeObject(equation);
-                                                    System.IO.File.AppendAllText("Solutions.db", json);                                         
+                                                    solutions.Add(equation);
+                                                    //string json = JsonConvert.SerializeObject(equation);
+                                                    //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);                                         
                                                 }
                                                 break;
                                             }
@@ -555,8 +568,9 @@ namespace Mathador
                                                     if (preresult + MathadorGame.tableau[l] == MathadorGame.cible && valid == 3)
                                                     {
                                                         equation = equation + "+" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
-                                                        string json = JsonConvert.SerializeObject(equation);
-                                                        System.IO.File.AppendAllText("Solutions.db", json);
+                                                        solutions.Add(equation);
+                                                        //string json = JsonConvert.SerializeObject(equation);
+                                                        //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);
                                                     }
                                                     break;
                                                 }
@@ -565,8 +579,9 @@ namespace Mathador
                                                     if (preresult - MathadorGame.tableau[l] >= 0 && preresult - MathadorGame.tableau[l] == MathadorGame.cible && valid == 3)
                                                     {
                                                         equation = equation + "-" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
-                                                        string json = JsonConvert.SerializeObject(equation);
-                                                        System.IO.File.AppendAllText("Solutions.db", json);
+                                                        solutions.Add(equation);
+                                                        //string json = JsonConvert.SerializeObject(equation);
+                                                        //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);
                                                     }
                                                     break;
                                                 }
@@ -575,8 +590,9 @@ namespace Mathador
                                                     if (preresult * MathadorGame.tableau[l] > 0 && preresult * MathadorGame.tableau[l] == MathadorGame.cible && valid == 3)
                                                     {
                                                         equation = equation + "x" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
-                                                        string json = JsonConvert.SerializeObject(equation);
-                                                        System.IO.File.AppendAllText("Solutions.db", json);
+                                                        solutions.Add(equation);
+                                                        //string json = JsonConvert.SerializeObject(equation);
+                                                        //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);
                                                     }
                                                     break;
                                                 }
@@ -585,8 +601,9 @@ namespace Mathador
                                                     if (preresult % MathadorGame.tableau[l] == 0 && preresult / MathadorGame.tableau[l] == MathadorGame.cible && valid == 3)
                                                     {
                                                         equation = equation + "/" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString() + "\n";
-                                                        string json = JsonConvert.SerializeObject(equation);
-                                                        System.IO.File.AppendAllText("Solutions.db", json);                                         
+                                                        solutions.Add(equation);
+                                                        //string json = JsonConvert.SerializeObject(equation);
+                                                        //System.IO.File.AppendAllText("Solutions.txt", json + Environment.NewLine);                                         
                                                     }
                                                     break;
                                                 }
