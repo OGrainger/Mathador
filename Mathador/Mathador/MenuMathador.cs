@@ -52,5 +52,9 @@ namespace Mathador
             form.ShowDialog();
         }
 
+        private void MenuMathador_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

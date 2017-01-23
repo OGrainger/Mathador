@@ -33,37 +33,40 @@
             this.TextBoxVerifMdp = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.labelErreur = new System.Windows.Forms.Label();
             this.valider = new System.Windows.Forms.Button();
             this.retour = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // TextBoxPseudo
             // 
-            this.TextBoxPseudo.Location = new System.Drawing.Point(167, 6);
+            this.TextBoxPseudo.Location = new System.Drawing.Point(312, 29);
             this.TextBoxPseudo.Name = "TextBoxPseudo";
-            this.TextBoxPseudo.Size = new System.Drawing.Size(204, 20);
+            this.TextBoxPseudo.Size = new System.Drawing.Size(255, 20);
             this.TextBoxPseudo.TabIndex = 0;
             // 
             // TextBoxMdp
             // 
-            this.TextBoxMdp.Location = new System.Drawing.Point(167, 32);
+            this.TextBoxMdp.Location = new System.Drawing.Point(312, 68);
             this.TextBoxMdp.Name = "TextBoxMdp";
-            this.TextBoxMdp.Size = new System.Drawing.Size(204, 20);
+            this.TextBoxMdp.Size = new System.Drawing.Size(255, 20);
             this.TextBoxMdp.TabIndex = 1;
+            this.TextBoxMdp.UseSystemPasswordChar = true;
             // 
             // TextBoxVerifMdp
             // 
-            this.TextBoxVerifMdp.Location = new System.Drawing.Point(167, 58);
+            this.TextBoxVerifMdp.Location = new System.Drawing.Point(312, 94);
             this.TextBoxVerifMdp.Name = "TextBoxVerifMdp";
-            this.TextBoxVerifMdp.Size = new System.Drawing.Size(204, 20);
+            this.TextBoxVerifMdp.Size = new System.Drawing.Size(255, 20);
             this.TextBoxVerifMdp.TabIndex = 2;
+            this.TextBoxVerifMdp.UseSystemPasswordChar = true;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(309, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(149, 13);
             this.label1.TabIndex = 3;
@@ -72,25 +75,16 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 35);
+            this.label2.Location = new System.Drawing.Point(309, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(137, 13);
+            this.label2.Size = new System.Drawing.Size(197, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Choisissez un mot de passe";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 61);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(146, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Confirmez votre mot de passe";
+            this.label2.Text = "Choisissez et confirmez un mot de passe";
             // 
             // labelErreur
             // 
             this.labelErreur.AutoSize = true;
-            this.labelErreur.Location = new System.Drawing.Point(164, 81);
+            this.labelErreur.Location = new System.Drawing.Point(309, 117);
             this.labelErreur.Name = "labelErreur";
             this.labelErreur.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.labelErreur.Size = new System.Drawing.Size(37, 13);
@@ -99,9 +93,9 @@
             // 
             // valider
             // 
-            this.valider.Location = new System.Drawing.Point(167, 97);
+            this.valider.Location = new System.Drawing.Point(312, 133);
             this.valider.Name = "valider";
-            this.valider.Size = new System.Drawing.Size(204, 23);
+            this.valider.Size = new System.Drawing.Size(255, 30);
             this.valider.TabIndex = 7;
             this.valider.Text = "Valider";
             this.valider.UseVisualStyleBackColor = true;
@@ -109,23 +103,35 @@
             // 
             // retour
             // 
-            this.retour.Location = new System.Drawing.Point(167, 126);
+            this.retour.Location = new System.Drawing.Point(312, 169);
             this.retour.Name = "retour";
-            this.retour.Size = new System.Drawing.Size(204, 23);
+            this.retour.Size = new System.Drawing.Size(255, 30);
             this.retour.TabIndex = 8;
             this.retour.Text = "Retour";
             this.retour.UseVisualStyleBackColor = true;
             this.retour.Click += new System.EventHandler(this.retour_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImage = global::Mathador.Properties.Resources.hipsterlogogenerator_1484667478781;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(0, -50);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(300, 300);
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
+            // 
             // PageCreationUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(383, 161);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(577, 207);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.retour);
             this.Controls.Add(this.valider);
             this.Controls.Add(this.labelErreur);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TextBoxVerifMdp);
@@ -134,6 +140,7 @@
             this.Name = "PageCreationUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Création d\'utilisateur";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,9 +153,9 @@
         private System.Windows.Forms.TextBox TextBoxVerifMdp;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelErreur;
         private System.Windows.Forms.Button valider;
         private System.Windows.Forms.Button retour;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -36,6 +36,7 @@
             this.buttonValiderConnection = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.quit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +59,7 @@
             // ErreurPseudo
             // 
             this.ErreurPseudo.AutoSize = true;
-            this.ErreurPseudo.Location = new System.Drawing.Point(307, 126);
+            this.ErreurPseudo.Location = new System.Drawing.Point(447, 9);
             this.ErreurPseudo.Name = "ErreurPseudo";
             this.ErreurPseudo.Size = new System.Drawing.Size(37, 13);
             this.ErreurPseudo.TabIndex = 3;
@@ -67,7 +68,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(306, 64);
+            this.label3.Location = new System.Drawing.Point(306, 48);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 13);
             this.label3.TabIndex = 4;
@@ -75,18 +76,18 @@
             // 
             // textBoxMDP
             // 
-            this.textBoxMDP.Location = new System.Drawing.Point(309, 80);
+            this.textBoxMDP.Location = new System.Drawing.Point(309, 64);
             this.textBoxMDP.Name = "textBoxMDP";
-            this.textBoxMDP.PasswordChar = '*';
             this.textBoxMDP.Size = new System.Drawing.Size(255, 20);
             this.textBoxMDP.TabIndex = 6;
+            this.textBoxMDP.UseSystemPasswordChar = true;
             // 
             // buttonValiderConnection
             // 
             this.buttonValiderConnection.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonValiderConnection.Location = new System.Drawing.Point(310, 142);
+            this.buttonValiderConnection.Location = new System.Drawing.Point(312, 97);
             this.buttonValiderConnection.Name = "buttonValiderConnection";
-            this.buttonValiderConnection.Size = new System.Drawing.Size(255, 23);
+            this.buttonValiderConnection.Size = new System.Drawing.Size(255, 30);
             this.buttonValiderConnection.TabIndex = 7;
             this.buttonValiderConnection.Text = "Connexion";
             this.buttonValiderConnection.UseVisualStyleBackColor = true;
@@ -96,9 +97,9 @@
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(310, 171);
+            this.button1.Location = new System.Drawing.Point(312, 133);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(255, 23);
+            this.button1.Size = new System.Drawing.Size(255, 30);
             this.button1.TabIndex = 8;
             this.button1.Text = "Nouvel utilisateur";
             this.button1.UseVisualStyleBackColor = true;
@@ -115,12 +116,24 @@
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             // 
+            // quit
+            // 
+            this.quit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.quit.Location = new System.Drawing.Point(312, 169);
+            this.quit.Name = "quit";
+            this.quit.Size = new System.Drawing.Size(254, 30);
+            this.quit.TabIndex = 10;
+            this.quit.Text = "Quitter";
+            this.quit.UseVisualStyleBackColor = true;
+            this.quit.Click += new System.EventHandler(this.quit_Click);
+            // 
             // PageConnection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(577, 207);
+            this.Controls.Add(this.quit);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonValiderConnection);
@@ -149,5 +162,6 @@
         private System.Windows.Forms.Button buttonValiderConnection;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button quit;
     }
 }
