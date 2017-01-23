@@ -35,11 +35,11 @@ namespace Mathador
             Application.Exit();
         }
 
-        private void BouttonScore_Click(object sender, EventArgs e)
+        private void buttonStats_Click(object sender, EventArgs e)
         {
-            MathadorGame form = new MathadorGame(this.Pseudo);
+            this.Hide();
+            stats form = new stats(this.Pseudo);
             form.ShowDialog();
-            this.Close();
         }
 
       
