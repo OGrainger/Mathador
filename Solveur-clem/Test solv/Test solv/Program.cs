@@ -12,10 +12,10 @@ namespace Test_solv
         {
             Solveur Solvtest = new Solveur();
             Solvtest.TabSigne();
-            //Solvtest.SolvOneOp();
+            Solvtest.SolvOneOp();
             Solvtest.SolvTowOp();
-            //Solvtest.SolvTrheeOp();
-            //Solvtest.SolvfourOp();
+            Solvtest.SolvTrheeOp();
+            Solvtest.SolvfourOp();
             Console.ReadLine();
         }
     }
@@ -726,10 +726,10 @@ namespace Test_solv
         public void SolvComplet()
         {
             TabSigne();
-            //SolvOneOp();
+            SolvOneOp();
             SolvTowOp();
-            //SolvTrheeOp();
-            //SolvfourOp();
+            SolvTrheeOp();
+            SolvfourOp();
 
         }
     }
