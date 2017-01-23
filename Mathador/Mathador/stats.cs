@@ -56,10 +56,10 @@ namespace Mathador
             averageUseOfMult = Convert.ToSingle(data["multCount"]) / useOfAllOp;
             averageUseOfDiv = Convert.ToSingle(data["divCount"]) / useOfAllOp;
 
-            pieChartOp.Series["Series1"].Points.AddXY("+ ("+ Convert.ToInt32(averageUseOfAdd) * 100 +"%)", averageUseOfAdd);
-            pieChartOp.Series["Series1"].Points.AddXY("- (" + Convert.ToInt32(averageUseOfSub) * 100 + "%)", averageUseOfSub);
-            pieChartOp.Series["Series1"].Points.AddXY(" x ("+ Convert.ToInt32(averageUseOfMult) * 100 +" %)", averageUseOfMult);
-            pieChartOp.Series["Series1"].Points.AddXY("÷ (" + Convert.ToInt32(averageUseOfDiv) * 100 + " %)", averageUseOfDiv);          
+            pieChartOp.Series["Series1"].Points.AddXY("+ ("+ Math.Round(averageUseOfAdd, 3, MidpointRounding.AwayFromZero) * 100 +"%)", averageUseOfAdd);
+            pieChartOp.Series["Series1"].Points.AddXY("- (" + Math.Round(averageUseOfSub, 3, MidpointRounding.AwayFromZero) * 100 + "%)", averageUseOfSub);
+            pieChartOp.Series["Series1"].Points.AddXY(" x ("+ Math.Round(averageUseOfMult, 3, MidpointRounding.AwayFromZero) * 100 +" %)", averageUseOfMult);
+            pieChartOp.Series["Series1"].Points.AddXY("÷ (" + Math.Round(averageUseOfDiv, 3, MidpointRounding.AwayFromZero) * 100 + " %)", averageUseOfDiv);          
         }
 
         private void buttonRetour_Click(object sender, EventArgs e)
