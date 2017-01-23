@@ -12,9 +12,14 @@ namespace Mathador
 {
     public partial class PageConnection : Form
     {
+        public Dictionary<string, int> data;
         private SQLiteDatabase db = new SQLiteDatabase();
         public string MDP;
         public string Pseudo;
+        int gameCount;
+
+        
+
         public PageConnection()
         {
             InitializeComponent();
@@ -33,7 +38,9 @@ namespace Mathador
             else if (db.CheckIfPasswordMatch(this.Pseudo, this.MDP))
             {
                 this.Hide();
-                MenuMathador form = new MenuMathador(Pseudo);
+                data = db.GetData(this.Pseudo);
+                gameCount = data["gameCount"];
+                MenuMathador form = new MenuMathador(Pseudo, gameCount);
                 form.ShowDialog();
             }
             else
