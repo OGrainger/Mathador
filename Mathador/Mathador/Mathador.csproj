@@ -83,6 +83,12 @@
     <Compile Include="ScoreFinDePartie.Designer.cs">
       <DependentUpon>ScoreFinDePartie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Solutions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Solutions.Designer.cs">
+      <DependentUpon>Solutions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Solveur.cs" />
     <Compile Include="stats.cs">
       <SubType>Form</SubType>
@@ -114,6 +120,9 @@
     </Compile>
     <EmbeddedResource Include="ScoreFinDePartie.resx">
       <DependentUpon>ScoreFinDePartie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Solutions.resx">
+      <DependentUpon>Solutions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="stats.resx">
       <DependentUpon>stats.cs</DependentUpon>

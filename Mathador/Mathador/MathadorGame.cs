@@ -467,6 +467,9 @@ namespace Mathador
 
         private void buttonSoluces_Click(object sender, EventArgs e)
         {
+
+
+
             Solveur Solv = new Solveur();
             Solv.TabSigne();
             Solv.SolvOneOp();
