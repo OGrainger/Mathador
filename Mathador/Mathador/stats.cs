@@ -51,7 +51,15 @@ namespace Mathador
             averageTimePerRound = totalGameTimeInSeconds / roundCount;
 
             useOfAllOp = data["addCount"] + data["subCount"] + data["multCount"] + data["divCount"];
+            averageUseOfAdd = Convert.ToSingle(data["addCount"]) / useOfAllOp;
+            averageUseOfSub = Convert.ToSingle(data["subCount"]) / useOfAllOp;
+            averageUseOfMult = Convert.ToSingle(data["multCount"]) / useOfAllOp;
+            averageUseOfDiv = Convert.ToSingle(data["divCount"]) / useOfAllOp;
 
+            pieChartOp.Series["Series1"].Points.AddXY("+ ("+ Convert.ToInt32(averageUseOfAdd) * 100 +"%)", averageUseOfAdd);
+            pieChartOp.Series["Series1"].Points.AddXY("- (" + Convert.ToInt32(averageUseOfSub) * 100 + "%)", averageUseOfSub);
+            pieChartOp.Series["Series1"].Points.AddXY(" x ("+ Convert.ToInt32(averageUseOfMult) * 100 +" %)", averageUseOfMult);
+            pieChartOp.Series["Series1"].Points.AddXY("÷ (" + Convert.ToInt32(averageUseOfDiv) * 100 + " %)", averageUseOfDiv);          
         }
 
         private void buttonRetour_Click(object sender, EventArgs e)
