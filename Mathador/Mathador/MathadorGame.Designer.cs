@@ -49,8 +49,8 @@
             this.ButtonTestGenerer = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.TextPseudo = new System.Windows.Forms.Label();
+            this.buttonTerminer = new System.Windows.Forms.Button();
             this.buttonSoluces = new System.Windows.Forms.Button();
-            this.listBoxSoluces = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // BouttonNombre1
@@ -243,31 +243,31 @@
             this.TextPseudo.TabIndex = 18;
             this.TextPseudo.Text = "PseudoJoueur";
             // 
+            // buttonTerminer
+            // 
+            this.buttonTerminer.Location = new System.Drawing.Point(185, 328);
+            this.buttonTerminer.Name = "buttonTerminer";
+            this.buttonTerminer.Size = new System.Drawing.Size(75, 23);
+            this.buttonTerminer.TabIndex = 19;
+            this.buttonTerminer.Text = "Terminer";
+            this.buttonTerminer.UseVisualStyleBackColor = true;
+            this.buttonTerminer.Click += new System.EventHandler(this.buttonTerminer_Click);
+            // 
             // buttonSoluces
             // 
-            this.buttonSoluces.Location = new System.Drawing.Point(185, 406);
+            this.buttonSoluces.Location = new System.Drawing.Point(309, 328);
             this.buttonSoluces.Name = "buttonSoluces";
             this.buttonSoluces.Size = new System.Drawing.Size(75, 23);
-            this.buttonSoluces.TabIndex = 19;
+            this.buttonSoluces.TabIndex = 21;
             this.buttonSoluces.Text = "Solutions";
-            this.buttonSoluces.UseVisualStyleBackColor = true;
             this.buttonSoluces.Click += new System.EventHandler(this.buttonSoluces_Click);
-            // 
-            // listBoxSoluces
-            // 
-            this.listBoxSoluces.FormattingEnabled = true;
-            this.listBoxSoluces.Location = new System.Drawing.Point(579, 31);
-            this.listBoxSoluces.Name = "listBoxSoluces";
-            this.listBoxSoluces.Size = new System.Drawing.Size(423, 407);
-            this.listBoxSoluces.TabIndex = 20;
-            this.listBoxSoluces.SelectedIndexChanged += new System.EventHandler(this.listBoxSoluces_SelectedIndexChanged);
             // 
             // MathadorGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1035, 479);
-            this.Controls.Add(this.listBoxSoluces);
+            this.ClientSize = new System.Drawing.Size(483, 479);
+            this.Controls.Add(this.buttonTerminer);
             this.Controls.Add(this.buttonSoluces);
             this.Controls.Add(this.TextPseudo);
             this.Controls.Add(this.ButtonTestGenerer);
@@ -318,8 +318,11 @@
         private System.Windows.Forms.Button ButtonTestGenerer;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label TextPseudo;
+
+        private System.Windows.Forms.Button buttonTerminer;
+
         private System.Windows.Forms.Button buttonSoluces;
-        private System.Windows.Forms.ListBox listBoxSoluces;
+
     }
 }
 

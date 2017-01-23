@@ -36,7 +36,7 @@
             this.listBoxSolutions.FormattingEnabled = true;
             this.listBoxSolutions.Location = new System.Drawing.Point(-2, 0);
             this.listBoxSolutions.Name = "listBoxSolutions";
-            this.listBoxSolutions.Size = new System.Drawing.Size(595, 498);
+            this.listBoxSolutions.Size = new System.Drawing.Size(592, 485);
             this.listBoxSolutions.TabIndex = 0;
             // 
             // Solutions
@@ -47,6 +47,7 @@
             this.Controls.Add(this.listBoxSolutions);
             this.Name = "Solutions";
             this.Text = "Solutions";
+            this.Load += new System.EventHandler(this.Solutions_Load);
             this.ResumeLayout(false);
 
         }

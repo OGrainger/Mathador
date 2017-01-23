@@ -41,5 +41,7 @@ namespace Mathador
             stats form = new stats(this.Pseudo);
             form.ShowDialog();
         }
+
+      
     }
 }

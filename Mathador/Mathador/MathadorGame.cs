@@ -44,7 +44,9 @@ namespace Mathador
         Button LastButton;
         public bool PremierNombreSelectione = false;
         public int i;
-        public Boolean mess = true;
+        public int k = 0;
+        public Boolean mess = false;
+        public Boolean SuivantNow = true;
 
         public static Random random = new Random();
 
@@ -73,11 +75,17 @@ namespace Mathador
         public MathadorGame(String Pseudo)
         {
             InitializeComponent();
+            TextPseudo.Text = Pseudo;
             MessageBox.Show("Etes vous pret "+ Pseudo + " ?",
-    "Message",
-    MessageBoxButtons.OK,
-    MessageBoxIcon.Exclamation,
-    MessageBoxDefaultButton.Button1);
+            "Message",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Exclamation,
+            MessageBoxDefaultButton.Button1);
+
+            LastButton = BouttonNombre1;
+            LastButton.BackColor = Color.Yellow;
+
+            buttonTerminer.Hide();
             // Set up a timer and fire the Tick event once per second (1000 ms)
             _timer = new Timer();
             _timer.Interval = 1000;
@@ -160,7 +168,12 @@ namespace Mathador
 
         private void BouttonNombre1_Click(object sender, EventArgs e)
         {
-            Calcule(BouttonNombre1);
+            if (BouttonNombre1.Text != "")
+            {
+                Calcule(BouttonNombre1);
+                LastButton = BouttonNombre1;
+                LastButton.BackColor = Color.Yellow;
+            }
         }
 
         private void ButtonPlus_Click(object sender, EventArgs e)
@@ -175,13 +188,20 @@ namespace Mathador
         private void BouttonNombre2_Click(object sender, EventArgs e)
         {
 
-            Calcule(BouttonNombre2);
+            if (BouttonNombre2.Text != "")
+            {
+                Calcule(BouttonNombre2);
+                LastButton = BouttonNombre2;
+                LastButton.BackColor = Color.Yellow;
+            }
         }
 
         public void resetScore()
         {
             round = 0;
             ScoreRound = 0;
+
+            TextScore.Text = "Score";
         }
         public void resetTimer()
         {
@@ -213,11 +233,9 @@ namespace Mathador
         div = false;
         fois = false;
         moins = false;
-        round = 0;
-        ScoreRound = 0;
         cible = 0;
         button2 = null;
-        LastButton = null;
+        LastButton = BouttonNombre1;
         PremierNombreSelectione = false;
 
         BouttonNombre1.Text = "";
@@ -226,16 +244,17 @@ namespace Mathador
         BouttonNombre4.Text = "";
         ButtonNombre5.Text = "";
         NombreCible.Text = "0";
-        TextScore.Text = "Score";
         BouttonNombre1.BackColor = Color.White;
         BouttonNombre2.BackColor = Color.White;
         BouttonNombre3.BackColor = Color.White;
         BouttonNombre4.BackColor = Color.White;
         ButtonNombre5.BackColor = Color.White;
+        LastButton.BackColor = Color.Yellow;
         }
 
         public void Calcule(Button button1)
         {
+            SuivantNow = false;
             BouttonNombre1.BackColor = Color.White;
             BouttonNombre2.BackColor = Color.White;
             BouttonNombre3.BackColor = Color.White;
@@ -253,6 +272,13 @@ namespace Mathador
                     LastButton = button1;
                     this.OperateurPlusCount += 1;
                     plus = false;
+
+                    BouttonNombre1.BackColor = Color.White;
+                    BouttonNombre2.BackColor = Color.White;
+                    BouttonNombre3.BackColor = Color.White;
+                    BouttonNombre4.BackColor = Color.White;
+                    ButtonNombre5.BackColor = Color.White;
+                    LastButton.BackColor = Color.Yellow;
                 }
                 if (moins == true)
                 {
@@ -263,6 +289,12 @@ namespace Mathador
                     LastButton = button1;
                     this.OperateurMoinsCount++;
                     moins = false;
+                    BouttonNombre1.BackColor = Color.White;
+                    BouttonNombre2.BackColor = Color.White;
+                    BouttonNombre3.BackColor = Color.White;
+                    BouttonNombre4.BackColor = Color.White;
+                    ButtonNombre5.BackColor = Color.White;
+                    LastButton.BackColor = Color.Yellow;
                 }
                 if (div == true )
                 {
@@ -275,6 +307,12 @@ namespace Mathador
                         LastButton = button1;
                         this.OperateurDivCount++;
                         div = false;
+                        BouttonNombre1.BackColor = Color.White;
+                        BouttonNombre2.BackColor = Color.White;
+                        BouttonNombre3.BackColor = Color.White;
+                        BouttonNombre4.BackColor = Color.White;
+                        ButtonNombre5.BackColor = Color.White;
+                        LastButton.BackColor = Color.Yellow;
                     }
                     else
                     {
@@ -292,6 +330,12 @@ namespace Mathador
                     LastButton = button1;
                     this.OperateurFoisCount++;
                     fois = false;
+                    BouttonNombre1.BackColor = Color.White;
+                    BouttonNombre2.BackColor = Color.White;
+                    BouttonNombre3.BackColor = Color.White;
+                    BouttonNombre4.BackColor = Color.White;
+                    ButtonNombre5.BackColor = Color.White;
+                    LastButton.BackColor = Color.Yellow;
                 }
                 PremierNombreSelectione = false;
                 round++;
@@ -348,6 +392,7 @@ namespace Mathador
             {
                 Generator();
             }
+            SuivantNow = true;
         }
 
 
@@ -355,17 +400,33 @@ namespace Mathador
 
         private void BouttonNombre3_Click(object sender, EventArgs e)
         {
-            Calcule(BouttonNombre3);
+            if (BouttonNombre3.Text != "")
+            {
+                Calcule(BouttonNombre3);
+                LastButton = BouttonNombre3;
+                LastButton.BackColor = Color.Yellow;
+            }
         }
 
         private void BouttonNombre4_Click(object sender, EventArgs e)
         {
-            Calcule(BouttonNombre4);
+            if (BouttonNombre4.Text != "")
+            {
+                Calcule(BouttonNombre4);
+                LastButton = BouttonNombre4;
+                LastButton.BackColor = Color.Yellow;
+            }
         }
 
         private void ButtonNombre5_Click(object sender, EventArgs e)
         {
-            Calcule(ButtonNombre5);
+            if (ButtonNombre5.Text != "")
+            {
+                Calcule(ButtonNombre5);
+                LastButton = ButtonNombre5;
+                LastButton.BackColor = Color.Yellow;
+            }
+            
         }
 
         private void ButtonMoins_Click(object sender, EventArgs e)
@@ -397,33 +458,45 @@ namespace Mathador
 
         private void ButtonSuivant_Click(object sender, EventArgs e)
         {
+            round += 1;
             if (!Terminer)
             {
-                if (LastButton.Text == NombreCible.Text)
+                if (SuivantNow)
                 {
-                    
+                    Generer();
+                }else{
 
-                    TextAffichageScore.Text = ScoreRound.ToString();
-
-                    SaveOperateurDivCount = OperateurDivCount;
-                    SaveOperateurFoisCount = OperateurFoisCount;
-                    SaveOperateurMoinsCount = OperateurMoinsCount;
-                    SaveOperateurPlusCount = OperateurPlusCount;
-                    SaveScoreManche = ScoreManche;
-                    //nb de round
-                    if (OperateurDivCount == 1 && OperateurFoisCount ==1 && OperateurMoinsCount == 1 && OperateurPlusCount ==1)
+                    if (LastButton.Text == NombreCible.Text)
                     {
-                        MessageBox.Show("Super ! Mathador ! \n Vous avez utilisé : \n" + "/n Votre Score est de : " + TextAffichageScore.Text);
+
+
+                        TextAffichageScore.Text = ScoreRound.ToString();
+
+                        SaveOperateurDivCount = OperateurDivCount;
+                        SaveOperateurFoisCount = OperateurFoisCount;
+                        SaveOperateurMoinsCount = OperateurMoinsCount;
+                        SaveOperateurPlusCount = OperateurPlusCount;
+                        SaveScoreManche = ScoreManche;
+                        //nb de round
+                        if (OperateurDivCount == 1 && OperateurFoisCount == 1 && OperateurMoinsCount == 1 && OperateurPlusCount == 1)
+                        {
+                            MessageBox.Show("Super ! Mathador ! \n Vous avez utilisé : \n" + "/n Votre Score est de : " + TextAffichageScore.Text);
+                            reset();
+                            Generer();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Bien Joué \n Vous avez utilisé : \n" + this.OperateurPlusCount + " fois le + \n" + this.OperateurMoinsCount + " fois le - \n" + this.OperateurFoisCount + " fois le * \n" + this.OperateurDivCount + " fois le / \n" + TextTimer.Text + "/n Votre Score est de : " + TextAffichageScore.Text);
+                            reset();
+                            Generer();
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Bien Joué \n Vous avez utilisé : \n" + this.OperateurPlusCount + " fois le + \n" + this.OperateurMoinsCount + " fois le - \n" + this.OperateurFoisCount + " fois le * \n" + this.OperateurDivCount + " fois le / \n" + TextTimer.Text + "/n Votre Score est de : " + TextAffichageScore.Text);
+                        MessageBox.Show("Perdu" + this.OperateurPlusCount + " " + this.OperateurMoinsCount + " " + this.OperateurFoisCount + " " + this.OperateurDivCount + " " + TextTimer.Text);
+                        reset();
+                        Generer();
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Perdu" + this.OperateurPlusCount + " " + this.OperateurMoinsCount + " " + this.OperateurFoisCount + " " + this.OperateurDivCount + " " + TextTimer.Text);
-
                 }
             }
         }
@@ -450,12 +523,20 @@ namespace Mathador
             TextTimer.Text = timeSinceStartTime.ToString();
             if (timeSinceStartTime.Minutes == 01)
             {
-                
+                buttonTerminer.Show();
+                ButtonSuivant.Hide();
                 mess = true;
-                Message();
-                timeSinceStartTime = DateTime.Now - _startTime;
-                timer1.Stop();
-                reset();
+                if(mess){
+                    k++;
+                }
+                if (i == k)
+                {
+
+                    Message();
+                }
+                //timeSinceStartTime = DateTime.Now - _startTime;
+                
+                //reset();
             }
       
         }
@@ -465,27 +546,20 @@ namespace Mathador
 
         }
 
-        private void buttonSoluces_Click(object sender, EventArgs e)
+        private void buttonTerminer_Click(object sender, EventArgs e)
         {
-
-
-
-            Solveur Solv = new Solveur();
-            Solv.TabSigne();
-            Solv.SolvOneOp();
-            Solv.SolvTowOp();
-            Solv.SolvTrheeOp();
-            Solv.SolvfourOp();
-
-            foreach (string Item in Solveur.solutions)
-            {
-                listBoxSoluces.Items.Add(Item);
-            }
+            
+            this.Hide();
+            ScoreFinDePartie form = new ScoreFinDePartie(SaveOperateurDivCount, SaveOperateurFoisCount, SaveOperateurMoinsCount, SaveOperateurPlusCount, SaveScoreManche, round);
+            form.ShowDialog();
         }
 
-        private void listBoxSoluces_SelectedIndexChanged(object sender, EventArgs e)
+        private void buttonSoluces_Click(object sender, EventArgs e)
         {
+            Solutions solutionsForm = new Solutions();                                                      //On appel le form qui contient les listbox des solutions
+            solutionsForm.ShowDialog();
             
         }
     }
+
 }
