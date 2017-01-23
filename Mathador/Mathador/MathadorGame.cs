@@ -548,10 +548,24 @@ namespace Mathador
 
         private void buttonTerminer_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             
             this.Hide();
             ScoreFinDePartie form = new ScoreFinDePartie(SaveOperateurDivCount, SaveOperateurFoisCount, SaveOperateurMoinsCount, SaveOperateurPlusCount, SaveScoreManche, round);
             form.ShowDialog();
+=======
+            Solveur Solv = new Solveur();
+            Solv.TabSigne();
+            Solv.SolvOneOp();
+            Solv.SolvTowOp();
+            Solv.SolvTrheeOp();
+            Solv.SolvfourOp();
+
+            foreach (string Item in Solveur.solutions)
+            {
+                listBoxSoluces.Items.Add(Item);
+            }
+>>>>>>> origin/develop
         }
 
       }
