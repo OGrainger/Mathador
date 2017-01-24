@@ -58,13 +58,13 @@ namespace Mathador
 
             labelAveragePointsPerRound.Text = averagePointsPerRound.ToString();
             labelAverageScore.Text = averageScore.ToString();
-            labelAverageTimePerRound.Text = averageTimePerRound.ToString();
+            labelAverageTimePerRound.Text = averageTimePerRound.ToString() + "s";
             labelGameCount.Text = gameCount.ToString();
             labelRoundCount.Text = roundCount.ToString();
             labelScoreMin.Text = Convert.ToString(data["minScore"]);
             labelScoreMaxi.Text = Convert.ToString(data["maxScore"]);
             labelTotalScore.Text = totalScorePoints.ToString();
-            labelTotalTime.Text = totalGameTimeInSeconds.ToString();
+            labelTotalTime.Text = totalGameTimeInSeconds.ToString() + "s";
 
             pieChartOp.Series["Series1"].Points.AddXY("+ ("+ Math.Round(averageUseOfAdd, 3, MidpointRounding.AwayFromZero) * 100 +"%)", averageUseOfAdd);
             pieChartOp.Series["Series1"].Points.AddXY("- (" + Math.Round(averageUseOfSub, 3, MidpointRounding.AwayFromZero) * 100 + "%)", averageUseOfSub);
