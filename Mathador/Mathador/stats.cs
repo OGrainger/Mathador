@@ -56,6 +56,16 @@ namespace Mathador
             averageUseOfMult = Convert.ToSingle(data["multCount"]) / useOfAllOp;
             averageUseOfDiv = Convert.ToSingle(data["divCount"]) / useOfAllOp;
 
+            labelAveragePointsPerRound.Text = averagePointsPerRound.ToString();
+            labelAverageScore.Text = averageScore.ToString();
+            labelAverageTimePerRound.Text = averageTimePerRound.ToString();
+            labelGameCount.Text = gameCount.ToString();
+            labelRoundCount.Text = roundCount.ToString();
+            labelScoreMin.Text = Convert.ToString(data["minScore"]);
+            labelScoreMaxi.Text = Convert.ToString(data["maxScore"]);
+            labelTotalScore.Text = totalScorePoints.ToString();
+            labelTotalTime.Text = totalGameTimeInSeconds.ToString();
+
             pieChartOp.Series["Series1"].Points.AddXY("+ ("+ Math.Round(averageUseOfAdd, 3, MidpointRounding.AwayFromZero) * 100 +"%)", averageUseOfAdd);
             pieChartOp.Series["Series1"].Points.AddXY("- (" + Math.Round(averageUseOfSub, 3, MidpointRounding.AwayFromZero) * 100 + "%)", averageUseOfSub);
             pieChartOp.Series["Series1"].Points.AddXY(" x ("+ Math.Round(averageUseOfMult, 3, MidpointRounding.AwayFromZero) * 100 +" %)", averageUseOfMult);
@@ -68,10 +78,6 @@ namespace Mathador
             MenuMathador form = new MenuMathador(Pseudo, gameCount);
             form.ShowDialog();
         }
-
-        private void stat1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
