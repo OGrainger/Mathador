@@ -36,9 +36,10 @@ namespace Mathador
 
         private void buttonTerminer_Click(object sender, EventArgs e)
         {
-
-            MathadorGame Game = new MathadorGame("x");
-            Game.methsuivant();
+            this.Hide();
+            MathadorGame frm = Application.OpenForms.OfType<MathadorGame>().FirstOrDefault();
+            if (frm != null)
+                frm.methsuivant();
         }
     }
 }

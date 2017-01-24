@@ -32,9 +32,6 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.buttonRetour = new System.Windows.Forms.Button();
             this.pieChartOp = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.labelScoreMin = new System.Windows.Forms.Label();
@@ -46,9 +43,7 @@
             this.labelRoundCount = new System.Windows.Forms.Label();
             this.labelAveragePointsPerRound = new System.Windows.Forms.Label();
             this.labelAverageTimePerRound = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.pieChartOp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRetour
@@ -168,32 +163,12 @@
             this.labelAverageTimePerRound.TabIndex = 4;
             this.labelAverageTimePerRound.Text = "Temps moyen par manche : XXs";
             // 
-            // chart1
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(98, 254);
-            this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.RangeBar;
-            series2.CustomProperties = "DrawingStyle=Wedge";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            series2.YValuesPerPoint = 4;
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(178, 99);
-            this.chart1.TabIndex = 5;
-            this.chart1.Text = "chart1";
-            // 
             // stats
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(577, 382);
-            this.Controls.Add(this.chart1);
             this.Controls.Add(this.labelAverageTimePerRound);
             this.Controls.Add(this.labelAveragePointsPerRound);
             this.Controls.Add(this.labelRoundCount);
@@ -209,7 +184,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Statistiques";
             ((System.ComponentModel.ISupportInitialize)(this.pieChartOp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,6 +201,5 @@
         private System.Windows.Forms.Label labelRoundCount;
         private System.Windows.Forms.Label labelAveragePointsPerRound;
         private System.Windows.Forms.Label labelAverageTimePerRound;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

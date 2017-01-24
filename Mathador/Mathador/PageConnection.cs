@@ -18,8 +18,6 @@ namespace Mathador
         public string Pseudo;
         int gameCount;
 
-        
-
         public PageConnection()
         {
             InitializeComponent();

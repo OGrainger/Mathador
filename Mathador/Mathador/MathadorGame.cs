@@ -522,7 +522,6 @@ namespace Mathador
 
         private void ButtonSuivant_Click(object sender, EventArgs e)
         {
-
             methsuivant();
         }
 
