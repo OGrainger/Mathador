@@ -255,6 +255,7 @@
             // 
             // buttonSoluces
             // 
+            this.buttonSoluces.Enabled = false;
             this.buttonSoluces.Location = new System.Drawing.Point(309, 328);
             this.buttonSoluces.Name = "buttonSoluces";
             this.buttonSoluces.Size = new System.Drawing.Size(75, 23);

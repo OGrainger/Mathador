@@ -29,21 +29,33 @@
         private void InitializeComponent()
         {
             this.listBoxSolutions = new System.Windows.Forms.ListBox();
+            this.buttonTerminer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxSolutions
             // 
             this.listBoxSolutions.FormattingEnabled = true;
-            this.listBoxSolutions.Location = new System.Drawing.Point(-2, 0);
+            this.listBoxSolutions.Location = new System.Drawing.Point(12, 0);
             this.listBoxSolutions.Name = "listBoxSolutions";
-            this.listBoxSolutions.Size = new System.Drawing.Size(592, 485);
+            this.listBoxSolutions.Size = new System.Drawing.Size(595, 485);
             this.listBoxSolutions.TabIndex = 0;
+            // 
+            // buttonTerminer
+            // 
+            this.buttonTerminer.Location = new System.Drawing.Point(505, 491);
+            this.buttonTerminer.Name = "buttonTerminer";
+            this.buttonTerminer.Size = new System.Drawing.Size(75, 23);
+            this.buttonTerminer.TabIndex = 1;
+            this.buttonTerminer.Text = "Terminer";
+            this.buttonTerminer.UseVisualStyleBackColor = true;
+            this.buttonTerminer.Click += new System.EventHandler(this.buttonTerminer_Click);
             // 
             // Solutions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 493);
+            this.ClientSize = new System.Drawing.Size(621, 522);
+            this.Controls.Add(this.buttonTerminer);
             this.Controls.Add(this.listBoxSolutions);
             this.Name = "Solutions";
             this.Text = "Solutions";
@@ -55,5 +67,6 @@
         #endregion
 
         private System.Windows.Forms.ListBox listBoxSolutions;
+        private System.Windows.Forms.Button buttonTerminer;
     }
 }

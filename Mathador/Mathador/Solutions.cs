@@ -33,5 +33,12 @@ namespace Mathador
                 listBoxSolutions.Items.Add(Item);
             }
         }
+
+        private void buttonTerminer_Click(object sender, EventArgs e)
+        {
+
+            MathadorGame Game = new MathadorGame("x");
+            Game.methsuivant();
+        }
     }
 }

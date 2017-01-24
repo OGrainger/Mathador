@@ -37,7 +37,7 @@ namespace Mathador
         public bool div = false;
         public bool fois = false;
         public bool moins = false;
-        public int round = 0;
+        public static int round = 0;
         public int ScoreRound;
         public static int cible;
         Button button2;
@@ -47,6 +47,7 @@ namespace Mathador
         public int k = 0;
         public Boolean mess = false;
         public Boolean SuivantNow = true;
+        public string pseudo;
 
         public static Random random = new Random();
 
@@ -75,7 +76,8 @@ namespace Mathador
         public MathadorGame(String Pseudo)
         {
             InitializeComponent();
-            TextPseudo.Text = Pseudo;
+            pseudo = Pseudo;
+            /*TextPseudo.Text = Pseudo;
             MessageBox.Show("Etes vous pret "+ Pseudo + " ?",
             "Message",
             MessageBoxButtons.OK,
@@ -92,13 +94,30 @@ namespace Mathador
             _timer.Tick += new EventHandler(_timer1_Tick);
 
             Generer();
-            TimerInit();
+            TimerInit();*/
 
         }
         
         private void MathadorGame_Load(object sender, EventArgs e)
         {
+            TextPseudo.Text = pseudo;
+            MessageBox.Show("Etes vous pret " + pseudo + " ?",
+            "Message",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Exclamation,
+            MessageBoxDefaultButton.Button1);
 
+            LastButton = BouttonNombre1;
+            LastButton.BackColor = Color.Yellow;
+
+            buttonTerminer.Hide();
+            // Set up a timer and fire the Tick event once per second (1000 ms)
+            _timer = new Timer();
+            _timer.Interval = 1000;
+            _timer.Tick += new EventHandler(_timer1_Tick);
+
+            Generer();
+            TimerInit();
         }
 
         public void TimerInit()
@@ -263,6 +282,7 @@ namespace Mathador
            
             if (PremierNombreSelectione == true)
             {
+                buttonSoluces.Enabled = true;
                 if (plus == true)
                 {
                     resultat = resultat + Int32.Parse(button1.Text);
@@ -395,7 +415,51 @@ namespace Mathador
             SuivantNow = true;
         }
 
+        public void methsuivant()
+        {
+            buttonSoluces.Enabled = false;
+            round += 1;
+            if (!Terminer)
+            {
+                if (SuivantNow)
+                {
+                    Generer();
+                }
+                else
+                {
+                    if (LastButton.Text == NombreCible.Text)
+                    {
 
+
+                        TextAffichageScore.Text = ScoreRound.ToString();
+
+                        SaveOperateurDivCount = OperateurDivCount;
+                        SaveOperateurFoisCount = OperateurFoisCount;
+                        SaveOperateurMoinsCount = OperateurMoinsCount;
+                        SaveOperateurPlusCount = OperateurPlusCount;
+                        SaveScoreManche = ScoreManche;
+                        if (OperateurDivCount == 1 && OperateurFoisCount == 1 && OperateurMoinsCount == 1 && OperateurPlusCount == 1)
+                        {
+                            MessageBox.Show("Super ! Mathador ! \n Vous avez utilisé : \n" + "/n Votre Score est de : " + TextAffichageScore.Text);
+                            reset();
+                            Generer();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Bien Joué \n Vous avez utilisé : \n" + this.OperateurPlusCount + " fois le + \n" + this.OperateurMoinsCount + " fois le - \n" + this.OperateurFoisCount + " fois le * \n" + this.OperateurDivCount + " fois le / \n" + TextTimer.Text + "/n Votre Score est de : " + TextAffichageScore.Text);
+                            reset();
+                            Generer();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Perdu" + this.OperateurPlusCount + " " + this.OperateurMoinsCount + " " + this.OperateurFoisCount + " " + this.OperateurDivCount + " " + TextTimer.Text);
+                        reset();
+                        Generer();
+                    }
+                }
+            }
+        }
 
 
         private void BouttonNombre3_Click(object sender, EventArgs e)
@@ -458,47 +522,8 @@ namespace Mathador
 
         private void ButtonSuivant_Click(object sender, EventArgs e)
         {
-            round += 1;
-            if (!Terminer)
-            {
-                if (SuivantNow)
-                {
-                    Generer();
-                }else{
 
-                    if (LastButton.Text == NombreCible.Text)
-                    {
-
-
-                        TextAffichageScore.Text = ScoreRound.ToString();
-
-                        SaveOperateurDivCount = OperateurDivCount;
-                        SaveOperateurFoisCount = OperateurFoisCount;
-                        SaveOperateurMoinsCount = OperateurMoinsCount;
-                        SaveOperateurPlusCount = OperateurPlusCount;
-                        SaveScoreManche = ScoreManche;
-                        //nb de round
-                        if (OperateurDivCount == 1 && OperateurFoisCount == 1 && OperateurMoinsCount == 1 && OperateurPlusCount == 1)
-                        {
-                            MessageBox.Show("Super ! Mathador ! \n Vous avez utilisé : \n" + "/n Votre Score est de : " + TextAffichageScore.Text);
-                            reset();
-                            Generer();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Bien Joué \n Vous avez utilisé : \n" + this.OperateurPlusCount + " fois le + \n" + this.OperateurMoinsCount + " fois le - \n" + this.OperateurFoisCount + " fois le * \n" + this.OperateurDivCount + " fois le / \n" + TextTimer.Text + "/n Votre Score est de : " + TextAffichageScore.Text);
-                            reset();
-                            Generer();
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Perdu" + this.OperateurPlusCount + " " + this.OperateurMoinsCount + " " + this.OperateurFoisCount + " " + this.OperateurDivCount + " " + TextTimer.Text);
-                        reset();
-                        Generer();
-                    }
-                }
-            }
+            methsuivant();
         }
 
         private void ButtonRetour_Click(object sender, EventArgs e)
