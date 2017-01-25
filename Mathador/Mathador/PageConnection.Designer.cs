@@ -34,7 +34,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxMDP = new System.Windows.Forms.TextBox();
             this.buttonValiderConnection = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.newUser = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.quit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -93,17 +93,17 @@
             this.buttonValiderConnection.UseVisualStyleBackColor = true;
             this.buttonValiderConnection.Click += new System.EventHandler(this.buttonValiderConnection_Click);
             // 
-            // button1
+            // newUser
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(312, 133);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(255, 30);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Nouvel utilisateur";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.newUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.newUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newUser.Location = new System.Drawing.Point(312, 133);
+            this.newUser.Name = "newUser";
+            this.newUser.Size = new System.Drawing.Size(255, 30);
+            this.newUser.TabIndex = 8;
+            this.newUser.Text = "Nouvel utilisateur";
+            this.newUser.UseVisualStyleBackColor = true;
+            this.newUser.Click += new System.EventHandler(this.quit_Click);
             // 
             // pictureBox1
             // 
@@ -135,7 +135,7 @@
             this.ClientSize = new System.Drawing.Size(577, 207);
             this.Controls.Add(this.quit);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.newUser);
             this.Controls.Add(this.buttonValiderConnection);
             this.Controls.Add(this.textBoxMDP);
             this.Controls.Add(this.label3);
@@ -160,7 +160,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxMDP;
         private System.Windows.Forms.Button buttonValiderConnection;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button newUser;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button quit;
     }

@@ -23,6 +23,9 @@ namespace Mathador
             InitializeComponent();
             db.LaunchDatabase();
             ErreurPseudo.Text = "";
+            AcceptButton = buttonValiderConnection;
+            CancelButton = quit;
+            
         }
 
         private void buttonValiderConnection_Click(object sender, EventArgs e)
@@ -48,7 +51,7 @@ namespace Mathador
                 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void newUser_click(object sender, EventArgs e)
         {
             this.Hide();
             PageCreationUser form = new PageCreationUser();

@@ -168,9 +168,9 @@
             // 
             // ButtonSuivant
             // 
-            this.ButtonSuivant.Location = new System.Drawing.Point(388, 38);
+            this.ButtonSuivant.Location = new System.Drawing.Point(477, 12);
             this.ButtonSuivant.Name = "ButtonSuivant";
-            this.ButtonSuivant.Size = new System.Drawing.Size(75, 23);
+            this.ButtonSuivant.Size = new System.Drawing.Size(75, 30);
             this.ButtonSuivant.TabIndex = 11;
             this.ButtonSuivant.Text = "Suivant";
             this.ButtonSuivant.UseVisualStyleBackColor = true;
@@ -178,9 +178,9 @@
             // 
             // ButtonRetour
             // 
-            this.ButtonRetour.Location = new System.Drawing.Point(22, 38);
+            this.ButtonRetour.Location = new System.Drawing.Point(9, 74);
             this.ButtonRetour.Name = "ButtonRetour";
-            this.ButtonRetour.Size = new System.Drawing.Size(75, 23);
+            this.ButtonRetour.Size = new System.Drawing.Size(75, 30);
             this.ButtonRetour.TabIndex = 12;
             this.ButtonRetour.Text = "Retour";
             this.ButtonRetour.UseVisualStyleBackColor = true;
@@ -247,9 +247,9 @@
             // 
             // buttonTerminer
             // 
-            this.buttonTerminer.Location = new System.Drawing.Point(388, 67);
+            this.buttonTerminer.Location = new System.Drawing.Point(477, 48);
             this.buttonTerminer.Name = "buttonTerminer";
-            this.buttonTerminer.Size = new System.Drawing.Size(75, 23);
+            this.buttonTerminer.Size = new System.Drawing.Size(75, 30);
             this.buttonTerminer.TabIndex = 19;
             this.buttonTerminer.Text = "Terminer";
             this.buttonTerminer.UseVisualStyleBackColor = true;
@@ -258,9 +258,9 @@
             // buttonSoluces
             // 
             this.buttonSoluces.Enabled = false;
-            this.buttonSoluces.Location = new System.Drawing.Point(388, 96);
+            this.buttonSoluces.Location = new System.Drawing.Point(477, 84);
             this.buttonSoluces.Name = "buttonSoluces";
-            this.buttonSoluces.Size = new System.Drawing.Size(75, 23);
+            this.buttonSoluces.Size = new System.Drawing.Size(75, 30);
             this.buttonSoluces.TabIndex = 21;
             this.buttonSoluces.Text = "Solutions";
             this.buttonSoluces.Click += new System.EventHandler(this.buttonSoluces_Click);
@@ -278,11 +278,11 @@
             this.tableLayoutPanel1.Controls.Add(this.BouttonNombre3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.BouttonNombre4, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.ButtonNombre5, 4, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(103, 38);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(144, 59);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(279, 56);
             this.tableLayoutPanel1.TabIndex = 22;
             // 
@@ -297,7 +297,7 @@
             this.tableLayoutPanel2.Controls.Add(this.ButtonMoins, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.ButtonFois, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.ButtonDiv, 3, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(129, 100);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(170, 121);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -309,7 +309,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(472, 164);
+            this.ClientSize = new System.Drawing.Size(577, 207);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.buttonTerminer);

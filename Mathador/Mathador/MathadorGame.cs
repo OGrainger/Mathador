@@ -116,6 +116,8 @@ namespace Mathador
             _timer.Interval = 1000;
             _timer.Tick += new EventHandler(_timer1_Tick);
 
+
+            Generator();
             Generer();
             TimerInit();
         }
@@ -154,15 +156,10 @@ namespace Mathador
 
         public void Generer()
         {
-           
-
-            Generator();
-
-            string text = System.IO.File.ReadAllText("Gene.db");
+            string text = System.IO.File.ReadAllText("generation.txt");
             
             data json = JsonConvert.DeserializeObject<data>(text);
-           //Console.WriteLine("Cible: {0}, Nombre1: {1}", datatest.Cible, datatest.Nombre1);
-
+            Console.WriteLine("Cible: {0}", json.Cible);
 
             cible = json.Cible;
             NombreCible.Text = cible.ToString();
@@ -178,11 +175,6 @@ namespace Mathador
             BouttonNombre3.Text = tableau[2].ToString();
             BouttonNombre4.Text = tableau[3].ToString();
             ButtonNombre5.Text = tableau[4].ToString();
-        }
-        private void ButtonTestGenerer_Click(object sender, EventArgs e)
-        {
-           
-
         }
 
         private void BouttonNombre1_Click(object sender, EventArgs e)
@@ -379,34 +371,29 @@ namespace Mathador
 
         public void Generator()
         {
-            int nb1, nb2, nb3, nb4, nb5, cible;
-            
+            int nb1, nb2, nb3, nb4, nb5;
+            float cible;
+
             nb1 = random.Next(1, 20);
             nb2 = random.Next(1, 20);
             nb3 = random.Next(1, 12);
             nb4 = random.Next(1, 12);
             nb5 = random.Next(1, 12);
 
-            cible = nb1 + nb2 - nb3 * nb4 / nb5;
+            cible = (((Convert.ToSingle(nb1) + Convert.ToSingle(nb2)) - Convert.ToSingle(nb3)) * Convert.ToSingle(nb4)) / Convert.ToSingle(nb5);
 
-            if (cible > 0)
+            if (cible  > 0 && cible % 1 == 0 && nb4 != nb5)
             {
                 data datatest = new data();
 
-                datatest.Cible = cible;
+                datatest.Cible = Convert.ToInt32(cible);
                 datatest.Nombre1 = nb1;
                 datatest.Nombre2 = nb2;
                 datatest.Nombre3 = nb3;
                 datatest.Nombre4 = nb4;
                 datatest.Nombre5 = nb5;
-
-
-
-
-
                 string json = JsonConvert.SerializeObject(datatest);
-
-                System.IO.File.WriteAllText("Gene.db", json);
+                System.IO.File.WriteAllText("generation.txt", json);
             }
             else
             {
@@ -429,7 +416,6 @@ namespace Mathador
                 {
                     if (LastButton.Text == NombreCible.Text)
                     {
-
 
                         TextAffichageScore.Text = ScoreRound.ToString();
 

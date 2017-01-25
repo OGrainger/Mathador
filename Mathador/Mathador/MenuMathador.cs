@@ -21,6 +21,8 @@ namespace Mathador
             BienvenuePseudo.Text = "Bienvenue " + Pseudo + " !";
             this.Pseudo = Pseudo;
             buttonStats.Enabled = gameCount > 0;
+            AcceptButton = BouttonNouvellePartie;
+            CancelButton = BouttonQuitter;
         }
 
 
