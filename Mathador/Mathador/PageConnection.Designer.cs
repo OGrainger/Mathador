@@ -1,6 +1,6 @@
 ﻿namespace Mathador
 {
-    partial class PageConnection
+    partial class PageConnexion
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,7 @@
             this.ErreurPseudo = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxMDP = new System.Windows.Forms.TextBox();
-            this.buttonValiderConnection = new System.Windows.Forms.Button();
+            this.buttonValiderConnexion = new System.Windows.Forms.Button();
             this.newUser = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.quit = new System.Windows.Forms.Button();
@@ -82,16 +82,16 @@
             this.textBoxMDP.TabIndex = 6;
             this.textBoxMDP.UseSystemPasswordChar = true;
             // 
-            // buttonValiderConnection
+            // buttonValiderConnexion
             // 
-            this.buttonValiderConnection.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonValiderConnection.Location = new System.Drawing.Point(312, 97);
-            this.buttonValiderConnection.Name = "buttonValiderConnection";
-            this.buttonValiderConnection.Size = new System.Drawing.Size(255, 30);
-            this.buttonValiderConnection.TabIndex = 7;
-            this.buttonValiderConnection.Text = "Connexion";
-            this.buttonValiderConnection.UseVisualStyleBackColor = true;
-            this.buttonValiderConnection.Click += new System.EventHandler(this.buttonValiderConnection_Click);
+            this.buttonValiderConnexion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonValiderConnexion.Location = new System.Drawing.Point(312, 97);
+            this.buttonValiderConnexion.Name = "buttonValiderConnexion";
+            this.buttonValiderConnexion.Size = new System.Drawing.Size(255, 30);
+            this.buttonValiderConnexion.TabIndex = 7;
+            this.buttonValiderConnexion.Text = "Connexion";
+            this.buttonValiderConnexion.UseVisualStyleBackColor = true;
+            this.buttonValiderConnexion.Click += new System.EventHandler(this.buttonValiderConnexion_Click);
             // 
             // newUser
             // 
@@ -127,7 +127,7 @@
             this.quit.UseVisualStyleBackColor = true;
             this.quit.Click += new System.EventHandler(this.quit_Click);
             // 
-            // PageConnection
+            // PageConnexion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -136,14 +136,14 @@
             this.Controls.Add(this.quit);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.newUser);
-            this.Controls.Add(this.buttonValiderConnection);
+            this.Controls.Add(this.buttonValiderConnexion);
             this.Controls.Add(this.textBoxMDP);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.ErreurPseudo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxPseudo);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Name = "PageConnection";
+            this.Name = "PageConnexion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Connexion";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -159,7 +159,7 @@
         private System.Windows.Forms.Label ErreurPseudo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxMDP;
-        private System.Windows.Forms.Button buttonValiderConnection;
+        private System.Windows.Forms.Button buttonValiderConnexion;
         private System.Windows.Forms.Button newUser;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button quit;

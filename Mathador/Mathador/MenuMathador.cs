@@ -49,7 +49,7 @@ namespace Mathador
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            PageConnection form = new PageConnection();
+            PageConnexion form = new PageConnexion();
             form.ShowDialog();
         }
 

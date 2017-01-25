@@ -53,7 +53,7 @@ namespace Mathador
         private void retour_Click(object sender, EventArgs e)
         {
             this.Hide();
-            PageConnection form = new PageConnection();
+            PageConnexion form = new PageConnexion();
             form.ShowDialog();
         }
     }

@@ -115,7 +115,7 @@
             this.Controls.Add(this.BouttonNouvellePartie);
             this.Name = "MenuMathador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PageConnection";
+            this.Text = "PageConnexion";
             this.Load += new System.EventHandler(this.MenuMathador_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
