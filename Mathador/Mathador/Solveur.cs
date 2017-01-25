@@ -661,16 +661,20 @@ namespace Mathador
 
             
             int tailleScore = scores.Count;
-            string json = "[";
+            string json = "{\n";
             for (i = 0; i < tailleScore; i++)
             {
                 Solution sol = new Solution();
                 sol.score = scores[i];
+                json += "  [\n  score : ";
+                json += JsonConvert.SerializeObject(sol.score);
+                json += "\n";
                 sol.equations = equations[i];
-                json+= JsonConvert.SerializeObject(sol);
-                json += ",\n";
+                json += "    equation : ";
+                json += JsonConvert.SerializeObject(sol.equations);
+                json += "\n  ]\n";
             }
-            json += "]";
+            json += "}";
             Console.WriteLine(json);
         }
     }
