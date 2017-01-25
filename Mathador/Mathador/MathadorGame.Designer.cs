@@ -52,6 +52,7 @@
             this.buttonSoluces = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +60,7 @@
             // BouttonNombre1
             // 
             this.BouttonNombre1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BouttonNombre1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BouttonNombre1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BouttonNombre1.Location = new System.Drawing.Point(3, 3);
             this.BouttonNombre1.Name = "BouttonNombre1";
             this.BouttonNombre1.Size = new System.Drawing.Size(49, 50);
@@ -70,7 +71,7 @@
             // BouttonNombre2
             // 
             this.BouttonNombre2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BouttonNombre2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BouttonNombre2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BouttonNombre2.Location = new System.Drawing.Point(58, 3);
             this.BouttonNombre2.Name = "BouttonNombre2";
             this.BouttonNombre2.Size = new System.Drawing.Size(49, 50);
@@ -81,7 +82,7 @@
             // BouttonNombre3
             // 
             this.BouttonNombre3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BouttonNombre3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BouttonNombre3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BouttonNombre3.Location = new System.Drawing.Point(113, 3);
             this.BouttonNombre3.Name = "BouttonNombre3";
             this.BouttonNombre3.Size = new System.Drawing.Size(49, 50);
@@ -92,7 +93,7 @@
             // BouttonNombre4
             // 
             this.BouttonNombre4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BouttonNombre4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BouttonNombre4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BouttonNombre4.Location = new System.Drawing.Point(168, 3);
             this.BouttonNombre4.Name = "BouttonNombre4";
             this.BouttonNombre4.Size = new System.Drawing.Size(49, 50);
@@ -103,7 +104,7 @@
             // ButtonNombre5
             // 
             this.ButtonNombre5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ButtonNombre5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonNombre5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonNombre5.Location = new System.Drawing.Point(223, 3);
             this.ButtonNombre5.Name = "ButtonNombre5";
             this.ButtonNombre5.Size = new System.Drawing.Size(50, 50);
@@ -114,7 +115,7 @@
             // NombreCible
             // 
             this.NombreCible.AutoSize = true;
-            this.NombreCible.Location = new System.Drawing.Point(271, 22);
+            this.NombreCible.Location = new System.Drawing.Point(268, 29);
             this.NombreCible.Name = "NombreCible";
             this.NombreCible.Size = new System.Drawing.Size(13, 13);
             this.NombreCible.TabIndex = 5;
@@ -123,7 +124,7 @@
             // TextCible
             // 
             this.TextCible.AutoSize = true;
-            this.TextCible.Location = new System.Drawing.Point(229, 22);
+            this.TextCible.Location = new System.Drawing.Point(226, 29);
             this.TextCible.Name = "TextCible";
             this.TextCible.Size = new System.Drawing.Size(36, 13);
             this.TextCible.TabIndex = 6;
@@ -132,7 +133,7 @@
             // TextTimer
             // 
             this.TextTimer.AutoSize = true;
-            this.TextTimer.Location = new System.Drawing.Point(161, 22);
+            this.TextTimer.Location = new System.Drawing.Point(152, 29);
             this.TextTimer.Name = "TextTimer";
             this.TextTimer.Size = new System.Drawing.Size(49, 13);
             this.TextTimer.TabIndex = 7;
@@ -141,17 +142,16 @@
             // TextTemps
             // 
             this.TextTemps.AutoSize = true;
-            this.TextTemps.Location = new System.Drawing.Point(110, 22);
+            this.TextTemps.Location = new System.Drawing.Point(101, 29);
             this.TextTemps.Name = "TextTemps";
             this.TextTemps.Size = new System.Drawing.Size(45, 13);
             this.TextTemps.TabIndex = 8;
             this.TextTemps.Text = "Temps :";
-            this.TextTemps.Click += new System.EventHandler(this.TextTemps_Click);
             // 
             // TextAffichageScore
             // 
             this.TextAffichageScore.AutoSize = true;
-            this.TextAffichageScore.Location = new System.Drawing.Point(344, 22);
+            this.TextAffichageScore.Location = new System.Drawing.Point(385, 29);
             this.TextAffichageScore.Name = "TextAffichageScore";
             this.TextAffichageScore.Size = new System.Drawing.Size(13, 13);
             this.TextAffichageScore.TabIndex = 9;
@@ -160,7 +160,7 @@
             // TextScore
             // 
             this.TextScore.AutoSize = true;
-            this.TextScore.Location = new System.Drawing.Point(297, 22);
+            this.TextScore.Location = new System.Drawing.Point(338, 29);
             this.TextScore.Name = "TextScore";
             this.TextScore.Size = new System.Drawing.Size(41, 13);
             this.TextScore.TabIndex = 10;
@@ -305,11 +305,22 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(224, 56);
             this.tableLayoutPanel2.TabIndex = 23;
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(13, 185);
+            this.progressBar.Maximum = 180;
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(552, 10);
+            this.progressBar.Step = 1;
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar.TabIndex = 24;
+            // 
             // MathadorGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(577, 207);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.buttonTerminer);
@@ -361,6 +372,7 @@
         private System.Windows.Forms.Button buttonSoluces;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 

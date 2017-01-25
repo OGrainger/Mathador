@@ -69,32 +69,10 @@ namespace Mathador
         // Whether or not the timer is currently running
         private bool _timerRunning = false;
 
-       
-          
-        
-
         public MathadorGame(String Pseudo)
         {
             InitializeComponent();
-            pseudo = Pseudo;
-            /*TextPseudo.Text = Pseudo;
-            MessageBox.Show("Etes vous pret "+ Pseudo + " ?",
-            "Message",
-            MessageBoxButtons.OK,
-            MessageBoxIcon.Exclamation,
-            MessageBoxDefaultButton.Button1);
-
-            LastButton = BouttonNombre1;
-            LastButton.BackColor = Color.Yellow;
-
-            buttonTerminer.Hide();
-            // Set up a timer and fire the Tick event once per second (1000 ms)
-            _timer = new Timer();
-            _timer.Interval = 1000;
-            _timer.Tick += new EventHandler(_timer1_Tick);
-
-            Generer();
-            TimerInit();*/
+            this.pseudo = Pseudo;
 
         }
         
@@ -107,15 +85,11 @@ namespace Mathador
             MessageBoxIcon.Exclamation,
             MessageBoxDefaultButton.Button1);
 
-            LastButton = BouttonNombre1;
-            LastButton.BackColor = Color.Yellow;
-
-            buttonTerminer.Hide();
+            buttonTerminer.Enabled = false;
             // Set up a timer and fire the Tick event once per second (1000 ms)
             _timer = new Timer();
             _timer.Interval = 1000;
             _timer.Tick += new EventHandler(_timer1_Tick);
-
 
             Generator();
             Generer();
@@ -177,35 +151,7 @@ namespace Mathador
             ButtonNombre5.Text = tableau[4].ToString();
         }
 
-        private void BouttonNombre1_Click(object sender, EventArgs e)
-        {
-            if (BouttonNombre1.Text != "")
-            {
-                Calcule(BouttonNombre1);
-                LastButton = BouttonNombre1;
-                LastButton.BackColor = Color.Yellow;
-            }
-        }
-
-        private void ButtonPlus_Click(object sender, EventArgs e)
-        {
-            plus = true;
-            if (LastButton != null && PremierNombreSelectione == false)
-            {
-                Calcule(LastButton);
-            }
-        }
-
-        private void BouttonNombre2_Click(object sender, EventArgs e)
-        {
-
-            if (BouttonNombre2.Text != "")
-            {
-                Calcule(BouttonNombre2);
-                LastButton = BouttonNombre2;
-                LastButton.BackColor = Color.Yellow;
-            }
-        }
+     
 
         public void resetScore()
         {
@@ -382,7 +328,7 @@ namespace Mathador
 
             cible = (((Convert.ToSingle(nb1) + Convert.ToSingle(nb2)) - Convert.ToSingle(nb3)) * Convert.ToSingle(nb4)) / Convert.ToSingle(nb5);
 
-            if (cible  > 0 && cible % 1 == 0 && nb4 != nb5)
+            if (cible  > 0 && cible < 100 && cible % 1 == 0 && nb4 != nb5)
             {
                 data datatest = new data();
 
@@ -447,6 +393,27 @@ namespace Mathador
             }
         }
 
+        private void BouttonNombre1_Click(object sender, EventArgs e)
+        {
+            if (BouttonNombre1.Text != "")
+            {
+                Calcule(BouttonNombre1);
+                LastButton = BouttonNombre1;
+                LastButton.BackColor = Color.Yellow;
+            }
+        }
+
+        private void BouttonNombre2_Click(object sender, EventArgs e)
+        {
+
+            if (BouttonNombre2.Text != "")
+            {
+                Calcule(BouttonNombre2);
+                LastButton = BouttonNombre2;
+                LastButton.BackColor = Color.Yellow;
+            }
+        }
+
 
         private void BouttonNombre3_Click(object sender, EventArgs e)
         {
@@ -476,7 +443,15 @@ namespace Mathador
                 LastButton = ButtonNombre5;
                 LastButton.BackColor = Color.Yellow;
             }
-            
+        }
+
+        private void ButtonPlus_Click(object sender, EventArgs e)
+        {
+            plus = true;
+            if (LastButton != null && PremierNombreSelectione == false)
+            {
+                Calcule(LastButton);
+            }
         }
 
         private void ButtonMoins_Click(object sender, EventArgs e)
@@ -549,11 +524,6 @@ namespace Mathador
                 //reset();
             }
       
-        }
-
-        private void TextTemps_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonTerminer_Click(object sender, EventArgs e)
