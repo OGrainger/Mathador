@@ -32,7 +32,6 @@ namespace Mathador
             this.Hide();
             MathadorGame form = new MathadorGame(Pseudo);
             form.ShowDialog();
-            
         }
 
         private void BouttonQuitter_Click(object sender, EventArgs e)
