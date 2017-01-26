@@ -14,7 +14,7 @@ namespace Mathador
     //CheckIfUserAlreadyExists(string username) - bool
     //CheckIfPasswordMatches(string username, string password) - bool
     //GetData(string username) - dictionary(minScore, maxScore, totalScorePoints, totalGameTimeInSeconds, gameCount, roundCount, mathadorCount, addCount, subCount, multCount, divCount)
-    //UpdateData(string username, dictionary(score, gameTime, roundCount, mathadorCount, addCount, subCount, multCount, divCount))
+    //UpdateData(string username, dictionary(gameScore, gameTime, roundCount, mathadorCount, addCount, subCount, multCount, divCount))
 
     public class SQLiteDatabase
     {
@@ -132,8 +132,8 @@ namespace Mathador
                 }
             }
             SQLiteCommand commandeInsert = new SQLiteCommand(sql, connexion);
-            commandeInsert.ExecuteNonQuery();
             return;
+            commandeInsert.ExecuteNonQuery();
         }
     }
 }
