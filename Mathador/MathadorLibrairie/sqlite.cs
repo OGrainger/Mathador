@@ -32,7 +32,6 @@ namespace Mathador
             string sql = "create table if not exists users (username text, password text, minScore int, maxScore int, totalScorePoints int, totalGameTimeInSeconds int, gameCount int, roundCount int, mathadorCount int, addCount int, subCount int, multCount int, divCount int)";
             SQLiteCommand commande = new SQLiteCommand(sql, connexion);
             commande.ExecuteNonQuery();
-            Console.WriteLine("db ouverte / créée avec succès");
             return;
         }
 
@@ -40,16 +39,15 @@ namespace Mathador
         public void CloseDatabase()
         {
             connexion.Close();
-            Console.WriteLine("db fermée avec succès");
             return;
         }
 
         //Insert un nouvel utilisateur
         public void CreateANewUser(string username, string password)
         {
-            string sql = "insert into users values ('" + username + "', '" + password + "', 0, 0 ,0 ,0 ,0 ,0, 0, 0, 0, 0, 0)";
-            SQLiteCommand commandeInsert = new SQLiteCommand(sql, connexion);
-            commandeInsert.ExecuteNonQuery();
+            string sql = "insert into users values ('" + username + "', '" + password + "', 0, 0 ,0 ,0 ,0, 0, 0, 0, 0, 0, 0)";
+            SQLiteCommand commandInsert = new SQLiteCommand(sql, connexion);
+            commandInsert.ExecuteNonQuery();
             return;
         }
 
@@ -68,7 +66,7 @@ namespace Mathador
             return false;
         }
 
-        //Vérifie si l'utilisateur existe déjà - Retourne true si c'est le cas
+        //Vérifie si le mdp correspond
         public bool CheckIfPasswordMatch(string username, string password)
         {
             string sql = "SELECT password FROM users WHERE username = '" + username + "'";
@@ -112,7 +110,7 @@ namespace Mathador
             return userData;
         }
 
-        //Incrémenter la data d'un utilisateur (update) à la fin d'une partie
+        //Incrémente la data d'un utilisateur (update) à la fin d'une partie
         public void UpdateData(string username, Dictionary<string, int> gameData)
         {
             string sql = "SELECT minScore, maxScore, gameCount FROM users WHERE username = '" + username + "'";
@@ -131,9 +129,10 @@ namespace Mathador
                     sql = "UPDATE users SET minScore = " + minScore + ", maxScore = " + maxScore + ", totalScorePoints = totalScorePoints + " + gameData["gameScore"] + ", totalGameTimeInSeconds = totalGameTimeInSeconds + " + gameData["gameTime"] + ", gameCount = gameCount + 1, roundCount = roundCount + " + gameData["roundCount"] + ", mathadorCount = mathadorCount + " + gameData["mathadorCount"] + ", addCount = addCount + " + gameData["addCount"] + ", subCount = subCount + " + gameData["subCount"] + ", multCount = multCount + " + gameData["multCount"] + ", divCount = divCount + " + gameData["divCount"] + " WHERE username = '" + username + "'";
                 }
             }
-            SQLiteCommand commandeInsert = new SQLiteCommand(sql, connexion);
+
+            SQLiteCommand commandUpdate = new SQLiteCommand(sql, connexion);
+            commandUpdate.ExecuteNonQuery();
             return;
-            commandeInsert.ExecuteNonQuery();
         }
     }
 }
