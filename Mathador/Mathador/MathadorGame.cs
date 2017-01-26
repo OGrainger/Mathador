@@ -248,6 +248,7 @@ namespace Mathador
                     score += PointsRound;
                 }
             }
+            round++;
             plusCount += saveOperateurPlusCount;
             moinsCount += saveOperateurMoinsCount;
             foisCount += saveOperateurFoisCount;

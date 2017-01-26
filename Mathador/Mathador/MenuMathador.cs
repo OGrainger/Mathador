@@ -26,6 +26,8 @@ namespace Mathador
             CancelButton = BouttonQuitter;
             data = db.GetData(this.Pseudo);
             buttonStats.Enabled = data["gameCount"] > 0;
+            AcceptButton = BouttonNouvellePartie;
+            CancelButton = BouttonQuitter;
         }
 
 
