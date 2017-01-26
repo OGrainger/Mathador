@@ -16,7 +16,6 @@ namespace Mathador
         private SQLiteDatabase db = new SQLiteDatabase();
         public string MDP;
         public string Pseudo;
-        int gameCount;
 
         public PageConnexion()
         {
@@ -25,7 +24,6 @@ namespace Mathador
             ErreurPseudo.Text = "";
             AcceptButton = buttonValiderConnexion;
             CancelButton = quit;
-            
         }
 
         private void buttonValiderConnexion_Click(object sender, EventArgs e)
@@ -39,16 +37,13 @@ namespace Mathador
             else if (db.CheckIfPasswordMatch(this.Pseudo, this.MDP))
             {
                 this.Hide();
-                data = db.GetData(this.Pseudo);
-                gameCount = data["gameCount"];
-                MenuMathador form = new MenuMathador(Pseudo, gameCount);
+                MenuMathador form = new MenuMathador(Pseudo);
                 form.ShowDialog();
             }
             else
             {
                 ErreurPseudo.Text = "Connexion impossible";
-            }
-                
+            } 
         }
 
         private void newUser_click(object sender, EventArgs e)

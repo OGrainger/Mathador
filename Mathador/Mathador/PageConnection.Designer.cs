@@ -103,7 +103,7 @@
             this.newUser.TabIndex = 8;
             this.newUser.Text = "Nouvel utilisateur";
             this.newUser.UseVisualStyleBackColor = true;
-            this.newUser.Click += new System.EventHandler(this.quit_Click);
+            this.newUser.Click += new System.EventHandler(this.newUser_click);
             // 
             // pictureBox1
             // 

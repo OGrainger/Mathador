@@ -41,7 +41,7 @@ namespace Mathador
             this.Hide();
             MathadorGame frm = Application.OpenForms.OfType<MathadorGame>().FirstOrDefault();
             if (frm != null)
-                frm.RoundSuivant();
+                frm.FinDeRound();
         }
     }
 }

@@ -15,14 +15,18 @@ namespace Mathador
         public Dictionary<string, int> data;
         private SQLiteDatabase db = new SQLiteDatabase();
         public string Pseudo;
-        public MenuMathador(string Pseudo, int gameCount)
+
+        public MenuMathador(string Pseudo)
         {
             InitializeComponent();
+            db.LaunchDatabase();
             BienvenuePseudo.Text = "Bienvenue " + Pseudo + " !";
             this.Pseudo = Pseudo;
-            buttonStats.Enabled = gameCount > 0;
+            //buttonStats.Enabled = gameCount > 0;
             AcceptButton = BouttonNouvellePartie;
             CancelButton = BouttonQuitter;
+            data = db.GetData(this.Pseudo);
+            buttonStats.Enabled = data["gameCount"] > 0;
         }
 
 

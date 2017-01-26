@@ -27,6 +27,7 @@ namespace Mathador
         public int PointsRound = 0;
         public static int cible;
         public int tentatives = 1;
+        public bool finDePartie = false;
 
         Button buttonPremierChiffre;
         Button buttonDeuxiemeChiffre;
@@ -43,17 +44,18 @@ namespace Mathador
         public int moinsCount = 0;
         public int foisCount = 0;
         public int divCount = 0;
+        public int mathadorCount = 0;
 
         public MathadorGame(String Pseudo)
         {
             InitializeComponent();
             this.pseudo = Pseudo;
+
+            buttonMathador.Hide();
         }
 
         private void MathadorGame_Load(object sender, EventArgs e)
         {
-            TextPseudo.Text = pseudo;
-
             timer1 = new Timer();
             timer1.Tick += new EventHandler(timer1_Tick);
             timer1.Interval = 1000;
@@ -70,7 +72,15 @@ namespace Mathador
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            progressBar.Value++;
+            if (progressBar.Value == progressBar.Maximum && !finDePartie)
+            {
+                finDePartie = true;
+                FinDePartie();
+            }
+            else if (progressBar.Value < progressBar.Maximum)
+            {
+                progressBar.Value++;
+            }
         }
 
         public void Generateur()
@@ -152,7 +162,7 @@ namespace Mathador
             ButtonFois.BackColor = Color.White;
             ButtonDiv.BackColor = Color.White;
             buttonOp = null;
-        }
+    }
 
         public void Calcul()
         {
@@ -164,7 +174,7 @@ namespace Mathador
             {
                 resultat = premierChiffre + deuxiemeChiffre;
                 saveOperateurPlusCount++;
-                PointsRound += 2;
+                PointsRound += 1;
 
             }
             else if (buttonOp == ButtonMoins)
@@ -185,7 +195,7 @@ namespace Mathador
             {
                 resultat = premierChiffre * deuxiemeChiffre;
                 saveOperateurFoisCount++;
-                PointsRound += 2;
+                PointsRound += 1;
             }
             else if (buttonOp == ButtonDiv)
             {
@@ -193,7 +203,7 @@ namespace Mathador
                 {
                     resultat = premierChiffre / deuxiemeChiffre;
                     saveOperateurDivCount++;
-                    PointsRound += 4;
+                    PointsRound += 3;
                 }
                 else
                 {
@@ -213,7 +223,7 @@ namespace Mathador
                 buttonOp.BackColor = Color.White;
                 buttonOp = null;
                 calculsCount++;
-                labelScore.Text = (score + PointsRound).ToString();
+                labelScore.Text = score.ToString() + " + " + PointsRound.ToString();
                 Console.WriteLine("{0}e calcul", calculsCount);
                 if (calculsCount == 4)
                 {
@@ -226,19 +236,37 @@ namespace Mathador
         {
             if (ButtonNombre1.Text == cible.ToString() || ButtonNombre2.Text == cible.ToString() || ButtonNombre3.Text == cible.ToString() || ButtonNombre4.Text == cible.ToString() || ButtonNombre5.Text == cible.ToString())
             {
-                score += PointsRound;
+                if (saveOperateurDivCount > 0 && saveOperateurFoisCount > 0 && saveOperateurMoinsCount > 0 && saveOperateurPlusCount > 0)
+                {
+                    mathadorCount++;
+                    score += 13;
+                    buttonMathador.Show();
+                    if (mathadorCount > 1) { buttonMathador.Text = "MATHADOR x " + mathadorCount; }
+                } 
+                else
+                {
+                    score += PointsRound;
+                }
             }
-            else
-            {
-                PointsRound = 0;
-            }
+            plusCount += saveOperateurPlusCount;
+            moinsCount += saveOperateurMoinsCount;
+            foisCount += saveOperateurFoisCount;
+            divCount += saveOperateurDivCount;
+
+            labelScore.Text = score.ToString();
+            PointsRound = 0;
             calculsCount = 0;
+            tentatives = 1;
             Reset();
             Generateur();
         }
 
-        public void RoundSuivant()
+        public void FinDePartie()
         {
+            finDePartie = true;
+            this.Hide();
+            ScoreFinDePartie form = new ScoreFinDePartie(this.pseudo, score, round, mathadorCount, plusCount, moinsCount, foisCount, divCount);
+            form.ShowDialog();
         }
 
         //=========== ================= Clicks ==============================================================
@@ -463,10 +491,15 @@ namespace Mathador
 
         private void ButtonRetour_Click(object sender, EventArgs e)
         {
+            labelScore.Text = score.ToString();
+            PointsRound = 0;
+            calculsCount = 0;
+            tentatives = 1;
             Reset();
             RecupGeneration();
             
         }
+
         private void buttonTerminer_Click(object sender, EventArgs e)
         {
             
@@ -474,8 +507,25 @@ namespace Mathador
 
         private void buttonSoluces_Click(object sender, EventArgs e)
         {
+        }
+
+        private void TextScore_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSoluces_Click_1(object sender, EventArgs e)
+        {
             Solutions solutionsForm = new Solutions();                                                      //On appel le form qui contient les listbox des solutions
-            solutionsForm.ShowDialog();   
+            solutionsForm.ShowDialog();
+        }
+
+        private void buttonAbandon_Click(object sender, EventArgs e)
+        {
+            finDePartie = true;
+            this.Hide();
+            MenuMathador form = new MenuMathador(pseudo);
+            form.ShowDialog();
         }
     }
 

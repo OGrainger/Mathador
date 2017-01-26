@@ -75,7 +75,7 @@ namespace Mathador
         private void buttonRetour_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuMathador form = new MenuMathador(Pseudo, gameCount);
+            MenuMathador form = new MenuMathador(Pseudo);
             form.ShowDialog();
         }
         

@@ -45,195 +45,231 @@
             this.ButtonFois = new System.Windows.Forms.Button();
             this.ButtonDiv = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.TextPseudo = new System.Windows.Forms.Label();
-            this.buttonTerminer = new System.Windows.Forms.Button();
-            this.buttonSoluces = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.buttonAbandon = new System.Windows.Forms.Button();
+            this.buttonSoluces = new System.Windows.Forms.Button();
+            this.buttonMathador = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // ButtonNombre1
             // 
+            this.ButtonNombre1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ButtonNombre1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ButtonNombre1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonNombre1.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.ButtonNombre1.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.ButtonNombre1.FlatAppearance.BorderSize = 2;
             this.ButtonNombre1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonNombre1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonNombre1.Location = new System.Drawing.Point(3, 3);
+            this.ButtonNombre1.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ButtonNombre1.Location = new System.Drawing.Point(10, 3);
             this.ButtonNombre1.Name = "ButtonNombre1";
             this.ButtonNombre1.Size = new System.Drawing.Size(49, 50);
-            this.ButtonNombre1.TabIndex = 0;
+            this.ButtonNombre1.TabIndex = 1;
             this.ButtonNombre1.UseVisualStyleBackColor = false;
             this.ButtonNombre1.Click += new System.EventHandler(this.ButtonNombre1_Click);
             // 
             // ButtonNombre2
             // 
+            this.ButtonNombre2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ButtonNombre2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ButtonNombre2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonNombre2.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.ButtonNombre2.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.ButtonNombre2.FlatAppearance.BorderSize = 2;
             this.ButtonNombre2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonNombre2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonNombre2.Location = new System.Drawing.Point(58, 3);
+            this.ButtonNombre2.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ButtonNombre2.Location = new System.Drawing.Point(79, 3);
             this.ButtonNombre2.Name = "ButtonNombre2";
             this.ButtonNombre2.Size = new System.Drawing.Size(49, 50);
-            this.ButtonNombre2.TabIndex = 1;
+            this.ButtonNombre2.TabIndex = 2;
             this.ButtonNombre2.UseVisualStyleBackColor = false;
             this.ButtonNombre2.Click += new System.EventHandler(this.ButtonNombre2_Click);
             // 
             // ButtonNombre3
             // 
+            this.ButtonNombre3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ButtonNombre3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ButtonNombre3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonNombre3.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.ButtonNombre3.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.ButtonNombre3.FlatAppearance.BorderSize = 2;
             this.ButtonNombre3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonNombre3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonNombre3.Location = new System.Drawing.Point(113, 3);
+            this.ButtonNombre3.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ButtonNombre3.Location = new System.Drawing.Point(148, 3);
             this.ButtonNombre3.Name = "ButtonNombre3";
             this.ButtonNombre3.Size = new System.Drawing.Size(49, 50);
-            this.ButtonNombre3.TabIndex = 2;
+            this.ButtonNombre3.TabIndex = 3;
             this.ButtonNombre3.UseVisualStyleBackColor = false;
             this.ButtonNombre3.Click += new System.EventHandler(this.ButtonNombre3_Click);
             // 
             // ButtonNombre4
             // 
+            this.ButtonNombre4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ButtonNombre4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ButtonNombre4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonNombre4.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.ButtonNombre4.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.ButtonNombre4.FlatAppearance.BorderSize = 2;
             this.ButtonNombre4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonNombre4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonNombre4.Location = new System.Drawing.Point(168, 3);
+            this.ButtonNombre4.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ButtonNombre4.Location = new System.Drawing.Point(217, 3);
             this.ButtonNombre4.Name = "ButtonNombre4";
             this.ButtonNombre4.Size = new System.Drawing.Size(49, 50);
-            this.ButtonNombre4.TabIndex = 3;
+            this.ButtonNombre4.TabIndex = 4;
             this.ButtonNombre4.UseVisualStyleBackColor = false;
             this.ButtonNombre4.Click += new System.EventHandler(this.ButtonNombre4_Click);
             // 
             // ButtonNombre5
             // 
+            this.ButtonNombre5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ButtonNombre5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ButtonNombre5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonNombre5.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.ButtonNombre5.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.ButtonNombre5.FlatAppearance.BorderSize = 2;
             this.ButtonNombre5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonNombre5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonNombre5.Location = new System.Drawing.Point(223, 3);
+            this.ButtonNombre5.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ButtonNombre5.Location = new System.Drawing.Point(287, 3);
             this.ButtonNombre5.Name = "ButtonNombre5";
             this.ButtonNombre5.Size = new System.Drawing.Size(50, 50);
-            this.ButtonNombre5.TabIndex = 4;
+            this.ButtonNombre5.TabIndex = 5;
             this.ButtonNombre5.UseVisualStyleBackColor = false;
             this.ButtonNombre5.Click += new System.EventHandler(this.ButtonNombre5_Click);
             // 
             // labelCible
             // 
             this.labelCible.AutoSize = true;
-            this.labelCible.Location = new System.Drawing.Point(268, 29);
+            this.labelCible.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCible.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.labelCible.Location = new System.Drawing.Point(12, 43);
             this.labelCible.Name = "labelCible";
-            this.labelCible.Size = new System.Drawing.Size(13, 13);
+            this.labelCible.Size = new System.Drawing.Size(24, 25);
             this.labelCible.TabIndex = 5;
             this.labelCible.Text = "0";
             // 
             // TextCible
             // 
             this.TextCible.AutoSize = true;
-            this.TextCible.Location = new System.Drawing.Point(226, 29);
+            this.TextCible.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextCible.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.TextCible.Location = new System.Drawing.Point(12, 9);
             this.TextCible.Name = "TextCible";
-            this.TextCible.Size = new System.Drawing.Size(36, 13);
+            this.TextCible.Size = new System.Drawing.Size(73, 25);
             this.TextCible.TabIndex = 6;
             this.TextCible.Text = "Cible :";
             // 
             // labelScore
             // 
             this.labelScore.AutoSize = true;
-            this.labelScore.Location = new System.Drawing.Point(385, 29);
+            this.labelScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelScore.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.labelScore.Location = new System.Drawing.Point(465, 40);
             this.labelScore.Name = "labelScore";
-            this.labelScore.Size = new System.Drawing.Size(13, 13);
+            this.labelScore.Size = new System.Drawing.Size(24, 25);
             this.labelScore.TabIndex = 9;
             this.labelScore.Text = "0";
             // 
             // TextScore
             // 
             this.TextScore.AutoSize = true;
-            this.TextScore.Location = new System.Drawing.Point(338, 29);
+            this.TextScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextScore.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.TextScore.Location = new System.Drawing.Point(465, 9);
             this.TextScore.Name = "TextScore";
-            this.TextScore.Size = new System.Drawing.Size(41, 13);
+            this.TextScore.Size = new System.Drawing.Size(80, 25);
             this.TextScore.TabIndex = 10;
             this.TextScore.Text = "Score :";
+            this.TextScore.Click += new System.EventHandler(this.TextScore_Click);
             // 
             // ButtonSuivant
             // 
-            this.ButtonSuivant.Location = new System.Drawing.Point(477, 12);
+            this.ButtonSuivant.Location = new System.Drawing.Point(431, 74);
             this.ButtonSuivant.Name = "ButtonSuivant";
-            this.ButtonSuivant.Size = new System.Drawing.Size(75, 30);
-            this.ButtonSuivant.TabIndex = 11;
+            this.ButtonSuivant.Size = new System.Drawing.Size(134, 50);
+            this.ButtonSuivant.TabIndex = 6;
             this.ButtonSuivant.Text = "Suivant";
             this.ButtonSuivant.UseVisualStyleBackColor = true;
             this.ButtonSuivant.Click += new System.EventHandler(this.ButtonSuivant_Click);
             // 
             // ButtonResetManche
             // 
-            this.ButtonResetManche.Location = new System.Drawing.Point(9, 62);
+            this.ButtonResetManche.Location = new System.Drawing.Point(12, 74);
             this.ButtonResetManche.Name = "ButtonResetManche";
-            this.ButtonResetManche.Size = new System.Drawing.Size(93, 53);
-            this.ButtonResetManche.TabIndex = 12;
+            this.ButtonResetManche.Size = new System.Drawing.Size(121, 50);
+            this.ButtonResetManche.TabIndex = 0;
             this.ButtonResetManche.Text = "Recommencer la manche";
             this.ButtonResetManche.UseVisualStyleBackColor = true;
             this.ButtonResetManche.Click += new System.EventHandler(this.ButtonRetour_Click);
             // 
             // ButtonPlus
             // 
+            this.ButtonPlus.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ButtonPlus.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonPlus.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.ButtonPlus.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.ButtonPlus.FlatAppearance.BorderSize = 2;
             this.ButtonPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonPlus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonPlus.Location = new System.Drawing.Point(3, 3);
+            this.ButtonPlus.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ButtonPlus.Location = new System.Drawing.Point(11, 3);
             this.ButtonPlus.Name = "ButtonPlus";
             this.ButtonPlus.Size = new System.Drawing.Size(49, 50);
-            this.ButtonPlus.TabIndex = 13;
+            this.ButtonPlus.TabIndex = 7;
             this.ButtonPlus.Text = "+";
             this.ButtonPlus.UseVisualStyleBackColor = true;
             this.ButtonPlus.Click += new System.EventHandler(this.ButtonPlus_Click);
             // 
             // ButtonMoins
             // 
+            this.ButtonMoins.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ButtonMoins.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonMoins.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.ButtonMoins.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.ButtonMoins.FlatAppearance.BorderSize = 2;
             this.ButtonMoins.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonMoins.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonMoins.Location = new System.Drawing.Point(59, 3);
+            this.ButtonMoins.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ButtonMoins.Location = new System.Drawing.Point(82, 3);
             this.ButtonMoins.Name = "ButtonMoins";
             this.ButtonMoins.Size = new System.Drawing.Size(49, 50);
-            this.ButtonMoins.TabIndex = 14;
+            this.ButtonMoins.TabIndex = 8;
             this.ButtonMoins.Text = "-";
             this.ButtonMoins.UseVisualStyleBackColor = true;
             this.ButtonMoins.Click += new System.EventHandler(this.ButtonMoins_Click);
             // 
             // ButtonFois
             // 
+            this.ButtonFois.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ButtonFois.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonFois.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.ButtonFois.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.ButtonFois.FlatAppearance.BorderSize = 2;
             this.ButtonFois.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonFois.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonFois.Location = new System.Drawing.Point(115, 3);
+            this.ButtonFois.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ButtonFois.Location = new System.Drawing.Point(153, 3);
             this.ButtonFois.Name = "ButtonFois";
             this.ButtonFois.Size = new System.Drawing.Size(49, 50);
-            this.ButtonFois.TabIndex = 15;
+            this.ButtonFois.TabIndex = 9;
             this.ButtonFois.Text = "x";
             this.ButtonFois.UseVisualStyleBackColor = true;
             this.ButtonFois.Click += new System.EventHandler(this.ButtonFois_Click);
             // 
             // ButtonDiv
             // 
+            this.ButtonDiv.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ButtonDiv.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonDiv.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.ButtonDiv.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.ButtonDiv.FlatAppearance.BorderSize = 2;
             this.ButtonDiv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonDiv.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonDiv.Location = new System.Drawing.Point(171, 3);
+            this.ButtonDiv.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ButtonDiv.Location = new System.Drawing.Point(224, 3);
             this.ButtonDiv.Name = "ButtonDiv";
             this.ButtonDiv.Size = new System.Drawing.Size(50, 50);
-            this.ButtonDiv.TabIndex = 16;
-            this.ButtonDiv.Text = "/";
+            this.ButtonDiv.TabIndex = 10;
+            this.ButtonDiv.Text = "÷";
             this.ButtonDiv.UseVisualStyleBackColor = true;
             this.ButtonDiv.Click += new System.EventHandler(this.ButtonDiv_Click);
             // 
@@ -241,35 +277,6 @@
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
-            // 
-            // TextPseudo
-            // 
-            this.TextPseudo.AutoSize = true;
-            this.TextPseudo.Location = new System.Drawing.Point(9, 9);
-            this.TextPseudo.Name = "TextPseudo";
-            this.TextPseudo.Size = new System.Drawing.Size(75, 13);
-            this.TextPseudo.TabIndex = 18;
-            this.TextPseudo.Text = "PseudoJoueur";
-            // 
-            // buttonTerminer
-            // 
-            this.buttonTerminer.Location = new System.Drawing.Point(477, 48);
-            this.buttonTerminer.Name = "buttonTerminer";
-            this.buttonTerminer.Size = new System.Drawing.Size(75, 30);
-            this.buttonTerminer.TabIndex = 19;
-            this.buttonTerminer.Text = "Terminer";
-            this.buttonTerminer.UseVisualStyleBackColor = true;
-            this.buttonTerminer.Click += new System.EventHandler(this.buttonTerminer_Click);
-            // 
-            // buttonSoluces
-            // 
-            this.buttonSoluces.Enabled = false;
-            this.buttonSoluces.Location = new System.Drawing.Point(477, 84);
-            this.buttonSoluces.Name = "buttonSoluces";
-            this.buttonSoluces.Size = new System.Drawing.Size(75, 30);
-            this.buttonSoluces.TabIndex = 21;
-            this.buttonSoluces.Text = "Solutions";
-            this.buttonSoluces.Click += new System.EventHandler(this.buttonSoluces_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -284,12 +291,12 @@
             this.tableLayoutPanel1.Controls.Add(this.ButtonNombre3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.ButtonNombre4, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.ButtonNombre5, 4, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(144, 59);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(111, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(279, 56);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(348, 56);
             this.tableLayoutPanel1.TabIndex = 22;
             // 
             // tableLayoutPanel2
@@ -303,24 +310,60 @@
             this.tableLayoutPanel2.Controls.Add(this.ButtonMoins, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.ButtonFois, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.ButtonDiv, 3, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(170, 121);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(139, 71);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(224, 56);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(286, 56);
             this.tableLayoutPanel2.TabIndex = 23;
             // 
             // progressBar
             // 
             this.progressBar.ForeColor = System.Drawing.Color.LightSkyBlue;
-            this.progressBar.Location = new System.Drawing.Point(13, 185);
-            this.progressBar.Maximum = 180;
+            this.progressBar.Location = new System.Drawing.Point(12, 133);
+            this.progressBar.Maximum = 10;
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(552, 10);
+            this.progressBar.Size = new System.Drawing.Size(553, 10);
             this.progressBar.Step = 1;
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar.TabIndex = 24;
+            // 
+            // buttonAbandon
+            // 
+            this.buttonAbandon.Location = new System.Drawing.Point(12, 149);
+            this.buttonAbandon.Name = "buttonAbandon";
+            this.buttonAbandon.Size = new System.Drawing.Size(121, 46);
+            this.buttonAbandon.TabIndex = 25;
+            this.buttonAbandon.Text = "Abandonner";
+            this.buttonAbandon.UseVisualStyleBackColor = true;
+            this.buttonAbandon.Click += new System.EventHandler(this.buttonAbandon_Click);
+            // 
+            // buttonSoluces
+            // 
+            this.buttonSoluces.Location = new System.Drawing.Point(431, 149);
+            this.buttonSoluces.Name = "buttonSoluces";
+            this.buttonSoluces.Size = new System.Drawing.Size(134, 46);
+            this.buttonSoluces.TabIndex = 26;
+            this.buttonSoluces.Text = "Solutions";
+            this.buttonSoluces.UseVisualStyleBackColor = true;
+            this.buttonSoluces.Click += new System.EventHandler(this.buttonSoluces_Click_1);
+            // 
+            // buttonMathador
+            // 
+            this.buttonMathador.BackColor = System.Drawing.Color.LemonChiffon;
+            this.buttonMathador.Enabled = false;
+            this.buttonMathador.FlatAppearance.BorderColor = System.Drawing.Color.Gold;
+            this.buttonMathador.FlatAppearance.BorderSize = 3;
+            this.buttonMathador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMathador.Font = new System.Drawing.Font("Candara", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonMathador.ForeColor = System.Drawing.Color.Gold;
+            this.buttonMathador.Location = new System.Drawing.Point(139, 150);
+            this.buttonMathador.Name = "buttonMathador";
+            this.buttonMathador.Size = new System.Drawing.Size(286, 45);
+            this.buttonMathador.TabIndex = 27;
+            this.buttonMathador.Text = "MATHADOR";
+            this.buttonMathador.UseVisualStyleBackColor = false;
             // 
             // MathadorGame
             // 
@@ -328,12 +371,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(577, 207);
+            this.Controls.Add(this.buttonMathador);
+            this.Controls.Add(this.buttonSoluces);
+            this.Controls.Add(this.buttonAbandon);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.buttonTerminer);
-            this.Controls.Add(this.buttonSoluces);
-            this.Controls.Add(this.TextPseudo);
             this.Controls.Add(this.ButtonResetManche);
             this.Controls.Add(this.ButtonSuivant);
             this.Controls.Add(this.TextScore);
@@ -342,7 +385,7 @@
             this.Controls.Add(this.labelCible);
             this.Name = "MathadorGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MathadorGame";
+            this.Text = "Partie en cours";
             this.Load += new System.EventHandler(this.MathadorGame_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -369,14 +412,12 @@
         private System.Windows.Forms.Button ButtonFois;
         private System.Windows.Forms.Button ButtonDiv;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label TextPseudo;
-
-        private System.Windows.Forms.Button buttonTerminer;
-
-        private System.Windows.Forms.Button buttonSoluces;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Button buttonAbandon;
+        private System.Windows.Forms.Button buttonSoluces;
+        private System.Windows.Forms.Button buttonMathador;
     }
 }
 
