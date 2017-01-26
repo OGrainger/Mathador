@@ -113,21 +113,18 @@ namespace Mathador
         //Incrémente la data d'un utilisateur (update) à la fin d'une partie
         public void UpdateData(string username, Dictionary<string, int> gameData)
         {
-            string sql = "SELECT minScore, maxScore, gameCount FROM users WHERE username = '" + username + "'";
-            SQLiteCommand commande = new SQLiteCommand(sql, connexion);
-            SQLiteDataReader reader = commande.ExecuteReader();
-            while (reader.Read())
+            Dictionary<string, int> dataFromDatabase = GetData(username);
+            string sql;
+
+            if (dataFromDatabase["minScore"] == 0)
             {
-                if (reader.GetInt32(2) == 0)
-                {
-                    sql = "UPDATE users SET minScore = " + gameData["gameScore"] + ", maxScore = " + gameData["gameScore"] + ",  totalScorePoints = " + gameData["gameScore"] + ", totalGameTimeInSeconds = " + gameData["gameTime"] + ", gameCount = 1, roundCount = " + gameData["roundCount"] + ", mathadorCount = " + gameData["mathadorCount"] + ", addCount = " + gameData["addCount"] + ", subCount = " + gameData["subCount"] + ", multCount = " + gameData["multCount"] + ", divCount = " + gameData["divCount"] + " WHERE username = '" + username + "'";
-                }
-                else
-                {
-                    int minScore = (reader.GetInt32(0) > gameData["gameScore"] ? gameData["gameScore"] : reader.GetInt32(0));
-                    int maxScore = (reader.GetInt32(1) < gameData["gameScore"] ? gameData["gameScore"] : reader.GetInt32(1));
-                    sql = "UPDATE users SET minScore = " + minScore + ", maxScore = " + maxScore + ", totalScorePoints = totalScorePoints + " + gameData["gameScore"] + ", totalGameTimeInSeconds = totalGameTimeInSeconds + " + gameData["gameTime"] + ", gameCount = gameCount + 1, roundCount = roundCount + " + gameData["roundCount"] + ", mathadorCount = mathadorCount + " + gameData["mathadorCount"] + ", addCount = addCount + " + gameData["addCount"] + ", subCount = subCount + " + gameData["subCount"] + ", multCount = multCount + " + gameData["multCount"] + ", divCount = divCount + " + gameData["divCount"] + " WHERE username = '" + username + "'";
-                }
+                sql = "UPDATE users SET minScore = " + gameData["gameScore"] + ", maxScore = " + gameData["gameScore"] + ",  totalScorePoints = " + gameData["gameScore"] + ", totalGameTimeInSeconds = " + gameData["gameTime"] + ", gameCount = 1, roundCount = " + gameData["roundCount"] + ", mathadorCount = " + gameData["mathadorCount"] + ", addCount = " + gameData["addCount"] + ", subCount = " + gameData["subCount"] + ", multCount = " + gameData["multCount"] + ", divCount = " + gameData["divCount"] + " WHERE username = '" + username + "'";
+            }
+            else
+            {
+                int minScore = (dataFromDatabase["minScore"] > gameData["gameScore"] ? gameData["gameScore"] : dataFromDatabase["minScore"]);
+                int maxScore = (dataFromDatabase["maxScore"] < gameData["gameScore"] ? gameData["gameScore"] : dataFromDatabase["maxScore"]);
+                sql = "UPDATE users SET minScore = " + minScore + ", maxScore = " + maxScore + ", totalScorePoints = totalScorePoints + " + gameData["gameScore"] + ", totalGameTimeInSeconds = totalGameTimeInSeconds + " + gameData["gameTime"] + ", gameCount = gameCount + 1, roundCount = roundCount + " + gameData["roundCount"] + ", mathadorCount = mathadorCount + " + gameData["mathadorCount"] + ", addCount = addCount + " + gameData["addCount"] + ", subCount = subCount + " + gameData["subCount"] + ", multCount = multCount + " + gameData["multCount"] + ", divCount = divCount + " + gameData["divCount"] + " WHERE username = '" + username + "'";
             }
 
             SQLiteCommand commandUpdate = new SQLiteCommand(sql, connexion);
