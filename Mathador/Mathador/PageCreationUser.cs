@@ -46,14 +46,14 @@ namespace Mathador
                 db.CreateANewUser(this.pseudo, this.mdp);
                 labelErreur.Text = "Utilisateur créé avec succès !";
                 this.Hide();
-                MenuMathador form = new MenuMathador(this.pseudo, 0);
+                MenuMathador form = new MenuMathador(this.pseudo);
                 form.ShowDialog();
             }
         }
         private void retour_Click(object sender, EventArgs e)
         {
             this.Hide();
-            PageConnection form = new PageConnection();
+            PageConnexion form = new PageConnexion();
             form.ShowDialog();
         }
     }

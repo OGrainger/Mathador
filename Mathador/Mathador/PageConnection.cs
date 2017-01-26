@@ -10,25 +10,23 @@ using System.Windows.Forms;
 
 namespace Mathador
 {
-    public partial class PageConnection : Form
+    public partial class PageConnexion : Form
     {
         public Dictionary<string, int> data;
         private SQLiteDatabase db = new SQLiteDatabase();
         public string MDP;
         public string Pseudo;
-        int gameCount;
 
-        public PageConnection()
+        public PageConnexion()
         {
             InitializeComponent();
             db.LaunchDatabase();
             ErreurPseudo.Text = "";
-            AcceptButton = buttonValiderConnection;
+            AcceptButton = buttonValiderConnexion;
             CancelButton = quit;
-            
         }
 
-        private void buttonValiderConnection_Click(object sender, EventArgs e)
+        private void buttonValiderConnexion_Click(object sender, EventArgs e)
         {
             this.Pseudo = textBoxPseudo.Text;
             this.MDP = textBoxMDP.Text;
@@ -39,16 +37,13 @@ namespace Mathador
             else if (db.CheckIfPasswordMatch(this.Pseudo, this.MDP))
             {
                 this.Hide();
-                data = db.GetData(this.Pseudo);
-                gameCount = data["gameCount"];
-                MenuMathador form = new MenuMathador(Pseudo, gameCount);
+                MenuMathador form = new MenuMathador(Pseudo);
                 form.ShowDialog();
             }
             else
             {
                 ErreurPseudo.Text = "Connexion impossible";
-            }
-                
+            } 
         }
 
         private void newUser_click(object sender, EventArgs e)

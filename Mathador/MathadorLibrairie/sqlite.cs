@@ -13,8 +13,8 @@ namespace Mathador
     //CreateANewUser(string username, string password) - void
     //CheckIfUserAlreadyExists(string username) - bool
     //CheckIfPasswordMatches(string username, string password) - bool
-    //GetData(string username) - dictionary(minScore, maxScore, totalScorePoints, totalGameTimeInSeconds, gameCount, roundCount, addCount, subCount, multCount, divCount)
-    //UpdateData(string username, dictionary(gameScore, gameTime, roundCount, addCount, subCount, multCount, divCount))
+    //GetData(string username) - dictionary(minScore, maxScore, totalScorePoints, totalGameTimeInSeconds, gameCount, roundCount, mathadorCount, addCount, subCount, multCount, divCount)
+    //UpdateData(string username, dictionary(score, gameTime, roundCount, mathadorCount, addCount, subCount, multCount, divCount))
 
     public class SQLiteDatabase
     {
@@ -29,7 +29,7 @@ namespace Mathador
                 SQLiteConnection.CreateFile("db.sqlite");
             }
             connexion.Open();
-            string sql = "create table if not exists users (username text, password text, minScore int, maxScore int, totalScorePoints int, totalGameTimeInSeconds int, gameCount int, roundCount int, addCount int, subCount int, multCount int, divCount int)";
+            string sql = "create table if not exists users (username text, password text, minScore int, maxScore int, totalScorePoints int, totalGameTimeInSeconds int, gameCount int, roundCount int, mathadorCount int, addCount int, subCount int, multCount int, divCount int)";
             SQLiteCommand commande = new SQLiteCommand(sql, connexion);
             commande.ExecuteNonQuery();
             Console.WriteLine("db ouverte / créée avec succès");
@@ -47,7 +47,7 @@ namespace Mathador
         //Insert un nouvel utilisateur
         public void CreateANewUser(string username, string password)
         {
-            string sql = "insert into users values ('" + username + "', '" + password + "', 0, 0 ,0 ,0 ,0 ,0, 0, 0, 0, 0)";
+            string sql = "insert into users values ('" + username + "', '" + password + "', 0, 0 ,0 ,0 ,0 ,0, 0, 0, 0, 0, 0)";
             SQLiteCommand commandeInsert = new SQLiteCommand(sql, connexion);
             commandeInsert.ExecuteNonQuery();
             return;
@@ -103,10 +103,11 @@ namespace Mathador
                 userData.Add("totalGameTimeInSeconds", reader.GetInt32(5));
                 userData.Add("gameCount", reader.GetInt32(6));
                 userData.Add("roundCount", reader.GetInt32(7));
-                userData.Add("addCount", reader.GetInt32(8));
-                userData.Add("subCount", reader.GetInt32(9));
-                userData.Add("multCount", reader.GetInt32(10));
-                userData.Add("divCount", reader.GetInt32(11));
+                userData.Add("mathadorCount", reader.GetInt32(8));
+                userData.Add("addCount", reader.GetInt32(9));
+                userData.Add("subCount", reader.GetInt32(10));
+                userData.Add("multCount", reader.GetInt32(11));
+                userData.Add("divCount", reader.GetInt32(12));
             }
             return userData;
         }
@@ -121,13 +122,13 @@ namespace Mathador
             {
                 if (reader.GetInt32(2) == 0)
                 {
-                    sql = "UPDATE users SET minScore = " + gameData["gameScore"] + ", maxScore = " + gameData["gameScore"] + ",  totalScorePoints = " + gameData["gameScore"] + ", totalGameTimeInSeconds = " + gameData["gameTime"] + ", gameCount = 1, roundCount = " + gameData["roundCount"] + ", addCount = " + gameData["addCount"] + ", subCount = " + gameData["subCount"] + ", multCount = " + gameData["multCount"] + ", divCount = " + gameData["divCount"] + " WHERE username = '" + username + "'";
+                    sql = "UPDATE users SET minScore = " + gameData["gameScore"] + ", maxScore = " + gameData["gameScore"] + ",  totalScorePoints = " + gameData["gameScore"] + ", totalGameTimeInSeconds = " + gameData["gameTime"] + ", gameCount = 1, roundCount = " + gameData["roundCount"] + ", mathadorCount = " + gameData["mathadorCount"] + ", addCount = " + gameData["addCount"] + ", subCount = " + gameData["subCount"] + ", multCount = " + gameData["multCount"] + ", divCount = " + gameData["divCount"] + " WHERE username = '" + username + "'";
                 }
                 else
                 {
                     int minScore = (reader.GetInt32(0) > gameData["gameScore"] ? gameData["gameScore"] : reader.GetInt32(0));
                     int maxScore = (reader.GetInt32(1) < gameData["gameScore"] ? gameData["gameScore"] : reader.GetInt32(1));
-                    sql = "UPDATE users SET minScore = " + minScore + ", maxScore = " + maxScore + ", totalScorePoints = totalScorePoints + " + gameData["gameScore"] + ", totalGameTimeInSeconds = totalGameTimeInSeconds + " + gameData["gameTime"] + ", gameCount = gameCount + 1, roundCount = roundCount + " + gameData["roundCount"] + ", addCount = addCount + " + gameData["addCount"] + ", subCount = subCount + " + gameData["subCount"] + ", multCount = multCount + " + gameData["multCount"] + ", divCount = divCount + " + gameData["divCount"] + " WHERE username = '" + username + "'";
+                    sql = "UPDATE users SET minScore = " + minScore + ", maxScore = " + maxScore + ", totalScorePoints = totalScorePoints + " + gameData["gameScore"] + ", totalGameTimeInSeconds = totalGameTimeInSeconds + " + gameData["gameTime"] + ", gameCount = gameCount + 1, roundCount = roundCount + " + gameData["roundCount"] + ", mathadorCount = mathadorCount + " + gameData["mathadorCount"] + ", addCount = addCount + " + gameData["addCount"] + ", subCount = subCount + " + gameData["subCount"] + ", multCount = multCount + " + gameData["multCount"] + ", divCount = divCount + " + gameData["divCount"] + " WHERE username = '" + username + "'";
                 }
             }
             SQLiteCommand commandeInsert = new SQLiteCommand(sql, connexion);

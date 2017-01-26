@@ -17,308 +17,76 @@ namespace Mathador
     public partial class MathadorGame : Form
     {
         public Solveur Solv= new Solveur();
-        public int OperateurPlusCount = 0;
-        public int SaveOperateurPlusCount = 0;
-        public int OperateurMoinsCount = 0;
-        public int SaveOperateurMoinsCount = 0;
-        public int OperateurFoisCount = 0;
-        public int SaveOperateurFoisCount = 0;
-        public int OperateurDivCount = 0;
-        public int SaveOperateurDivCount = 0;
-        public int ScoreManche;
-        public int SaveScoreManche;
-        public int SaveTimeManche;
-        public DateTime TempsManche1;
-        public bool Terminer;
-        public static int[,] list = new int[16, 2];
+        public int saveOperateurPlusCount = 0;
+        public int saveOperateurMoinsCount = 0;
+        public int saveOperateurFoisCount = 0;
+        public int saveOperateurDivCount = 0;
+        public int calculsCount = 0;
 
         public int resultat;
-        public bool plus = false;
-        public bool div = false;
-        public bool fois = false;
-        public bool moins = false;
-        public static int round = 0;
-        public int ScoreRound;
+        public int PointsRound = 0;
         public static int cible;
-        Button button2;
-        Button LastButton;
-        public bool PremierNombreSelectione = false;
-        public int i;
-        public int k = 0;
-        public Boolean mess = false;
-        public Boolean SuivantNow = true;
+        public int tentatives = 1;
+        public bool finDePartie = false;
+
+        Button buttonPremierChiffre;
+        Button buttonDeuxiemeChiffre;
+        Button buttonOp;
+
         public string pseudo;
 
         public static Random random = new Random();
-
         public static int[] tableau = new int[5];
 
-        // Because we have not specified a namespace, this
-        // will be a System.Windows.Forms.Timer instance
-        private Timer _timer;
-
-        // The last time the timer was started
-        private DateTime _startTime = DateTime.MinValue;
-
-        // Time between now and when the timer was started last
-        private TimeSpan _currentElapsedTime = TimeSpan.Zero;
-
-        // Time between now and the first time timer was started after a reset
-        private TimeSpan _totalElapsedTime = TimeSpan.Zero;
-
-        // Whether or not the timer is currently running
-        private bool _timerRunning = false;
+        public int round = 1;
+        public int score = 0;
+        public int plusCount = 0;
+        public int moinsCount = 0;
+        public int foisCount = 0;
+        public int divCount = 0;
+        public int mathadorCount = 0;
 
         public MathadorGame(String Pseudo)
         {
             InitializeComponent();
             this.pseudo = Pseudo;
 
+            buttonMathador.Hide();
         }
-        
+
         private void MathadorGame_Load(object sender, EventArgs e)
         {
-            TextPseudo.Text = pseudo;
+            timer1 = new Timer();
+            timer1.Tick += new EventHandler(timer1_Tick);
+            timer1.Interval = 1000;
+            timer1.Start();
+
             MessageBox.Show("Etes vous pret " + pseudo + " ?",
             "Message",
             MessageBoxButtons.OK,
             MessageBoxIcon.Exclamation,
             MessageBoxDefaultButton.Button1);
 
-            buttonTerminer.Enabled = false;
-            // Set up a timer and fire the Tick event once per second (1000 ms)
-            _timer = new Timer();
-            _timer.Interval = 1000;
-            _timer.Tick += new EventHandler(_timer1_Tick);
-
-            Generator();
-            Generer();
-            TimerInit();
+            Generateur();
         }
 
-        public void TimerInit()
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            if (!_timerRunning)
+            if (progressBar.Value == progressBar.Maximum && !finDePartie)
             {
-                // Set the start time to Now
-                _startTime = DateTime.Now;
-
-                // Store the total elapsed time so far
-                _totalElapsedTime = _currentElapsedTime;
-
-                _timer.Start();
-                _timerRunning = true;
+                finDePartie = true;
+                FinDePartie();
             }
-            else // If the timer is already running
+            else if (progressBar.Value < progressBar.Maximum)
             {
-
-                _timer.Stop();
-                _timerRunning = false;
-
-                // Reset the elapsed time TimeSpan objects
-                _totalElapsedTime = TimeSpan.Zero;
-                _currentElapsedTime = TimeSpan.Zero;
-                _startTime = DateTime.Now;
-
-                // Store the total elapsed time so far
-                _totalElapsedTime = _currentElapsedTime;
-
-                _timer.Start();
-                _timerRunning = true;
+                progressBar.Value++;
             }
         }
 
-        public void Generer()
-        {
-            string text = System.IO.File.ReadAllText("generation.txt");
-            
-            data json = JsonConvert.DeserializeObject<data>(text);
-            Console.WriteLine("Cible: {0}", json.Cible);
-
-            cible = json.Cible;
-            NombreCible.Text = cible.ToString();
-
-            tableau[0] = json.Nombre1;
-            tableau[1] = json.Nombre2;
-            tableau[2] = json.Nombre3;
-            tableau[3] = json.Nombre4;
-            tableau[4] = json.Nombre5;
-
-            BouttonNombre1.Text = tableau[0].ToString();
-            BouttonNombre2.Text = tableau[1].ToString();
-            BouttonNombre3.Text = tableau[2].ToString();
-            BouttonNombre4.Text = tableau[3].ToString();
-            ButtonNombre5.Text = tableau[4].ToString();
-        }
-
-     
-
-        public void resetScore()
-        {
-            round = 0;
-            ScoreRound = 0;
-
-            TextScore.Text = "Score";
-        }
-        public void resetTimer()
-        {
-            _timer.Stop();
-            _timerRunning = false;
-
-            // Reset the elapsed time TimeSpan objects
-            _totalElapsedTime = TimeSpan.Zero;
-            _currentElapsedTime = TimeSpan.Zero;
-        }
-
-        public void Message(){
-            if (mess)
-                {
-                    MessageBox.Show("Temps écoulé");
-                    mess = false;
-                }
-        }
-        public void reset()
-        {
-            this.OperateurDivCount = 0;
-            this.OperateurFoisCount = 0;
-            this.OperateurMoinsCount = 0;
-            this.OperateurPlusCount = 0;
-
-            
-          resultat = 0;
-        plus = false;
-        div = false;
-        fois = false;
-        moins = false;
-        cible = 0;
-        button2 = null;
-        LastButton = BouttonNombre1;
-        PremierNombreSelectione = false;
-
-        BouttonNombre1.Text = "";
-        BouttonNombre2.Text = "";
-        BouttonNombre3.Text = "";
-        BouttonNombre4.Text = "";
-        ButtonNombre5.Text = "";
-        NombreCible.Text = "0";
-        BouttonNombre1.BackColor = Color.White;
-        BouttonNombre2.BackColor = Color.White;
-        BouttonNombre3.BackColor = Color.White;
-        BouttonNombre4.BackColor = Color.White;
-        ButtonNombre5.BackColor = Color.White;
-        LastButton.BackColor = Color.Yellow;
-        }
-
-        public void Calcule(Button button1)
-        {
-            SuivantNow = false;
-            BouttonNombre1.BackColor = Color.White;
-            BouttonNombre2.BackColor = Color.White;
-            BouttonNombre3.BackColor = Color.White;
-            BouttonNombre4.BackColor = Color.White;
-            ButtonNombre5.BackColor = Color.White;
-           
-            if (PremierNombreSelectione == true)
-            {
-                buttonSoluces.Enabled = true;
-                if (plus == true)
-                {
-                    resultat = resultat + Int32.Parse(button1.Text);
-                    button1.Text = resultat.ToString();
-                    button2.Text = "";
-                    ScoreRound += 1;
-                    LastButton = button1;
-                    this.OperateurPlusCount += 1;
-                    plus = false;
-
-                    BouttonNombre1.BackColor = Color.White;
-                    BouttonNombre2.BackColor = Color.White;
-                    BouttonNombre3.BackColor = Color.White;
-                    BouttonNombre4.BackColor = Color.White;
-                    ButtonNombre5.BackColor = Color.White;
-                    LastButton.BackColor = Color.Yellow;
-                }
-                if (moins == true)
-                {
-                    resultat = resultat - Int32.Parse(button1.Text);
-                    button1.Text = resultat.ToString();
-                    button2.Text = "";
-                    ScoreRound += 2;
-                    LastButton = button1;
-                    this.OperateurMoinsCount++;
-                    moins = false;
-                    BouttonNombre1.BackColor = Color.White;
-                    BouttonNombre2.BackColor = Color.White;
-                    BouttonNombre3.BackColor = Color.White;
-                    BouttonNombre4.BackColor = Color.White;
-                    ButtonNombre5.BackColor = Color.White;
-                    LastButton.BackColor = Color.Yellow;
-                }
-                if (div == true )
-                {
-                    if (Int32.Parse(button1.Text) != 0 && resultat % Int32.Parse(button1.Text) == 0)
-                    {
-                        resultat = resultat / Int32.Parse(button1.Text);
-                        button1.Text = resultat.ToString();
-                        button2.Text = "";
-                        ScoreRound += 3;
-                        LastButton = button1;
-                        this.OperateurDivCount++;
-                        div = false;
-                        BouttonNombre1.BackColor = Color.White;
-                        BouttonNombre2.BackColor = Color.White;
-                        BouttonNombre3.BackColor = Color.White;
-                        BouttonNombre4.BackColor = Color.White;
-                        ButtonNombre5.BackColor = Color.White;
-                        LastButton.BackColor = Color.Yellow;
-                    }
-                    else
-                    {
-                        button1.BackColor = Color.Red;
-                        div = false;
-                        round --;
-                    }
-                }
-                if (fois == true)
-                {
-                    resultat = resultat * Int32.Parse(button1.Text);
-                    button1.Text = resultat.ToString();
-                    button2.Text = "";
-                    ScoreRound += 1;
-                    LastButton = button1;
-                    this.OperateurFoisCount++;
-                    fois = false;
-                    BouttonNombre1.BackColor = Color.White;
-                    BouttonNombre2.BackColor = Color.White;
-                    BouttonNombre3.BackColor = Color.White;
-                    BouttonNombre4.BackColor = Color.White;
-                    ButtonNombre5.BackColor = Color.White;
-                    LastButton.BackColor = Color.Yellow;
-                }
-                PremierNombreSelectione = false;
-                round++;
-            }
-            else
-            {
-                resultat = Int32.Parse(button1.Text);
-                button2 = button1;
-                PremierNombreSelectione = true;
-            }
-            if (round == 4)
-            {
-                TextScore.Text = "Terminer";
-                if (button1.Text == cible.ToString())
-                {
-                    TextScore.Text = "Mathador";
-                    TextAffichageScore.Text = ScoreRound.ToString();
-                }
-            }
-        }
-
-        public void Generator()
+        public void Generateur()
         {
             int nb1, nb2, nb3, nb4, nb5;
-            float cible;
+            float cibleFloat;
 
             nb1 = random.Next(1, 20);
             nb2 = random.Next(1, 20);
@@ -326,13 +94,13 @@ namespace Mathador
             nb4 = random.Next(1, 12);
             nb5 = random.Next(1, 12);
 
-            cible = (((Convert.ToSingle(nb1) + Convert.ToSingle(nb2)) - Convert.ToSingle(nb3)) * Convert.ToSingle(nb4)) / Convert.ToSingle(nb5);
+            cibleFloat = (((Convert.ToSingle(nb1) + Convert.ToSingle(nb2)) - Convert.ToSingle(nb3)) * Convert.ToSingle(nb4)) / Convert.ToSingle(nb5);
 
-            if (cible  > 0 && cible < 100 && cible % 1 == 0 && nb4 != nb5)
+            if (cibleFloat > 0 && cibleFloat < 100 && cibleFloat % 1 == 0)
             {
                 data datatest = new data();
 
-                datatest.Cible = Convert.ToInt32(cible);
+                datatest.Cible = Convert.ToInt32(cibleFloat);
                 datatest.Nombre1 = nb1;
                 datatest.Nombre2 = nb2;
                 datatest.Nombre3 = nb3;
@@ -340,205 +108,424 @@ namespace Mathador
                 datatest.Nombre5 = nb5;
                 string json = JsonConvert.SerializeObject(datatest);
                 System.IO.File.WriteAllText("generation.txt", json);
+                Console.WriteLine("{0} tentative(s) de génération", tentatives);
+                RecupGeneration();
             }
             else
             {
-                Generator();
+                tentatives++;
+                Generateur();
             }
-            SuivantNow = true;
         }
 
-        public void methsuivant()
+        public void RecupGeneration()
         {
-            buttonSoluces.Enabled = false;
-            round += 1;
-            if (!Terminer)
+            string text = System.IO.File.ReadAllText("generation.txt");
+            data json = JsonConvert.DeserializeObject<data>(text);
+
+            cible = json.Cible;
+            labelCible.Text = cible.ToString();
+
+            tableau[0] = json.Nombre1;
+            tableau[1] = json.Nombre2;
+            tableau[2] = json.Nombre3;
+            tableau[3] = json.Nombre4;
+            tableau[4] = json.Nombre5;
+
+            ButtonNombre1.Text = tableau[0].ToString();
+            ButtonNombre2.Text = tableau[1].ToString();
+            ButtonNombre3.Text = tableau[2].ToString();
+            ButtonNombre4.Text = tableau[3].ToString();
+            ButtonNombre5.Text = tableau[4].ToString();
+        }
+
+        public void Reset()
+        {
+            this.saveOperateurDivCount = 0;
+            this.saveOperateurFoisCount = 0;
+            this.saveOperateurMoinsCount = 0;
+            this.saveOperateurPlusCount = 0;
+            buttonPremierChiffre = null;
+            buttonDeuxiemeChiffre = null;
+            ButtonNombre1.Enabled = true;
+            ButtonNombre2.Enabled = true;
+            ButtonNombre3.Enabled = true;
+            ButtonNombre4.Enabled = true;
+            ButtonNombre5.Enabled = true;
+            ButtonNombre1.BackColor = Color.White;
+            ButtonNombre2.BackColor = Color.White;
+            ButtonNombre3.BackColor = Color.White;
+            ButtonNombre4.BackColor = Color.White;
+            ButtonNombre5.BackColor = Color.White;
+            ButtonPlus.BackColor = Color.White;
+            ButtonMoins.BackColor = Color.White;
+            ButtonFois.BackColor = Color.White;
+            ButtonDiv.BackColor = Color.White;
+            buttonOp = null;
+    }
+
+        public void Calcul()
+        {
+            int premierChiffre = Int32.Parse(buttonPremierChiffre.Text);
+            int deuxiemeChiffre = Int32.Parse(buttonDeuxiemeChiffre.Text);
+            bool calculFait = true;
+
+            if (buttonOp == ButtonPlus)
             {
-                if (SuivantNow)
+                resultat = premierChiffre + deuxiemeChiffre;
+                saveOperateurPlusCount++;
+                PointsRound += 1;
+
+            }
+            else if (buttonOp == ButtonMoins)
+            {
+                if (premierChiffre - deuxiemeChiffre >= 0)
                 {
-                    Generer();
+                    resultat = premierChiffre - deuxiemeChiffre;
+                    saveOperateurMoinsCount++;
+                    PointsRound += 2;
                 }
                 else
                 {
-                    if (LastButton.Text == NombreCible.Text)
-                    {
-
-                        TextAffichageScore.Text = ScoreRound.ToString();
-
-                        SaveOperateurDivCount = OperateurDivCount;
-                        SaveOperateurFoisCount = OperateurFoisCount;
-                        SaveOperateurMoinsCount = OperateurMoinsCount;
-                        SaveOperateurPlusCount = OperateurPlusCount;
-                        SaveScoreManche = ScoreManche;
-                        if (OperateurDivCount == 1 && OperateurFoisCount == 1 && OperateurMoinsCount == 1 && OperateurPlusCount == 1)
-                        {
-                            MessageBox.Show("Super ! Mathador ! \n Vous avez utilisé : \n" + "/n Votre Score est de : " + TextAffichageScore.Text);
-                            reset();
-                            Generer();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Bien Joué \n Vous avez utilisé : \n" + this.OperateurPlusCount + " fois le + \n" + this.OperateurMoinsCount + " fois le - \n" + this.OperateurFoisCount + " fois le * \n" + this.OperateurDivCount + " fois le / \n" + TextTimer.Text + "/n Votre Score est de : " + TextAffichageScore.Text);
-                            reset();
-                            Generer();
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Perdu" + this.OperateurPlusCount + " " + this.OperateurMoinsCount + " " + this.OperateurFoisCount + " " + this.OperateurDivCount + " " + TextTimer.Text);
-                        reset();
-                        Generer();
-                    }
+                    buttonOp.BackColor = Color.Red;
+                    calculFait = false;
+                }
+            }
+            else if (buttonOp == ButtonFois)
+            {
+                resultat = premierChiffre * deuxiemeChiffre;
+                saveOperateurFoisCount++;
+                PointsRound += 1;
+            }
+            else if (buttonOp == ButtonDiv)
+            {
+                if (premierChiffre % deuxiemeChiffre == 0)
+                {
+                    resultat = premierChiffre / deuxiemeChiffre;
+                    saveOperateurDivCount++;
+                    PointsRound += 3;
+                }
+                else
+                {
+                    buttonOp.BackColor = Color.Red;
+                    calculFait = false;
+                }
+            }
+            if (calculFait)
+            {
+                buttonPremierChiffre.Enabled = false;
+                buttonPremierChiffre.BackColor = Color.White;
+                buttonPremierChiffre.Text = "";
+                buttonDeuxiemeChiffre.Text = resultat.ToString();
+                buttonPremierChiffre = buttonDeuxiemeChiffre;
+                buttonPremierChiffre.BackColor = Color.LightBlue;
+                buttonDeuxiemeChiffre = null;
+                buttonOp.BackColor = Color.White;
+                buttonOp = null;
+                calculsCount++;
+                labelScore.Text = score.ToString() + " + " + PointsRound.ToString();
+                Console.WriteLine("{0}e calcul", calculsCount);
+                if (calculsCount == 4)
+                {
+                    FinDeRound();
                 }
             }
         }
 
-        private void BouttonNombre1_Click(object sender, EventArgs e)
+        public void FinDeRound()
         {
-            if (BouttonNombre1.Text != "")
+            if (ButtonNombre1.Text == cible.ToString() || ButtonNombre2.Text == cible.ToString() || ButtonNombre3.Text == cible.ToString() || ButtonNombre4.Text == cible.ToString() || ButtonNombre5.Text == cible.ToString())
             {
-                Calcule(BouttonNombre1);
-                LastButton = BouttonNombre1;
-                LastButton.BackColor = Color.Yellow;
+                if (saveOperateurDivCount > 0 && saveOperateurFoisCount > 0 && saveOperateurMoinsCount > 0 && saveOperateurPlusCount > 0)
+                {
+                    mathadorCount++;
+                    score += 13;
+                    buttonMathador.Show();
+                    if (mathadorCount > 1) { buttonMathador.Text = "MATHADOR x " + mathadorCount; }
+                } 
+                else
+                {
+                    score += PointsRound;
+                }
+            }
+            plusCount += saveOperateurPlusCount;
+            moinsCount += saveOperateurMoinsCount;
+            foisCount += saveOperateurFoisCount;
+            divCount += saveOperateurDivCount;
+
+            labelScore.Text = score.ToString();
+            PointsRound = 0;
+            calculsCount = 0;
+            tentatives = 1;
+            Reset();
+            Generateur();
+        }
+
+        public void FinDePartie()
+        {
+            finDePartie = true;
+            this.Hide();
+            ScoreFinDePartie form = new ScoreFinDePartie(this.pseudo, score, round, mathadorCount, plusCount, moinsCount, foisCount, divCount);
+            form.ShowDialog();
+        }
+
+        //=========== ================= Clicks ==============================================================
+        
+        private void ButtonNombre1_Click(object sender, EventArgs e)
+        {
+            if (buttonPremierChiffre == null && buttonDeuxiemeChiffre != ButtonNombre1)
+            {
+                buttonPremierChiffre = ButtonNombre1;
+                ButtonNombre1.BackColor = Color.LightBlue;
+            }
+            else if (buttonDeuxiemeChiffre == null && buttonPremierChiffre != ButtonNombre1)
+            {
+                buttonDeuxiemeChiffre = ButtonNombre1;
+                ButtonNombre1.BackColor = Color.LightSkyBlue;
+                if (buttonOp != null) { Calcul(); }
+            }
+            else if (buttonPremierChiffre == ButtonNombre1)
+            {
+                buttonPremierChiffre = null;
+                ButtonNombre1.BackColor = Color.White;
+            }
+            else if (buttonDeuxiemeChiffre == ButtonNombre1)
+            {
+                buttonDeuxiemeChiffre = null;
+                ButtonNombre1.BackColor = Color.White;
             }
         }
 
-        private void BouttonNombre2_Click(object sender, EventArgs e)
+        private void ButtonNombre2_Click(object sender, EventArgs e)
         {
-
-            if (BouttonNombre2.Text != "")
+            if (buttonPremierChiffre == null && buttonDeuxiemeChiffre != ButtonNombre2)
             {
-                Calcule(BouttonNombre2);
-                LastButton = BouttonNombre2;
-                LastButton.BackColor = Color.Yellow;
+                buttonPremierChiffre = ButtonNombre2;
+                ButtonNombre2.BackColor = Color.LightBlue;
+            }
+            else if (buttonDeuxiemeChiffre == null && buttonPremierChiffre != ButtonNombre2)
+            {
+                buttonDeuxiemeChiffre = ButtonNombre2;
+                ButtonNombre2.BackColor = Color.LightSkyBlue;
+                if (buttonOp != null) { Calcul(); }
+            }
+            else if (buttonPremierChiffre == ButtonNombre2)
+            {
+                buttonPremierChiffre = null;
+                ButtonNombre2.BackColor = Color.White;
+            }
+            else if (buttonDeuxiemeChiffre == ButtonNombre2)
+            {
+                buttonDeuxiemeChiffre = null;
+                ButtonNombre2.BackColor = Color.White;
             }
         }
 
-
-        private void BouttonNombre3_Click(object sender, EventArgs e)
+        private void ButtonNombre3_Click(object sender, EventArgs e)
         {
-            if (BouttonNombre3.Text != "")
+            if (buttonPremierChiffre == null && buttonDeuxiemeChiffre != ButtonNombre3)
             {
-                Calcule(BouttonNombre3);
-                LastButton = BouttonNombre3;
-                LastButton.BackColor = Color.Yellow;
+                buttonPremierChiffre = ButtonNombre3;
+                ButtonNombre3.BackColor = Color.LightBlue;
+            }
+            else if (buttonDeuxiemeChiffre == null && buttonPremierChiffre != ButtonNombre3)
+            {
+                buttonDeuxiemeChiffre = ButtonNombre3;
+                ButtonNombre3.BackColor = Color.LightSkyBlue;
+                if (buttonOp != null) { Calcul(); }
+            }
+            else if (buttonPremierChiffre == ButtonNombre3)
+            {
+                buttonPremierChiffre = null;
+                ButtonNombre3.BackColor = Color.White;
+            }
+            else if (buttonDeuxiemeChiffre == ButtonNombre3)
+            {
+                buttonDeuxiemeChiffre = null;
+                ButtonNombre3.BackColor = Color.White;
             }
         }
 
-        private void BouttonNombre4_Click(object sender, EventArgs e)
+        private void ButtonNombre4_Click(object sender, EventArgs e)
         {
-            if (BouttonNombre4.Text != "")
+            if (buttonPremierChiffre == null && buttonDeuxiemeChiffre != ButtonNombre4)
             {
-                Calcule(BouttonNombre4);
-                LastButton = BouttonNombre4;
-                LastButton.BackColor = Color.Yellow;
+                buttonPremierChiffre = ButtonNombre4;
+                ButtonNombre4.BackColor = Color.LightBlue;
+            }
+            else if (buttonDeuxiemeChiffre == null && buttonPremierChiffre != ButtonNombre4)
+            {
+                buttonDeuxiemeChiffre = ButtonNombre4;
+                ButtonNombre4.BackColor = Color.LightSkyBlue;
+                if (buttonOp != null) { Calcul(); }
+            }
+            else if (buttonPremierChiffre == ButtonNombre4)
+            {
+                buttonPremierChiffre = null;
+                ButtonNombre4.BackColor = Color.White;
+            }
+            else if (buttonDeuxiemeChiffre == ButtonNombre4)
+            {
+                buttonDeuxiemeChiffre = null;
+                ButtonNombre4.BackColor = Color.White;
             }
         }
 
         private void ButtonNombre5_Click(object sender, EventArgs e)
         {
-            if (ButtonNombre5.Text != "")
+            if (buttonPremierChiffre == null && buttonDeuxiemeChiffre != ButtonNombre5)
             {
-                Calcule(ButtonNombre5);
-                LastButton = ButtonNombre5;
-                LastButton.BackColor = Color.Yellow;
+                buttonPremierChiffre = ButtonNombre5;
+                ButtonNombre5.BackColor = Color.LightBlue;
+            }
+            else if (buttonDeuxiemeChiffre == null && buttonPremierChiffre != ButtonNombre5)
+            {
+                buttonDeuxiemeChiffre = ButtonNombre5;
+                ButtonNombre5.BackColor = Color.LightSkyBlue;
+                if (buttonOp != null) { Calcul(); }
+            }
+            else if (buttonPremierChiffre == ButtonNombre5)
+            {
+                buttonPremierChiffre = null;
+                ButtonNombre5.BackColor = Color.White;
+            }
+            else if (buttonDeuxiemeChiffre == ButtonNombre5)
+            {
+                buttonDeuxiemeChiffre = null;
+                ButtonNombre5.BackColor = Color.White;
             }
         }
 
         private void ButtonPlus_Click(object sender, EventArgs e)
         {
-            plus = true;
-            if (LastButton != null && PremierNombreSelectione == false)
+            if (buttonOp == null)
             {
-                Calcule(LastButton);
+                buttonOp = ButtonPlus;
+                ButtonPlus.BackColor = Color.LightCyan;
+                if (buttonPremierChiffre != null && buttonDeuxiemeChiffre != null) { Calcul(); }
+            }
+            else if (buttonOp == ButtonPlus)
+            {
+                buttonOp = null;
+                ButtonPlus.BackColor = Color.White;
+            }
+            else
+            {
+                buttonOp.BackColor = Color.White; 
+                buttonOp = ButtonPlus;
+                ButtonPlus.BackColor = Color.LightCyan;
+                if (buttonPremierChiffre != null && buttonDeuxiemeChiffre != null) { Calcul(); }
             }
         }
 
         private void ButtonMoins_Click(object sender, EventArgs e)
         {
-            moins = true;
-            if (LastButton != null && PremierNombreSelectione == false)
+            if (buttonOp == null)
             {
-                Calcule(LastButton);
+                buttonOp = ButtonMoins;
+                ButtonMoins.BackColor = Color.LightCyan;
+                if (buttonPremierChiffre != null && buttonDeuxiemeChiffre != null) { Calcul(); }
+            }
+            else if (buttonOp == ButtonMoins)
+            {
+                buttonOp = null;
+                ButtonMoins.BackColor = Color.White;
+            }
+            else
+            {
+                buttonOp.BackColor = Color.White;
+                buttonOp = ButtonMoins;
+                ButtonMoins.BackColor = Color.LightCyan;
+                if (buttonPremierChiffre != null && buttonDeuxiemeChiffre != null) { Calcul(); }
             }
         }
 
         private void ButtonFois_Click(object sender, EventArgs e)
         {
-            fois = true;
-            if (LastButton != null && PremierNombreSelectione == false)
+            if (buttonOp == null)
             {
-                Calcule(LastButton);
+                buttonOp = ButtonFois;
+                ButtonFois.BackColor = Color.LightCyan;
+                if (buttonPremierChiffre != null && buttonDeuxiemeChiffre != null) { Calcul(); }
+            }
+            else if (buttonOp == ButtonFois)
+            {
+                buttonOp = null;
+                ButtonFois.BackColor = Color.White;
+            }
+            else
+            {
+                buttonOp.BackColor = Color.White;
+                buttonOp = ButtonFois;
+                ButtonFois.BackColor = Color.LightCyan;
+                if (buttonPremierChiffre != null && buttonDeuxiemeChiffre != null) { Calcul(); }
             }
         }
 
         private void ButtonDiv_Click(object sender, EventArgs e)
         {
-            div = true;
-            if (LastButton != null && PremierNombreSelectione == false)
+            if (buttonOp == null)
             {
-                Calcule(LastButton);
+                buttonOp = ButtonDiv;
+                ButtonDiv.BackColor = Color.LightCyan;
+                if (buttonPremierChiffre != null && buttonDeuxiemeChiffre != null) { Calcul(); }
+            }
+            else if (buttonOp == ButtonDiv)
+            {
+                buttonOp = null;
+                ButtonDiv.BackColor = Color.White;
+            }
+            else
+            {
+                buttonOp.BackColor = Color.White;
+                buttonOp = ButtonDiv;
+                ButtonDiv.BackColor = Color.LightCyan;
+                if (buttonPremierChiffre != null && buttonDeuxiemeChiffre != null) { Calcul(); }
             }
         }
 
         private void ButtonSuivant_Click(object sender, EventArgs e)
         {
-            methsuivant();
+            FinDeRound();
         }
 
         private void ButtonRetour_Click(object sender, EventArgs e)
         {
-            reset();
+            labelScore.Text = score.ToString();
+            PointsRound = 0;
+            calculsCount = 0;
+            tentatives = 1;
+            Reset();
+            RecupGeneration();
             
-        }
-
-        private void _timer1_Tick(object sender, EventArgs e)
-        {
-
-            var timeSinceStartTime = DateTime.Now - _startTime;
-            timeSinceStartTime = new TimeSpan(timeSinceStartTime.Hours,
-                                              timeSinceStartTime.Minutes,
-                                              timeSinceStartTime.Seconds);
-
-            _currentElapsedTime = timeSinceStartTime + _totalElapsedTime;
-
-            // These are just two Label controls which display the current 
-            // elapsed time and total elapsed time
-            //TextTemps.Text = _currentElapsedTime.ToString();
-            TextTimer.Text = timeSinceStartTime.ToString();
-            if (timeSinceStartTime.Minutes == 01)
-            {
-                buttonTerminer.Show();
-                ButtonSuivant.Hide();
-                mess = true;
-                if(mess){
-                    k++;
-                }
-                if (i == k)
-                {
-
-                    Message();
-                }
-                //timeSinceStartTime = DateTime.Now - _startTime;
-                
-                //reset();
-            }
-      
         }
 
         private void buttonTerminer_Click(object sender, EventArgs e)
         {
             
-            this.Hide();
-            ScoreFinDePartie form = new ScoreFinDePartie(SaveOperateurDivCount, SaveOperateurFoisCount, SaveOperateurMoinsCount, SaveOperateurPlusCount, SaveScoreManche, round);
-            form.ShowDialog();
         }
 
         private void buttonSoluces_Click(object sender, EventArgs e)
         {
+        }
+
+        private void TextScore_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSoluces_Click_1(object sender, EventArgs e)
+        {
             Solutions solutionsForm = new Solutions();                                                      //On appel le form qui contient les listbox des solutions
             solutionsForm.ShowDialog();
-            
+        }
+
+        private void buttonAbandon_Click(object sender, EventArgs e)
+        {
+            finDePartie = true;
+            this.Hide();
+            MenuMathador form = new MenuMathador(pseudo);
+            form.ShowDialog();
         }
     }
 
