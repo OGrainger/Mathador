@@ -18,6 +18,7 @@ namespace Mathador
         int[,] TroisSignes = new int[3, 64];
         int[,] QuatreSignes = new int[4, 256];
         public static List<string> equationsTemp = new List<string>();
+        public static List<Solution> Solutions = new List<Solution>();
 
         public void TabSigne()
         {
@@ -117,13 +118,11 @@ namespace Mathador
                                 if (MathadorGame.tableau[i] + MathadorGame.tableau[j] == MathadorGame.cible)    //Si l'addition = cible, alors écriture de l'équation dans le fichier JSON "Solutions"
                                 {
                                     equation = MathadorGame.tableau[i].ToString() + "+" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString();
-                                    //equations.Add(equation);
                                     score++;
-                                    //scores.Add(score.ToString());
                                     Solution Sol = new Solution();
                                     Sol.score = score.ToString();
                                     Sol.equations.Add(equation);
-
+                                    Solutions.Add(Sol);
                                 }
                             }
                             else if (UnSigne[k] == 1)                                                           //Si (UnSigne[k] == 1), alors : soustraction
@@ -131,12 +130,11 @@ namespace Mathador
                                 if ((MathadorGame.tableau[i] - MathadorGame.tableau[j] > 0) && (MathadorGame.tableau[i] - MathadorGame.tableau[j] == MathadorGame.cible))   //Si la soustraction = cible et que le résultat de la soustraction
                                 {                                                                                                                                           //est suppérieur à 0, alors écriture de l'équation dans le fichier JSON "Solutions"
                                     equation = MathadorGame.tableau[i].ToString() + "-" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString();
-                                    //equations.Add(equation);
                                     score = score + 2;
-                                    //scores.Add(score.ToString());
                                     Solution Sol = new Solution();
                                     Sol.score = score.ToString();
                                     Sol.equations.Add(equation);
+                                    Solutions.Add(Sol);
                                 }
                             }
                             else if (UnSigne[k] == 2)                                                           //Si (UnSigne[k] == 2), alors : multiplication
@@ -144,12 +142,11 @@ namespace Mathador
                                 if (MathadorGame.tableau[i] * MathadorGame.tableau[j] == MathadorGame.cible)    //Si la multiplication = cible, alors écriture de l'équation dans le fichier JSON "Solutions"
                                 {
                                     equation = MathadorGame.tableau[i].ToString() + "*" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString();
-                                    //equations.Add(equation);
                                     score++;
-                                    //scores.Add(score.ToString());
                                     Solution Sol = new Solution();
                                     Sol.score = score.ToString();
                                     Sol.equations.Add(equation);
+                                    Solutions.Add(Sol);
                                 }
                             }
                             else if (UnSigne[k] == 3)                                                           //Si (UnSigne[k] == 3), alors : division
@@ -161,12 +158,11 @@ namespace Mathador
                                         {
 
                                             equation = MathadorGame.tableau[i].ToString() + "/" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString();
-                                            //equations.Add(equation);
                                             score = score + 3;
-                                            //scores.Add(score.ToString());
                                             Solution Sol = new Solution();
                                             Sol.score = score.ToString();
                                             Sol.equations.Add(equation);
+                                            Solutions.Add(Sol);
                                         }
                                     }
                                 }
@@ -252,6 +248,7 @@ namespace Mathador
                                                 Solution Sol = new Solution();
                                                 Sol.score = score.ToString();
                                                 Sol.equations = equationsTemp;
+                                                Solutions.Add(Sol);
                                                 equationsTemp.Clear();
                                             }
                                             break;
@@ -266,6 +263,7 @@ namespace Mathador
                                                 Solution Sol = new Solution();
                                                 Sol.score = score.ToString();
                                                 Sol.equations = equationsTemp;
+                                                Solutions.Add(Sol);
                                                 equationsTemp.Clear();
                                             }
                                             break;
@@ -280,6 +278,7 @@ namespace Mathador
                                                 Solution Sol = new Solution();
                                                 Sol.score = score.ToString();
                                                 Sol.equations = equationsTemp;
+                                                Solutions.Add(Sol);
                                                 equationsTemp.Clear();
                                             }
                                             break;
@@ -294,6 +293,7 @@ namespace Mathador
                                                 Solution Sol = new Solution();
                                                 Sol.score = score.ToString();
                                                 Sol.equations = equationsTemp;
+                                                Solutions.Add(Sol);
                                                 equationsTemp.Clear();
                                             }
                                             break;
@@ -435,6 +435,7 @@ namespace Mathador
                                                     Solution Sol = new Solution();
                                                     Sol.score = score.ToString();
                                                     Sol.equations = equationsTemp;
+                                                    Solutions.Add(Sol);
                                                     equationsTemp.Clear();
                                                 }
                                                 break;
@@ -450,6 +451,7 @@ namespace Mathador
                                                     Solution Sol = new Solution();
                                                     Sol.score = score.ToString();
                                                     Sol.equations = equationsTemp;
+                                                    Solutions.Add(Sol);
                                                     equationsTemp.Clear();
                                                 }
                                                 break;
@@ -465,6 +467,7 @@ namespace Mathador
                                                     Solution Sol = new Solution();
                                                     Sol.score = score.ToString();
                                                     Sol.equations = equationsTemp;
+                                                    Solutions.Add(Sol);
                                                     equationsTemp.Clear();
                                                 }
                                                 break;
@@ -480,6 +483,7 @@ namespace Mathador
                                                     Solution Sol = new Solution();
                                                     Sol.score = score.ToString();
                                                     Sol.equations = equationsTemp;
+                                                    Solutions.Add(Sol);
                                                     equationsTemp.Clear();
                                                 }
                                                 break;
@@ -519,7 +523,8 @@ namespace Mathador
                                             case 0:
                                                 {
                                                     preresult = MathadorGame.tableau[i] + MathadorGame.tableau[j];
-                                                    equation = MathadorGame.tableau[i].ToString() + "+" + MathadorGame.tableau[j].ToString() + "=" + preresult + " => " + preresult;
+                                                    equation = MathadorGame.tableau[i].ToString() + "+" + MathadorGame.tableau[j].ToString() + "=" + preresult;
+                                                    equationsTemp.Add(equation);
                                                     valid++;
                                                     score++;
                                                     break;
@@ -529,7 +534,8 @@ namespace Mathador
                                                     if (MathadorGame.tableau[i] - MathadorGame.tableau[j] >= 0)
                                                     {
                                                         preresult = MathadorGame.tableau[i] - MathadorGame.tableau[j];
-                                                        equation = MathadorGame.tableau[i].ToString() + "-" + MathadorGame.tableau[j].ToString() + "=" + preresult + " => " + preresult;
+                                                        equation = MathadorGame.tableau[i].ToString() + "-" + MathadorGame.tableau[j].ToString() + "=" + preresult;
+                                                        equationsTemp.Add(equation);
                                                         valid++;
                                                         score = score + 2;
                                                     }
@@ -538,7 +544,8 @@ namespace Mathador
                                             case 2:
                                                 {
                                                     preresult = MathadorGame.tableau[i] * MathadorGame.tableau[j];
-                                                    equation = MathadorGame.tableau[i].ToString() + "x" + MathadorGame.tableau[j].ToString() + "=" + preresult + " => " + preresult;
+                                                    equation = MathadorGame.tableau[i].ToString() + "x" + MathadorGame.tableau[j].ToString() + "=" + preresult;
+                                                    equationsTemp.Add(equation);
                                                     valid++;
                                                     score++;
                                                     break;
@@ -548,7 +555,8 @@ namespace Mathador
                                                     if (MathadorGame.tableau[i] % MathadorGame.tableau[j] == 0)
                                                     {
                                                         preresult = MathadorGame.tableau[i] / MathadorGame.tableau[j];
-                                                        equation = MathadorGame.tableau[i].ToString() + "/" + MathadorGame.tableau[j].ToString() + "=" + preresult + " => " + preresult;
+                                                        equation = MathadorGame.tableau[i].ToString() + "/" + MathadorGame.tableau[j].ToString() + "=" + preresult;
+                                                        equationsTemp.Add(equation);
                                                         valid++;
                                                         score = score + 3;
                                                     }
@@ -560,8 +568,10 @@ namespace Mathador
                                         {
                                             case 0:
                                                 {
+                                                    equation = preresult.ToString();
                                                     preresult = preresult + MathadorGame.tableau[k];
-                                                    equation = equation + "+" + MathadorGame.tableau[k] + "=" + preresult + " => " + preresult;
+                                                    equation = equation + "+" + MathadorGame.tableau[k] + "=" + preresult;
+                                                    equationsTemp.Add(equation);
                                                     valid++;
                                                     score++;
                                                     break;
@@ -570,8 +580,10 @@ namespace Mathador
                                                 {
                                                     if (preresult - MathadorGame.tableau[k] > 0)
                                                     {
+                                                        equation = preresult.ToString();
                                                         preresult = preresult - MathadorGame.tableau[k];
-                                                        equation = equation + "-" + MathadorGame.tableau[k] + "=" + preresult + " => " + preresult;
+                                                        equation = equation + "-" + MathadorGame.tableau[k] + "=" + preresult;
+                                                        equationsTemp.Add(equation);
                                                         valid++;
                                                         score = score + 2;
                                                     }
@@ -581,8 +593,10 @@ namespace Mathador
                                                 {
                                                     if (preresult * MathadorGame.tableau[k] >= 0)
                                                     {
+                                                        equation = preresult.ToString();
                                                         preresult = preresult * MathadorGame.tableau[k];
-                                                        equation = equation + "x" + MathadorGame.tableau[k] + "=" + preresult + " => " + preresult;
+                                                        equation = equation + "x" + MathadorGame.tableau[k] + "=" + preresult;
+                                                        equationsTemp.Add(equation);
                                                         valid++;
                                                         score++;
                                                     }
@@ -592,8 +606,10 @@ namespace Mathador
                                                 {
                                                     if (preresult % MathadorGame.tableau[k] == 0)
                                                     {
+                                                        equation = preresult.ToString();
                                                         preresult = preresult / MathadorGame.tableau[k];
-                                                        equation = equation + "/" + MathadorGame.tableau[k] + "=" + preresult + " => " + preresult;
+                                                        equation = equation + "/" + MathadorGame.tableau[k] + "=" + preresult;
+                                                        equationsTemp.Add(equation);
                                                         valid++;
                                                         score = score + 3;
                                                     }
@@ -605,8 +621,10 @@ namespace Mathador
                                         {
                                             case 0:
                                                 {
+                                                    equation = preresult.ToString();
                                                     preresult = preresult + MathadorGame.tableau[k];
-                                                    equation = equation + "+" + MathadorGame.tableau[k] + "=" + preresult + " => " + preresult;
+                                                    equation = equation + "+" + MathadorGame.tableau[k] + "=" + preresult;
+                                                    equationsTemp.Add(equation);
                                                     valid++;
                                                     score++;
                                                     break;
@@ -615,8 +633,10 @@ namespace Mathador
                                                 {
                                                     if (preresult - MathadorGame.tableau[k] > 0)
                                                     {
+                                                        equation = preresult.ToString();
                                                         preresult = preresult - MathadorGame.tableau[k];
-                                                        equation = equation + "-" + MathadorGame.tableau[k] + "=" + preresult + " => " + preresult;
+                                                        equation = equation + "-" + MathadorGame.tableau[k] + "=" + preresult;
+                                                        equationsTemp.Add(equation);
                                                         valid++;
                                                         score = score + 2;
                                                     }
@@ -626,8 +646,10 @@ namespace Mathador
                                                 {
                                                     if (preresult * MathadorGame.tableau[k] >= 0)
                                                     {
+                                                        equation = preresult.ToString();
                                                         preresult = preresult * MathadorGame.tableau[k];
-                                                        equation = equation + "x" + MathadorGame.tableau[k] + "=" + preresult + " => " + preresult;
+                                                        equation = equation + "x" + MathadorGame.tableau[k] + "=" + preresult;
+                                                        equationsTemp.Add(equation);
                                                         valid++;
                                                         score++;
                                                     }
@@ -637,8 +659,10 @@ namespace Mathador
                                                 {
                                                     if (preresult % MathadorGame.tableau[k] == 0)
                                                     {
+                                                        equation = preresult.ToString();
                                                         preresult = preresult / MathadorGame.tableau[k];
-                                                        equation = equation + "/" + MathadorGame.tableau[k] + "=" + preresult + " => " + preresult;
+                                                        equation = equation + "/" + MathadorGame.tableau[k] + "=" + preresult;
+                                                        equationsTemp.Add(equation);
                                                         valid++;
                                                         score = score + 3;
                                                     }
@@ -652,10 +676,15 @@ namespace Mathador
                                                 {
                                                     if (preresult + MathadorGame.tableau[l] == MathadorGame.cible && valid == 3)
                                                     {
+                                                        equation = preresult.ToString();
                                                         equation = equation + "+" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString();
-                                                        equations.Add(equation);
+                                                        equationsTemp.Add(equation);
                                                         score++;
-                                                        scores.Add(score.ToString());
+                                                        Solution Sol = new Solution();
+                                                        Sol.score = score.ToString();
+                                                        Sol.equations = equationsTemp;
+                                                        Solutions.Add(Sol);
+                                                        equationsTemp.Clear();
                                                     }
                                                     break;
                                                 }
@@ -663,10 +692,15 @@ namespace Mathador
                                                 {
                                                     if (preresult - MathadorGame.tableau[l] >= 0 && preresult - MathadorGame.tableau[l] == MathadorGame.cible && valid == 3)
                                                     {
+                                                        equation = preresult.ToString();
                                                         equation = equation + "-" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString();
-                                                        equations.Add(equation);
+                                                        equationsTemp.Add(equation);
                                                         score = score + 2;
-                                                        scores.Add(score.ToString());
+                                                        Solution Sol = new Solution();
+                                                        Sol.score = score.ToString();
+                                                        Sol.equations = equationsTemp;
+                                                        Solutions.Add(Sol);
+                                                        equationsTemp.Clear();
                                                     }
                                                     break;
                                                 }
@@ -674,10 +708,15 @@ namespace Mathador
                                                 {
                                                     if (preresult * MathadorGame.tableau[l] > 0 && preresult * MathadorGame.tableau[l] == MathadorGame.cible && valid == 3)
                                                     {
+                                                        equation = preresult.ToString();
                                                         equation = equation + "x" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString();
-                                                        equations.Add(equation);
+                                                        equationsTemp.Add(equation);
                                                         score++;
-                                                        scores.Add(score.ToString());
+                                                        Solution Sol = new Solution();
+                                                        Sol.score = score.ToString();
+                                                        Sol.equations = equationsTemp;
+                                                        Solutions.Add(Sol);
+                                                        equationsTemp.Clear();
                                                     }
                                                     break;
                                                 }
@@ -685,10 +724,15 @@ namespace Mathador
                                                 {
                                                     if (preresult % MathadorGame.tableau[l] == 0 && preresult / MathadorGame.tableau[l] == MathadorGame.cible && valid == 3)
                                                     {
+                                                        equation = preresult.ToString();
                                                         equation = equation + "/" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString();
-                                                        equations.Add(equation);
+                                                        equationsTemp.Add(equation);
                                                         score = score + 3;
-                                                        scores.Add(score.ToString());
+                                                        Solution Sol = new Solution();
+                                                        Sol.score = score.ToString();
+                                                        Sol.equations = equationsTemp;
+                                                        Solutions.Add(Sol);
+                                                        equationsTemp.Clear();
                                                     }
                                                     break;
                                                 }
@@ -712,19 +756,18 @@ namespace Mathador
             SolvTrheeOp();
             SolvfourOp();
 
-            
-            int tailleScore = scores.Count;
+
+            int tailleSolutions = Solutions.Count;
             string json = "{\n";
-            for (i = 0; i < tailleScore; i++)
+            for (i = 0; i < tailleSolutions; i++)
             {
-                Solution sol = new Solution();
-                sol.score = scores[i];
+                Solution solTemp = new Solution();
+                solTemp = Solutions[i];
                 json += "  [\n  score : ";
-                json += JsonConvert.SerializeObject(sol.score);
+                json += JsonConvert.SerializeObject(solTemp.score);
                 json += "\n";
-                sol.equations = equations[i];
                 json += "    equation : ";
-                json += JsonConvert.SerializeObject(sol.equations);
+                json += JsonConvert.SerializeObject(solTemp.equations);
                 json += "\n  ]\n";
             }
             json += "}";
@@ -734,7 +777,6 @@ namespace Mathador
     public class Solution
     {
         public string score;
-        //public string equations;
         public List<string> equations = new List<string>();
     }
 }
