@@ -38,7 +38,6 @@ namespace Mathador
             gameData.Add("divCount", divCount);
 
             SQLiteDatabase db = new SQLiteDatabase();
-            db.LaunchDatabase();
             db.UpdateData(pseudo, gameData);
 
         }

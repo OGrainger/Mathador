@@ -38,7 +38,6 @@ namespace Mathador
             InitializeComponent();
             this.Pseudo = Pseudo;
 
-            db.LaunchDatabase();
             data = db.GetData(this.Pseudo);
             totalScorePoints = data["totalScorePoints"];
             gameCount = data["gameCount"];

@@ -19,7 +19,6 @@ namespace Mathador
         public MenuMathador(string Pseudo)
         {
             InitializeComponent();
-            db.LaunchDatabase();
             BienvenuePseudo.Text = "Bienvenue " + Pseudo + " !";
             this.Pseudo = Pseudo;
             //buttonStats.Enabled = gameCount > 0;

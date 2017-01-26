@@ -32,12 +32,6 @@ namespace Mathador
             string sql = "create table if not exists users (username text, password text, minScore int, maxScore int, totalScorePoints int, totalGameTimeInSeconds int, gameCount int, roundCount int, mathadorCount int, addCount int, subCount int, multCount int, divCount int)";
             SQLiteCommand commande = new SQLiteCommand(sql, connexion);
             commande.ExecuteNonQuery();
-            return;
-        }
-
-        //Ferme la connexion à la table
-        public void CloseDatabase()
-        {
             connexion.Close();
             return;
         }
@@ -45,30 +39,39 @@ namespace Mathador
         //Insert un nouvel utilisateur
         public void CreateANewUser(string username, string password)
         {
+            connexion.Open();
             string sql = "insert into users values ('" + username + "', '" + password + "', 0, 0 ,0 ,0 ,0, 0, 0, 0, 0, 0, 0)";
             SQLiteCommand commandInsert = new SQLiteCommand(sql, connexion);
             commandInsert.ExecuteNonQuery();
+            connexion.Close();
             return;
         }
 
         //Vérifie si l'utilisateur existe déjà - Retourne true si c'est le cas
         public bool CheckIfUserAlreadyExists(string username)
         {
+            connexion.Open();
+            bool userExistBool;
             string sql = "SELECT username FROM users WHERE username = '" + username + "'";
             SQLiteCommand commande = new SQLiteCommand(sql, connexion);
-            SQLiteDataReader reader = commande.ExecuteReader();
-            while (reader.Read())
-            {
+            int userExist = Convert.ToInt32(commande.ExecuteScalar());
+            if (userExist > 0) {
                 Console.WriteLine("Utilisateur existant");
-                return true;
+                userExistBool = true;
             }
-            Console.WriteLine("L'utilisateur n'existe pas");
-            return false;
+            else
+            {
+                Console.WriteLine("L'utilisateur n'existe pas");
+                userExistBool = false;
+            }
+            connexion.Close();
+            return userExistBool;
         }
 
         //Vérifie si le mdp correspond
         public bool CheckIfPasswordMatch(string username, string password)
         {
+            connexion.Open();
             string sql = "SELECT password FROM users WHERE username = '" + username + "'";
             SQLiteCommand commande = new SQLiteCommand(sql, connexion);
             SQLiteDataReader reader = commande.ExecuteReader();
@@ -77,10 +80,12 @@ namespace Mathador
                 if (reader["password"].ToString() == password)
                 {
                     Console.WriteLine("Le mot de passe correspond");
+                    connexion.Close();
                     return true;
                 }
             }
             Console.WriteLine("Le mot de passe ne correspond pas");
+            connexion.Close();
             return false;
         }
 
@@ -89,6 +94,7 @@ namespace Mathador
         {
             Dictionary<string, int> userData = new Dictionary<string, int>();
 
+            connexion.Open();
             string sql = "SELECT * FROM users WHERE username = '" + username + "'";
             SQLiteCommand commande = new SQLiteCommand(sql, connexion);
             SQLiteDataReader reader = commande.ExecuteReader();
@@ -107,6 +113,7 @@ namespace Mathador
                 userData.Add("multCount", reader.GetInt32(11));
                 userData.Add("divCount", reader.GetInt32(12));
             }
+            connexion.Close();
             return userData;
         }
 
@@ -114,6 +121,8 @@ namespace Mathador
         public void UpdateData(string username, Dictionary<string, int> gameData)
         {
             Dictionary<string, int> dataFromDatabase = GetData(username);
+
+            connexion.Open();
             string sql;
 
             if (dataFromDatabase["minScore"] == 0)
@@ -129,6 +138,7 @@ namespace Mathador
 
             SQLiteCommand commandUpdate = new SQLiteCommand(sql, connexion);
             commandUpdate.ExecuteNonQuery();
+            connexion.Close();
             return;
         }
     }

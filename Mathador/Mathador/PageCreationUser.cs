@@ -19,7 +19,6 @@ namespace Mathador
         public PageCreationUser()
         {
             InitializeComponent();
-            db.LaunchDatabase();
             labelErreur.Text = "";
         }
 
