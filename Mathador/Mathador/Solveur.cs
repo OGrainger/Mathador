@@ -167,7 +167,6 @@ namespace Mathador
                                     }
                                 }
                             }
-                            score = 0;
                         }
                     }
                 }
@@ -187,7 +186,6 @@ namespace Mathador
                             for (l = 0; l < 16; l++)                                                            //Boucle pour les 16 possibilités d'équations différentes
                             {
                                 score = 0;
-                                equation = "";
                                 valid = 0;
                                 preresult = 0;
                                 switch (DeuxSignes[0, l])                                                       //Vérif du signe de la première opération de l'équation
@@ -321,7 +319,6 @@ namespace Mathador
                                 for (op = 0; op < 64; op++)                                                     //Vérif pour les 64 possibilité d'équations différentes
                                 {
                                     valid = 0;                                                                  //Variable pour vérifier que l'équation utilise 3 opérateurs
-                                    equation = "";
                                     preresult = 0;
                                     score = 0;
                                     switch (TroisSignes[0, op])                                                 //Test du signe de la première partie de l'équation
@@ -514,7 +511,6 @@ namespace Mathador
                                     for (op = 0; op < 256; op++)                                                //Boucle pour les 256 équations possibles
                                     {
                                         valid = 0;
-                                        equation = "";
                                         preresult = 0;
                                         score = 0;
                                         switch (QuatreSignes[0, op])
@@ -757,21 +753,48 @@ namespace Mathador
             SolvfourOp();
 
 
-            int tailleSolutions = Solutions.Count;
+            int tailleSolutions = Solutions.Count();
+            int tailleEquations;
+            string solTest;
+            solTest = "{\n";
+            for (i=0; i<tailleSolutions; i++)
+            {
+                Solution solTemp = new Solution();
+                solTemp = Solutions[i];
+                solTest = solTest + "  [\n    score : " + solTemp.score.ToString() + "\n";
+                tailleEquations = solTemp.equations.Count();
+                Console.WriteLine(tailleEquations);
+                for (j=0; j<tailleEquations; j++)
+                {
+                    solTest = solTest + "    équation(s) : " + solTemp.equations[j] + "\n";
+                }
+            }
+            solTest = solTest + "}";
+            Console.WriteLine(solTest);
+
+            /*int tailleSolutions = Solutions.Count;
+            int tailleEquations;
             string json = "{\n";
             for (i = 0; i < tailleSolutions; i++)
             {
                 Solution solTemp = new Solution();
                 solTemp = Solutions[i];
-                json += "  [\n  score : ";
+                json += "  [\n    score : ";
                 json += JsonConvert.SerializeObject(solTemp.score);
                 json += "\n";
-                json += "    equation : ";
-                json += JsonConvert.SerializeObject(solTemp.equations);
-                json += "\n  ]\n";
+                json += "    équation(s) : ";
+                tailleEquations = solTemp.equations.Count();
+                for (j=0; j<tailleEquations; j++)
+                {
+                    Equation equaTemp = new Equation();
+                    equaTemp.equa = solTemp.equations[j];
+                    json += JsonConvert.SerializeObject(equaTemp.equa);
+                    json += "\n";
+                }
+                json +="]\n";
             }
             json += "}";
-            Console.WriteLine(json);
+            Console.WriteLine(json);*/
         }
     }
     public class Solution
@@ -779,4 +802,8 @@ namespace Mathador
         public string score;
         public List<string> equations = new List<string>();
     }
+    /*public class Equation
+    {
+        public string equa;
+    }*/
 }
