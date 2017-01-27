@@ -128,7 +128,7 @@ namespace Mathador
             connexion.Open();
             string sql;
 
-            if (dataFromDatabase["minScore"] == 0)
+            if (dataFromDatabase["gameCount"] == 0)
             {
                 sql = "UPDATE users SET minScore = " + gameData["gameScore"] + ", maxScore = " + gameData["gameScore"] + ",  totalScorePoints = " + gameData["gameScore"] + ", totalGameTimeInSeconds = " + gameData["gameTime"] + ", gameCount = 1, roundCount = " + gameData["roundCount"] + ", mathadorCount = " + gameData["mathadorCount"] + ", addCount = " + gameData["addCount"] + ", subCount = " + gameData["subCount"] + ", multCount = " + gameData["multCount"] + ", divCount = " + gameData["divCount"] + " WHERE username = '" + username + "'";
             }
