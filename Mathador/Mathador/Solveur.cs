@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Mathador
 {
@@ -17,7 +18,9 @@ namespace Mathador
         int[,] DeuxSignes = new int[2, 16];
         int[,] TroisSignes = new int[3, 64];
         int[,] QuatreSignes = new int[4, 256];
-        public static List<string> equationsTemp = new List<string>();
+        //public static List<string> equationsTemp = new List<string>();
+        public static JArray equationsTemp = new JArray();
+        public static JObject objTemp = new JObject();
         public static List<Solution> Solutions = new List<Solution>();
 
         public void TabSigne()
@@ -118,13 +121,10 @@ namespace Mathador
                                 if (MathadorGame.tableau[i] + MathadorGame.tableau[j] == MathadorGame.cible)    //Si l'addition = cible, alors écriture de l'équation dans le fichier JSON "Solutions"
                                 {
                                     equation = MathadorGame.tableau[i].ToString() + "+" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString();
-                                    //Console.WriteLine(equation);
                                     score++;
                                     Solution Sol = new Solution();
-                                    Sol.score = score.ToString();
-                                    Sol.equations.Add(equation);
-                                    //Console.WriteLine(Sol.score.ToString());
-                                    //Console.WriteLine(Sol.equations[0]);
+                                    Sol.score = score;
+                                    Sol.equations=equation;
                                     Solutions.Add(Sol);
                                 }
                             }
@@ -133,13 +133,10 @@ namespace Mathador
                                 if ((MathadorGame.tableau[i] - MathadorGame.tableau[j] > 0) && (MathadorGame.tableau[i] - MathadorGame.tableau[j] == MathadorGame.cible))   //Si la soustraction = cible et que le résultat de la soustraction
                                 {                                                                                                                                           //est suppérieur à 0, alors écriture de l'équation dans le fichier JSON "Solutions"
                                     equation = MathadorGame.tableau[i].ToString() + "-" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString();
-                                    //Console.WriteLine(equation);
                                     score = score + 2;
                                     Solution Sol = new Solution();
-                                    Sol.score = score.ToString();
-                                    Sol.equations.Add(equation);
-                                    //Console.WriteLine(Sol.score.ToString());
-                                    //Console.WriteLine(Sol.equations[0]);
+                                    Sol.score = score;
+                                    Sol.equations=equation;
                                     Solutions.Add(Sol);
                                 }
                             }
@@ -148,13 +145,10 @@ namespace Mathador
                                 if (MathadorGame.tableau[i] * MathadorGame.tableau[j] == MathadorGame.cible)    //Si la multiplication = cible, alors écriture de l'équation dans le fichier JSON "Solutions"
                                 {
                                     equation = MathadorGame.tableau[i].ToString() + "*" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString();
-                                    //Console.WriteLine(equation);
                                     score++;
                                     Solution Sol = new Solution();
-                                    Sol.score = score.ToString();
-                                    Sol.equations.Add(equation);
-                                    //Console.WriteLine(Sol.score.ToString());
-                                    //Console.WriteLine(Sol.equations[0]);
+                                    Sol.score = score;
+                                    Sol.equations=equation;
                                     Solutions.Add(Sol);
                                 }
                             }
@@ -167,13 +161,10 @@ namespace Mathador
                                         {
 
                                             equation = MathadorGame.tableau[i].ToString() + "/" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString();
-                                            //Console.WriteLine(equation);
                                             score = score + 3;
                                             Solution Sol = new Solution();
-                                            Sol.score = score.ToString();
-                                            Sol.equations.Add(equation);
-                                            //Console.WriteLine(Sol.score.ToString());
-                                            //Console.WriteLine(Sol.equations[0]);
+                                            Sol.score = score;
+                                            Sol.equations=equation;
                                             Solutions.Add(Sol);
                                         }
                                     }
@@ -199,15 +190,12 @@ namespace Mathador
                             {
                                 score = 0;
                                 valid = 0;
-                                preresult = 0;
                                 switch (DeuxSignes[0, l])                                                       //Vérif du signe de la première opération de l'équation
                                 {
                                     case 0:                                                                     //addition
                                         {
                                             preresult = MathadorGame.tableau[i] + MathadorGame.tableau[j];      //première opération dans préresult et dans équation
-                                            //Console.WriteLine(preresult);
                                             equation = MathadorGame.tableau[i].ToString() + "+" + MathadorGame.tableau[j].ToString() + "=" + preresult;
-                                            //Console.WriteLine(equation);
                                             score++;
                                             valid++;
                                             equationsTemp.Add(equation);
@@ -218,9 +206,7 @@ namespace Mathador
                                             if (MathadorGame.tableau[i] - MathadorGame.tableau[j] >= 0)
                                             {
                                                 preresult = MathadorGame.tableau[i] - MathadorGame.tableau[j];
-                                                //Console.WriteLine(preresult);
-                                                equation = MathadorGame.tableau[i].ToString() + "-" + MathadorGame.tableau[j].ToString() + "=" + preresult.ToString();
-                                                //Console.WriteLine(equation);
+                                                equation = MathadorGame.tableau[i].ToString() + "-" + MathadorGame.tableau[j].ToString() + "=" + preresult;
                                                 score = score + 2;
                                                 valid++;
                                                 equationsTemp.Add(equation);
@@ -230,9 +216,7 @@ namespace Mathador
                                     case 2:                                                                     //multiplication
                                         {
                                             preresult = MathadorGame.tableau[i] * MathadorGame.tableau[j];
-                                            //Console.WriteLine(preresult);
-                                            equation = MathadorGame.tableau[i].ToString() + "x" + MathadorGame.tableau[j].ToString() + "=" + preresult.ToString();
-                                            //Console.WriteLine(equation);
+                                            equation = MathadorGame.tableau[i].ToString() + "x" + MathadorGame.tableau[j].ToString() + "=" + preresult;
                                             score++;
                                             valid++;
                                             equationsTemp.Add(equation);
@@ -243,9 +227,7 @@ namespace Mathador
                                             if (MathadorGame.tableau[i] % MathadorGame.tableau[j] == 0)
                                             {
                                                 preresult = MathadorGame.tableau[i] / MathadorGame.tableau[j];
-                                                //Console.WriteLine(preresult);
-                                                equation = MathadorGame.tableau[i].ToString() + "/" + MathadorGame.tableau[j].ToString() + "=" + preresult.ToString();
-                                                //Console.WriteLine(equation);
+                                                equation = MathadorGame.tableau[i].ToString() + "/" + MathadorGame.tableau[j].ToString() + "=" + preresult;
                                                 score = score + 3;
                                                 valid++;
                                                 equationsTemp.Add(equation);
@@ -255,81 +237,70 @@ namespace Mathador
                                 }
 
                                 switch (DeuxSignes[1, l])                                                       //Vérif du signe de la seconde opération de l'équation
-                                {                                                                               //Si le résultat de la première opération et de la seconde est égal à la cible,
+                                {     
+                                                                                                                //Si le résultat de la première opération et de la seconde est égal à la cible,
                                     case 0:                                                                     //alors écriture de l'équation dans le fichier JSON "Solutions"
                                         {
-                                            if (preresult + MathadorGame.tableau[k] == MathadorGame.cible && valid == 1)
+                                            if ((preresult + MathadorGame.tableau[k] == MathadorGame.cible) && (valid == 1))
                                             {
                                                 equation = preresult + "+" + MathadorGame.tableau[k].ToString() + "=" + MathadorGame.cible.ToString();
-                                                //Console.WriteLine(equation);
                                                 equationsTemp.Add(equation);
                                                 score++;
                                                 Solution Sol = new Solution();
-                                                Sol.score = score.ToString();
-                                                Sol.equations = equationsTemp;
-                                                Console.WriteLine(Sol.score.ToString());
-                                                Console.WriteLine(Sol.equations[0]);
-                                                Console.WriteLine(Sol.equations[1]);
+                                                Sol.score = score;
+                                                Sol.equations = String.Join(" ", equationsTemp.ToList());
                                                 Solutions.Add(Sol);
-                                                equationsTemp.Clear();
+                                                
                                             }
+                                            equationsTemp.Clear();
                                             break;
                                         }
                                     case 1:
                                         {
-                                            if (preresult - MathadorGame.tableau[k] >= 0 && preresult - MathadorGame.tableau[k] == MathadorGame.cible && valid == 1)
+                                            if ((preresult - MathadorGame.tableau[k] >= 0 && preresult - MathadorGame.tableau[k] == MathadorGame.cible) && (valid == 1))
                                             {
                                                 equation = preresult + "-" + MathadorGame.tableau[k].ToString() + "=" + MathadorGame.cible.ToString();
-                                                //Console.WriteLine(equation);
                                                 score = score + 2;
                                                 equationsTemp.Add(equation);
                                                 Solution Sol = new Solution();
-                                                Sol.score = score.ToString();
-                                                Sol.equations = equationsTemp;
-                                                Console.WriteLine(Sol.score.ToString());
-                                                Console.WriteLine(Sol.equations[0]);
-                                                Console.WriteLine(Sol.equations[1]);
+                                                Sol.score = score;
+                                                Sol.equations = String.Join(" ", equationsTemp.ToList());
                                                 Solutions.Add(Sol);
-                                                equationsTemp.Clear();
+                                                
                                             }
+                                            equationsTemp.Clear();
                                             break;
                                         }
                                     case 2:
                                         {
-                                            if (preresult * MathadorGame.tableau[k] > 0 && preresult * MathadorGame.tableau[k] == MathadorGame.cible && valid == 1)
+                                            if ((preresult * MathadorGame.tableau[k] > 0 && preresult * MathadorGame.tableau[k] == MathadorGame.cible) && (valid == 1))
                                             {
                                                 equation = preresult + "x" + MathadorGame.tableau[k].ToString() + "=" + MathadorGame.cible.ToString();
-                                                //Console.WriteLine(equation);
                                                 score++;
                                                 equationsTemp.Add(equation);
                                                 Solution Sol = new Solution();
-                                                Sol.score = score.ToString();
-                                                Sol.equations = equationsTemp;
-                                                Console.WriteLine(Sol.score.ToString());
-                                                Console.WriteLine(Sol.equations[0]);
-                                                Console.WriteLine(Sol.equations[1]);
+                                                Sol.score = score;
+                                                Sol.equations = String.Join(" ", equationsTemp.ToList());
                                                 Solutions.Add(Sol);
-                                                equationsTemp.Clear();
+                                                
                                             }
+                                            equationsTemp.Clear();
                                             break;
                                         }
                                     case 3:
                                         {
-                                            if (preresult % MathadorGame.tableau[k] == 0 && preresult / MathadorGame.tableau[k] == MathadorGame.cible && valid == 1)
+                                            if ((preresult % MathadorGame.tableau[k] == 0 && preresult / MathadorGame.tableau[k] == MathadorGame.cible) && (valid == 1))
                                             {
                                                 equation = preresult + "/" + MathadorGame.tableau[k].ToString() + "=" + MathadorGame.cible.ToString();
-                                                //Console.WriteLine(equation);
                                                 score = score + 3;
                                                 equationsTemp.Add(equation);
                                                 Solution Sol = new Solution();
-                                                Sol.score = score.ToString();
-                                                Sol.equations = equationsTemp;
-                                                Console.WriteLine(Sol.score.ToString());
-                                                Console.WriteLine(Sol.equations[0]);
-                                                Console.WriteLine(Sol.equations[1]);
+                                                Sol.score = score;
+                                                Sol.equations = String.Join(" ", equationsTemp.ToList());
                                                 Solutions.Add(Sol);
-                                                equationsTemp.Clear();
+                                               
                                             }
+                                            equationsTemp.Clear();
                                             break;
                                         }
                                 }
@@ -459,66 +430,64 @@ namespace Mathador
                                     {
                                         case 0:
                                             {
-                                                if (preresult + MathadorGame.tableau[l] == MathadorGame.cible && valid == 2)
+                                                if ((preresult + MathadorGame.tableau[l] == MathadorGame.cible) && (valid == 2))
                                                 {
-                                                    equation = preresult.ToString();
-                                                    equation = equation + "+" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString();
+                                                    equation = preresult + "+" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString();
                                                     equationsTemp.Add(equation);
                                                     score++;
                                                     Solution Sol = new Solution();
-                                                    Sol.score = score.ToString();
-                                                    Sol.equations = equationsTemp;
+                                                    Sol.score = score;
+                                                    Sol.equations = String.Join(" ", equationsTemp.ToList());
                                                     Solutions.Add(Sol);
-                                                    equationsTemp.Clear();
                                                 }
+                                                equationsTemp.Clear();
                                                 break;
                                             }
                                         case 1:
                                             {
-                                                if (preresult - MathadorGame.tableau[l] >= 0 && preresult - MathadorGame.tableau[l] == MathadorGame.cible && valid == 2)
+                                                if ((preresult - MathadorGame.tableau[l] >= 0 && preresult - MathadorGame.tableau[l] == MathadorGame.cible) && (valid == 2))
                                                 {
-                                                    equation = preresult.ToString();
-                                                    equation = equation + "-" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString();
+                                                    equation = preresult + "-" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString();
                                                     equationsTemp.Add(equation);
                                                     score = score + 2;
                                                     Solution Sol = new Solution();
-                                                    Sol.score = score.ToString();
-                                                    Sol.equations = equationsTemp;
+                                                    Sol.score = score;
+                                                    Sol.equations = String.Join(" ", equationsTemp.ToList());
                                                     Solutions.Add(Sol);
-                                                    equationsTemp.Clear();
+                                                    
                                                 }
+                                                equationsTemp.Clear();
                                                 break;
                                             }
                                         case 2:
                                             {
-                                                if (preresult * MathadorGame.tableau[l] > 0 && preresult * MathadorGame.tableau[l] == MathadorGame.cible && valid == 2)
+                                                if ((preresult * MathadorGame.tableau[l] > 0 && preresult * MathadorGame.tableau[l] == MathadorGame.cible) && (valid == 2))
                                                 {
-                                                    equation = preresult.ToString();
-                                                    equation = equation + "x" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString();
+                                                    equation = preresult + "x" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString();
                                                     equationsTemp.Add(equation);
                                                     score++;
                                                     Solution Sol = new Solution();
-                                                    Sol.score = score.ToString();
-                                                    Sol.equations = equationsTemp;
+                                                    Sol.score = score;
+                                                    Sol.equations = String.Join(" ", equationsTemp.ToList());
                                                     Solutions.Add(Sol);
-                                                    equationsTemp.Clear();
                                                 }
+                                                equationsTemp.Clear();
                                                 break;
                                             }
                                         case 3:
                                             {
-                                                if (preresult % MathadorGame.tableau[l] == 0 && preresult / MathadorGame.tableau[l] == MathadorGame.cible && valid == 2)
+                                                if ((preresult % MathadorGame.tableau[l] == 0 && preresult / MathadorGame.tableau[l] == MathadorGame.cible) && (valid == 2))
                                                 {
                                                     equation = preresult.ToString();
                                                     equation = equation + "/" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString();
                                                     equationsTemp.Add(equation);
                                                     score = score + 3;
                                                     Solution Sol = new Solution();
-                                                    Sol.score = score.ToString();
-                                                    Sol.equations = equationsTemp;
+                                                    Sol.score = score;
+                                                    Sol.equations = String.Join(" ", equationsTemp.ToList());
                                                     Solutions.Add(Sol);
-                                                    equationsTemp.Clear();
                                                 }
+                                                equationsTemp.Clear();
                                                 break;
                                             }
                                     }
@@ -708,32 +677,30 @@ namespace Mathador
                                                 {
                                                     if (preresult + MathadorGame.tableau[l] == MathadorGame.cible && valid == 3)
                                                     {
-                                                        equation = preresult.ToString();
-                                                        equation = equation + "+" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString();
+                                                        equation = preresult + "+" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString();
                                                         equationsTemp.Add(equation);
                                                         score++;
                                                         Solution Sol = new Solution();
-                                                        Sol.score = score.ToString();
-                                                        Sol.equations = equationsTemp;
-                                                        Solutions.Add(Sol);
-                                                        equationsTemp.Clear();
-                                                    }
+                                                        Sol.score = score;
+                                                        Sol.equations = String.Join(" ", equationsTemp.ToList());
+                                                        Solutions.Add(Sol);                                                    }
+                                                    equationsTemp.Clear();
                                                     break;
                                                 }
                                             case 1:
                                                 {
                                                     if (preresult - MathadorGame.tableau[l] >= 0 && preresult - MathadorGame.tableau[l] == MathadorGame.cible && valid == 3)
                                                     {
-                                                        equation = preresult.ToString();
-                                                        equation = equation + "-" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString();
+                                                        equation = preresult + "-" + MathadorGame.tableau[l].ToString() + "=" + MathadorGame.cible.ToString();
                                                         equationsTemp.Add(equation);
                                                         score = score + 2;
                                                         Solution Sol = new Solution();
-                                                        Sol.score = score.ToString();
-                                                        Sol.equations = equationsTemp;
+                                                        Sol.score = score;
+                                                        Sol.equations = String.Join(" ", equationsTemp.ToList());
                                                         Solutions.Add(Sol);
-                                                        equationsTemp.Clear();
+                                                        
                                                     }
+                                                    equationsTemp.Clear();
                                                     break;
                                                 }
                                             case 2:
@@ -745,11 +712,11 @@ namespace Mathador
                                                         equationsTemp.Add(equation);
                                                         score++;
                                                         Solution Sol = new Solution();
-                                                        Sol.score = score.ToString();
-                                                        Sol.equations = equationsTemp;
+                                                        Sol.score = score;
+                                                        Sol.equations = String.Join(" ", equationsTemp.ToList());
                                                         Solutions.Add(Sol);
-                                                        equationsTemp.Clear();
                                                     }
+                                                    equationsTemp.Clear();
                                                     break;
                                                 }
                                             case 3:
@@ -761,11 +728,11 @@ namespace Mathador
                                                         equationsTemp.Add(equation);
                                                         score = score + 3;
                                                         Solution Sol = new Solution();
-                                                        Sol.score = score.ToString();
-                                                        Sol.equations = equationsTemp;
+                                                        Sol.score = score;
+                                                        Sol.equations = String.Join(" ", equationsTemp.ToList());
                                                         Solutions.Add(Sol);
-                                                        equationsTemp.Clear();
                                                     }
+                                                    equationsTemp.Clear();
                                                     break;
                                                 }
                                         }
@@ -783,65 +750,22 @@ namespace Mathador
         public void SolvComplet()
         {
             TabSigne();
-            Console.WriteLine(MathadorGame.tableau[0] + " " + MathadorGame.tableau[1] + " " + MathadorGame.tableau[2] + " " + MathadorGame.tableau[3] + " " + MathadorGame.tableau[4] + "cible : " + MathadorGame.cible);
-            //SolvOneOp();
+            Console.WriteLine(MathadorGame.tableau[0] + " " + MathadorGame.tableau[1] + " " + MathadorGame.tableau[2] + " " + MathadorGame.tableau[3] + " " + MathadorGame.tableau[4] + " cible : " + MathadorGame.cible);
+            SolvOneOp();
             SolvTowOp();
-            //SolvTrheeOp();
-            //SolvfourOp();
+            SolvTrheeOp();
+            SolvfourOp();
+            string json = JsonConvert.SerializeObject(Solutions);
+            string jsonFormat = JValue.Parse(json).ToString(Formatting.Indented);
+            
 
 
-            /*int tailleSolutions = Solutions.Count();
-            Console.WriteLine(tailleSolutions);
-            int tailleEquations;
-            string solTest;
-            solTest = "{\n";
-            for (i=0; i<tailleSolutions; i++)
-            {
-                Solution solTemp = new Solution();
-                solTemp = Solutions[i];
-                solTest = solTest + "  [\n    score : " + solTemp.score.ToString() + "\n";
-                tailleEquations = solTemp.equations.Count();
-                Console.WriteLine(tailleEquations);
-                for (j=0; j<tailleEquations; j++)
-                {
-                    solTest = solTest + "    équation(s) : " + solTemp.equations[j] + "\n";
-                }
-            }
-            solTest = solTest + "}";
-            Console.WriteLine(solTest);*/
-
-            /*int tailleSolutions = Solutions.Count;
-            int tailleEquations;
-            string json = "{\n";
-            for (i = 0; i < tailleSolutions; i++)
-            {
-                Solution solTemp = new Solution();
-                solTemp = Solutions[i];
-                json += "  [\n    score : ";
-                json += JsonConvert.SerializeObject(solTemp.score);
-                json += "\n";
-                json += "    équation(s) : ";
-                tailleEquations = solTemp.equations.Count();
-                for (j=0; j<tailleEquations; j++)
-                {
-                    Equation equaTemp = new Equation();
-                    equaTemp.equa = solTemp.equations[j];
-                    json += JsonConvert.SerializeObject(equaTemp.equa);
-                    json += "\n";
-                }
-                json +="]\n";
-            }
-            json += "}";
-            Console.WriteLine(json);*/
+            Console.WriteLine(jsonFormat);
         }
     }
     public class Solution
     {
-        public string score;
-        public List<string> equations = new List<string>();
+        public int score;
+        public string equations;
     }
-    /*public class Equation
-    {
-        public string equa;
-    }*/
 }
