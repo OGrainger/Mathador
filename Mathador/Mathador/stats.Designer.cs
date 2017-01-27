@@ -32,6 +32,9 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.buttonRetour = new System.Windows.Forms.Button();
             this.pieChartOp = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.labelScoreMin = new System.Windows.Forms.Label();
@@ -55,17 +58,25 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelMathadorCount = new System.Windows.Forms.Label();
+            this.labelAverageMathadorPerGame = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.pieChartMathador = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.pieChartOp)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pieChartMathador)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRetour
             // 
-            this.buttonRetour.Location = new System.Drawing.Point(17, 223);
+            this.buttonRetour.Location = new System.Drawing.Point(510, 223);
             this.buttonRetour.Name = "buttonRetour";
-            this.buttonRetour.Size = new System.Drawing.Size(122, 30);
+            this.buttonRetour.Size = new System.Drawing.Size(55, 30);
             this.buttonRetour.TabIndex = 1;
             this.buttonRetour.Text = "Retour";
             this.buttonRetour.UseVisualStyleBackColor = true;
@@ -82,7 +93,7 @@
             legend1.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
             legend1.Name = "Legend1";
             this.pieChartOp.Legends.Add(legend1);
-            this.pieChartOp.Location = new System.Drawing.Point(283, 11);
+            this.pieChartOp.Location = new System.Drawing.Point(387, 11);
             this.pieChartOp.Name = "pieChartOp";
             this.pieChartOp.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.pieChartOp.PaletteCustomColors = new System.Drawing.Color[] {
@@ -97,7 +108,7 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.pieChartOp.Series.Add(series1);
-            this.pieChartOp.Size = new System.Drawing.Size(233, 251);
+            this.pieChartOp.Size = new System.Drawing.Size(178, 188);
             this.pieChartOp.TabIndex = 3;
             this.pieChartOp.Text = "chart1";
             title1.Name = "Titre1";
@@ -106,8 +117,9 @@
             // 
             // labelScoreMin
             // 
+            this.labelScoreMin.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelScoreMin.AutoSize = true;
-            this.labelScoreMin.Location = new System.Drawing.Point(211, 39);
+            this.labelScoreMin.Location = new System.Drawing.Point(215, 43);
             this.labelScoreMin.Name = "labelScoreMin";
             this.labelScoreMin.Size = new System.Drawing.Size(21, 13);
             this.labelScoreMin.TabIndex = 4;
@@ -115,8 +127,9 @@
             // 
             // labelScoreMaxi
             // 
+            this.labelScoreMaxi.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelScoreMaxi.AutoSize = true;
-            this.labelScoreMaxi.Location = new System.Drawing.Point(211, 0);
+            this.labelScoreMaxi.Location = new System.Drawing.Point(215, 3);
             this.labelScoreMaxi.Name = "labelScoreMaxi";
             this.labelScoreMaxi.Size = new System.Drawing.Size(21, 13);
             this.labelScoreMaxi.TabIndex = 4;
@@ -124,8 +137,9 @@
             // 
             // labelAverageScore
             // 
+            this.labelAverageScore.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelAverageScore.AutoSize = true;
-            this.labelAverageScore.Location = new System.Drawing.Point(211, 20);
+            this.labelAverageScore.Location = new System.Drawing.Point(215, 23);
             this.labelAverageScore.Name = "labelAverageScore";
             this.labelAverageScore.Size = new System.Drawing.Size(21, 13);
             this.labelAverageScore.TabIndex = 4;
@@ -133,8 +147,9 @@
             // 
             // labelTotalScore
             // 
+            this.labelTotalScore.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelTotalScore.AutoSize = true;
-            this.labelTotalScore.Location = new System.Drawing.Point(211, 20);
+            this.labelTotalScore.Location = new System.Drawing.Point(215, 23);
             this.labelTotalScore.Name = "labelTotalScore";
             this.labelTotalScore.Size = new System.Drawing.Size(21, 13);
             this.labelTotalScore.TabIndex = 4;
@@ -142,8 +157,9 @@
             // 
             // labelTotalTime
             // 
+            this.labelTotalTime.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelTotalTime.AutoSize = true;
-            this.labelTotalTime.Location = new System.Drawing.Point(211, 40);
+            this.labelTotalTime.Location = new System.Drawing.Point(215, 43);
             this.labelTotalTime.Name = "labelTotalTime";
             this.labelTotalTime.Size = new System.Drawing.Size(26, 13);
             this.labelTotalTime.TabIndex = 4;
@@ -151,8 +167,9 @@
             // 
             // labelGameCount
             // 
+            this.labelGameCount.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelGameCount.AutoSize = true;
-            this.labelGameCount.Location = new System.Drawing.Point(211, 0);
+            this.labelGameCount.Location = new System.Drawing.Point(215, 3);
             this.labelGameCount.Name = "labelGameCount";
             this.labelGameCount.Size = new System.Drawing.Size(21, 13);
             this.labelGameCount.TabIndex = 4;
@@ -160,8 +177,9 @@
             // 
             // labelRoundCount
             // 
+            this.labelRoundCount.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelRoundCount.AutoSize = true;
-            this.labelRoundCount.Location = new System.Drawing.Point(211, 0);
+            this.labelRoundCount.Location = new System.Drawing.Point(215, 3);
             this.labelRoundCount.Name = "labelRoundCount";
             this.labelRoundCount.Size = new System.Drawing.Size(21, 13);
             this.labelRoundCount.TabIndex = 4;
@@ -169,8 +187,9 @@
             // 
             // labelAveragePointsPerRound
             // 
+            this.labelAveragePointsPerRound.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelAveragePointsPerRound.AutoSize = true;
-            this.labelAveragePointsPerRound.Location = new System.Drawing.Point(211, 20);
+            this.labelAveragePointsPerRound.Location = new System.Drawing.Point(215, 23);
             this.labelAveragePointsPerRound.Name = "labelAveragePointsPerRound";
             this.labelAveragePointsPerRound.Size = new System.Drawing.Size(21, 13);
             this.labelAveragePointsPerRound.TabIndex = 4;
@@ -178,8 +197,9 @@
             // 
             // labelAverageTimePerRound
             // 
+            this.labelAverageTimePerRound.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelAverageTimePerRound.AutoSize = true;
-            this.labelAverageTimePerRound.Location = new System.Drawing.Point(211, 40);
+            this.labelAverageTimePerRound.Location = new System.Drawing.Point(215, 43);
             this.labelAverageTimePerRound.Name = "labelAverageTimePerRound";
             this.labelAverageTimePerRound.Size = new System.Drawing.Size(26, 13);
             this.labelAverageTimePerRound.TabIndex = 4;
@@ -196,19 +216,20 @@
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelScoreMin, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(17, 11);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 11);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(260, 60);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(265, 60);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(122, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 5;
@@ -216,8 +237,9 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 20);
+            this.label2.Location = new System.Drawing.Point(134, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 13);
             this.label2.TabIndex = 6;
@@ -225,8 +247,9 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 39);
+            this.label3.Location = new System.Drawing.Point(122, 43);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 13);
             this.label3.TabIndex = 7;
@@ -243,19 +266,21 @@
             this.tableLayoutPanel2.Controls.Add(this.label7, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label8, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label9, 0, 2);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(17, 143);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 143);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(260, 60);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(265, 60);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 0);
+            this.label7.Location = new System.Drawing.Point(95, 3);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(114, 13);
             this.label7.TabIndex = 5;
@@ -263,8 +288,9 @@
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 20);
+            this.label8.Location = new System.Drawing.Point(20, 23);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(189, 13);
             this.label8.TabIndex = 6;
@@ -272,8 +298,9 @@
             // 
             // label9
             // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 40);
+            this.label9.Location = new System.Drawing.Point(68, 43);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(141, 13);
             this.label9.TabIndex = 7;
@@ -290,19 +317,20 @@
             this.tableLayoutPanel3.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label5, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.label6, 0, 2);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(17, 77);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(12, 77);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(260, 60);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(265, 60);
             this.tableLayoutPanel3.TabIndex = 7;
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 0);
+            this.label4.Location = new System.Drawing.Point(107, 3);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(102, 13);
             this.label4.TabIndex = 5;
@@ -310,8 +338,9 @@
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 20);
+            this.label5.Location = new System.Drawing.Point(87, 23);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(122, 13);
             this.label5.TabIndex = 6;
@@ -319,19 +348,98 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 40);
+            this.label6.Location = new System.Drawing.Point(106, 43);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(103, 13);
             this.label6.TabIndex = 7;
             this.label6.Text = "Temps de jeu total : ";
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.Controls.Add(this.labelMathadorCount, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.labelAverageMathadorPerGame, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.label13, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label14, 0, 1);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(12, 209);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(265, 44);
+            this.tableLayoutPanel4.TabIndex = 8;
+            // 
+            // labelMathadorCount
+            // 
+            this.labelMathadorCount.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelMathadorCount.AutoSize = true;
+            this.labelMathadorCount.Location = new System.Drawing.Point(215, 4);
+            this.labelMathadorCount.Name = "labelMathadorCount";
+            this.labelMathadorCount.Size = new System.Drawing.Size(21, 13);
+            this.labelMathadorCount.TabIndex = 4;
+            this.labelMathadorCount.Text = "XX";
+            // 
+            // labelAverageMathadorPerGame
+            // 
+            this.labelAverageMathadorPerGame.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelAverageMathadorPerGame.AutoSize = true;
+            this.labelAverageMathadorPerGame.Location = new System.Drawing.Point(215, 26);
+            this.labelAverageMathadorPerGame.Name = "labelAverageMathadorPerGame";
+            this.labelAverageMathadorPerGame.Size = new System.Drawing.Size(21, 13);
+            this.labelAverageMathadorPerGame.TabIndex = 4;
+            this.labelAverageMathadorPerGame.Text = "XX";
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(92, 4);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(117, 13);
+            this.label13.TabIndex = 5;
+            this.label13.Text = "Nombre de mathadors :";
+            // 
+            // label14
+            // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(11, 26);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(198, 13);
+            this.label14.TabIndex = 6;
+            this.label14.Text = "Nombre de mathadors moyen par partie :";
+            // 
+            // pieChartMathador
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.pieChartMathador.ChartAreas.Add(chartArea2);
+            legend2.Enabled = false;
+            legend2.Name = "Legend1";
+            this.pieChartMathador.Legends.Add(legend2);
+            this.pieChartMathador.Location = new System.Drawing.Point(283, 156);
+            this.pieChartMathador.Name = "pieChartMathador";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.pieChartMathador.Series.Add(series2);
+            this.pieChartMathador.Size = new System.Drawing.Size(130, 97);
+            this.pieChartMathador.TabIndex = 9;
+            this.pieChartMathador.Text = "chart1";
             // 
             // stats
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(520, 265);
+            this.ClientSize = new System.Drawing.Size(577, 265);
+            this.Controls.Add(this.pieChartMathador);
+            this.Controls.Add(this.tableLayoutPanel4);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -347,6 +455,9 @@
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pieChartMathador)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -375,5 +486,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Label labelMathadorCount;
+        private System.Windows.Forms.Label labelAverageMathadorPerGame;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DataVisualization.Charting.Chart pieChartMathador;
     }
 }

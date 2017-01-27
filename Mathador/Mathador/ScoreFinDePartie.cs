@@ -39,7 +39,7 @@ namespace Mathador
 
             SQLiteDatabase db = new SQLiteDatabase();
             db.UpdateData(pseudo, gameData);
-
+            db.AddScore(pseudo, score);
         }
 
         private void buttonMenu_Click(object sender, EventArgs e)

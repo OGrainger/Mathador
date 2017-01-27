@@ -23,6 +23,8 @@ namespace Mathador
         public float averagePointsPerRound;
         public float averageTimePerGame;
         public float averageTimePerRound;
+        public float averageMathadorPerGame;
+        public float averageMathadorPerRound;
         public float averageUseOfAdd;
         public float averageUseOfSub;
         public float averageUseOfMult;
@@ -44,10 +46,12 @@ namespace Mathador
             roundCount = data["roundCount"];
             totalGameTimeInSeconds = data["totalGameTimeInSeconds"];
                 
-            averageScore = totalScorePoints / gameCount;
-            averagePointsPerRound = totalScorePoints / roundCount;
-            averageTimePerGame = totalGameTimeInSeconds / gameCount;
-            averageTimePerRound = totalGameTimeInSeconds / roundCount;
+            averageScore = Convert.ToSingle(totalScorePoints) / gameCount;
+            averagePointsPerRound = Convert.ToSingle(totalScorePoints) / roundCount;
+            averageTimePerGame = Convert.ToSingle(totalGameTimeInSeconds) / gameCount;
+            averageTimePerRound = Convert.ToSingle(totalGameTimeInSeconds) / roundCount;
+            averageMathadorPerGame = Convert.ToSingle(data["mathadorCount"]) / gameCount;
+            averageMathadorPerRound = Convert.ToSingle(data["mathadorCount"]) / roundCount;
 
             useOfAllOp = data["addCount"] + data["subCount"] + data["multCount"] + data["divCount"];
             averageUseOfAdd = Convert.ToSingle(data["addCount"]) / useOfAllOp;
@@ -64,11 +68,16 @@ namespace Mathador
             labelScoreMaxi.Text = Convert.ToString(data["maxScore"]);
             labelTotalScore.Text = totalScorePoints.ToString();
             labelTotalTime.Text = totalGameTimeInSeconds.ToString() + "s";
+            labelMathadorCount.Text = data["mathadorCount"].ToString();
+            labelAverageMathadorPerGame.Text = averageMathadorPerGame.ToString();
 
             pieChartOp.Series["Series1"].Points.AddXY("+ ("+ Math.Round(averageUseOfAdd, 3, MidpointRounding.AwayFromZero) * 100 +"%)", averageUseOfAdd);
             pieChartOp.Series["Series1"].Points.AddXY("- (" + Math.Round(averageUseOfSub, 3, MidpointRounding.AwayFromZero) * 100 + "%)", averageUseOfSub);
             pieChartOp.Series["Series1"].Points.AddXY(" x ("+ Math.Round(averageUseOfMult, 3, MidpointRounding.AwayFromZero) * 100 +" %)", averageUseOfMult);
-            pieChartOp.Series["Series1"].Points.AddXY("÷ (" + Math.Round(averageUseOfDiv, 3, MidpointRounding.AwayFromZero) * 100 + " %)", averageUseOfDiv);          
+            pieChartOp.Series["Series1"].Points.AddXY("÷ (" + Math.Round(averageUseOfDiv, 3, MidpointRounding.AwayFromZero) * 100 + " %)", averageUseOfDiv);
+
+            pieChartMathador.Series["Series1"].Points.AddXY("Mathador (" + Math.Round(averageMathadorPerRound, 3, MidpointRounding.AwayFromZero) * 100 + " %)", averageMathadorPerRound);
+            pieChartMathador.Series["Series1"].Points.AddXY("Autres (" + Math.Round(1 - averageMathadorPerRound, 3, MidpointRounding.AwayFromZero) * 100 + " %)", 1 - averageMathadorPerRound);
         }
 
         private void buttonRetour_Click(object sender, EventArgs e)
@@ -77,6 +86,6 @@ namespace Mathador
             MenuMathador form = new MenuMathador(Pseudo);
             form.ShowDialog();
         }
-        
+       
     }
 }

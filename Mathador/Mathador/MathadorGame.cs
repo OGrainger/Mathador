@@ -57,11 +57,13 @@ namespace Mathador
 
         private void MathadorGame_Load(object sender, EventArgs e)
         {
+            //Initialisation du timer
             timer1 = new Timer();
             timer1.Tick += new EventHandler(timer1_Tick);
             timer1.Interval = 1000;
             timer1.Start();
 
+            //Message box au lancement
             MessageBox.Show( pseudo + ", êtes-vous prêt ?",
             "Message",
             MessageBoxButtons.OK,
@@ -74,14 +76,15 @@ namespace Mathador
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (!pause)
+            //Chaque seconde...
+            if (!pause) // Si ce n'est pas en pause (message box du début, ou affichage des solutions)
             {
-            if (progressBar.Value == progressBar.Maximum && !finDePartie)
+            if (progressBar.Value == progressBar.Maximum && !finDePartie) // Fin de partie si la barre atteint le max
                 {
                     finDePartie = true;
                     FinDePartie();
                 }
-                else if (progressBar.Value < progressBar.Maximum)
+                else if (progressBar.Value < progressBar.Maximum) // Sinon incrémenter la barre
                 {
                     progressBar.Value++;
                 }
@@ -100,9 +103,10 @@ namespace Mathador
             nb4 = random.Next(1, 12);
             nb5 = random.Next(1, 12);
 
+            //Cible calculé à partir des nombres
             cibleFloat = (((Convert.ToSingle(nb1) + Convert.ToSingle(nb2)) - Convert.ToSingle(nb3)) * Convert.ToSingle(nb4)) / Convert.ToSingle(nb5);
 
-            if (cibleFloat > 0 && cibleFloat < 100 && cibleFloat % 1 == 0)
+            if (cibleFloat > 0 && cibleFloat < 100 && cibleFloat % 1 == 0) //Si la cible correspond aux critères, notamment qu'il est entier
             {
                 data datatest = new data();
 
@@ -117,7 +121,7 @@ namespace Mathador
                 Console.WriteLine("{0} tentative(s) de génération", tentatives);
                 RecupGeneration();
             }
-            else
+            else //Sinon on relance la génération
             {
                 tentatives++;
                 Generateur();
@@ -147,6 +151,7 @@ namespace Mathador
 
         public void Reset()
         {
+            //Reset de l'affichage et des selections
             this.saveOperateurDivCount = 0;
             this.saveOperateurFoisCount = 0;
             this.saveOperateurMoinsCount = 0;
@@ -185,13 +190,13 @@ namespace Mathador
             }
             else if (buttonOp == ButtonMoins)
             {
-                if (premierChiffre - deuxiemeChiffre >= 0)
+                if (premierChiffre - deuxiemeChiffre >= 0) // Si le résultat n'est pas négatif
                 {
                     resultat = premierChiffre - deuxiemeChiffre;
                     saveOperateurMoinsCount++;
                     PointsRound += 2;
                 }
-                else
+                else //Sinon mettre en rouge l'opérateur
                 {
                     buttonOp.BackColor = Color.Red;
                     calculFait = false;
@@ -205,7 +210,7 @@ namespace Mathador
             }
             else if (buttonOp == ButtonDiv)
             {
-                if (premierChiffre % deuxiemeChiffre == 0)
+                if (premierChiffre % deuxiemeChiffre == 0) //Si le résultat est entier
                 {
                     resultat = premierChiffre / deuxiemeChiffre;
                     saveOperateurDivCount++;
@@ -240,8 +245,10 @@ namespace Mathador
 
         public void FinDeRound()
         {
+            //Si la cible est trouvée
             if (ButtonNombre1.Text == cible.ToString() || ButtonNombre2.Text == cible.ToString() || ButtonNombre3.Text == cible.ToString() || ButtonNombre4.Text == cible.ToString() || ButtonNombre5.Text == cible.ToString())
             {
+                //S'il y a mathador
                 if (saveOperateurDivCount > 0 && saveOperateurFoisCount > 0 && saveOperateurMoinsCount > 0 && saveOperateurPlusCount > 0)
                 {
                     mathadorCount++;

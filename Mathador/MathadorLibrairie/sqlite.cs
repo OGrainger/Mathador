@@ -32,6 +32,9 @@ namespace Mathador
             string sql = "create table if not exists users (username text, password text, minScore int, maxScore int, totalScorePoints int, totalGameTimeInSeconds int, gameCount int, roundCount int, mathadorCount int, addCount int, subCount int, multCount int, divCount int)";
             SQLiteCommand commande = new SQLiteCommand(sql, connexion);
             commande.ExecuteNonQuery();
+            sql = "create table if not exists scores (username text, score int)";
+            commande = new SQLiteCommand(sql, connexion);
+            commande.ExecuteNonQuery();
             connexion.Close();
             return;
         }
@@ -141,5 +144,42 @@ namespace Mathador
             connexion.Close();
             return;
         }
+
+        //Ajoute le score de fin de partie au tableau des scores
+        public void AddScore(string username, int score)
+        {
+            connexion.Open();
+            string sql = "insert into scores values ('" + username + "', " + score + ")";
+            SQLiteCommand commandInsert = new SQLiteCommand(sql, connexion);
+            commandInsert.ExecuteNonQuery();
+            connexion.Close();
+            return;
+        }
+
+        //Lis le tableau des scores et récupère le top 10
+        public List<ScorePair> ReadScoreTable()
+        {
+            List<ScorePair> listOfScores = new List<ScorePair>();
+            connexion.Open();
+            string sql = "SELECT * FROM scores";
+            SQLiteCommand commande = new SQLiteCommand(sql, connexion);
+            SQLiteDataReader reader = commande.ExecuteReader();
+            while (reader.Read())
+            {
+                ScorePair scoreTemp = new ScorePair();
+                ScorePair.score = Convert.ToInt32(reader["score"]);
+                ScorePair.username = Convert.ToString(reader["username"]);
+                Console.WriteLine(ScorePair.username + " - " + ScorePair.score);
+                listOfScores.Add(scoreTemp);
+            }
+            connexion.Close();
+            return listOfScores;
+        }
+    }
+
+    public class ScorePair
+    {
+        public static int score { get; set; }
+        public static string username { get; set; }
     }
 }
