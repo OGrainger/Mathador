@@ -54,10 +54,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 522);
+            this.ClientSize = new System.Drawing.Size(577, 554);
             this.Controls.Add(this.buttonTerminer);
             this.Controls.Add(this.listBoxSolutions);
             this.Name = "Solutions";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Solutions";
             this.Load += new System.EventHandler(this.Solutions_Load);
             this.ResumeLayout(false);

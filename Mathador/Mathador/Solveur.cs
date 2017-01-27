@@ -713,7 +713,7 @@ namespace Mathador
             Solutions.Add(Sol);                                                                                 //Ajout de l'objet Solution à la liste des "Solutions"
         }
 
-        public void SolvComplet()
+        public List<Solution> SolvComplet()
         {
             TabSigne();
             SolvOneOp();
@@ -724,6 +724,7 @@ namespace Mathador
             string jsonFormat = JValue.Parse(json).ToString(Formatting.Indented);                               //Formatage de l'objet json
             System.IO.File.WriteAllText("SolveurOutput.txt", jsonFormat);                                       //Écriture des Solutions dans un fichier .txt
             Console.WriteLine(jsonFormat);
+            return Solutions;
         }
     }
     public class Solution

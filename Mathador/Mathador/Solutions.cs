@@ -22,7 +22,7 @@ namespace Mathador
             listBoxSolutions.Items.Clear();                                     //On efface la listbox solutions
             Solveur.Solutions.Clear();                                          //On efface la list des solutions
             Solveur Solv = new Solveur();                                       //On appel les methodes du solveur
-            Solv.SolvComplet();  
+            List<Solution> solutions = Solv.SolvComplet();  
         }
 
         private void buttonTerminer_Click(object sender, EventArgs e)
