@@ -18,9 +18,7 @@ namespace Mathador
         int[,] DeuxSignes = new int[2, 16];
         int[,] TroisSignes = new int[3, 64];
         int[,] QuatreSignes = new int[4, 256];
-        //public static List<string> equationsTemp = new List<string>();
         public static JArray equationsTemp = new JArray();
-        public static JObject objTemp = new JObject();
         public static List<Solution> Solutions = new List<Solution>();
 
         public void TabSigne()
@@ -107,11 +105,11 @@ namespace Mathador
         
         public void SolvOneOp()
         {
-            for (i = 0; i < 5; i++)                                                                             //boucle pour le premier nombre
+            for (i = 0; i < 5; i++)                                                                             //Boucle pour le premier nombre
             {
-                for (j = 0; j < 5; j++)                                                                         //boucle pour le second nombre
+                for (j = 0; j < 5; j++)                                                                         //Boucle pour le second nombre
                 {
-                    if (i != j)                                                                                 //verif si les 2 nombres sont différents
+                    if (i != j)                                                                                 //Verif si les 2 nombres sont différents
                     {
                         for (k = 0; k < 4; k++)                                                                 //Boucle pour les 4 signes
                         {
@@ -120,12 +118,12 @@ namespace Mathador
                             {
                                 if (MathadorGame.tableau[i] + MathadorGame.tableau[j] == MathadorGame.cible)    //Si l'addition = cible, alors écriture de l'équation dans le fichier JSON "Solutions"
                                 {
-                                    equation = MathadorGame.tableau[i].ToString() + "+" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString();
-                                    score++;
-                                    Solution Sol = new Solution();
-                                    Sol.score = score;
+                                    equation = MathadorGame.tableau[i].ToString() + "+" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString(); //Miseen forme de l'équation
+                                    score++;                                                                    //Mise à jour du score : plus 1 pour une addition
+                                    Solution Sol = new Solution();                                              //Création d'un nouvel objet "Solution"
+                                    Sol.score = score;                                                          //Mise de score et de l'équation dans l'objet"Solution"
                                     Sol.equations=equation;
-                                    Solutions.Add(Sol);
+                                    Solutions.Add(Sol);                                                         //Mise de l'objet dans la liste de toutes les solutions
                                 }
                             }
                             else if (UnSigne[k] == 1)                                                           //Si (UnSigne[k] == 1), alors : soustraction
@@ -133,7 +131,7 @@ namespace Mathador
                                 if ((MathadorGame.tableau[i] - MathadorGame.tableau[j] > 0) && (MathadorGame.tableau[i] - MathadorGame.tableau[j] == MathadorGame.cible))   //Si la soustraction = cible et que le résultat de la soustraction
                                 {                                                                                                                                           //est suppérieur à 0, alors écriture de l'équation dans le fichier JSON "Solutions"
                                     equation = MathadorGame.tableau[i].ToString() + "-" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString();
-                                    score = score + 2;
+                                    score = score + 2;                                                          //Mise à jour du score : plus 2 pour une soustraction
                                     Solution Sol = new Solution();
                                     Sol.score = score;
                                     Sol.equations=equation;
@@ -145,7 +143,7 @@ namespace Mathador
                                 if (MathadorGame.tableau[i] * MathadorGame.tableau[j] == MathadorGame.cible)    //Si la multiplication = cible, alors écriture de l'équation dans le fichier JSON "Solutions"
                                 {
                                     equation = MathadorGame.tableau[i].ToString() + "*" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString();
-                                    score++;
+                                    score++;                                                                    //Mise à jour du score : plus 1 pour une multiplication
                                     Solution Sol = new Solution();
                                     Sol.score = score;
                                     Sol.equations=equation;
@@ -161,7 +159,7 @@ namespace Mathador
                                         {
 
                                             equation = MathadorGame.tableau[i].ToString() + "/" + MathadorGame.tableau[j].ToString() + "=" + MathadorGame.cible.ToString();
-                                            score = score + 3;
+                                            score = score + 3;                                                  //Mise à jour du score : plus 3 pour une division
                                             Solution Sol = new Solution();
                                             Sol.score = score;
                                             Sol.equations=equation;
@@ -198,7 +196,7 @@ namespace Mathador
                                             equation = MathadorGame.tableau[i].ToString() + "+" + MathadorGame.tableau[j].ToString() + "=" + preresult;
                                             score++;
                                             valid++;
-                                            equationsTemp.Add(equation);
+                                            equationsTemp.Add(equation);                                        //Première partie de l'équation dans la liste temporaire d'équations
                                             break;
                                         }
                                     case 1:                                                                     //soustraction
@@ -244,15 +242,15 @@ namespace Mathador
                                             if ((preresult + MathadorGame.tableau[k] == MathadorGame.cible) && (valid == 1))
                                             {
                                                 equation = preresult + "+" + MathadorGame.tableau[k].ToString() + "=" + MathadorGame.cible.ToString();
-                                                equationsTemp.Add(equation);
+                                                equationsTemp.Add(equation);                                    
                                                 score++;
                                                 Solution Sol = new Solution();
                                                 Sol.score = score;
-                                                Sol.equations = String.Join(" ", equationsTemp.ToList());
-                                                Solutions.Add(Sol);
+                                                Sol.equations = String.Join(" ", equationsTemp.ToList());       //Conversion de la liste des equation de la solution en String
+                                                Solutions.Add(Sol);                                             //Seconde partie de l'équation dans la liste temporaire d'équations
                                                 
                                             }
-                                            equationsTemp.Clear();
+                                            equationsTemp.Clear();                                              //Effacement de la liste temporaire d'équations                              
                                             break;
                                         }
                                     case 1:
@@ -373,7 +371,7 @@ namespace Mathador
                                                 break;
                                             }
                                     }
-                                    switch (TroisSignes[1, op])                                                 //Deuzième opération de l'équation
+                                    switch (TroisSignes[1, op])                                                 //Seconde opération de l'équation
                                     {
                                         case 0:
                                             {
@@ -750,16 +748,13 @@ namespace Mathador
         public void SolvComplet()
         {
             TabSigne();
-            Console.WriteLine(MathadorGame.tableau[0] + " " + MathadorGame.tableau[1] + " " + MathadorGame.tableau[2] + " " + MathadorGame.tableau[3] + " " + MathadorGame.tableau[4] + " cible : " + MathadorGame.cible);
             SolvOneOp();
             SolvTowOp();
             SolvTrheeOp();
             SolvfourOp();
-            string json = JsonConvert.SerializeObject(Solutions);
-            string jsonFormat = JValue.Parse(json).ToString(Formatting.Indented);
-            
-
-
+            string json = JsonConvert.SerializeObject(Solutions);                                               //Conversion de l'objet Solution en Json
+            string jsonFormat = JValue.Parse(json).ToString(Formatting.Indented);                               //Formatage de l'objet json
+            System.IO.File.WriteAllText("SolveurOutput.txt", jsonFormat);                                       //Écriture des Solutions dans un fichier .txt
             Console.WriteLine(jsonFormat);
         }
     }
