@@ -71,13 +71,13 @@ namespace Mathador
             labelMathadorCount.Text = data["mathadorCount"].ToString();
             labelAverageMathadorPerGame.Text = averageMathadorPerGame.ToString();
 
-            pieChartOp.Series["Series1"].Points.AddXY("+ ("+ Math.Round(averageUseOfAdd, 3, MidpointRounding.AwayFromZero) * 100 +"%)", averageUseOfAdd);
-            pieChartOp.Series["Series1"].Points.AddXY("- (" + Math.Round(averageUseOfSub, 3, MidpointRounding.AwayFromZero) * 100 + "%)", averageUseOfSub);
-            pieChartOp.Series["Series1"].Points.AddXY(" x ("+ Math.Round(averageUseOfMult, 3, MidpointRounding.AwayFromZero) * 100 +" %)", averageUseOfMult);
-            pieChartOp.Series["Series1"].Points.AddXY("÷ (" + Math.Round(averageUseOfDiv, 3, MidpointRounding.AwayFromZero) * 100 + " %)", averageUseOfDiv);
+            if (averageUseOfAdd > 0) { pieChartOp.Series["Series1"].Points.AddXY("+ (" + Math.Round(averageUseOfAdd, 3, MidpointRounding.AwayFromZero) * 100 + "%)", averageUseOfAdd); }
+            if (averageUseOfSub > 0) { pieChartOp.Series["Series1"].Points.AddXY("- (" + Math.Round(averageUseOfSub, 3, MidpointRounding.AwayFromZero) * 100 + "%)", averageUseOfSub); }
+            if (averageUseOfMult > 0) { pieChartOp.Series["Series1"].Points.AddXY(" x (" + Math.Round(averageUseOfMult, 3, MidpointRounding.AwayFromZero) * 100 + " %)", averageUseOfMult); }
+            if (averageUseOfDiv > 0) { pieChartOp.Series["Series1"].Points.AddXY("÷ (" + Math.Round(averageUseOfDiv, 3, MidpointRounding.AwayFromZero) * 100 + " %)", averageUseOfDiv); }
 
-            pieChartMathador.Series["Series1"].Points.AddXY("Mathador (" + Math.Round(averageMathadorPerRound, 3, MidpointRounding.AwayFromZero) * 100 + " %)", averageMathadorPerRound);
-            pieChartMathador.Series["Series1"].Points.AddXY("Autres (" + Math.Round(1 - averageMathadorPerRound, 3, MidpointRounding.AwayFromZero) * 100 + " %)", 1 - averageMathadorPerRound);
+            if (averageMathadorPerRound > 0) { pieChartMathador.Series["Series1"].Points.AddXY("Mathador (" + Math.Round(averageMathadorPerRound, 3, MidpointRounding.AwayFromZero) * 100 + " %)", averageMathadorPerRound); }
+            pieChartMathador.Series["Series1"].Points.AddXY("", 1 - averageMathadorPerRound);
         }
 
         private void buttonRetour_Click(object sender, EventArgs e)
