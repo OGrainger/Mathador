@@ -69,7 +69,7 @@
             this.label1.Location = new System.Drawing.Point(309, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(149, 13);
-            this.label1.TabIndex = 3;
+            this.label1.TabIndex = 5;
             this.label1.Text = "Choisissez un nom d\'utilisateur";
             // 
             // label2
@@ -78,7 +78,7 @@
             this.label2.Location = new System.Drawing.Point(309, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(197, 13);
-            this.label2.TabIndex = 4;
+            this.label2.TabIndex = 6;
             this.label2.Text = "Choisissez et confirmez un mot de passe";
             // 
             // labelErreur
@@ -88,25 +88,27 @@
             this.labelErreur.Name = "labelErreur";
             this.labelErreur.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.labelErreur.Size = new System.Drawing.Size(37, 13);
-            this.labelErreur.TabIndex = 6;
+            this.labelErreur.TabIndex = 7;
             this.labelErreur.Text = "TEMP";
             // 
             // valider
             // 
+            this.valider.Cursor = System.Windows.Forms.Cursors.Hand;
             this.valider.Location = new System.Drawing.Point(312, 133);
             this.valider.Name = "valider";
             this.valider.Size = new System.Drawing.Size(255, 30);
-            this.valider.TabIndex = 7;
+            this.valider.TabIndex = 3;
             this.valider.Text = "Valider";
             this.valider.UseVisualStyleBackColor = true;
             this.valider.Click += new System.EventHandler(this.valider_Click);
             // 
             // retour
             // 
+            this.retour.Cursor = System.Windows.Forms.Cursors.Hand;
             this.retour.Location = new System.Drawing.Point(312, 169);
             this.retour.Name = "retour";
             this.retour.Size = new System.Drawing.Size(255, 30);
-            this.retour.TabIndex = 8;
+            this.retour.TabIndex = 4;
             this.retour.Text = "Retour";
             this.retour.UseVisualStyleBackColor = true;
             this.retour.Click += new System.EventHandler(this.retour_Click);

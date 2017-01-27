@@ -52,6 +52,9 @@ namespace Mathador
             InitializeComponent();
             this.pseudo = Pseudo;
 
+            AcceptButton = ButtonSuivant;
+            CancelButton = ButtonResetManche;
+
             buttonMathador.Hide();
         }
 

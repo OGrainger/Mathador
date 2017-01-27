@@ -39,6 +39,8 @@ namespace Mathador
         {
             InitializeComponent();
             this.Pseudo = Pseudo;
+            AcceptButton = buttonRetour;
+            CancelButton = buttonRetour;
 
             data = db.GetData(this.Pseudo);
             totalScorePoints = data["totalScorePoints"];

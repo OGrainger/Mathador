@@ -31,7 +31,6 @@
             this.buttonMenu = new System.Windows.Forms.Button();
             this.buttonRestart = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,6 +45,7 @@
             this.labelMoinsCount = new System.Windows.Forms.Label();
             this.labelFoisCount = new System.Windows.Forms.Label();
             this.labelDivCount = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -68,6 +68,7 @@
             this.buttonRestart.TabIndex = 8;
             this.buttonRestart.Text = "Recommencer";
             this.buttonRestart.UseVisualStyleBackColor = true;
+            this.buttonRestart.Click += new System.EventHandler(this.buttonRestart_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -101,6 +102,146 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(259, 147);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(93, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Score :";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(23, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(111, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Nombre de manches :";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(17, 43);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(117, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Nombre de mathadors :";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(49, 63);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Utilisation du  + :";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(55, 83);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Utilisation du - :";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(53, 103);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(81, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Utilisation du x :";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(52, 127);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(82, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Utilisation du ÷ :";
+            // 
+            // labelScore
+            // 
+            this.labelScore.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelScore.AutoSize = true;
+            this.labelScore.Location = new System.Drawing.Point(140, 3);
+            this.labelScore.Name = "labelScore";
+            this.labelScore.Size = new System.Drawing.Size(35, 13);
+            this.labelScore.TabIndex = 7;
+            this.labelScore.Text = "label8";
+            // 
+            // labelRoundCount
+            // 
+            this.labelRoundCount.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelRoundCount.AutoSize = true;
+            this.labelRoundCount.Location = new System.Drawing.Point(140, 23);
+            this.labelRoundCount.Name = "labelRoundCount";
+            this.labelRoundCount.Size = new System.Drawing.Size(35, 13);
+            this.labelRoundCount.TabIndex = 8;
+            this.labelRoundCount.Text = "label9";
+            // 
+            // labelMathadorCount
+            // 
+            this.labelMathadorCount.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelMathadorCount.AutoSize = true;
+            this.labelMathadorCount.Location = new System.Drawing.Point(140, 43);
+            this.labelMathadorCount.Name = "labelMathadorCount";
+            this.labelMathadorCount.Size = new System.Drawing.Size(35, 13);
+            this.labelMathadorCount.TabIndex = 9;
+            this.labelMathadorCount.Text = "label8";
+            // 
+            // labelPlusCount
+            // 
+            this.labelPlusCount.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelPlusCount.AutoSize = true;
+            this.labelPlusCount.Location = new System.Drawing.Point(140, 63);
+            this.labelPlusCount.Name = "labelPlusCount";
+            this.labelPlusCount.Size = new System.Drawing.Size(35, 13);
+            this.labelPlusCount.TabIndex = 10;
+            this.labelPlusCount.Text = "label8";
+            // 
+            // labelMoinsCount
+            // 
+            this.labelMoinsCount.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelMoinsCount.AutoSize = true;
+            this.labelMoinsCount.Location = new System.Drawing.Point(140, 83);
+            this.labelMoinsCount.Name = "labelMoinsCount";
+            this.labelMoinsCount.Size = new System.Drawing.Size(35, 13);
+            this.labelMoinsCount.TabIndex = 11;
+            this.labelMoinsCount.Text = "label8";
+            // 
+            // labelFoisCount
+            // 
+            this.labelFoisCount.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelFoisCount.AutoSize = true;
+            this.labelFoisCount.Location = new System.Drawing.Point(140, 103);
+            this.labelFoisCount.Name = "labelFoisCount";
+            this.labelFoisCount.Size = new System.Drawing.Size(35, 13);
+            this.labelFoisCount.TabIndex = 12;
+            this.labelFoisCount.Text = "label8";
+            // 
+            // labelDivCount
+            // 
+            this.labelDivCount.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelDivCount.AutoSize = true;
+            this.labelDivCount.Location = new System.Drawing.Point(140, 127);
+            this.labelDivCount.Name = "labelDivCount";
+            this.labelDivCount.Size = new System.Drawing.Size(35, 13);
+            this.labelDivCount.TabIndex = 13;
+            this.labelDivCount.Text = "label8";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
@@ -111,146 +252,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(300, 300);
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(93, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Score :";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Nombre de manches :";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 46);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(117, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Nombre de mathadors :";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(49, 67);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Utilisation du  + :";
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(55, 88);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Utilisation du - :";
-            // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(53, 109);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(81, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Utilisation du x :";
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(52, 130);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(82, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Utilisation du ÷ :";
-            // 
-            // labelScore
-            // 
-            this.labelScore.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelScore.AutoSize = true;
-            this.labelScore.Location = new System.Drawing.Point(140, 4);
-            this.labelScore.Name = "labelScore";
-            this.labelScore.Size = new System.Drawing.Size(35, 13);
-            this.labelScore.TabIndex = 7;
-            this.labelScore.Text = "label8";
-            // 
-            // labelRoundCount
-            // 
-            this.labelRoundCount.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelRoundCount.AutoSize = true;
-            this.labelRoundCount.Location = new System.Drawing.Point(140, 25);
-            this.labelRoundCount.Name = "labelRoundCount";
-            this.labelRoundCount.Size = new System.Drawing.Size(35, 13);
-            this.labelRoundCount.TabIndex = 8;
-            this.labelRoundCount.Text = "label9";
-            // 
-            // labelMathadorCount
-            // 
-            this.labelMathadorCount.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelMathadorCount.AutoSize = true;
-            this.labelMathadorCount.Location = new System.Drawing.Point(140, 46);
-            this.labelMathadorCount.Name = "labelMathadorCount";
-            this.labelMathadorCount.Size = new System.Drawing.Size(35, 13);
-            this.labelMathadorCount.TabIndex = 9;
-            this.labelMathadorCount.Text = "label8";
-            // 
-            // labelPlusCount
-            // 
-            this.labelPlusCount.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelPlusCount.AutoSize = true;
-            this.labelPlusCount.Location = new System.Drawing.Point(140, 67);
-            this.labelPlusCount.Name = "labelPlusCount";
-            this.labelPlusCount.Size = new System.Drawing.Size(35, 13);
-            this.labelPlusCount.TabIndex = 10;
-            this.labelPlusCount.Text = "label8";
-            // 
-            // labelMoinsCount
-            // 
-            this.labelMoinsCount.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelMoinsCount.AutoSize = true;
-            this.labelMoinsCount.Location = new System.Drawing.Point(140, 88);
-            this.labelMoinsCount.Name = "labelMoinsCount";
-            this.labelMoinsCount.Size = new System.Drawing.Size(35, 13);
-            this.labelMoinsCount.TabIndex = 11;
-            this.labelMoinsCount.Text = "label8";
-            // 
-            // labelFoisCount
-            // 
-            this.labelFoisCount.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelFoisCount.AutoSize = true;
-            this.labelFoisCount.Location = new System.Drawing.Point(140, 109);
-            this.labelFoisCount.Name = "labelFoisCount";
-            this.labelFoisCount.Size = new System.Drawing.Size(35, 13);
-            this.labelFoisCount.TabIndex = 12;
-            this.labelFoisCount.Text = "label8";
-            // 
-            // labelDivCount
-            // 
-            this.labelDivCount.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelDivCount.AutoSize = true;
-            this.labelDivCount.Location = new System.Drawing.Point(140, 130);
-            this.labelDivCount.Name = "labelDivCount";
-            this.labelDivCount.Size = new System.Drawing.Size(35, 13);
-            this.labelDivCount.TabIndex = 13;
-            this.labelDivCount.Text = "label8";
             // 
             // ScoreFinDePartie
             // 

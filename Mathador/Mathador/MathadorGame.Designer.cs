@@ -68,7 +68,7 @@
             this.ButtonNombre1.Location = new System.Drawing.Point(10, 3);
             this.ButtonNombre1.Name = "ButtonNombre1";
             this.ButtonNombre1.Size = new System.Drawing.Size(49, 50);
-            this.ButtonNombre1.TabIndex = 1;
+            this.ButtonNombre1.TabIndex = 0;
             this.ButtonNombre1.UseVisualStyleBackColor = false;
             this.ButtonNombre1.Click += new System.EventHandler(this.ButtonNombre1_Click);
             // 
@@ -85,7 +85,7 @@
             this.ButtonNombre2.Location = new System.Drawing.Point(79, 3);
             this.ButtonNombre2.Name = "ButtonNombre2";
             this.ButtonNombre2.Size = new System.Drawing.Size(49, 50);
-            this.ButtonNombre2.TabIndex = 2;
+            this.ButtonNombre2.TabIndex = 1;
             this.ButtonNombre2.UseVisualStyleBackColor = false;
             this.ButtonNombre2.Click += new System.EventHandler(this.ButtonNombre2_Click);
             // 
@@ -102,7 +102,7 @@
             this.ButtonNombre3.Location = new System.Drawing.Point(148, 3);
             this.ButtonNombre3.Name = "ButtonNombre3";
             this.ButtonNombre3.Size = new System.Drawing.Size(49, 50);
-            this.ButtonNombre3.TabIndex = 3;
+            this.ButtonNombre3.TabIndex = 2;
             this.ButtonNombre3.UseVisualStyleBackColor = false;
             this.ButtonNombre3.Click += new System.EventHandler(this.ButtonNombre3_Click);
             // 
@@ -119,7 +119,7 @@
             this.ButtonNombre4.Location = new System.Drawing.Point(217, 3);
             this.ButtonNombre4.Name = "ButtonNombre4";
             this.ButtonNombre4.Size = new System.Drawing.Size(49, 50);
-            this.ButtonNombre4.TabIndex = 4;
+            this.ButtonNombre4.TabIndex = 3;
             this.ButtonNombre4.UseVisualStyleBackColor = false;
             this.ButtonNombre4.Click += new System.EventHandler(this.ButtonNombre4_Click);
             // 
@@ -136,7 +136,7 @@
             this.ButtonNombre5.Location = new System.Drawing.Point(287, 3);
             this.ButtonNombre5.Name = "ButtonNombre5";
             this.ButtonNombre5.Size = new System.Drawing.Size(50, 50);
-            this.ButtonNombre5.TabIndex = 5;
+            this.ButtonNombre5.TabIndex = 4;
             this.ButtonNombre5.UseVisualStyleBackColor = false;
             this.ButtonNombre5.Click += new System.EventHandler(this.ButtonNombre5_Click);
             // 
@@ -148,7 +148,7 @@
             this.labelCible.Location = new System.Drawing.Point(12, 43);
             this.labelCible.Name = "labelCible";
             this.labelCible.Size = new System.Drawing.Size(24, 25);
-            this.labelCible.TabIndex = 5;
+            this.labelCible.TabIndex = 7;
             this.labelCible.Text = "0";
             // 
             // TextCible
@@ -181,25 +181,27 @@
             this.TextScore.Location = new System.Drawing.Point(465, 9);
             this.TextScore.Name = "TextScore";
             this.TextScore.Size = new System.Drawing.Size(80, 25);
-            this.TextScore.TabIndex = 10;
+            this.TextScore.TabIndex = 8;
             this.TextScore.Text = "Score :";
             // 
             // ButtonSuivant
             // 
+            this.ButtonSuivant.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonSuivant.Location = new System.Drawing.Point(431, 74);
             this.ButtonSuivant.Name = "ButtonSuivant";
             this.ButtonSuivant.Size = new System.Drawing.Size(134, 50);
-            this.ButtonSuivant.TabIndex = 6;
+            this.ButtonSuivant.TabIndex = 3;
             this.ButtonSuivant.Text = "Suivant";
             this.ButtonSuivant.UseVisualStyleBackColor = true;
             this.ButtonSuivant.Click += new System.EventHandler(this.ButtonSuivant_Click);
             // 
             // ButtonResetManche
             // 
+            this.ButtonResetManche.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonResetManche.Location = new System.Drawing.Point(12, 74);
             this.ButtonResetManche.Name = "ButtonResetManche";
             this.ButtonResetManche.Size = new System.Drawing.Size(121, 50);
-            this.ButtonResetManche.TabIndex = 0;
+            this.ButtonResetManche.TabIndex = 1;
             this.ButtonResetManche.Text = "Recommencer la manche";
             this.ButtonResetManche.UseVisualStyleBackColor = true;
             this.ButtonResetManche.Click += new System.EventHandler(this.ButtonRetour_Click);
@@ -216,7 +218,7 @@
             this.ButtonPlus.Location = new System.Drawing.Point(11, 3);
             this.ButtonPlus.Name = "ButtonPlus";
             this.ButtonPlus.Size = new System.Drawing.Size(49, 50);
-            this.ButtonPlus.TabIndex = 7;
+            this.ButtonPlus.TabIndex = 0;
             this.ButtonPlus.Text = "+";
             this.ButtonPlus.UseVisualStyleBackColor = true;
             this.ButtonPlus.Click += new System.EventHandler(this.ButtonPlus_Click);
@@ -233,7 +235,7 @@
             this.ButtonMoins.Location = new System.Drawing.Point(82, 3);
             this.ButtonMoins.Name = "ButtonMoins";
             this.ButtonMoins.Size = new System.Drawing.Size(49, 50);
-            this.ButtonMoins.TabIndex = 8;
+            this.ButtonMoins.TabIndex = 1;
             this.ButtonMoins.Text = "-";
             this.ButtonMoins.UseVisualStyleBackColor = true;
             this.ButtonMoins.Click += new System.EventHandler(this.ButtonMoins_Click);
@@ -250,7 +252,7 @@
             this.ButtonFois.Location = new System.Drawing.Point(153, 3);
             this.ButtonFois.Name = "ButtonFois";
             this.ButtonFois.Size = new System.Drawing.Size(49, 50);
-            this.ButtonFois.TabIndex = 9;
+            this.ButtonFois.TabIndex = 2;
             this.ButtonFois.Text = "x";
             this.ButtonFois.UseVisualStyleBackColor = true;
             this.ButtonFois.Click += new System.EventHandler(this.ButtonFois_Click);
@@ -267,7 +269,7 @@
             this.ButtonDiv.Location = new System.Drawing.Point(224, 3);
             this.ButtonDiv.Name = "ButtonDiv";
             this.ButtonDiv.Size = new System.Drawing.Size(50, 50);
-            this.ButtonDiv.TabIndex = 10;
+            this.ButtonDiv.TabIndex = 3;
             this.ButtonDiv.Text = "÷";
             this.ButtonDiv.UseVisualStyleBackColor = true;
             this.ButtonDiv.Click += new System.EventHandler(this.ButtonDiv_Click);
@@ -296,7 +298,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(348, 56);
-            this.tableLayoutPanel1.TabIndex = 22;
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
             // 
@@ -315,7 +317,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(286, 56);
-            this.tableLayoutPanel2.TabIndex = 23;
+            this.tableLayoutPanel2.TabIndex = 2;
             // 
             // progressBar
             // 
@@ -326,24 +328,26 @@
             this.progressBar.Size = new System.Drawing.Size(553, 10);
             this.progressBar.Step = 1;
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 24;
+            this.progressBar.TabIndex = 10;
             // 
             // buttonAbandon
             // 
+            this.buttonAbandon.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonAbandon.Location = new System.Drawing.Point(12, 149);
             this.buttonAbandon.Name = "buttonAbandon";
             this.buttonAbandon.Size = new System.Drawing.Size(121, 46);
-            this.buttonAbandon.TabIndex = 25;
+            this.buttonAbandon.TabIndex = 4;
             this.buttonAbandon.Text = "Abandonner";
             this.buttonAbandon.UseVisualStyleBackColor = true;
             this.buttonAbandon.Click += new System.EventHandler(this.buttonAbandon_Click);
             // 
             // buttonSoluces
             // 
+            this.buttonSoluces.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSoluces.Location = new System.Drawing.Point(431, 149);
             this.buttonSoluces.Name = "buttonSoluces";
             this.buttonSoluces.Size = new System.Drawing.Size(134, 46);
-            this.buttonSoluces.TabIndex = 26;
+            this.buttonSoluces.TabIndex = 5;
             this.buttonSoluces.Text = "Solutions";
             this.buttonSoluces.UseVisualStyleBackColor = true;
             this.buttonSoluces.Click += new System.EventHandler(this.buttonSoluces_Click_1);
@@ -360,7 +364,7 @@
             this.buttonMathador.Location = new System.Drawing.Point(139, 150);
             this.buttonMathador.Name = "buttonMathador";
             this.buttonMathador.Size = new System.Drawing.Size(286, 45);
-            this.buttonMathador.TabIndex = 27;
+            this.buttonMathador.TabIndex = 11;
             this.buttonMathador.Text = "MATHADOR";
             this.buttonMathador.UseVisualStyleBackColor = false;
             // 
@@ -369,6 +373,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(577, 207);
             this.Controls.Add(this.buttonMathador);
             this.Controls.Add(this.buttonSoluces);
@@ -382,6 +387,7 @@
             this.Controls.Add(this.labelScore);
             this.Controls.Add(this.TextCible);
             this.Controls.Add(this.labelCible);
+            this.DoubleBuffered = true;
             this.Name = "MathadorGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Partie en cours";

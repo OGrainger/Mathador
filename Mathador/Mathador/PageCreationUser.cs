@@ -16,10 +16,13 @@ namespace Mathador
         public string pseudo;
         public string mdp;
         public string mdpVerif;
+
         public PageCreationUser()
         {
             InitializeComponent();
             labelErreur.Text = "";
+            AcceptButton = valider;
+            CancelButton = retour;
         }
 
         private void valider_Click(object sender, EventArgs e) {

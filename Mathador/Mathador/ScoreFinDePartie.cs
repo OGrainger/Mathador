@@ -17,6 +17,10 @@ namespace Mathador
         public ScoreFinDePartie(string pseudo, int score, int roundCount, int mathadorCount, int plusCount, int moinsCount, int foisCount, int divCount)
         {
             InitializeComponent();
+
+            AcceptButton = buttonRestart;
+            CancelButton = buttonMenu;
+
             this.pseudo = pseudo;
             Dictionary<string, int> gameData = new Dictionary<string, int>();
 
@@ -48,6 +52,12 @@ namespace Mathador
             MenuMathador form = new MenuMathador(pseudo);
             form.ShowDialog();
         }
-        
+
+        private void buttonRestart_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MathadorGame form = new MathadorGame(pseudo);
+            form.ShowDialog();
+        }
     }
 }

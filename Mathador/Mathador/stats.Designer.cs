@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.buttonRetour = new System.Windows.Forms.Button();
             this.pieChartOp = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.labelScoreMin = new System.Windows.Forms.Label();
@@ -75,6 +75,7 @@
             // 
             // buttonRetour
             // 
+            this.buttonRetour.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonRetour.Location = new System.Drawing.Point(421, 223);
             this.buttonRetour.Name = "buttonRetour";
             this.buttonRetour.Size = new System.Drawing.Size(144, 30);
@@ -86,14 +87,14 @@
             // pieChartOp
             // 
             this.pieChartOp.BackColor = System.Drawing.Color.Transparent;
-            chartArea3.Name = "ChartArea1";
-            this.pieChartOp.ChartAreas.Add(chartArea3);
-            legend3.Alignment = System.Drawing.StringAlignment.Center;
-            legend3.Enabled = false;
-            legend3.HeaderSeparator = System.Windows.Forms.DataVisualization.Charting.LegendSeparatorStyle.DotLine;
-            legend3.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend3.Name = "Legend1";
-            this.pieChartOp.Legends.Add(legend3);
+            chartArea5.Name = "ChartArea1";
+            this.pieChartOp.ChartAreas.Add(chartArea5);
+            legend5.Alignment = System.Drawing.StringAlignment.Center;
+            legend5.Enabled = false;
+            legend5.HeaderSeparator = System.Windows.Forms.DataVisualization.Charting.LegendSeparatorStyle.DotLine;
+            legend5.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend5.Name = "Legend1";
+            this.pieChartOp.Legends.Add(legend5);
             this.pieChartOp.Location = new System.Drawing.Point(370, 11);
             this.pieChartOp.Name = "pieChartOp";
             this.pieChartOp.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
@@ -102,19 +103,19 @@
         System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))))};
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.CustomProperties = "CollectedSliceExploded=True";
-            series3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.pieChartOp.Series.Add(series3);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series5.CustomProperties = "CollectedSliceExploded=True";
+            series5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.pieChartOp.Series.Add(series5);
             this.pieChartOp.Size = new System.Drawing.Size(195, 188);
             this.pieChartOp.TabIndex = 3;
             this.pieChartOp.Text = "chart1";
-            title3.Name = "Titre1";
-            title3.Text = "Taux d\'utilisation des opérateurs";
-            this.pieChartOp.Titles.Add(title3);
+            title5.Name = "Titre1";
+            title5.Text = "Taux d\'utilisation des opérateurs";
+            this.pieChartOp.Titles.Add(title5);
             // 
             // labelScoreMin
             // 
@@ -417,24 +418,24 @@
             // 
             // pieChartMathador
             // 
-            chartArea4.Name = "ChartArea1";
-            this.pieChartMathador.ChartAreas.Add(chartArea4);
-            legend4.Enabled = false;
-            legend4.Name = "Legend1";
-            this.pieChartMathador.Legends.Add(legend4);
+            chartArea6.Name = "ChartArea1";
+            this.pieChartMathador.ChartAreas.Add(chartArea6);
+            legend6.Enabled = false;
+            legend6.Name = "Legend1";
+            this.pieChartMathador.Legends.Add(legend6);
             this.pieChartMathador.Location = new System.Drawing.Point(283, 166);
             this.pieChartMathador.Name = "pieChartMathador";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.pieChartMathador.Series.Add(series4);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.pieChartMathador.Series.Add(series6);
             this.pieChartMathador.Size = new System.Drawing.Size(132, 87);
             this.pieChartMathador.TabIndex = 9;
             this.pieChartMathador.Text = "chart1";
-            title4.Name = "Title1";
-            title4.Text = "Taux de Mathador par manche";
-            this.pieChartMathador.Titles.Add(title4);
+            title6.Name = "Title1";
+            title6.Text = "Taux de Mathador par manche";
+            this.pieChartMathador.Titles.Add(title6);
             // 
             // stats
             // 
