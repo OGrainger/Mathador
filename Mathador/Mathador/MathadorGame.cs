@@ -28,6 +28,7 @@ namespace Mathador
         public static int cible;
         public int tentatives = 1;
         public bool finDePartie = false;
+        public bool pause = true;
 
         Button buttonPremierChiffre;
         Button buttonDeuxiemeChiffre;
@@ -38,7 +39,7 @@ namespace Mathador
         public static Random random = new Random();
         public static int[] tableau = new int[5];
 
-        public int round = 1;
+        public int round = 0;
         public int score = 0;
         public int plusCount = 0;
         public int moinsCount = 0;
@@ -61,27 +62,32 @@ namespace Mathador
             timer1.Interval = 1000;
             timer1.Start();
 
-            MessageBox.Show("Etes vous pret " + pseudo + " ?",
+            MessageBox.Show( pseudo + ", êtes-vous prêt ?",
             "Message",
             MessageBoxButtons.OK,
-            MessageBoxIcon.Exclamation,
+            MessageBoxIcon.Question,
             MessageBoxDefaultButton.Button1);
+            pause = false;
 
             Generateur();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (!pause)
+            {
             if (progressBar.Value == progressBar.Maximum && !finDePartie)
-            {
-                finDePartie = true;
-                FinDePartie();
-            }
-            else if (progressBar.Value < progressBar.Maximum)
-            {
-                progressBar.Value++;
+                {
+                    finDePartie = true;
+                    FinDePartie();
+                }
+                else if (progressBar.Value < progressBar.Maximum)
+                {
+                    progressBar.Value++;
+                }
             }
         }
+            
 
         public void Generateur()
         {
@@ -248,6 +254,7 @@ namespace Mathador
                     score += PointsRound;
                 }
             }
+            pause = false;
             round++;
             plusCount += saveOperateurPlusCount;
             moinsCount += saveOperateurMoinsCount;
@@ -498,25 +505,12 @@ namespace Mathador
             tentatives = 1;
             Reset();
             RecupGeneration();
-            
         }
-
-        private void buttonTerminer_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void buttonSoluces_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void TextScore_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void buttonSoluces_Click_1(object sender, EventArgs e)
         {
+            pause = true;
             Solutions solutionsForm = new Solutions();                                                      //On appel le form qui contient les listbox des solutions
             solutionsForm.ShowDialog();
         }

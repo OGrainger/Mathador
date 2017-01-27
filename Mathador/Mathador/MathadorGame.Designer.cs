@@ -183,7 +183,6 @@
             this.TextScore.Size = new System.Drawing.Size(80, 25);
             this.TextScore.TabIndex = 10;
             this.TextScore.Text = "Score :";
-            this.TextScore.Click += new System.EventHandler(this.TextScore_Click);
             // 
             // ButtonSuivant
             // 
