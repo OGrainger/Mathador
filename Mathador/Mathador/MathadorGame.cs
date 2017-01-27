@@ -212,7 +212,7 @@ namespace Mathador
             }
             else if (buttonOp == ButtonDiv)
             {
-                if (premierChiffre % deuxiemeChiffre == 0) //Si le résultat est entier
+                if (premierChiffre % deuxiemeChiffre == 0 || deuxiemeChiffre == 0) //Si le résultat est entier et qu'on ne divise pas par zéro
                 {
                     resultat = premierChiffre / deuxiemeChiffre;
                     saveOperateurDivCount++;
