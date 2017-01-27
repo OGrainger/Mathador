@@ -12,6 +12,8 @@ namespace Mathador
 {
     public partial class Solutions : Form
     {
+        private int i;
+        private string tempListElement;
         public Solutions()
         {
             InitializeComponent();
@@ -22,7 +24,14 @@ namespace Mathador
             listBoxSolutions.Items.Clear();                                     //On efface la listbox solutions
             Solveur.Solutions.Clear();                                          //On efface la list des solutions
             Solveur Solv = new Solveur();                                       //On appel les methodes du solveur
-            List<Solution> solutions = Solv.SolvComplet();  
+            List<Solution> solutions = Solv.SolvComplet();
+            for (i = 0; i < solutions.Count(); i++)
+            {
+                tempListElement = solutions[i].score.ToString();
+                tempListElement += " : ";
+                tempListElement += solutions[i].equations;
+                listBoxSolutions.Items.Add(tempListElement);
+            }
         }
 
         private void buttonTerminer_Click(object sender, EventArgs e)

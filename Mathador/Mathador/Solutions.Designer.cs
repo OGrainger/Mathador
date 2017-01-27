@@ -35,16 +35,16 @@
             // listBoxSolutions
             // 
             this.listBoxSolutions.FormattingEnabled = true;
-            this.listBoxSolutions.Location = new System.Drawing.Point(12, 0);
+            this.listBoxSolutions.Location = new System.Drawing.Point(12, 12);
             this.listBoxSolutions.Name = "listBoxSolutions";
-            this.listBoxSolutions.Size = new System.Drawing.Size(595, 485);
+            this.listBoxSolutions.Size = new System.Drawing.Size(553, 147);
             this.listBoxSolutions.TabIndex = 0;
             // 
             // buttonTerminer
             // 
-            this.buttonTerminer.Location = new System.Drawing.Point(505, 491);
+            this.buttonTerminer.Location = new System.Drawing.Point(445, 165);
             this.buttonTerminer.Name = "buttonTerminer";
-            this.buttonTerminer.Size = new System.Drawing.Size(75, 23);
+            this.buttonTerminer.Size = new System.Drawing.Size(120, 30);
             this.buttonTerminer.TabIndex = 1;
             this.buttonTerminer.Text = "Terminer";
             this.buttonTerminer.UseVisualStyleBackColor = true;
@@ -54,7 +54,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(577, 554);
+            this.ClientSize = new System.Drawing.Size(577, 207);
             this.Controls.Add(this.buttonTerminer);
             this.Controls.Add(this.listBoxSolutions);
             this.Name = "Solutions";
