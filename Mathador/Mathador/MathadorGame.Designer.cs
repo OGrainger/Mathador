@@ -359,7 +359,7 @@
             this.buttonMathador.FlatAppearance.BorderColor = System.Drawing.Color.Gold;
             this.buttonMathador.FlatAppearance.BorderSize = 3;
             this.buttonMathador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMathador.Font = new System.Drawing.Font("Candara", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonMathador.Font = new System.Drawing.Font("Verdana", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMathador.ForeColor = System.Drawing.Color.Gold;
             this.buttonMathador.Location = new System.Drawing.Point(139, 150);
             this.buttonMathador.Name = "buttonMathador";

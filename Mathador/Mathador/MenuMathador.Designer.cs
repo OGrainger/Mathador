@@ -111,7 +111,7 @@
             this.buttonTableauScores.TabIndex = 1;
             this.buttonTableauScores.Text = "Tableau des scores";
             this.buttonTableauScores.UseVisualStyleBackColor = true;
-            this.buttonTableauScores.Click += new System.EventHandler(this.button2_Click);
+            this.buttonTableauScores.Click += new System.EventHandler(this.buttonTableauScores_Click);
             // 
             // MenuMathador
             // 
@@ -129,7 +129,6 @@
             this.Name = "MenuMathador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PageConnexion";
-            this.Load += new System.EventHandler(this.MenuMathador_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

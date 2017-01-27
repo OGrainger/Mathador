@@ -96,6 +96,12 @@
     <Compile Include="stats.Designer.cs">
       <DependentUpon>stats.cs</DependentUpon>
     </Compile>
+    <Compile Include="TableauScores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TableauScores.Designer.cs">
+      <DependentUpon>TableauScores.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MathadorGame.resx">
       <DependentUpon>MathadorGame.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="stats.resx">
       <DependentUpon>stats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TableauScores.resx">
+      <DependentUpon>TableauScores.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -58,14 +58,11 @@ namespace Mathador
             form.ShowDialog();
         }
 
-        private void MenuMathador_Load(object sender, EventArgs e)
+        private void buttonTableauScores_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
+            this.Hide();
+            TableauScores form = new TableauScores(this.Pseudo);
+            form.ShowDialog();
         }
     }
 }
