@@ -161,15 +161,14 @@ namespace Mathador
         {
             List<ScorePair> listOfScores = new List<ScorePair>();
             connexion.Open();
-            string sql = "SELECT * FROM scores";
+            string sql = "SELECT * FROM scores ORDER BY score DESC LIMIT 10";
             SQLiteCommand commande = new SQLiteCommand(sql, connexion);
             SQLiteDataReader reader = commande.ExecuteReader();
             while (reader.Read())
             {
                 ScorePair scoreTemp = new ScorePair();
-                ScorePair.score = Convert.ToInt32(reader["score"]);
-                ScorePair.username = Convert.ToString(reader["username"]);
-                Console.WriteLine(ScorePair.username + " - " + ScorePair.score);
+                scoreTemp.score = Convert.ToInt32(reader["score"]);
+                scoreTemp.username = Convert.ToString(reader["username"]);
                 listOfScores.Add(scoreTemp);
             }
             connexion.Close();
@@ -179,7 +178,18 @@ namespace Mathador
 
     public class ScorePair
     {
-        public static int score { get; set; }
-        public static string username { get; set; }
+        public int score { get; set; }
+        public string username { get; set; }
+        public string labelForTop3()
+        {
+            return score + " - " + username;
+        }
+        public List<string> labelForRest()
+        {
+            List<string> scorePair = new List<string>();
+            scorePair.Add(username);
+            scorePair.Add(score.ToString());
+            return scorePair;
+        }
     }
 }

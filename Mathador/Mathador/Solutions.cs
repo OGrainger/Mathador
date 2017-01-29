@@ -19,6 +19,11 @@ namespace Mathador
             InitializeComponent();
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+        }
+
         private void Solutions_Load(object sender, EventArgs e)
         {
             listBoxSolutions.Items.Clear();                                     //On efface la listbox solutions
