@@ -15,11 +15,15 @@ namespace Mathador
         public Dictionary<string, int> data;
         private SQLiteDatabase db = new SQLiteDatabase();
         public string Pseudo;
+        private List<string> citations = new List<string>();
+        private List<string> auteurs = new List<string>();
+        Random rd = new Random();
+        int rank;
+        int tempRank = 0;
 
         public MenuMathador(string Pseudo)
         {
             InitializeComponent();
-            BienvenuePseudo.Text = "Bienvenue " + Pseudo + " !";
             this.Pseudo = Pseudo;
             //buttonStats.Enabled = gameCount > 0;
             AcceptButton = BouttonNouvellePartie;
@@ -28,8 +32,32 @@ namespace Mathador
             buttonStats.Enabled = data["gameCount"] > 0;
             AcceptButton = BouttonNouvellePartie;
             CancelButton = BouttonQuitter;
+            this.Text = "Menu | " + this.Pseudo;
+            citations.Add("I have a dream that one day, I will have a matador.");
+            auteurs.Add("Martin Luther King");
+            citations.Add("La vie est un mystère qu'il faut vivre, et non un mathador à résoudre.");
+            auteurs.Add("Mahatma Gandhi");
+            citations.Add("Pour critiquer les gens il faut les connaître, et pour les connaître, il faut les battre au Mathador.");
+            auteurs.Add("Coluche");
+            citations.Add("Placez votre main sur un poêle une minute et ça vous semble durer une heure. Jouez une heure au Mathador et ça vous semble durer une minute. C'est ça la relativité.");
+            auteurs.Add("Albert Einstein");
+            citations.Add("La nature fait les hommes semblables, le Mathador les rend différents.");
+            auteurs.Add("Confucius");
+            citations.Add("Un sourire coûte moins cher qu'un Mathador, mais donne autant de bonheur.");
+            auteurs.Add("Abbé Pierre");
+            citations.Add("Le bonheur est parfois caché dans un mathador.");
+            auteurs.Add("Victor Hugo");
+            citations.Add("Le mathador est la seule chose qu'on ne regrette jamais.");
+            auteurs.Add("Oscar Wilde");
+            citations.Add("J'ai appris que le courage n'est pas l'absence de peur, mais la capacité de battre son ennemi au Mathador.");
+            auteurs.Add("Nelson Mandela");
+            
         }
 
+        private void MenuMathador_Load(object sender, EventArgs e)
+        {
+            LoadCitation();
+        }
 
         private void BouttonNouvellePartie_Click(object sender, EventArgs e)
         {
@@ -63,6 +91,14 @@ namespace Mathador
             this.Hide();
             TableauScores form = new TableauScores(this.Pseudo);
             form.ShowDialog();
+        }
+
+        public void LoadCitation()
+        {
+            rank = rd.Next(citations.Count);
+            tempRank = rank;
+            labelCitation.Text = "“" + citations[rank] + "”";
+            labelAuteur.Text = auteurs[rank];
         }
     }
 }

@@ -41,6 +41,7 @@ namespace Mathador
             this.Pseudo = Pseudo;
             AcceptButton = buttonRetour;
             CancelButton = buttonRetour;
+            this.Text = "Statistiques | " + this.Pseudo;
 
             data = db.GetData(this.Pseudo);
             totalScorePoints = data["totalScorePoints"];

@@ -13,8 +13,6 @@ namespace Mathador
     public partial class TableauScores : Form
     {
         string pseudo;
-        int i;
-
         public TableauScores(string pseudo)
         {
             InitializeComponent();
