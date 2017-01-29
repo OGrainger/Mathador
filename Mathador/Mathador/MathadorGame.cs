@@ -127,7 +127,7 @@ namespace Mathador
             }
             else //Sinon on relance la génération
             {
-                tentatives++;
+                tentatives++; //Cette variable est juste pour afficher combien de tentatives le générateur à dû réaliser pour générer une cible
                 Generateur();
             }
         }
@@ -148,7 +148,7 @@ namespace Mathador
             tableauTemp[3] = json.Nombre4;
             tableauTemp[4] = json.Nombre5;
 
-            tableau = tableauTemp.OrderBy(x => random.Next()).ToArray();
+            tableau = tableauTemp.OrderBy(x => random.Next()).ToArray(); //Aléotoirise l'ordre des nombres
 
             ButtonNombre1.Text = tableau[0].ToString();
             ButtonNombre2.Text = tableau[1].ToString();
@@ -185,6 +185,7 @@ namespace Mathador
 
         public void Calcul()
         {
+            //Se lance après soit avoir sélectionné 2 chiffres + 1 opérateur
             int premierChiffre = Int32.Parse(buttonPremierChiffre.Text);
             int deuxiemeChiffre = Int32.Parse(buttonDeuxiemeChiffre.Text);
             bool calculFait = true;
@@ -210,13 +211,13 @@ namespace Mathador
             }
             else if (buttonOp == ButtonDiv)
             {
-                if (deuxiemeChiffre != 0 && premierChiffre % deuxiemeChiffre == 0) //Si le résultat est entier
+                if (deuxiemeChiffre != 0 && premierChiffre % deuxiemeChiffre == 0)//Si la division du nombre 1 par le nombre 2 est entière (et pas de division par 0)
                 {
                     resultat =  premierChiffre / deuxiemeChiffre;
                     saveOperateurDivCount++;
                     PointsRound += 3;
                 }
-                else if (premierChiffre != 0 && deuxiemeChiffre % premierChiffre == 0)
+                else if (premierChiffre != 0 && deuxiemeChiffre % premierChiffre == 0)//L'inverse
                 {
                     resultat = deuxiemeChiffre / premierChiffre;
                     saveOperateurDivCount++;
@@ -228,7 +229,7 @@ namespace Mathador
                     calculFait = false;
                 }
             }
-            if (calculFait)
+            if (calculFait) //Ne se lance pas uniquement lors d'une mauvaise division
             {
                 buttonPremierChiffre.Enabled = false;
                 buttonPremierChiffre.BackColor = Color.White;
@@ -242,14 +243,14 @@ namespace Mathador
                 calculsCount++;
                 labelScore.Text = score.ToString() + " + " + PointsRound.ToString();
                 Console.WriteLine("{0}e calcul", calculsCount);
-                if (calculsCount == 4)
+                if (calculsCount == 4) //Si le joueur a fait les 4 coups (et qu'ainsi il ne lui reste plus qu'un nombre)
                 {
                     FinDeRound();
                 }
             }
         }
 
-        public void FinDeRound()
+        public void FinDeRound() //Se lance après avoir fait 4 coups ou en appuyant sur "suivant"
         {
             //Si la cible est trouvée
             if (ButtonNombre1.Text == cible.ToString() || ButtonNombre2.Text == cible.ToString() || ButtonNombre3.Text == cible.ToString() || ButtonNombre4.Text == cible.ToString() || ButtonNombre5.Text == cible.ToString())
