@@ -83,7 +83,5 @@ namespace Mathador
             MenuMathador form = new MenuMathador(this.pseudo);
             form.ShowDialog();
         }
-
-        
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -119,7 +120,8 @@ namespace Mathador
                 datatest.Nombre4 = nb4;
                 datatest.Nombre5 = nb5;
                 string json = JsonConvert.SerializeObject(datatest);
-                System.IO.File.WriteAllText("generation.txt", json);
+                string jsonFormat = JValue.Parse(json).ToString(Formatting.Indented);
+                System.IO.File.WriteAllText("generation.txt", jsonFormat);
                 Console.WriteLine("{0} tentative(s) de génération", tentatives);
                 RecupGeneration();
             }
@@ -138,11 +140,15 @@ namespace Mathador
             cible = json.Cible;
             labelCible.Text = cible.ToString();
 
-            tableau[0] = json.Nombre1;
-            tableau[1] = json.Nombre2;
-            tableau[2] = json.Nombre3;
-            tableau[3] = json.Nombre4;
-            tableau[4] = json.Nombre5;
+            int[] tableauTemp = new int[5];
+
+            tableauTemp[0] = json.Nombre1;
+            tableauTemp[1] = json.Nombre2;
+            tableauTemp[2] = json.Nombre3;
+            tableauTemp[3] = json.Nombre4;
+            tableauTemp[4] = json.Nombre5;
+
+            tableau = tableauTemp.OrderBy(x => random.Next()).ToArray();
 
             ButtonNombre1.Text = tableau[0].ToString();
             ButtonNombre2.Text = tableau[1].ToString();

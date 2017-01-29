@@ -61,9 +61,9 @@ namespace Mathador
             averageUseOfMult = Convert.ToSingle(data["multCount"]) / useOfAllOp;
             averageUseOfDiv = Convert.ToSingle(data["divCount"]) / useOfAllOp;
 
-            labelAveragePointsPerRound.Text = averagePointsPerRound.ToString();
-            labelAverageScore.Text = averageScore.ToString();
-            labelAverageTimePerRound.Text = averageTimePerRound.ToString() + "s";
+            labelAveragePointsPerRound.Text = Math.Round(averagePointsPerRound, 2).ToString();
+            labelAverageScore.Text = Math.Round(averageScore, 2).ToString();
+            labelAverageTimePerRound.Text = Math.Round(averageTimePerRound, 2).ToString() + "s";
             labelGameCount.Text = gameCount.ToString();
             labelRoundCount.Text = roundCount.ToString();
             labelScoreMin.Text = Convert.ToString(data["minScore"]);
@@ -71,7 +71,7 @@ namespace Mathador
             labelTotalScore.Text = totalScorePoints.ToString();
             labelTotalTime.Text = totalGameTimeInSeconds.ToString() + "s";
             labelMathadorCount.Text = data["mathadorCount"].ToString();
-            labelAverageMathadorPerGame.Text = averageMathadorPerGame.ToString();
+            labelAverageMathadorPerGame.Text = Math.Round(averageMathadorPerGame, 2).ToString();
 
             if (averageUseOfAdd > 0) { pieChartOp.Series["Series1"].Points.AddXY("+ (" + Math.Round(averageUseOfAdd, 3, MidpointRounding.AwayFromZero) * 100 + "%)", averageUseOfAdd); }
             if (averageUseOfSub > 0) { pieChartOp.Series["Series1"].Points.AddXY("- (" + Math.Round(averageUseOfSub, 3, MidpointRounding.AwayFromZero) * 100 + "%)", averageUseOfSub); }

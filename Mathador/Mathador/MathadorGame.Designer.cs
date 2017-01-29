@@ -323,7 +323,7 @@
             // 
             this.progressBar.ForeColor = System.Drawing.Color.LightSkyBlue;
             this.progressBar.Location = new System.Drawing.Point(12, 133);
-            this.progressBar.Maximum = 30;
+            this.progressBar.Maximum = 180;
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(553, 10);
             this.progressBar.Step = 1;

@@ -34,10 +34,13 @@
             // 
             // listBoxSolutions
             // 
+            this.listBoxSolutions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listBoxSolutions.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxSolutions.FormattingEnabled = true;
             this.listBoxSolutions.Location = new System.Drawing.Point(12, 12);
             this.listBoxSolutions.Name = "listBoxSolutions";
-            this.listBoxSolutions.Size = new System.Drawing.Size(553, 147);
+            this.listBoxSolutions.Size = new System.Drawing.Size(553, 145);
+            this.listBoxSolutions.Sorted = true;
             this.listBoxSolutions.TabIndex = 0;
             // 
             // buttonTerminer
@@ -52,13 +55,16 @@
             // 
             // Solutions
             // 
+            this.AcceptButton = this.buttonTerminer;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(577, 207);
             this.Controls.Add(this.buttonTerminer);
             this.Controls.Add(this.listBoxSolutions);
+            this.Location = new System.Drawing.Point(0, 246);
             this.Name = "Solutions";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Solutions";
             this.Load += new System.EventHandler(this.Solutions_Load);
             this.ResumeLayout(false);

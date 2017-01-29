@@ -30,7 +30,7 @@ namespace Mathador
             Solveur.Solutions.Clear();                                          //On efface la list des solutions
             Solveur Solv = new Solveur();                                       //On appel les methodes du solveur
             List<Solution> solutions = Solv.SolvComplet();
-            for (i = 0; i < solutions.Count(); i++)
+            for (i = 0; i < solutions.Count(); i++)                             //On affiche chaque élément de la liste
             {
                 tempListElement = solutions[i].score.ToString();
                 tempListElement += " : ";

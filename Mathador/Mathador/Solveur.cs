@@ -709,7 +709,7 @@ namespace Mathador
         {
             Solution Sol = new Solution();                                                                      //Création d'un nouvel objet "Solution"
             Sol.score = score;                                                                                  //Mise de score et de l'équation dans l'objet"Solution"
-            Sol.equations = String.Join(" ", equationsTemp.ToList());                                           //Conversion de la liste des equation de la solution en String
+            Sol.equations = String.Join(" → ", equationsTemp.ToList());                                           //Conversion de la liste des equation de la solution en String
             Solutions.Add(Sol);                                                                                 //Ajout de l'objet Solution à la liste des "Solutions"
         }
 
