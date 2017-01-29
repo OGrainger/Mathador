@@ -198,17 +198,9 @@ namespace Mathador
             }
             else if (buttonOp == ButtonMoins)
             {
-                if (premierChiffre - deuxiemeChiffre >= 0) // Si le résultat n'est pas négatif
-                {
-                    resultat = premierChiffre - deuxiemeChiffre;
-                    saveOperateurMoinsCount++;
-                    PointsRound += 2;
-                }
-                else //Sinon mettre en rouge l'opérateur
-                {
-                    buttonOp.BackColor = Color.Red;
-                    calculFait = false;
-                }
+                resultat = (premierChiffre > deuxiemeChiffre ? premierChiffre - deuxiemeChiffre : deuxiemeChiffre - premierChiffre); //On prend la valeur absolue pour faciliter le 
+                saveOperateurMoinsCount++;
+                PointsRound += 2;
             }
             else if (buttonOp == ButtonFois)
             {
@@ -218,9 +210,15 @@ namespace Mathador
             }
             else if (buttonOp == ButtonDiv)
             {
-                if (premierChiffre % deuxiemeChiffre == 0 || deuxiemeChiffre == 0) //Si le résultat est entier et qu'on ne divise pas par zéro
+                if (deuxiemeChiffre != 0 && premierChiffre % deuxiemeChiffre == 0) //Si le résultat est entier
                 {
-                    resultat = premierChiffre / deuxiemeChiffre;
+                    resultat =  premierChiffre / deuxiemeChiffre;
+                    saveOperateurDivCount++;
+                    PointsRound += 3;
+                }
+                else if (premierChiffre != 0 && deuxiemeChiffre % premierChiffre == 0)
+                {
+                    resultat = deuxiemeChiffre / premierChiffre;
                     saveOperateurDivCount++;
                     PointsRound += 3;
                 }
