@@ -419,9 +419,9 @@
             // 
             // buttonRetour
             // 
-            this.buttonRetour.Location = new System.Drawing.Point(386, 161);
+            this.buttonRetour.Location = new System.Drawing.Point(381, 161);
             this.buttonRetour.Name = "buttonRetour";
-            this.buttonRetour.Size = new System.Drawing.Size(179, 30);
+            this.buttonRetour.Size = new System.Drawing.Size(184, 30);
             this.buttonRetour.TabIndex = 7;
             this.buttonRetour.Text = "Retour";
             this.buttonRetour.UseVisualStyleBackColor = true;
