@@ -19,8 +19,8 @@ namespace Mathador
 
         public PageConnexion()
         {
-            InitializeComponent();
-            db.LaunchDatabase();
+            InitializeComponent();                                                                  
+            db.LaunchDatabase();                                                                    //Création de la data base
             ErreurPseudo.Text = "";
             AcceptButton = buttonValiderConnexion;
             CancelButton = quit;
@@ -28,7 +28,7 @@ namespace Mathador
 
         private void buttonValiderConnexion_Click(object sender, EventArgs e)
         {
-            this.Pseudo = textBoxPseudo.Text;
+            this.Pseudo = textBoxPseudo.Text;                                                       //Vérifie si l'utilisateur existe
             this.MDP = textBoxMDP.Text;
             if (this.Pseudo == "" || this.MDP == "")
             {
@@ -48,14 +48,14 @@ namespace Mathador
 
         private void newUser_click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Hide();                                                                            //Affiche la page de création de user
             PageCreationUser form = new PageCreationUser();
             form.ShowDialog();
         }
 
         private void quit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Application.Exit();                                                                     //Quitte l'application
         }
     }
 }

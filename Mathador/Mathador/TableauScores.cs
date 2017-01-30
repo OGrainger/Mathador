@@ -21,7 +21,7 @@ namespace Mathador
 
         private void TableauScores_Load_1(object sender, EventArgs e)
         {
-            SQLiteDatabase db = new SQLiteDatabase();
+            SQLiteDatabase db = new SQLiteDatabase();                                                   //Affiche le joueur et le score en fonction du classement dans la data base
             List<ScorePair> top10scores = db.ReadScoreTable();
             switch (top10scores.Count)
             {
@@ -77,7 +77,7 @@ namespace Mathador
 
         private void buttonRetour_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Hide();                                                                                //Retoune au menu du jeu
             MenuMathador form = new MenuMathador(this.pseudo);
             form.ShowDialog();
         }

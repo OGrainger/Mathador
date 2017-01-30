@@ -41,21 +41,21 @@ namespace Mathador
             gameData.Add("multCount", foisCount);
             gameData.Add("divCount", divCount);
 
-            SQLiteDatabase db = new SQLiteDatabase();
+            SQLiteDatabase db = new SQLiteDatabase();                                                       //Ajoute les scores data base
             db.UpdateData(pseudo, gameData);
             db.AddScore(pseudo, score);
         }
 
         private void buttonMenu_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Hide();                                                                                    //Retourne au menu du jeu
             MenuMathador form = new MenuMathador(pseudo);
             form.ShowDialog();
         }
 
         private void buttonRestart_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Hide();                                                                                    //Retourne au form du jeu MathadorGame
             MathadorGame form = new MathadorGame(pseudo);
             form.ShowDialog();
         }

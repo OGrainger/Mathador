@@ -55,12 +55,12 @@ namespace Mathador
 
         private void MenuMathador_Load(object sender, EventArgs e)
         {
-            LoadCitation();
+            LoadCitation();                                                                 //Chargement des citations
         }
 
         private void BouttonNouvellePartie_Click(object sender, EventArgs e)
         {
-            String Pseudo = this.Pseudo;
+            String Pseudo = this.Pseudo;                                                    //lancement du form MathadorGame et fermeture du form MenuMathador
             this.Hide();
             MathadorGame form = new MathadorGame(Pseudo);
             form.ShowDialog();
@@ -68,33 +68,33 @@ namespace Mathador
 
         private void BouttonQuitter_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Application.Exit();                                                             //Quitte l'application
         }
 
         private void buttonStats_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Hide();                                                                    //Lance les statistiques
             stats form = new stats(this.Pseudo);
             form.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Hide();                                                                    //Retourne sur la page connexion
             PageConnexion form = new PageConnexion();
             form.ShowDialog();
         }
 
         private void buttonTableauScores_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Hide();                                                                    //Affiche les scores
             TableauScores form = new TableauScores(this.Pseudo);
             form.ShowDialog();
         }
 
         public void LoadCitation()
         {
-            rank = rd.Next(citations.Count);
+            rank = rd.Next(citations.Count);                                                //Charge aléatoirement les citations
             tempRank = rank;
             labelCitation.Text = "“" + citations[rank] + "”";
             labelAuteur.Text = auteurs[rank];
