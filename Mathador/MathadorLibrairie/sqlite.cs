@@ -9,7 +9,6 @@ using System.IO;
 namespace Mathador
 {
     //LaunchDatabase() - void
-    //CloseDatabase() - void
     //CreateANewUser(string username, string password) - void
     //CheckIfUserAlreadyExists(string username) - bool
     //CheckIfPasswordMatches(string username, string password) - bool

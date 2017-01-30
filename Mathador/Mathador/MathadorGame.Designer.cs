@@ -354,7 +354,7 @@
             // 
             // buttonMathador
             // 
-            this.buttonMathador.BackColor = System.Drawing.Color.LemonChiffon;
+            this.buttonMathador.BackColor = System.Drawing.Color.Transparent;
             this.buttonMathador.Enabled = false;
             this.buttonMathador.FlatAppearance.BorderColor = System.Drawing.Color.Gold;
             this.buttonMathador.FlatAppearance.BorderSize = 3;
