@@ -148,8 +148,8 @@ namespace Mathador
             tableauTemp[3] = json.Nombre4;
             tableauTemp[4] = json.Nombre5;
 
-            //tableau = tableauTemp.OrderBy(x => random.Next()).ToArray(); //DEBUG //Aléotoirise l'ordre des nombres
-            tableau = tableauTemp; //DEBUG
+            tableau = tableauTemp.OrderBy(x => random.Next()).ToArray(); //DEBUG //Aléotoirise l'ordre des nombres
+            //tableau = tableauTemp; //DEBUG
 
             ButtonNombre1.Text = tableau[0].ToString();
             ButtonNombre2.Text = tableau[1].ToString();
