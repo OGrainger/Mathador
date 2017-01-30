@@ -354,13 +354,13 @@
             // 
             // buttonMathador
             // 
-            this.buttonMathador.BackColor = System.Drawing.Color.Transparent;
+            this.buttonMathador.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonMathador.Enabled = false;
-            this.buttonMathador.FlatAppearance.BorderColor = System.Drawing.Color.Gold;
+            this.buttonMathador.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.buttonMathador.FlatAppearance.BorderSize = 3;
             this.buttonMathador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMathador.Font = new System.Drawing.Font("Verdana", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonMathador.ForeColor = System.Drawing.Color.Gold;
+            this.buttonMathador.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.buttonMathador.Location = new System.Drawing.Point(139, 150);
             this.buttonMathador.Name = "buttonMathador";
             this.buttonMathador.Size = new System.Drawing.Size(286, 45);

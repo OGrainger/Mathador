@@ -43,12 +43,13 @@ namespace Mathador
             CancelButton = buttonRetour;
             this.Text = "Statistiques | " + this.Pseudo;
 
-            data = db.GetData(this.Pseudo);
+            data = db.GetData(this.Pseudo);     //Récupère toute la data pour ce pseudo
             totalScorePoints = data["totalScorePoints"];
             gameCount = data["gameCount"];
             roundCount = data["roundCount"];
             totalGameTimeInSeconds = data["totalGameTimeInSeconds"];
-                
+            
+            //Calcul des stats
             averageScore = Convert.ToSingle(totalScorePoints) / gameCount;
             averagePointsPerRound = Convert.ToSingle(totalScorePoints) / roundCount;
             averageTimePerGame = Convert.ToSingle(totalGameTimeInSeconds) / gameCount;
@@ -62,6 +63,7 @@ namespace Mathador
             averageUseOfMult = Convert.ToSingle(data["multCount"]) / useOfAllOp;
             averageUseOfDiv = Convert.ToSingle(data["divCount"]) / useOfAllOp;
 
+            //Affichage des stats en texte
             labelAveragePointsPerRound.Text = Math.Round(averagePointsPerRound, 2).ToString();
             labelAverageScore.Text = Math.Round(averageScore, 2).ToString();
             labelAverageTimePerRound.Text = Math.Round(averageTimePerRound, 2).ToString() + "s";
@@ -74,6 +76,7 @@ namespace Mathador
             labelMathadorCount.Text = data["mathadorCount"].ToString();
             labelAverageMathadorPerGame.Text = Math.Round(averageMathadorPerGame, 2).ToString();
 
+            //Affichage des camemberts - Ne rajoute pas de data égale à 0
             if (averageUseOfAdd > 0) { pieChartOp.Series["Series1"].Points.AddXY("+ (" + Math.Round(averageUseOfAdd, 3, MidpointRounding.AwayFromZero) * 100 + "%)", averageUseOfAdd); }
             if (averageUseOfSub > 0) { pieChartOp.Series["Series1"].Points.AddXY("- (" + Math.Round(averageUseOfSub, 3, MidpointRounding.AwayFromZero) * 100 + "%)", averageUseOfSub); }
             if (averageUseOfMult > 0) { pieChartOp.Series["Series1"].Points.AddXY(" x (" + Math.Round(averageUseOfMult, 3, MidpointRounding.AwayFromZero) * 100 + " %)", averageUseOfMult); }

@@ -28,7 +28,7 @@ namespace Mathador
             AcceptButton = BouttonNouvellePartie;
             CancelButton = BouttonQuitter;
             data = db.GetData(this.Pseudo);
-            buttonStats.Enabled = data["gameCount"] > 0;
+            buttonStats.Enabled = data["gameCount"] > 0;        //N'active le bouton "stats" que si le user a déjà fait au moins une partie
             AcceptButton = BouttonNouvellePartie;
             CancelButton = BouttonQuitter;
             this.Text = "Menu | " + this.Pseudo;
