@@ -727,8 +727,8 @@ namespace Mathador
             return Solutions;
         }
     }
-    public class Solution
-    {
+    public class Solution                                                                                       //Objet Solution qui contient un int pour le score et un liste pour les 
+    {                                                                                                           //equations de la solution
         public int score;
         public string equations;
     }

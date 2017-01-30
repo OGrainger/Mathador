@@ -40,7 +40,7 @@ namespace Mathador
         }
 
         private void buttonTerminer_Click(object sender, EventArgs e)
-        {
+        {                                                                       //Le bouton terminer ré-ouvre la form MathadorGame
             this.Hide();
             MathadorGame frm = Application.OpenForms.OfType<MathadorGame>().FirstOrDefault();
             if (frm != null)
